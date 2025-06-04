@@ -18,10 +18,20 @@ var Game = {
     player: null,
     pedro: null,
     ananas: null,
+    statsDisplay: null,
     
     init: function() {
+        // Create the main game display
         this.display = new ROT.Display({spacing:1.1});
-        document.body.appendChild(this.display.getContainer());
+        
+        // Create the stats display above the main display
+        this.statsDisplay = new ROT.Display({width: 40, height: 1, spacing: 1.1});
+        
+        // Add both displays to the page
+        var container = document.createElement("div");
+        container.appendChild(this.statsDisplay.getContainer());
+        container.appendChild(this.display.getContainer());
+        document.body.appendChild(container);
         
         this._generateMap();
         
@@ -31,6 +41,14 @@ var Game = {
 
         this.engine = new ROT.Engine(scheduler);
         this.engine.start();
+        
+        // Initial stats display
+        this._drawStats();
+    },
+    
+    _drawStats: function() {
+        this.statsDisplay.clear();
+        this.statsDisplay.draw(5, 0, "Health: " + this.player.getHealth());
     },
     
     _generateMap: function() {
@@ -84,12 +102,14 @@ var Game = {
 var Player = function(x, y) {
     this._x = x;
     this._y = y;
+    this._health = 5;
     this._draw();
 }
     
 Player.prototype.getSpeed = function() { return 100; }
 Player.prototype.getX = function() { return this._x; }
 Player.prototype.getY = function() { return this._y; }
+Player.prototype.getHealth = function() { return this._health; }
 
 Player.prototype.act = function() {
     Game.engine.lock();
@@ -127,6 +147,7 @@ Player.prototype.handleEvent = function(e) {
     this._x = newX;
     this._y = newY;
     this._draw();
+    Game._drawStats();
     window.removeEventListener("keydown", this);
     Game.engine.unlock();
 }
