@@ -19,6 +19,7 @@ var Game = {
     pedro: null,
     ananas: null,
     statsDisplay: null,
+    frogs: [],
     
     init: function() {
         // Create the main game display
@@ -38,6 +39,11 @@ var Game = {
         var scheduler = new ROT.Scheduler.Simple();
         scheduler.add(this.player, true);
         scheduler.add(this.pedro, true);
+        
+        // Add frogs to scheduler
+        for (var i = 0; i < this.frogs.length; i++) {
+            scheduler.add(this.frogs[i], true);
+        }
 
         this.engine = new ROT.Engine(scheduler);
         this.engine.start();
@@ -69,6 +75,11 @@ var Game = {
         
         this.player = this._createBeing(Player, freeCells);
         this.pedro = this._createBeing(Pedro, freeCells);
+        
+        // Create 3 frogs
+        for (var i = 0; i < 3; i++) {
+            this.frogs.push(this._createBeing(Frog, freeCells));
+        }
     },
     
     _createBeing: function(what, freeCells) {
@@ -96,6 +107,17 @@ var Game = {
             var y = parseInt(parts[1]);
             this.display.draw(x, y, this.map[key]);
         }
+    },
+    
+    // Helper function to check if a position is occupied
+    _isOccupied: function(x, y) {
+        var key = x + "," + y;
+        if (this.player && this.player.getX() === x && this.player.getY() === y) return true;
+        if (this.pedro && this.pedro.getX() === x && this.pedro.getY() === y) return true;
+        for (var i = 0; i < this.frogs.length; i++) {
+            if (this.frogs[i].getX() === x && this.frogs[i].getY() === y) return true;
+        }
+        return false;
     }
 };
 
@@ -176,6 +198,8 @@ var Pedro = function(x, y) {
 }
     
 Pedro.prototype.getSpeed = function() { return 100; }
+Pedro.prototype.getX = function() { return this._x; }
+Pedro.prototype.getY = function() { return this._y; }
     
 Pedro.prototype.act = function() {
     var x = Game.player.getX();
@@ -210,6 +234,59 @@ Pedro.prototype._draw = function() {
     Game.display.draw(this._x, this._y, "P", "red");
 }    
 
+var Frog = function(x, y) {
+    this._x = x;
+    this._y = y;
+    this._draw();
+}
+
+Frog.prototype.getSpeed = function() { return 100; }
+Frog.prototype.getX = function() { return this._x; }
+Frog.prototype.getY = function() { return this._y; }
+
+Frog.prototype.act = function() {
+    // Possible jump directions: up, right, down, left
+    var directions = [
+        [0, -2], // up
+        [2, 0],  // right
+        [0, 2],  // down
+        [-2, 0]  // left
+    ];
+    
+    // Shuffle directions randomly
+    for (var i = directions.length - 1; i > 0; i--) {
+        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+        var tmp = directions[i];
+        directions[i] = directions[j];
+        directions[j] = tmp;
+    }
+    
+    // Try each direction until we find a valid move
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        var newX = this._x + dir[0];
+        var newY = this._y + dir[1];
+        var midX = this._x + dir[0]/2;
+        var midY = this._y + dir[1]/2;
+        
+        // Check if both intermediate and destination tiles are valid
+        var midKey = midX + "," + midY;
+        var newKey = newX + "," + newY;
+        
+        if (midKey in Game.map && newKey in Game.map && !Game._isOccupied(newX, newY)) {
+            // Valid move found - perform the jump
+            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+            this._x = newX;
+            this._y = newY;
+            this._draw();
+            break;
+        }
+    }
+}
+
+Frog.prototype._draw = function() {
+    Game.display.draw(this._x, this._y, "f", "green");
+}
 
 Game.init();
 
