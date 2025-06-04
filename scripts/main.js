@@ -1,3 +1,16 @@
+const KEY_CODES = {
+    ENTER: 13,
+    SPACE: 32,
+    UP: 38,
+    PAGE_UP: 33,
+    RIGHT: 39,
+    PAGE_DOWN: 34,
+    DOWN: 40,
+    END: 35,
+    LEFT: 37,
+    HOME: 36
+};
+
 var Game = {
     display: null,
     map: {},
@@ -85,20 +98,20 @@ Player.prototype.act = function() {
     
 Player.prototype.handleEvent = function(e) {
     var code = e.keyCode;
-    if (code == 13 || code == 32) {
+    if (code == KEY_CODES.ENTER || code == KEY_CODES.SPACE) {
         this._checkBox();
         return;
     }
 
     var keyMap = {};
-    keyMap[38] = 0;
-    keyMap[33] = 1;
-    keyMap[39] = 2;
-    keyMap[34] = 3;
-    keyMap[40] = 4;
-    keyMap[35] = 5;
-    keyMap[37] = 6;
-    keyMap[36] = 7;
+    keyMap[KEY_CODES.UP] = 0;
+    keyMap[KEY_CODES.PAGE_UP] = 1;
+    keyMap[KEY_CODES.RIGHT] = 2;
+    keyMap[KEY_CODES.PAGE_DOWN] = 3;
+    keyMap[KEY_CODES.DOWN] = 4;
+    keyMap[KEY_CODES.END] = 5;
+    keyMap[KEY_CODES.LEFT] = 6;
+    keyMap[KEY_CODES.HOME] = 7;
 
     /* one of numpad directions? */
     if (!(code in keyMap)) { return; }
