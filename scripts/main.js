@@ -16,32 +16,28 @@ var Game = {
     map: {},
     engine: null,
     player: null,
-    pedro: null,
+    enemies: [], // Single array for all enemies
     ananas: null,
     statsDisplay: null,
     messageDisplay: null,
     messageHistory: [],
-    frogs: [],
-    rats: [],
     
     init: function() {
         // Create the main game display
         this.display = new ROT.Display({spacing:1.1});
         
         // Create the stats display above the main display
-        this.statsDisplay = new ROT.Display({
-            width: 80, 
-            height: 1, 
-            spacing: 1.1,
-            forceSquareRatio: false
-        });
+        this.statsDisplay = new ROT.Display({width: 80, height: 1, spacing: 1.1});
         
         // Create the message display below the main display
         this.messageDisplay = new ROT.Display({
             width: 80, 
             height: 2, 
             spacing: 1.1,
-            forceSquareRatio: false
+            fg: "#fff",
+            bg: "#000",
+            forceSquareRatio: false,
+            textAlign: "left"
         });
         
         // Add all displays to the page in order
@@ -55,16 +51,10 @@ var Game = {
         
         var scheduler = new ROT.Scheduler.Simple();
         scheduler.add(this.player, true);
-        scheduler.add(this.pedro, true);
         
-        // Add frogs to scheduler
-        for (var i = 0; i < this.frogs.length; i++) {
-            scheduler.add(this.frogs[i], true);
-        }
-        
-        // Add rats to scheduler
-        for (var i = 0; i < this.rats.length; i++) {
-            scheduler.add(this.rats[i], true);
+        // Add all enemies to scheduler
+        for (var i = 0; i < this.enemies.length; i++) {
+            scheduler.add(this.enemies[i], true);
         }
 
         this.engine = new ROT.Engine(scheduler);
@@ -79,8 +69,7 @@ var Game = {
     
     _drawStats: function() {
         this.statsDisplay.clear();
-        // Use drawText instead of draw for proper text rendering
-        this.statsDisplay.drawText(0, 0, "%c{white}%b{black}Health: " + this.player.getHealth());
+        this.statsDisplay.draw(5, 0, "Health: " + this.player.getHealth());
     },
     
     // Add a message to the message display
@@ -97,8 +86,8 @@ var Game = {
         
         // Display the messages with explicit left positioning
         for (var i = 0; i < this.messageHistory.length; i++) {
-            // Use drawText instead of draw for proper text rendering
-            this.messageDisplay.drawText(0, i, "%c{white}%b{black}" + this.messageHistory[i]);
+            // Draw text starting at the leftmost position (x=0)
+            this.messageDisplay.drawText(0, i, this.messageHistory[i]);
         }
     },
     
@@ -119,16 +108,18 @@ var Game = {
         this._drawWholeMap();
         
         this.player = this._createBeing(Player, freeCells);
-        this.pedro = this._createBeing(Pedro, freeCells);
+        
+        // Create Pedro and add to enemies array
+        this.enemies.push(this._createBeing(Pedro, freeCells));
         
         // Create 3 frogs
         for (var i = 0; i < 3; i++) {
-            this.frogs.push(this._createBeing(Frog, freeCells));
+            this.enemies.push(this._createBeing(Frog, freeCells));
         }
         
         // Create 3 rats
         for (var i = 0; i < 3; i++) {
-            this.rats.push(this._createBeing(Rat, freeCells));
+            this.enemies.push(this._createBeing(Rat, freeCells));
         }
     },
     
@@ -163,13 +154,11 @@ var Game = {
     _isOccupied: function(x, y) {
         var key = x + "," + y;
         if (this.player && this.player.getX() === x && this.player.getY() === y) return true;
-        if (this.pedro && this.pedro.getX() === x && this.pedro.getY() === y) return true;
-        for (var i = 0; i < this.frogs.length; i++) {
-            if (this.frogs[i].getX() === x && this.frogs[i].getY() === y) return true;
+        
+        for (var i = 0; i < this.enemies.length; i++) {
+            if (this.enemies[i].getX() === x && this.enemies[i].getY() === y) return true;
         }
-        for (var i = 0; i < this.rats.length; i++) {
-            if (this.rats[i].getX() === x && this.rats[i].getY() === y) return true;
-        }
+        
         return false;
     }
 };
@@ -178,27 +167,48 @@ var Game = {
 var Being = function(x, y) {
     this._x = x;
     this._y = y;
+    this._health = 1; // Default health value
 }
 
 Being.prototype.getSpeed = function() { return 100; }
 Being.prototype.getX = function() { return this._x; }
 Being.prototype.getY = function() { return this._y; }
+Being.prototype.getHealth = function() { return this._health; }
 Being.prototype._draw = function() {
     Game.display.draw(this._x, this._y, this._char, this._color);
+}
+
+// Add die method to base Being class
+Being.prototype.die = function() {
+    // Clear the being from the map display
+    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+    
+    // Remove from appropriate array based on type
+    if (this instanceof Player) {
+        Game.player = null;
+        Game.engine.lock();
+        Game.message("Game over - you have died!");
+        window.removeEventListener("keydown", this);
+    } else {
+        // Remove from enemies array
+        var index = Game.enemies.indexOf(this);
+        if (index !== -1) Game.enemies.splice(index, 1);
+    }
+    
+    // Remove from scheduler
+    Game.engine.scheduler.remove(this);
 }
 
 // Player class inherits from Being
 var Player = function(x, y) {
     Being.call(this, x, y);
-    this._health = 5;
+    this._health = 5; // Override default health for player
     this._char = "@";
     this._color = "#ff0";
     this._draw();
 }
 Player.prototype = Object.create(Being.prototype);
 Player.prototype.constructor = Player;
-
-Player.prototype.getHealth = function() { return this._health; }
 
 Player.prototype.act = function() {
     Game.engine.lock();
@@ -246,26 +256,19 @@ Player.prototype.handleEvent = function(e) {
 
 // Add a method to check surroundings and provide contextual messages
 Player.prototype._checkSurroundings = function(newX, newY) {
-    // Check for nearby frogs
-    for (var i = 0; i < Game.frogs.length; i++) {
-        var frog = Game.frogs[i];
-        var dx = Math.abs(frog.getX() - newX);
-        var dy = Math.abs(frog.getY() - newY);
+    for (var i = 0; i < Game.enemies.length; i++) {
+        var enemy = Game.enemies[i];
+        var dx = Math.abs(enemy.getX() - newX);
+        var dy = Math.abs(enemy.getY() - newY);
         
         if (dx <= 2 && dy <= 2) {
-            Game.message("You hear a frog croaking nearby.");
-            return;
-        }
-    }
-    
-    // Check for nearby rats
-    for (var i = 0; i < Game.rats.length; i++) {
-        var rat = Game.rats[i];
-        var dx = Math.abs(rat.getX() - newX);
-        var dy = Math.abs(rat.getY() - newY);
-        
-        if (dx <= 2 && dy <= 2) {
-            Game.message("You hear rats scurrying in the darkness.");
+            if (enemy instanceof Frog) {
+                Game.message("You hear a frog croaking nearby.");
+            } else if (enemy instanceof Rat) {
+                Game.message("You hear rats scurrying in the darkness.");
+            } else if (enemy instanceof Pedro) {
+                Game.message("You can hear Pedro's footsteps nearby!");
+            }
             return;
         }
     }
@@ -287,6 +290,7 @@ Player.prototype._checkBox = function() {
 // Pedro class inherits from Being
 var Pedro = function(x, y) {
     Being.call(this, x, y);
+    this._health = 1; // Enemy health
     this._char = "P";
     this._color = "red";
     this._draw();
@@ -331,6 +335,7 @@ Pedro.prototype.act = function() {
 // Frog class inherits from Being
 var Frog = function(x, y) {
     Being.call(this, x, y);
+    this._health = 1; // Enemy health
     this._char = "f";
     this._color = "green";
     this._draw();
@@ -392,6 +397,7 @@ Frog.prototype.act = function() {
 // Rat class inherits from Being
 var Rat = function(x, y) {
     Being.call(this, x, y);
+    this._health = 1; // Enemy health
     this._char = "r";
     this._color = "#808080"; // Grey color
     this._draw();
