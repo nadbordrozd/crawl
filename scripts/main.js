@@ -11,6 +11,16 @@ const KEY_CODES = {
     HOME: 36
 };
 
+// Configuration for enemy counts - easy to modify
+const ENEMY_CONFIG = {
+    PEDRO_COUNT: 1,
+    FROG_COUNT: 5,
+    RAT_COUNT: 5,
+    SNAIL_COUNT: 5,
+    MADFROG_COUNT: 5,
+    MADRAT_COUNT: 25
+};
+
 var Game = {
     display: null,
     map: {},
@@ -32,7 +42,7 @@ var Game = {
         // Create the message display below the main display
         this.messageDisplay = new ROT.Display({
             width: 80, 
-            height: 2, 
+            height: 10, 
             spacing: 1.1,
             fg: "#fff",
             bg: "#000",
@@ -49,7 +59,10 @@ var Game = {
         
         this._generateMap();
         
+        // Create a new scheduler and engine
         var scheduler = new ROT.Scheduler.Simple();
+        
+        // Add player to scheduler
         scheduler.add(this.player, true);
         
         // Add all enemies to scheduler
@@ -69,15 +82,19 @@ var Game = {
     
     _drawStats: function() {
         this.statsDisplay.clear();
-        this.statsDisplay.draw(5, 0, "Health: " + this.player.getHealth());
+        if (this.player) {
+            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth());
+        } else {
+            this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD)");
+        }
     },
     
     // Add a message to the message display
     message: function(text) {
         // Add the new message to the history
         this.messageHistory.unshift(text);
-        // Keep only the last 2 messages
-        if (this.messageHistory.length > 2) {
+        // Keep only the last 10 messages
+        if (this.messageHistory.length > 10) {
             this.messageHistory.pop();
         }
         
@@ -109,17 +126,34 @@ var Game = {
         
         this.player = this._createBeing(Player, freeCells);
         
-        // Create Pedro and add to enemies array
-        this.enemies.push(this._createBeing(Pedro, freeCells));
+        // Create Pedro(s) and add to enemies array
+        for (var i = 0; i < ENEMY_CONFIG.PEDRO_COUNT; i++) {
+            this.enemies.push(this._createBeing(Pedro, freeCells));
+        }
         
-        // Create 3 frogs
-        for (var i = 0; i < 3; i++) {
+        // Create frogs
+        for (var i = 0; i < ENEMY_CONFIG.FROG_COUNT; i++) {
             this.enemies.push(this._createBeing(Frog, freeCells));
         }
         
-        // Create 3 rats
-        for (var i = 0; i < 3; i++) {
+        // Create rats
+        for (var i = 0; i < ENEMY_CONFIG.RAT_COUNT; i++) {
             this.enemies.push(this._createBeing(Rat, freeCells));
+        }
+        
+        // Create snails
+        for (var i = 0; i < ENEMY_CONFIG.SNAIL_COUNT; i++) {
+            this.enemies.push(this._createBeing(Snail, freeCells));
+        }
+        
+        // Create mad frogs
+        for (var i = 0; i < ENEMY_CONFIG.MADFROG_COUNT; i++) {
+            this.enemies.push(this._createBeing(MadFrog, freeCells));
+        }
+        
+        // Create mad rats
+        for (var i = 0; i < ENEMY_CONFIG.MADRAT_COUNT; i++) {
+            this.enemies.push(this._createBeing(MadRat, freeCells));
         }
     },
     
@@ -160,6 +194,12 @@ var Game = {
         }
         
         return false;
+    },
+    
+    // Add a method to Game to debug the current state
+    _debugState: function() {
+        console.log("Enemies in array:", this.enemies.length);
+        console.log("Current scheduler:", this.engine._scheduler);
     }
 };
 
@@ -168,14 +208,30 @@ var Being = function(x, y) {
     this._x = x;
     this._y = y;
     this._health = 1; // Default health value
+    this._strength = 1; // Default strength value
+    this._name = "being"; // Default name
 }
 
 Being.prototype.getSpeed = function() { return 100; }
 Being.prototype.getX = function() { return this._x; }
 Being.prototype.getY = function() { return this._y; }
 Being.prototype.getHealth = function() { return this._health; }
+Being.prototype.getStrength = function() { return this._strength; }
+Being.prototype.getName = function() { return this._name; }
 Being.prototype._draw = function() {
     Game.display.draw(this._x, this._y, this._char, this._color);
+}
+
+// Add takeDamage method to Being prototype
+Being.prototype.takeDamage = function(amount) {
+    this._health -= amount;
+    // If health drops to 0 or below, the being dies
+    if (this._health <= 0) {
+        this.die();
+        return true; // Return true if the being died
+    }
+    
+    return false; // Return false if the being is still alive
 }
 
 // Add die method to base Being class
@@ -195,14 +251,22 @@ Being.prototype.die = function() {
         if (index !== -1) Game.enemies.splice(index, 1);
     }
     
-    // Remove from scheduler
-    Game.engine.scheduler.remove(this);
+    // Remove from scheduler if it exists
+    if (Game.engine && Game.engine._scheduler) {
+        try {
+            Game.engine._scheduler.remove(this);
+        } catch (e) {
+            console.log("Error removing from scheduler:", e);
+        }
+    }
 }
 
 // Player class inherits from Being
 var Player = function(x, y) {
     Being.call(this, x, y);
     this._health = 5; // Override default health for player
+    this._strength = 1; // Player's strength
+    this._name = "player";
     this._char = "@";
     this._color = "#ff0";
     this._draw();
@@ -217,8 +281,21 @@ Player.prototype.act = function() {
     
 Player.prototype.handleEvent = function(e) {
     var code = e.keyCode;
-    if (code == KEY_CODES.ENTER || code == KEY_CODES.SPACE) {
+    if (code == KEY_CODES.ENTER) {
         this._checkBox();
+        Game._drawStats();
+        window.removeEventListener("keydown", this);
+        Game.engine.unlock();
+        return;
+    }
+    
+    if (code == KEY_CODES.SPACE) {
+        // Check surroundings and skip turn
+        this._checkSurroundings(this._x, this._y);
+        Game.message("You look around carefully...");
+        Game._drawStats();
+        window.removeEventListener("keydown", this);
+        Game.engine.unlock();
         return;
     }
 
@@ -242,13 +319,37 @@ Player.prototype.handleEvent = function(e) {
     var newKey = newX + "," + newY;
     if (!(newKey in Game.map)) { return; }
 
-    // Check for nearby creatures and provide messages
-    this._checkSurroundings(newX, newY);
+    // Check for enemies at the target position
+    var targetEnemy = null;
+    for (var i = 0; i < Game.enemies.length; i++) {
+        var enemy = Game.enemies[i];
+        if (enemy.getX() === newX && enemy.getY() === newY) {
+            targetEnemy = enemy;
+            break;
+        }
+    }
 
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
-    this._x = newX;
-    this._y = newY;
-    this._draw();
+    // If there's an enemy, attack it instead of moving
+    if (targetEnemy) {
+        // Player attacks enemy with their strength
+        var killed = targetEnemy.takeDamage(this._strength);
+        if (killed) {
+            Game.message("You defeated the " + targetEnemy.getName() + "!");
+        } else {
+            Game.message("You hit the " + targetEnemy.getName() + "!");
+        }
+        // Player stays in place
+    } else {
+        // Check for nearby creatures and provide messages
+        this._checkSurroundings(newX, newY);
+
+        // Move player
+        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+        this._x = newX;
+        this._y = newY;
+        this._draw();
+    }
+    
     Game._drawStats();
     window.removeEventListener("keydown", this);
     Game.engine.unlock();
@@ -291,6 +392,8 @@ Player.prototype._checkBox = function() {
 var Pedro = function(x, y) {
     Being.call(this, x, y);
     this._health = 1; // Enemy health
+    this._strength = 1; // Enemy strength
+    this._name = "Pedro";
     this._char = "P";
     this._color = "red";
     this._draw();
@@ -313,11 +416,20 @@ Pedro.prototype.act = function() {
     }
     astar.compute(this._x, this._y, pathCallback);
 
-    path.shift();
-    if (path.length == 1) {
-        Game.message("Game over - you were captured by Pedro!");
-        Game.engine.lock();
+    path.shift(); // Remove Pedro's current position
+    
+    if (path.length === 0) {
+        // This should not normally happen, but handle it gracefully
+        return;
+    }
+    
+    if (path.length === 1) {
+        // Pedro is adjacent to the player, attack instead of moving
+        Game.message("Pedro hits you!");
+        Game.player.takeDamage(this._strength);
+        Game._drawStats(); // Update stats display to show new health
     } else {
+        // Move towards the player
         x = path[0][0];
         y = path[0][1];
         Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
@@ -336,6 +448,8 @@ Pedro.prototype.act = function() {
 var Frog = function(x, y) {
     Being.call(this, x, y);
     this._health = 1; // Enemy health
+    this._strength = 1; // Enemy strength
+    this._name = "frog";
     this._char = "f";
     this._color = "green";
     this._draw();
@@ -360,7 +474,7 @@ Frog.prototype.act = function() {
         directions[j] = tmp;
     }
     
-    // Try each direction until we find a valid move
+    // Try each direction until we find a valid move or attack
     for (var i = 0; i < directions.length; i++) {
         var dir = directions[i];
         var newX = this._x + dir[0];
@@ -372,7 +486,32 @@ Frog.prototype.act = function() {
         var midKey = midX + "," + midY;
         var newKey = newX + "," + newY;
         
-        if (midKey in Game.map && newKey in Game.map && !Game._isOccupied(newX, newY)) {
+        // Skip if intermediate or destination tiles are impassable
+        if (!(midKey in Game.map) || !(newKey in Game.map)) {
+            continue;
+        }
+        
+        // Check if the destination tile is occupied by the player
+        if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+            // Attack the player!
+            Game.message("A frog leaps at you and attacks!");
+            Game.player.takeDamage(this._strength);
+            Game._drawStats();
+            return; // End turn after attacking
+        }
+        
+        // Check if destination is occupied by another enemy
+        var occupiedByEnemy = false;
+        for (var j = 0; j < Game.enemies.length; j++) {
+            var enemy = Game.enemies[j];
+            if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
+                occupiedByEnemy = true;
+                break;
+            }
+        }
+        
+        // If destination is free, jump there
+        if (!occupiedByEnemy) {
             // Valid move found - perform the jump
             Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
             this._x = newX;
@@ -380,24 +519,27 @@ Frog.prototype.act = function() {
             this._draw();
             
             // If player is nearby, add a message
-            var playerX = Game.player.getX();
-            var playerY = Game.player.getY();
+            var playerX = Game.player ? Game.player.getX() : -1;
+            var playerY = Game.player ? Game.player.getY() : -1;
             var dx = Math.abs(this._x - playerX);
             var dy = Math.abs(this._y - playerY);
             
-            if (dx <= 3 && dy <= 3) {
+            if (playerX !== -1 && dx <= 3 && dy <= 3) {
                 Game.message("You hear a frog jumping nearby.");
             }
             
-            break;
+            return; // End turn after moving
         }
     }
+    // If no valid moves found, frog stays in place (skips turn)
 }
 
 // Rat class inherits from Being
 var Rat = function(x, y) {
     Being.call(this, x, y);
     this._health = 1; // Enemy health
+    this._strength = 1; // Enemy strength
+    this._name = "rat";
     this._char = "r";
     this._color = "#808080"; // Grey color
     this._draw();
@@ -422,22 +564,290 @@ Rat.prototype.act = function() {
         directions[j] = tmp;
     }
     
-    // Try each direction until we find a valid move
+    // Try each direction until we find a valid move or attack
     for (var i = 0; i < directions.length; i++) {
         var dir = directions[i];
         var newX = this._x + dir[0];
         var newY = this._y + dir[1];
         var newKey = newX + "," + newY;
         
-        if (newKey in Game.map && !Game._isOccupied(newX, newY)) {
+        // Check if the tile is passable
+        if (!(newKey in Game.map)) {
+            continue; // Skip impassable tiles
+        }
+        
+        // Check if the tile is occupied by the player
+        if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+            // Attack the player!
+            Game.message("A rat bites you!");
+            Game.player.takeDamage(this._strength);
+            Game._drawStats();
+            return; // End turn after attacking
+        }
+        
+        // Check if the tile is occupied by another enemy
+        var occupiedByEnemy = false;
+        for (var j = 0; j < Game.enemies.length; j++) {
+            var enemy = Game.enemies[j];
+            if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
+                occupiedByEnemy = true;
+                break;
+            }
+        }
+        
+        // If tile is free, move there
+        if (!occupiedByEnemy) {
             // Valid move found - perform the move
             Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
             this._x = newX;
             this._y = newY;
             this._draw();
-            break;
+            return; // End turn after moving
         }
     }
+    // If no valid moves found, rat stays in place (skips turn)
+}
+
+// Snail class inherits from Being
+var Snail = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1; // Enemy health
+    this._strength = 1; // Enemy strength
+    this._name = "snail";
+    this._char = "s";
+    this._color = "#8B4513"; // Brown color
+    this._draw();
+}
+Snail.prototype = Object.create(Being.prototype);
+Snail.prototype.constructor = Snail;
+
+// Snail doesn't move or do anything in its turn
+Snail.prototype.act = function() {
+    // Snails just sit there doing nothing
+}
+
+// MadFrog class inherits from Being
+var MadFrog = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1; // Enemy health
+    this._strength = 1; // Enemy strength
+    this._name = "mad frog";
+    this._char = "f";
+    this._color = "red"; // Red color to distinguish from regular frogs
+    this._draw();
+}
+MadFrog.prototype = Object.create(Being.prototype);
+MadFrog.prototype.constructor = MadFrog;
+
+MadFrog.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    // Possible jump directions: up, right, down, left
+    var directions = [
+        [0, -2], // up
+        [2, 0],  // right
+        [0, 2],  // down
+        [-2, 0]  // left
+    ];
+    
+    // Calculate which direction gets us closest to the player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var bestDirection = null;
+    var bestDistance = Infinity;
+    
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        var newX = this._x + dir[0];
+        var newY = this._y + dir[1];
+        
+        // Calculate distance to player if we jump in this direction
+        var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            bestDirection = dir;
+        }
+    }
+    
+    // Try the best direction first
+    if (bestDirection && this._tryJump(bestDirection)) {
+        return;
+    }
+    
+    // If best direction failed, shuffle and try other directions
+    for (var i = directions.length - 1; i > 0; i--) {
+        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+        var tmp = directions[i];
+        directions[i] = directions[j];
+        directions[j] = tmp;
+    }
+    
+    // Try each direction until we find a valid move or attack
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        if (dir === bestDirection) continue; // Skip best direction, already tried
+        
+        if (this._tryJump(dir)) {
+            return;
+        }
+    }
+    
+    // If no valid moves found, mad frog stays in place (skips turn)
+}
+
+MadFrog.prototype._tryJump = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    var midX = this._x + dir[0]/2;
+    var midY = this._y + dir[1]/2;
+    
+    // Check if both intermediate and destination tiles are valid
+    var midKey = midX + "," + midY;
+    var newKey = newX + "," + newY;
+    
+    // Skip if intermediate or destination tiles are impassable
+    if (!(midKey in Game.map) || !(newKey in Game.map)) {
+        return false;
+    }
+    
+    // Check if the destination tile is occupied by the player
+    if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+        // Attack the player!
+        Game.message("A mad frog leaps at you furiously!");
+        Game.player.takeDamage(this._strength);
+        Game._drawStats();
+        return true; // Successfully attacked
+    }
+    
+    // Check if destination is occupied by another enemy
+    for (var j = 0; j < Game.enemies.length; j++) {
+        var enemy = Game.enemies[j];
+        if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
+            return false; // Blocked by enemy
+        }
+    }
+    
+    // If destination is free, jump there
+    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+    this._x = newX;
+    this._y = newY;
+    this._draw();
+    
+    // If player is nearby, add a message
+    var playerX = Game.player ? Game.player.getX() : -1;
+    var playerY = Game.player ? Game.player.getY() : -1;
+    var dx = Math.abs(this._x - playerX);
+    var dy = Math.abs(this._y - playerY);
+    
+    if (playerX !== -1 && dx <= 3 && dy <= 3) {
+        Game.message("You hear an angry frog jumping aggressively nearby.");
+    }
+    
+    return true; // Successfully moved
+}
+
+// MadRat class inherits from Being
+var MadRat = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1; // Enemy health
+    this._strength = 1; // Enemy strength
+    this._name = "mad rat";
+    this._char = "r";
+    this._color = "red"; // Red color to distinguish from regular rats
+    this._draw();
+}
+MadRat.prototype = Object.create(Being.prototype);
+MadRat.prototype.constructor = MadRat;
+
+MadRat.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    // Possible movement directions: up, right, down, left
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    // Calculate which direction gets us closest to the player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var bestDirection = null;
+    var bestDistance = Infinity;
+    
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        var newX = this._x + dir[0];
+        var newY = this._y + dir[1];
+        
+        // Calculate distance to player if we move in this direction
+        var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            bestDirection = dir;
+        }
+    }
+    
+    // Try the best direction first
+    if (bestDirection && this._tryMove(bestDirection)) {
+        return;
+    }
+    
+    // If best direction failed, shuffle and try other directions
+    for (var i = directions.length - 1; i > 0; i--) {
+        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+        var tmp = directions[i];
+        directions[i] = directions[j];
+        directions[j] = tmp;
+    }
+    
+    // Try each direction until we find a valid move or attack
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        if (dir === bestDirection) continue; // Skip best direction, already tried
+        
+        if (this._tryMove(dir)) {
+            return;
+        }
+    }
+    
+    // If no valid moves found, mad rat stays in place (skips turn)
+}
+
+MadRat.prototype._tryMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    var newKey = newX + "," + newY;
+    
+    // Check if the tile is passable
+    if (!(newKey in Game.map)) {
+        return false; // Impassable tile
+    }
+    
+    // Check if the tile is occupied by the player
+    if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+        // Attack the player!
+        Game.message("A mad rat bites you viciously!");
+        Game.player.takeDamage(this._strength);
+        Game._drawStats();
+        return true; // Successfully attacked
+    }
+    
+    // Check if the tile is occupied by another enemy
+    for (var j = 0; j < Game.enemies.length; j++) {
+        var enemy = Game.enemies[j];
+        if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
+            return false; // Blocked by enemy
+        }
+    }
+    
+    // If tile is free, move there
+    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+    this._x = newX;
+    this._y = newY;
+    this._draw();
+    return true; // Successfully moved
 }
 
 Game.init();
