@@ -19,6 +19,8 @@ var Game = {
     pedro: null,
     ananas: null,
     statsDisplay: null,
+    messageDisplay: null,
+    messageHistory: [],
     frogs: [],
     rats: [],
     
@@ -27,12 +29,26 @@ var Game = {
         this.display = new ROT.Display({spacing:1.1});
         
         // Create the stats display above the main display
-        this.statsDisplay = new ROT.Display({width: 40, height: 1, spacing: 1.1});
+        this.statsDisplay = new ROT.Display({
+            width: 80, 
+            height: 1, 
+            spacing: 1.1,
+            forceSquareRatio: false
+        });
         
-        // Add both displays to the page
+        // Create the message display below the main display
+        this.messageDisplay = new ROT.Display({
+            width: 80, 
+            height: 2, 
+            spacing: 1.1,
+            forceSquareRatio: false
+        });
+        
+        // Add all displays to the page in order
         var container = document.createElement("div");
         container.appendChild(this.statsDisplay.getContainer());
         container.appendChild(this.display.getContainer());
+        container.appendChild(this.messageDisplay.getContainer());
         document.body.appendChild(container);
         
         this._generateMap();
@@ -56,11 +72,34 @@ var Game = {
         
         // Initial stats display
         this._drawStats();
+        
+        // Initial welcome message
+        this.message("Welcome to the dungeon! Find the ananas and escape!");
     },
     
     _drawStats: function() {
         this.statsDisplay.clear();
-        this.statsDisplay.draw(5, 0, "Health: " + this.player.getHealth());
+        // Use drawText instead of draw for proper text rendering
+        this.statsDisplay.drawText(0, 0, "%c{white}%b{black}Health: " + this.player.getHealth());
+    },
+    
+    // Add a message to the message display
+    message: function(text) {
+        // Add the new message to the history
+        this.messageHistory.unshift(text);
+        // Keep only the last 2 messages
+        if (this.messageHistory.length > 2) {
+            this.messageHistory.pop();
+        }
+        
+        // Clear and redraw the message display
+        this.messageDisplay.clear();
+        
+        // Display the messages with explicit left positioning
+        for (var i = 0; i < this.messageHistory.length; i++) {
+            // Use drawText instead of draw for proper text rendering
+            this.messageDisplay.drawText(0, i, "%c{white}%b{black}" + this.messageHistory[i]);
+        }
     },
     
     _generateMap: function() {
@@ -193,6 +232,9 @@ Player.prototype.handleEvent = function(e) {
     var newKey = newX + "," + newY;
     if (!(newKey in Game.map)) { return; }
 
+    // Check for nearby creatures and provide messages
+    this._checkSurroundings(newX, newY);
+
     Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
     this._x = newX;
     this._y = newY;
@@ -201,17 +243,44 @@ Player.prototype.handleEvent = function(e) {
     window.removeEventListener("keydown", this);
     Game.engine.unlock();
 }
+
+// Add a method to check surroundings and provide contextual messages
+Player.prototype._checkSurroundings = function(newX, newY) {
+    // Check for nearby frogs
+    for (var i = 0; i < Game.frogs.length; i++) {
+        var frog = Game.frogs[i];
+        var dx = Math.abs(frog.getX() - newX);
+        var dy = Math.abs(frog.getY() - newY);
+        
+        if (dx <= 2 && dy <= 2) {
+            Game.message("You hear a frog croaking nearby.");
+            return;
+        }
+    }
     
+    // Check for nearby rats
+    for (var i = 0; i < Game.rats.length; i++) {
+        var rat = Game.rats[i];
+        var dx = Math.abs(rat.getX() - newX);
+        var dy = Math.abs(rat.getY() - newY);
+        
+        if (dx <= 2 && dy <= 2) {
+            Game.message("You hear rats scurrying in the darkness.");
+            return;
+        }
+    }
+}
+
 Player.prototype._checkBox = function() {
     var key = this._x + "," + this._y;
     if (Game.map[key] != "*") {
-        alert("There is no box here!");
+        Game.message("There is no box here!");
     } else if (key == Game.ananas) {
-        alert("Hooray! You found an ananas and won this game.");
+        Game.message("Hooray! You found an ananas and won this game.");
         Game.engine.lock();
         window.removeEventListener("keydown", this);
     } else {
-        alert("This box is empty :-(");
+        Game.message("This box is empty :-(");
     }
 }
 
@@ -242,8 +311,8 @@ Pedro.prototype.act = function() {
 
     path.shift();
     if (path.length == 1) {
+        Game.message("Game over - you were captured by Pedro!");
         Game.engine.lock();
-        alert("Game over - you were captured by Pedro!");
     } else {
         x = path[0][0];
         y = path[0][1];
@@ -251,6 +320,11 @@ Pedro.prototype.act = function() {
         this._x = x;
         this._y = y;
         this._draw();
+        
+        // Add a message when Pedro gets closer
+        if (path.length <= 3) {
+            Game.message("Pedro is getting closer! You can hear his footsteps.");
+        }
     }
 }
 
@@ -299,6 +373,17 @@ Frog.prototype.act = function() {
             this._x = newX;
             this._y = newY;
             this._draw();
+            
+            // If player is nearby, add a message
+            var playerX = Game.player.getX();
+            var playerY = Game.player.getY();
+            var dx = Math.abs(this._x - playerX);
+            var dy = Math.abs(this._y - playerY);
+            
+            if (dx <= 3 && dy <= 3) {
+                Game.message("You hear a frog jumping nearby.");
+            }
+            
             break;
         }
     }
