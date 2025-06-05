@@ -20,6 +20,7 @@ var Game = {
     ananas: null,
     statsDisplay: null,
     frogs: [],
+    rats: [],
     
     init: function() {
         // Create the main game display
@@ -43,6 +44,11 @@ var Game = {
         // Add frogs to scheduler
         for (var i = 0; i < this.frogs.length; i++) {
             scheduler.add(this.frogs[i], true);
+        }
+        
+        // Add rats to scheduler
+        for (var i = 0; i < this.rats.length; i++) {
+            scheduler.add(this.rats[i], true);
         }
 
         this.engine = new ROT.Engine(scheduler);
@@ -79,6 +85,11 @@ var Game = {
         // Create 3 frogs
         for (var i = 0; i < 3; i++) {
             this.frogs.push(this._createBeing(Frog, freeCells));
+        }
+        
+        // Create 3 rats
+        for (var i = 0; i < 3; i++) {
+            this.rats.push(this._createBeing(Rat, freeCells));
         }
     },
     
@@ -117,20 +128,37 @@ var Game = {
         for (var i = 0; i < this.frogs.length; i++) {
             if (this.frogs[i].getX() === x && this.frogs[i].getY() === y) return true;
         }
+        for (var i = 0; i < this.rats.length; i++) {
+            if (this.rats[i].getX() === x && this.rats[i].getY() === y) return true;
+        }
         return false;
     }
 };
 
-var Player = function(x, y) {
+// Base Being class
+var Being = function(x, y) {
     this._x = x;
     this._y = y;
+}
+
+Being.prototype.getSpeed = function() { return 100; }
+Being.prototype.getX = function() { return this._x; }
+Being.prototype.getY = function() { return this._y; }
+Being.prototype._draw = function() {
+    Game.display.draw(this._x, this._y, this._char, this._color);
+}
+
+// Player class inherits from Being
+var Player = function(x, y) {
+    Being.call(this, x, y);
     this._health = 5;
+    this._char = "@";
+    this._color = "#ff0";
     this._draw();
 }
-    
-Player.prototype.getSpeed = function() { return 100; }
-Player.prototype.getX = function() { return this._x; }
-Player.prototype.getY = function() { return this._y; }
+Player.prototype = Object.create(Being.prototype);
+Player.prototype.constructor = Player;
+
 Player.prototype.getHealth = function() { return this._health; }
 
 Player.prototype.act = function() {
@@ -173,10 +201,6 @@ Player.prototype.handleEvent = function(e) {
     window.removeEventListener("keydown", this);
     Game.engine.unlock();
 }
-
-Player.prototype._draw = function() {
-    Game.display.draw(this._x, this._y, "@", "#ff0");
-}
     
 Player.prototype._checkBox = function() {
     var key = this._x + "," + this._y;
@@ -190,16 +214,16 @@ Player.prototype._checkBox = function() {
         alert("This box is empty :-(");
     }
 }
-    
+
+// Pedro class inherits from Being
 var Pedro = function(x, y) {
-    this._x = x;
-    this._y = y;
+    Being.call(this, x, y);
+    this._char = "P";
+    this._color = "red";
     this._draw();
 }
-    
-Pedro.prototype.getSpeed = function() { return 100; }
-Pedro.prototype.getX = function() { return this._x; }
-Pedro.prototype.getY = function() { return this._y; }
+Pedro.prototype = Object.create(Being.prototype);
+Pedro.prototype.constructor = Pedro;
     
 Pedro.prototype.act = function() {
     var x = Game.player.getX();
@@ -229,20 +253,16 @@ Pedro.prototype.act = function() {
         this._draw();
     }
 }
-    
-Pedro.prototype._draw = function() {
-    Game.display.draw(this._x, this._y, "P", "red");
-}    
 
+// Frog class inherits from Being
 var Frog = function(x, y) {
-    this._x = x;
-    this._y = y;
+    Being.call(this, x, y);
+    this._char = "f";
+    this._color = "green";
     this._draw();
 }
-
-Frog.prototype.getSpeed = function() { return 100; }
-Frog.prototype.getX = function() { return this._x; }
-Frog.prototype.getY = function() { return this._y; }
+Frog.prototype = Object.create(Being.prototype);
+Frog.prototype.constructor = Frog;
 
 Frog.prototype.act = function() {
     // Possible jump directions: up, right, down, left
@@ -284,8 +304,49 @@ Frog.prototype.act = function() {
     }
 }
 
-Frog.prototype._draw = function() {
-    Game.display.draw(this._x, this._y, "f", "green");
+// Rat class inherits from Being
+var Rat = function(x, y) {
+    Being.call(this, x, y);
+    this._char = "r";
+    this._color = "#808080"; // Grey color
+    this._draw();
+}
+Rat.prototype = Object.create(Being.prototype);
+Rat.prototype.constructor = Rat;
+
+Rat.prototype.act = function() {
+    // Possible movement directions: up, right, down, left
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    // Shuffle directions randomly
+    for (var i = directions.length - 1; i > 0; i--) {
+        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+        var tmp = directions[i];
+        directions[i] = directions[j];
+        directions[j] = tmp;
+    }
+    
+    // Try each direction until we find a valid move
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        var newX = this._x + dir[0];
+        var newY = this._y + dir[1];
+        var newKey = newX + "," + newY;
+        
+        if (newKey in Game.map && !Game._isOccupied(newX, newY)) {
+            // Valid move found - perform the move
+            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+            this._x = newX;
+            this._y = newY;
+            this._draw();
+            break;
+        }
+    }
 }
 
 Game.init();
