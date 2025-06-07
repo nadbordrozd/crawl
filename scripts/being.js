@@ -31,8 +31,13 @@ Being.prototype._moveTo = function(newX, newY) {
         Game.map[oldKey].being = null;
     }
     
-    // Clear old position on display
+    // Clear old position on display - redraw terrain and any items
     Game.display.draw(this._x, this._y, Game.map[oldKey].terrain);
+    
+    // If there's an item on the old position, redraw it
+    if (Game.map[oldKey] && Game.map[oldKey].item) {
+        Game.map[oldKey].item._draw();
+    }
     
     // Update position
     this._x = newX;
@@ -68,8 +73,13 @@ Being.prototype.die = function() {
         Game.map[key].being = null;
     }
     
-    // Clear the being from the map display
+    // Clear the being from the map display - redraw terrain and any items
     Game.display.draw(this._x, this._y, Game.map[key].terrain);
+    
+    // If there's an item on this position, redraw it
+    if (Game.map[key] && Game.map[key].item) {
+        Game.map[key].item._draw();
+    }
     
     // Remove from scheduler
     Game.engine._scheduler.remove(this);

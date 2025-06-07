@@ -1,17 +1,17 @@
-// Pedro class inherits from Being
-var Pedro = function(x, y) {
+// Assassin class inherits from Being
+var Assassin = function(x, y) {
     Being.call(this, x, y);
     this._health = 1; // Enemy health
     this._strength = 1; // Enemy strength
-    this._name = "Pedro";
-    this._char = "P";
+    this._name = "Assassin";
+    this._char = "A";
     this._color = "red";
     this._draw();
 }
-Pedro.prototype = Object.create(Being.prototype);
-Pedro.prototype.constructor = Pedro;
+Assassin.prototype = Object.create(Being.prototype);
+Assassin.prototype.constructor = Assassin;
     
-Pedro.prototype.act = function() {
+Assassin.prototype.act = function() {
     var x = Game.player.getX();
     var y = Game.player.getY();
 
@@ -26,7 +26,7 @@ Pedro.prototype.act = function() {
     }
     astar.compute(this._x, this._y, pathCallback);
 
-    path.shift(); // Remove Pedro's current position
+    path.shift(); // Remove Assassin's current position
     
     if (path.length === 0) {
         // This should not normally happen, but handle it gracefully
@@ -34,8 +34,8 @@ Pedro.prototype.act = function() {
     }
     
     if (path.length === 1) {
-        // Pedro is adjacent to the player, attack instead of moving
-        Game.message("Pedro hits you!");
+        // Assassin is adjacent to the player, attack instead of moving
+        Game.message("The Assassin strikes you!");
         Game.player.takeDamage(this._strength);
         Game._drawStats(); // Update stats display to show new health
     } else {
@@ -44,10 +44,6 @@ Pedro.prototype.act = function() {
         y = path[0][1];
         this._moveTo(x, y);
         
-        // Add a message when Pedro gets closer
-        if (path.length <= 3) {
-            Game.message("Pedro is getting closer! You can hear his footsteps.");
-        }
     }
 }
 
@@ -117,16 +113,6 @@ Frog.prototype.act = function() {
         if (!occupiedByEnemy) {
             // Valid move found - perform the jump
             this._moveTo(newX, newY);
-            
-            // If player is nearby, add a message
-            var playerX = Game.player ? Game.player.getX() : -1;
-            var playerY = Game.player ? Game.player.getY() : -1;
-            var dx = Math.abs(this._x - playerX);
-            var dy = Math.abs(this._y - playerY);
-            
-            if (playerX !== -1 && dx <= 3 && dy <= 3) {
-                Game.message("You hear a frog jumping nearby.");
-            }
             
             return; // End turn after moving
         }
@@ -330,15 +316,6 @@ MadFrog.prototype._tryJump = function(dir) {
     // If destination is free, jump there
     this._moveTo(newX, newY);
     
-    // If player is nearby, add a message
-    var playerX = Game.player ? Game.player.getX() : -1;
-    var playerY = Game.player ? Game.player.getY() : -1;
-    var dx = Math.abs(this._x - playerX);
-    var dy = Math.abs(this._y - playerY);
-    
-    if (playerX !== -1 && dx <= 3 && dy <= 3) {
-        Game.message("You hear an angry frog jumping aggressively nearby.");
-    }
     
     return true; // Successfully moved
 }

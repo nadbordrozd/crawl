@@ -13,12 +13,20 @@ const KEY_CODES = {
 
 // Configuration for enemy counts - easy to modify
 const ENEMY_CONFIG = {
-    PEDRO_COUNT: 1,
+    ASSASSIN_COUNT: 1,
     FROG_COUNT: 5,
     RAT_COUNT: 5,
     SNAIL_COUNT: 5,
     MADFROG_COUNT: 5,
     MADRAT_COUNT: 25
+};
+
+// Configuration for item counts - easy to modify
+const ITEM_CONFIG = {
+    HEALTH_POTIONS: 2,
+    GOLD_KEYS: 3,
+    BOMBS: 1,
+    EXITS: 1
 };
 
 var Game = {
@@ -31,7 +39,6 @@ var Game = {
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
-    ananas: null,
     statsDisplay: null,
     messageDisplay: null,
     messageHistory: [],
@@ -91,15 +98,15 @@ var Game = {
         this._drawStats();
         
         // Initial welcome message
-        this.message("Welcome to the dungeon! Find the ananas and escape!");
+        this.message("Welcome to the dungeon! Survive and explore!");
     },
     
     _drawStats: function() {
         this.statsDisplay.clear();
         if (this.player) {
-            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth());
+            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + this.player.getStatus());
         } else {
-            this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD)");
+            this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD) | Status: dead");
         }
     },
     
@@ -141,14 +148,13 @@ var Game = {
         }
         digger.create(digCallback.bind(this));
         
-        this._generateBoxes(freeCells);
         this._drawWholeMap();
         
         this.player = this._createBeing(Player, freeCells);
         
-        // Create Pedro(s) and add to enemies array
-        for (var i = 0; i < ENEMY_CONFIG.PEDRO_COUNT; i++) {
-            this.enemies.push(this._createBeing(Pedro, freeCells));
+        // Create Assassin(s) and add to enemies array
+        for (var i = 0; i < ENEMY_CONFIG.ASSASSIN_COUNT; i++) {
+            this.enemies.push(this._createBeing(Assassin, freeCells));
         }
         
         // Create frogs
@@ -175,6 +181,12 @@ var Game = {
         for (var i = 0; i < ENEMY_CONFIG.MADRAT_COUNT; i++) {
             this.enemies.push(this._createBeing(MadRat, freeCells));
         }
+        
+        // Create items
+        this._generateItems(HealthPotion, ITEM_CONFIG.HEALTH_POTIONS, freeCells);
+        this._generateItems(GoldKey, ITEM_CONFIG.GOLD_KEYS, freeCells);
+        this._generateItems(Bomb, ITEM_CONFIG.BOMBS, freeCells);
+        this._generateItems(Exit, ITEM_CONFIG.EXITS, freeCells);
     },
     
     _createBeing: function(what, freeCells) {
@@ -186,16 +198,19 @@ var Game = {
         return new what(x, y);
     },
     
-    _generateBoxes: function(freeCells) {
-        for (var i=0;i<10;i++) {
+
+    
+    // Generic item generation function - DRY principle
+    _generateItems: function(ItemClass, count, freeCells) {
+        for (var i = 0; i < count; i++) {
             var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
             var key = freeCells.splice(index, 1)[0];
-            this.map[key] = {
-                terrain: "*",
-                being: null,
-                item: null
-            };
-            if (!i) { this.ananas = key; } /* first box contains an ananas */
+            var parts = key.split(",");
+            var x = parseInt(parts[0]);
+            var y = parseInt(parts[1]);
+            var item = new ItemClass(x, y);
+            // Draw the item immediately since _drawWholeMap was called earlier
+            item._draw();
         }
     },
     
@@ -204,7 +219,14 @@ var Game = {
             var parts = key.split(",");
             var x = parseInt(parts[0]);
             var y = parseInt(parts[1]);
+            
+            // Draw terrain first
             this.display.draw(x, y, this.map[key].terrain);
+            
+            // Draw item if present
+            if (this.map[key].item) {
+                this.map[key].item._draw();
+            }
         }
     },
     
@@ -220,6 +242,12 @@ var Game = {
         return this.map[key] ? this.map[key].being : null;
     },
     
+    // Helper function to get the item at a position
+    getItemAt: function(x, y) {
+        var key = x + "," + y;
+        return this.map[key] ? this.map[key].item : null;
+    },
+    
     // Add a method to Game to debug the current state
     _debugState: function() {
         console.log("Enemies in array:", this.enemies.length);
@@ -232,16 +260,18 @@ var Game = {
 // Player class inherits from Being
 var Player = function(x, y) {
     Being.call(this, x, y);
-    this._health = 5; // Override default health for player
+    this._health = 500; // Override default health for player
     this._strength = 1; // Player's strength
     this._name = "player";
     this._char = "@";
     this._color = "#ff0";
+    this._status = "bored"; // Player's current status
     
     // Statistics tracking
     this._turns = 0;
     this._steps = 0;
     this._enemiesDefeated = {}; // Key-value store: enemy name -> count
+    this._keysCollected = 0; // Track number of keys collected
     
     this._draw();
 }
@@ -252,6 +282,8 @@ Player.prototype.constructor = Player;
 Player.prototype.getTurns = function() { return this._turns; }
 Player.prototype.getSteps = function() { return this._steps; }
 Player.prototype.getEnemiesDefeated = function() { return this._enemiesDefeated; }
+Player.prototype.getStatus = function() { return this._status; }
+Player.prototype.getKeysCollected = function() { return this._keysCollected; }
 
 Player.prototype.act = function() {
     Game.engine.lock();
@@ -264,13 +296,7 @@ Player.prototype.handleEvent = function(e) {
     // Increment turn counter for any action
     this._turns++;
     
-    if (code == KEY_CODES.ENTER) {
-        this._checkBox();
-        Game._drawStats();
-        window.removeEventListener("keydown", this);
-        Game.engine.unlock();
-        return;
-    }
+
     
     if (code == KEY_CODES.SPACE) {
         // Check surroundings and skip turn
@@ -328,6 +354,9 @@ Player.prototype.handleEvent = function(e) {
         // Move player and increment step counter
         this._moveTo(newX, newY);
         this._steps++; // Increment step counter when actually moving
+        
+        // Check for items to pick up at the new position
+        this._checkForItems();
     }
     
     Game._drawStats();
@@ -357,26 +386,26 @@ Player.prototype._checkSurroundings = function(newX, newY) {
                 Game.message("You hear a frog croaking nearby.");
             } else if (enemy instanceof Rat) {
                 Game.message("You hear rats scurrying in the darkness.");
-            } else if (enemy instanceof Pedro) {
-                Game.message("You can hear Pedro's footsteps nearby!");
+            } else if (enemy instanceof Assassin) {
+                Game.message("You sense the Assassin's presence nearby!");
             }
             return;
         }
     }
 }
 
-Player.prototype._checkBox = function() {
+// Method to check for items at the player's current position
+Player.prototype._checkForItems = function() {
     var key = this._x + "," + this._y;
-    if (Game.map[key].terrain != "*") {
-        Game.message("There is no box here!");
-    } else if (key == Game.ananas) {
-        Game.message("Hooray! You found an ananas and won this game.");
-        Game.engine.lock();
-        window.removeEventListener("keydown", this);
-    } else {
-        Game.message("This box is empty :-(");
+    var item = Game.map[key].item;
+    
+    if (item) {
+        // Pick up the item
+        item.pickup(this);
     }
 }
+
+
 
 // Override die method for Player-specific behavior
 Player.prototype.die = function() {
