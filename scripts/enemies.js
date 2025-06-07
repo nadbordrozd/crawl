@@ -243,11 +243,14 @@ MadFrog.prototype.act = function() {
         [-2, 0]  // left
     ];
     
-    // Calculate which direction gets us closest to the player
+    // Calculate current distance to player
     var playerX = Game.player.getX();
     var playerY = Game.player.getY();
-    var bestDirection = null;
-    var bestDistance = Infinity;
+    var currentDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Find all directions that reduce distance to player
+    var goodDirections = [];
+    var bestDistance = currentDistance; // Start with current distance
     
     for (var i = 0; i < directions.length; i++) {
         var dir = directions[i];
@@ -256,30 +259,34 @@ MadFrog.prototype.act = function() {
         
         // Calculate distance to player if we jump in this direction
         var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+        
+        // Only consider moves that get us closer or at least don't make us farther
         if (distance < bestDistance) {
+            // This direction is better, clear previous good directions
+            goodDirections = [dir];
             bestDistance = distance;
-            bestDirection = dir;
+        } else if (distance === bestDistance) {
+            // This direction is equally good, add it to options
+            goodDirections.push(dir);
         }
     }
     
-    // Try the best direction first
-    if (bestDirection && this._tryJump(bestDirection)) {
-        return;
+    // If no directions reduce distance, try all directions (fallback behavior)
+    if (goodDirections.length === 0) {
+        goodDirections = directions.slice(); // Copy all directions
     }
     
-    // If best direction failed, shuffle and try other directions
-    for (var i = directions.length - 1; i > 0; i--) {
+    // Shuffle the good directions to avoid bias
+    for (var i = goodDirections.length - 1; i > 0; i--) {
         var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
-        var tmp = directions[i];
-        directions[i] = directions[j];
-        directions[j] = tmp;
+        var tmp = goodDirections[i];
+        goodDirections[i] = goodDirections[j];
+        goodDirections[j] = tmp;
     }
     
-    // Try each direction until we find a valid move or attack
-    for (var i = 0; i < directions.length; i++) {
-        var dir = directions[i];
-        if (dir === bestDirection) continue; // Skip best direction, already tried
-        
+    // Try each good direction until we find a valid move or attack
+    for (var i = 0; i < goodDirections.length; i++) {
+        var dir = goodDirections[i];
         if (this._tryJump(dir)) {
             return;
         }
@@ -360,11 +367,14 @@ MadRat.prototype.act = function() {
         [-1, 0]  // left
     ];
     
-    // Calculate which direction gets us closest to the player
+    // Calculate current distance to player
     var playerX = Game.player.getX();
     var playerY = Game.player.getY();
-    var bestDirection = null;
-    var bestDistance = Infinity;
+    var currentDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Find all directions that reduce distance to player
+    var goodDirections = [];
+    var bestDistance = currentDistance; // Start with current distance
     
     for (var i = 0; i < directions.length; i++) {
         var dir = directions[i];
@@ -373,30 +383,34 @@ MadRat.prototype.act = function() {
         
         // Calculate distance to player if we move in this direction
         var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+        
+        // Only consider moves that get us closer or at least don't make us farther
         if (distance < bestDistance) {
+            // This direction is better, clear previous good directions
+            goodDirections = [dir];
             bestDistance = distance;
-            bestDirection = dir;
+        } else if (distance === bestDistance) {
+            // This direction is equally good, add it to options
+            goodDirections.push(dir);
         }
     }
     
-    // Try the best direction first
-    if (bestDirection && this._tryMove(bestDirection)) {
-        return;
+    // If no directions reduce distance, try all directions (fallback behavior)
+    if (goodDirections.length === 0) {
+        goodDirections = directions.slice(); // Copy all directions
     }
     
-    // If best direction failed, shuffle and try other directions
-    for (var i = directions.length - 1; i > 0; i--) {
+    // Shuffle the good directions to avoid bias
+    for (var i = goodDirections.length - 1; i > 0; i--) {
         var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
-        var tmp = directions[i];
-        directions[i] = directions[j];
-        directions[j] = tmp;
+        var tmp = goodDirections[i];
+        goodDirections[i] = goodDirections[j];
+        goodDirections[j] = tmp;
     }
     
-    // Try each direction until we find a valid move or attack
-    for (var i = 0; i < directions.length; i++) {
-        var dir = directions[i];
-        if (dir === bestDirection) continue; // Skip best direction, already tried
-        
+    // Try each good direction until we find a valid move or attack
+    for (var i = 0; i < goodDirections.length; i++) {
+        var dir = goodDirections[i];
         if (this._tryMove(dir)) {
             return;
         }
