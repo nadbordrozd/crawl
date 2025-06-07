@@ -42,10 +42,7 @@ Pedro.prototype.act = function() {
         // Move towards the player
         x = path[0][0];
         y = path[0][1];
-        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
-        this._x = x;
-        this._y = y;
-        this._draw();
+        this._moveTo(x, y);
         
         // Add a message when Pedro gets closer
         if (path.length <= 3) {
@@ -101,8 +98,11 @@ Frog.prototype.act = function() {
             continue;
         }
         
+        // Check what's at the destination tile
+        var targetBeing = Game.getBeingAt(newX, newY);
+        
         // Check if the destination tile is occupied by the player
-        if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+        if (targetBeing === Game.player) {
             // Attack the player!
             Game.message("A frog leaps at you and attacks!");
             Game.player.takeDamage(this._strength);
@@ -111,22 +111,12 @@ Frog.prototype.act = function() {
         }
         
         // Check if destination is occupied by another enemy
-        var occupiedByEnemy = false;
-        for (var j = 0; j < Game.enemies.length; j++) {
-            var enemy = Game.enemies[j];
-            if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
-                occupiedByEnemy = true;
-                break;
-            }
-        }
+        var occupiedByEnemy = (targetBeing !== null && targetBeing !== this);
         
         // If destination is free, jump there
         if (!occupiedByEnemy) {
             // Valid move found - perform the jump
-            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
-            this._x = newX;
-            this._y = newY;
-            this._draw();
+            this._moveTo(newX, newY);
             
             // If player is nearby, add a message
             var playerX = Game.player ? Game.player.getX() : -1;
@@ -186,8 +176,11 @@ Rat.prototype.act = function() {
             continue; // Skip impassable tiles
         }
         
+        // Check what's at the destination tile
+        var targetBeing = Game.getBeingAt(newX, newY);
+        
         // Check if the tile is occupied by the player
-        if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+        if (targetBeing === Game.player) {
             // Attack the player!
             Game.message("A rat bites you!");
             Game.player.takeDamage(this._strength);
@@ -196,22 +189,12 @@ Rat.prototype.act = function() {
         }
         
         // Check if the tile is occupied by another enemy
-        var occupiedByEnemy = false;
-        for (var j = 0; j < Game.enemies.length; j++) {
-            var enemy = Game.enemies[j];
-            if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
-                occupiedByEnemy = true;
-                break;
-            }
-        }
+        var occupiedByEnemy = (targetBeing !== null && targetBeing !== this);
         
         // If tile is free, move there
         if (!occupiedByEnemy) {
             // Valid move found - perform the move
-            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
-            this._x = newX;
-            this._y = newY;
-            this._draw();
+            this._moveTo(newX, newY);
             return; // End turn after moving
         }
     }
@@ -320,8 +303,11 @@ MadFrog.prototype._tryJump = function(dir) {
         return false;
     }
     
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
     // Check if the destination tile is occupied by the player
-    if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+    if (targetBeing === Game.player) {
         // Attack the player!
         Game.message("A mad frog leaps at you furiously!");
         Game.player.takeDamage(this._strength);
@@ -330,18 +316,12 @@ MadFrog.prototype._tryJump = function(dir) {
     }
     
     // Check if destination is occupied by another enemy
-    for (var j = 0; j < Game.enemies.length; j++) {
-        var enemy = Game.enemies[j];
-        if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
-            return false; // Blocked by enemy
-        }
+    if (targetBeing !== null && targetBeing !== this) {
+        return false; // Blocked by enemy
     }
     
     // If destination is free, jump there
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
-    this._x = newX;
-    this._y = newY;
-    this._draw();
+    this._moveTo(newX, newY);
     
     // If player is nearby, add a message
     var playerX = Game.player ? Game.player.getX() : -1;
@@ -435,8 +415,11 @@ MadRat.prototype._tryMove = function(dir) {
         return false; // Impassable tile
     }
     
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
     // Check if the tile is occupied by the player
-    if (Game.player && Game.player.getX() === newX && Game.player.getY() === newY) {
+    if (targetBeing === Game.player) {
         // Attack the player!
         Game.message("A mad rat bites you viciously!");
         Game.player.takeDamage(this._strength);
@@ -445,17 +428,11 @@ MadRat.prototype._tryMove = function(dir) {
     }
     
     // Check if the tile is occupied by another enemy
-    for (var j = 0; j < Game.enemies.length; j++) {
-        var enemy = Game.enemies[j];
-        if (enemy !== this && enemy.getX() === newX && enemy.getY() === newY) {
-            return false; // Blocked by enemy
-        }
+    if (targetBeing !== null && targetBeing !== this) {
+        return false; // Blocked by enemy
     }
     
     // If tile is free, move there
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
-    this._x = newX;
-    this._y = newY;
-    this._draw();
+    this._moveTo(newX, newY);
     return true; // Successfully moved
 } 

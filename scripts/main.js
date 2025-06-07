@@ -211,13 +211,13 @@ var Game = {
     // Helper function to check if a position is occupied
     _isOccupied: function(x, y) {
         var key = x + "," + y;
-        if (this.player && this.player.getX() === x && this.player.getY() === y) return true;
-        
-        for (var i = 0; i < this.enemies.length; i++) {
-            if (this.enemies[i].getX() === x && this.enemies[i].getY() === y) return true;
-        }
-        
-        return false;
+        return this.map[key] && this.map[key].being !== null;
+    },
+    
+    // Helper function to get the being at a position
+    getBeingAt: function(x, y) {
+        var key = x + "," + y;
+        return this.map[key] ? this.map[key].being : null;
     },
     
     // Add a method to Game to debug the current state
@@ -303,13 +303,10 @@ Player.prototype.handleEvent = function(e) {
     if (!(newKey in Game.map)) { return; }
 
     // Check for enemies at the target position
-    var targetEnemy = null;
-    for (var i = 0; i < Game.enemies.length; i++) {
-        var enemy = Game.enemies[i];
-        if (enemy.getX() === newX && enemy.getY() === newY) {
-            targetEnemy = enemy;
-            break;
-        }
+    var targetEnemy = Game.getBeingAt(newX, newY);
+    // Make sure it's not the player themselves
+    if (targetEnemy === this) {
+        targetEnemy = null;
     }
 
     // If there's an enemy, attack it instead of moving
@@ -329,11 +326,8 @@ Player.prototype.handleEvent = function(e) {
         this._checkSurroundings(newX, newY);
 
         // Move player and increment step counter
-        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
-        this._x = newX;
-        this._y = newY;
+        this._moveTo(newX, newY);
         this._steps++; // Increment step counter when actually moving
-        this._draw();
     }
     
     Game._drawStats();

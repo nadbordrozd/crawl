@@ -5,6 +5,12 @@ var Being = function(x, y) {
     this._health = 1; // Default health value
     this._strength = 1; // Default strength value
     this._name = "being"; // Default name
+    
+    // Add this being to the map
+    var key = this._x + "," + this._y;
+    if (Game.map[key]) {
+        Game.map[key].being = this;
+    }
 }
 
 Being.prototype.getSpeed = function() { return 100; }
@@ -15,6 +21,31 @@ Being.prototype.getStrength = function() { return this._strength; }
 Being.prototype.getName = function() { return this._name; }
 Being.prototype._draw = function() {
     Game.display.draw(this._x, this._y, this._char, this._color);
+}
+
+// Method to move a being and update map tracking
+Being.prototype._moveTo = function(newX, newY) {
+    // Remove from old position
+    var oldKey = this._x + "," + this._y;
+    if (Game.map[oldKey]) {
+        Game.map[oldKey].being = null;
+    }
+    
+    // Clear old position on display
+    Game.display.draw(this._x, this._y, Game.map[oldKey].terrain);
+    
+    // Update position
+    this._x = newX;
+    this._y = newY;
+    
+    // Add to new position
+    var newKey = this._x + "," + this._y;
+    if (Game.map[newKey]) {
+        Game.map[newKey].being = this;
+    }
+    
+    // Draw at new position
+    this._draw();
 }
 
 // Add takeDamage method to Being prototype
@@ -31,8 +62,14 @@ Being.prototype.takeDamage = function(amount) {
 
 // Add die method to base Being class
 Being.prototype.die = function() {
+    // Remove from map tracking
+    var key = this._x + "," + this._y;
+    if (Game.map[key]) {
+        Game.map[key].being = null;
+    }
+    
     // Clear the being from the map display
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
+    Game.display.draw(this._x, this._y, Game.map[key].terrain);
     
     // Remove from scheduler
     Game.engine._scheduler.remove(this);
