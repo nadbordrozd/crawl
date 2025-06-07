@@ -18,6 +18,7 @@ var Game = {
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
+    levelNumber: 1, // Start at level 1
     currentLevel: null, // Current level instance
     statsDisplay: null,
     messageDisplay: null,
@@ -113,7 +114,51 @@ var Game = {
         }
     },
     
+    nextLevel: function() {
+        this.levelNumber++;
+        var levelClass = window["Level" + this.levelNumber];
 
+        if (!levelClass) {
+            this._gameWon();
+            return;
+        }
+
+        this.engine.lock(); // Stop the current game loop
+
+        // Clear the entire display
+        this.display.clear();
+
+        // Clear data from the previous level
+        this.map = {};
+        this.enemies = [];
+        
+        // Create the new level
+        this.currentLevel = new levelClass();
+        
+        // Regenerate the world
+        this.currentLevel.generate();
+
+        // Re-create scheduler and engine
+        var scheduler = new ROT.Scheduler.Simple();
+        scheduler.add(this.player, true);
+        for (var i = 0; i < this.enemies.length; i++) {
+            scheduler.add(this.enemies[i], true);
+        }
+        this.engine = new ROT.Engine(scheduler);
+
+        this.message("You have advanced to level " + this.levelNumber + "!");
+        this._drawStats();
+        this.engine.unlock();
+    },
+
+    _gameWon: function() {
+        this.engine.lock();
+        Game.display.clear();
+        var msg = "%c{lime}CONGRATULATIONS! You have won the game!";
+        var x = Math.floor((this.currentLevel.MAP_WIDTH - (msg.length - 9)) / 2);
+        var y = Math.floor(this.currentLevel.MAP_HEIGHT / 2);
+        Game.display.drawText(x, y, msg);
+    },
     
     // Helper function to check if a position is occupied
     _isOccupied: function(x, y) {
@@ -299,35 +344,55 @@ Player.prototype.die = function() {
     
     // Player-specific death logic
     // Create death statistics message
-    var statsMessage = "GAME OVER - You have died!\n\n";
-    statsMessage += "Statistics:\n";
-    statsMessage += "Turns elapsed: " + this.getTurns() + "\n";
-    statsMessage += "Total distance traveled: " + this.getSteps() + " steps\n\n";
+    var statsMessage = "GAME OVER - You have died!\\n\\n";
+    statsMessage += "Statistics:\\n";
+    statsMessage += "Turns elapsed: " + this.getTurns() + "\\n";
+    statsMessage += "Total distance traveled: " + this.getSteps() + " steps\\n\\n";
     
     var enemiesDefeated = this.getEnemiesDefeated();
     var totalEnemiesDefeated = 0;
-    statsMessage += "Enemies defeated:\n";
+    statsMessage += "Enemies defeated:\\n";
     
     for (var enemyType in enemiesDefeated) {
         var count = enemiesDefeated[enemyType];
         totalEnemiesDefeated += count;
-        statsMessage += "- " + enemyType + ": " + count + "\n";
+        statsMessage += "- " + enemyType + ": " + count + "\\n";
     }
     
     if (totalEnemiesDefeated === 0) {
-        statsMessage += "- None defeated\n";
+        statsMessage += "- None defeated\\n";
     }
     
-    statsMessage += "\nTotal enemies defeated: " + totalEnemiesDefeated;
+    statsMessage += "\\nTotal enemies defeated: " + totalEnemiesDefeated;
+    statsMessage += "\\n\\n%c{lime}To start again, press ENTER";
     
-    // Show the alert with statistics
-    alert(statsMessage);
+    // Clear the main display and show the game over message
+    Game.display.clear();
+    var lines = statsMessage.split('\\n');
+    var y_start = Math.floor((Game.currentLevel.MAP_HEIGHT - lines.length) / 2);
+
+    for (var i = 0; i < lines.length; i++) {
+        var x_start = Math.floor((Game.currentLevel.MAP_WIDTH - lines[i].length) / 2);
+        // Add ROT.js color formatting
+        Game.display.drawText(x_start, y_start + i, "%c{#fff}%b{#000}" + lines[i]);
+    }
     
     // Player-specific cleanup
     Game.player = null;
     Game.engine.lock();
     Game.message("Game over - you have died!");
     window.removeEventListener("keydown", this);
+
+    // Listen for Enter key to restart
+    window.addEventListener("keydown", this._handleDeathScreenInput.bind(this));
+}
+
+// Handle input on the death screen
+Player.prototype._handleDeathScreenInput = function(e) {
+    if (e.keyCode === KEY_CODES.ENTER) {
+        window.removeEventListener("keydown", this);
+        location.reload();
+    }
 }
 
 Game.init();

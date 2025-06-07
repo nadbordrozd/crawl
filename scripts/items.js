@@ -156,17 +156,10 @@ Exit.prototype.constructor = Exit;
 
 // Override pickup method for exit - this is actually an interaction, not a pickup
 Exit.prototype.pickup = function(player) {
-    var keysNeeded = 3;
-    var keysCollected = player.getKeysCollected();
-    
-    if (keysCollected >= keysNeeded) {
-        // Player has enough keys - they win!
-        alert("You won!");
-        Game.engine.lock(); // Stop the game
+    if (player.getKeysCollected() >= 3) {
+        Game.nextLevel();
     } else {
-        // Player doesn't have enough keys
-        var keysStillNeeded = keysNeeded - keysCollected;
-        Game.message("You need to collect " + keysStillNeeded + " more key(s) to unlock the exit!");
+        Game.message("You need to collect all 3 keys to unlock the exit!");
     }
     
     // Important: Do NOT remove the exit from the map!

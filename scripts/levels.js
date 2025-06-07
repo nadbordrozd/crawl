@@ -50,14 +50,29 @@ Level.prototype._generateMap = function() {
 Level.prototype._populateLevel = function() {
     var freeCells = this.freeCells.slice(); // Copy array
     
-    // Create player first
-    Game.player = this._createBeing(Player, freeCells);
+    // Create or place player
+    this._placePlayer(freeCells);
     
     // Create enemies
     this._createEnemies(freeCells);
     
     // Create items
     this._createItems(freeCells);
+}
+
+// Place the player in a free cell, creating them if they don't exist
+Level.prototype._placePlayer = function(freeCells) {
+    var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
+    var key = freeCells.splice(index, 1)[0];
+    var parts = key.split(",");
+    var x = parseInt(parts[0]);
+    var y = parseInt(parts[1]);
+
+    if (Game.player) {
+        Game.player.setPosition(x, y);
+    } else {
+        Game.player = new Player(x, y);
+    }
 }
 
 // Create all enemies based on this level's configuration
@@ -165,4 +180,40 @@ var Level1 = function() {
     };
 }
 Level1.prototype = Object.create(Level.prototype);
-Level1.prototype.constructor = Level1; 
+Level1.prototype.constructor = Level1;
+
+// Level2 class - inherits from Level
+var Level2 = function() {
+    Level.call(this);
+    this.enemyCounts = { ASSASSIN: 2, FROG: 7, RAT: 7, SNAIL: 5, MADFROG: 7, MADRAT: 30 };
+    this.itemCounts = { HEALTH_POTIONS: 2, GOLD_KEYS: 3, BOMBS: 2, EXITS: 1 };
+}
+Level2.prototype = Object.create(Level.prototype);
+Level2.prototype.constructor = Level2;
+
+// Level3 class - inherits from Level
+var Level3 = function() {
+    Level.call(this);
+    this.enemyCounts = { ASSASSIN: 3, FROG: 10, RAT: 10, SNAIL: 5, MADFROG: 10, MADRAT: 35 };
+    this.itemCounts = { HEALTH_POTIONS: 3, GOLD_KEYS: 3, BOMBS: 2, EXITS: 1 };
+}
+Level3.prototype = Object.create(Level.prototype);
+Level3.prototype.constructor = Level3;
+
+// Level4 class - inherits from Level
+var Level4 = function() {
+    Level.call(this);
+    this.enemyCounts = { ASSASSIN: 4, FROG: 12, RAT: 12, SNAIL: 5, MADFROG: 12, MADRAT: 40 };
+    this.itemCounts = { HEALTH_POTIONS: 3, GOLD_KEYS: 3, BOMBS: 3, EXITS: 1 };
+}
+Level4.prototype = Object.create(Level.prototype);
+Level4.prototype.constructor = Level4;
+
+// Level5 class - inherits from Level
+var Level5 = function() {
+    Level.call(this);
+    this.enemyCounts = { ASSASSIN: 5, FROG: 15, RAT: 15, SNAIL: 5, MADFROG: 15, MADRAT: 50 };
+    this.itemCounts = { HEALTH_POTIONS: 4, GOLD_KEYS: 3, BOMBS: 3, EXITS: 1 };
+}
+Level5.prototype = Object.create(Level.prototype);
+Level5.prototype.constructor = Level5; 

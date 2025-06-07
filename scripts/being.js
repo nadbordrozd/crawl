@@ -53,6 +53,21 @@ Being.prototype._moveTo = function(newX, newY) {
     this._draw();
 }
 
+// Set the position of a being directly (used for level transitions)
+Being.prototype.setPosition = function(x, y) {
+    var newKey = x + "," + y;
+    
+    // Update coordinates
+    this._x = x;
+    this._y = y;
+    
+    // Update the being's position on the map
+    Game.map[newKey].being = this;
+    
+    // Redraw the being at its new location
+    this._draw();
+}
+
 // Add takeDamage method to Being prototype
 Being.prototype.takeDamage = function(amount) {
     this._health -= amount;
