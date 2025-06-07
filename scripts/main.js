@@ -11,48 +11,31 @@ const KEY_CODES = {
     HOME: 36
 };
 
-// Configuration for enemy counts - easy to modify
-const ENEMY_CONFIG = {
-    ASSASSIN_COUNT: 1,
-    FROG_COUNT: 5,
-    RAT_COUNT: 5,
-    SNAIL_COUNT: 5,
-    MADFROG_COUNT: 5,
-    MADRAT_COUNT: 25
-};
-
-// Configuration for item counts - easy to modify
-const ITEM_CONFIG = {
-    HEALTH_POTIONS: 2,
-    GOLD_KEYS: 3,
-    BOMBS: 1,
-    EXITS: 1
-};
-
 var Game = {
-    // Map dimensions - configurable parameters
-    MAP_WIDTH: 80,
-    MAP_HEIGHT: 25,
     
     display: null,
     map: {},
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
+    currentLevel: null, // Current level instance
     statsDisplay: null,
     messageDisplay: null,
     messageHistory: [],
     
     init: function() {
-        // Create the main game display with map dimensions
-        this.display = new ROT.Display({width: this.MAP_WIDTH, height: this.MAP_HEIGHT, spacing:1.1});
+        // Initialize Level 1
+        this.currentLevel = new Level1();
+        
+        // Create the main game display with level dimensions
+        this.display = new ROT.Display({width: this.currentLevel.MAP_WIDTH, height: this.currentLevel.MAP_HEIGHT, spacing:1.1});
         
         // Create the stats display with the same width as main display
-        this.statsDisplay = new ROT.Display({width: this.MAP_WIDTH, height: 1, spacing: 1.1});
+        this.statsDisplay = new ROT.Display({width: this.currentLevel.MAP_WIDTH, height: 1, spacing: 1.1});
         
         // Create the message display with the same width as main display  
         this.messageDisplay = new ROT.Display({
-            width: this.MAP_WIDTH,
+            width: this.currentLevel.MAP_WIDTH,
             height: 10, 
             spacing: 1.1,
             fg: "#fff",
@@ -78,7 +61,8 @@ var Game = {
         messageContainer.className = "message-display";
         container.appendChild(messageContainer);
         
-        this._generateMap();
+        // Generate the level (map + enemies + items)
+        this.currentLevel.generate();
         
         // Create a new scheduler and engine
         var scheduler = new ROT.Scheduler.Simple();
@@ -129,106 +113,7 @@ var Game = {
         }
     },
     
-    _generateMap: function() {
-        var W = this.MAP_WIDTH;
-        var H = this.MAP_HEIGHT;
-        var digger = new ROT.Map.Digger(W, H);
-        var freeCells = [];
-        
-        var digCallback = function(x, y, value) {
-            if (value) { return; }
-            
-            var key = x+","+y;
-            this.map[key] = {
-                terrain: ".",
-                being: null,
-                item: null
-            };
-            freeCells.push(key);
-        }
-        digger.create(digCallback.bind(this));
-        
-        this._drawWholeMap();
-        
-        this.player = this._createBeing(Player, freeCells);
-        
-        // Create Assassin(s) and add to enemies array
-        for (var i = 0; i < ENEMY_CONFIG.ASSASSIN_COUNT; i++) {
-            this.enemies.push(this._createBeing(Assassin, freeCells));
-        }
-        
-        // Create frogs
-        for (var i = 0; i < ENEMY_CONFIG.FROG_COUNT; i++) {
-            this.enemies.push(this._createBeing(Frog, freeCells));
-        }
-        
-        // Create rats
-        for (var i = 0; i < ENEMY_CONFIG.RAT_COUNT; i++) {
-            this.enemies.push(this._createBeing(Rat, freeCells));
-        }
-        
-        // Create snails
-        for (var i = 0; i < ENEMY_CONFIG.SNAIL_COUNT; i++) {
-            this.enemies.push(this._createBeing(Snail, freeCells));
-        }
-        
-        // Create mad frogs
-        for (var i = 0; i < ENEMY_CONFIG.MADFROG_COUNT; i++) {
-            this.enemies.push(this._createBeing(MadFrog, freeCells));
-        }
-        
-        // Create mad rats
-        for (var i = 0; i < ENEMY_CONFIG.MADRAT_COUNT; i++) {
-            this.enemies.push(this._createBeing(MadRat, freeCells));
-        }
-        
-        // Create items
-        this._generateItems(HealthPotion, ITEM_CONFIG.HEALTH_POTIONS, freeCells);
-        this._generateItems(GoldKey, ITEM_CONFIG.GOLD_KEYS, freeCells);
-        this._generateItems(Bomb, ITEM_CONFIG.BOMBS, freeCells);
-        this._generateItems(Exit, ITEM_CONFIG.EXITS, freeCells);
-    },
-    
-    _createBeing: function(what, freeCells) {
-        var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
-        var key = freeCells.splice(index, 1)[0];
-        var parts = key.split(",");
-        var x = parseInt(parts[0]);
-        var y = parseInt(parts[1]);
-        return new what(x, y);
-    },
-    
 
-    
-    // Generic item generation function - DRY principle
-    _generateItems: function(ItemClass, count, freeCells) {
-        for (var i = 0; i < count; i++) {
-            var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
-            var key = freeCells.splice(index, 1)[0];
-            var parts = key.split(",");
-            var x = parseInt(parts[0]);
-            var y = parseInt(parts[1]);
-            var item = new ItemClass(x, y);
-            // Draw the item immediately since _drawWholeMap was called earlier
-            item._draw();
-        }
-    },
-    
-    _drawWholeMap: function() {
-        for (var key in this.map) {
-            var parts = key.split(",");
-            var x = parseInt(parts[0]);
-            var y = parseInt(parts[1]);
-            
-            // Draw terrain first
-            this.display.draw(x, y, this.map[key].terrain);
-            
-            // Draw item if present
-            if (this.map[key].item) {
-                this.map[key].item._draw();
-            }
-        }
-    },
     
     // Helper function to check if a position is occupied
     _isOccupied: function(x, y) {
