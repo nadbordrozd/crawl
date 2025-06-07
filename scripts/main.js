@@ -33,29 +33,39 @@ var Game = {
     messageHistory: [],
     
     init: function() {
-        // Create the main game display
-        this.display = new ROT.Display({spacing:1.1});
+        // Create the main game display with explicit width
+        this.display = new ROT.Display({width: 80, spacing:1.1});
         
-        // Create the stats display above the main display
+        // Create the stats display with the same width as main display
         this.statsDisplay = new ROT.Display({width: 80, height: 1, spacing: 1.1});
         
-        // Create the message display below the main display
+        // Create the message display with the same width as main display  
         this.messageDisplay = new ROT.Display({
-            width: 80, 
+            width: 80,
             height: 10, 
             spacing: 1.1,
             fg: "#fff",
             bg: "#000",
-            forceSquareRatio: false,
             textAlign: "left"
         });
         
-        // Add all displays to the page in order
-        var container = document.createElement("div");
-        container.appendChild(this.statsDisplay.getContainer());
-        container.appendChild(this.display.getContainer());
-        container.appendChild(this.messageDisplay.getContainer());
-        document.body.appendChild(container);
+        // Add all displays to the existing container with proper CSS classes
+        var container = document.getElementById("game-container");
+        
+        // Add stats display with CSS class
+        var statsContainer = this.statsDisplay.getContainer();
+        statsContainer.className = "stats-display";
+        container.appendChild(statsContainer);
+        
+        // Add main game display with CSS class
+        var gameContainer = this.display.getContainer();
+        gameContainer.className = "game-display";
+        container.appendChild(gameContainer);
+        
+        // Add message display with CSS class
+        var messageContainer = this.messageDisplay.getContainer();
+        messageContainer.className = "message-display";
+        container.appendChild(messageContainer);
         
         this._generateMap();
         

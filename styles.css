@@ -1,0 +1,78 @@
+/* General page styling */
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #ffaa00;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Container for all game displays */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border: 2px solid #444;
+    padding: 15px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats display (top) - matches game map width */
+.stats-display {
+    order: 1;
+    border: 2px solid #666;
+    background-color: #333;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Main game display (middle) */
+.game-display {
+    order: 2;
+    border: 2px solid #888;
+    background-color: #000;
+    border-radius: 4px;
+}
+
+/* Message display (bottom) - matches game map width */
+.message-display {
+    order: 3;
+    border: 2px solid #666;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    min-height: 80px;
+    box-sizing: border-box;
+}
+
+/* ROT.js canvas styling */
+canvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .game-container {
+        padding: 10px;
+        gap: 8px;
+    }
+} 
