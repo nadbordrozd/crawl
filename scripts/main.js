@@ -22,6 +22,10 @@ const ENEMY_CONFIG = {
 };
 
 var Game = {
+    // Map dimensions - configurable parameters
+    MAP_WIDTH: 80,
+    MAP_HEIGHT: 25,
+    
     display: null,
     map: {},
     engine: null,
@@ -33,15 +37,15 @@ var Game = {
     messageHistory: [],
     
     init: function() {
-        // Create the main game display with explicit width
-        this.display = new ROT.Display({width: 80, spacing:1.1});
+        // Create the main game display with map dimensions
+        this.display = new ROT.Display({width: this.MAP_WIDTH, height: this.MAP_HEIGHT, spacing:1.1});
         
         // Create the stats display with the same width as main display
-        this.statsDisplay = new ROT.Display({width: 80, height: 1, spacing: 1.1});
+        this.statsDisplay = new ROT.Display({width: this.MAP_WIDTH, height: 1, spacing: 1.1});
         
         // Create the message display with the same width as main display  
         this.messageDisplay = new ROT.Display({
-            width: 80,
+            width: this.MAP_WIDTH,
             height: 10, 
             spacing: 1.1,
             fg: "#fff",
@@ -119,14 +123,20 @@ var Game = {
     },
     
     _generateMap: function() {
-        var digger = new ROT.Map.Digger();
+        var W = this.MAP_WIDTH;
+        var H = this.MAP_HEIGHT;
+        var digger = new ROT.Map.Digger(W, H);
         var freeCells = [];
         
         var digCallback = function(x, y, value) {
             if (value) { return; }
             
             var key = x+","+y;
-            this.map[key] = ".";
+            this.map[key] = {
+                terrain: ".",
+                being: null,
+                item: null
+            };
             freeCells.push(key);
         }
         digger.create(digCallback.bind(this));
@@ -180,7 +190,11 @@ var Game = {
         for (var i=0;i<10;i++) {
             var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
             var key = freeCells.splice(index, 1)[0];
-            this.map[key] = "*";
+            this.map[key] = {
+                terrain: "*",
+                being: null,
+                item: null
+            };
             if (!i) { this.ananas = key; } /* first box contains an ananas */
         }
     },
@@ -190,7 +204,7 @@ var Game = {
             var parts = key.split(",");
             var x = parseInt(parts[0]);
             var y = parseInt(parts[1]);
-            this.display.draw(x, y, this.map[key]);
+            this.display.draw(x, y, this.map[key].terrain);
         }
     },
     
@@ -315,7 +329,7 @@ Player.prototype.handleEvent = function(e) {
         this._checkSurroundings(newX, newY);
 
         // Move player and increment step counter
-        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
         this._x = newX;
         this._y = newY;
         this._steps++; // Increment step counter when actually moving
@@ -359,7 +373,7 @@ Player.prototype._checkSurroundings = function(newX, newY) {
 
 Player.prototype._checkBox = function() {
     var key = this._x + "," + this._y;
-    if (Game.map[key] != "*") {
+    if (Game.map[key].terrain != "*") {
         Game.message("There is no box here!");
     } else if (key == Game.ananas) {
         Game.message("Hooray! You found an ananas and won this game.");
@@ -370,11 +384,43 @@ Player.prototype._checkBox = function() {
     }
 }
 
-
-
-
-
-
+// Override die method for Player-specific behavior
+Player.prototype.die = function() {
+    // Call parent die method for basic cleanup (clear display, remove from scheduler)
+    Being.prototype.die.call(this);
+    
+    // Player-specific death logic
+    // Create death statistics message
+    var statsMessage = "GAME OVER - You have died!\n\n";
+    statsMessage += "Statistics:\n";
+    statsMessage += "Turns elapsed: " + this.getTurns() + "\n";
+    statsMessage += "Total distance traveled: " + this.getSteps() + " steps\n\n";
+    
+    var enemiesDefeated = this.getEnemiesDefeated();
+    var totalEnemiesDefeated = 0;
+    statsMessage += "Enemies defeated:\n";
+    
+    for (var enemyType in enemiesDefeated) {
+        var count = enemiesDefeated[enemyType];
+        totalEnemiesDefeated += count;
+        statsMessage += "- " + enemyType + ": " + count + "\n";
+    }
+    
+    if (totalEnemiesDefeated === 0) {
+        statsMessage += "- None defeated\n";
+    }
+    
+    statsMessage += "\nTotal enemies defeated: " + totalEnemiesDefeated;
+    
+    // Show the alert with statistics
+    alert(statsMessage);
+    
+    // Player-specific cleanup
+    Game.player = null;
+    Game.engine.lock();
+    Game.message("Game over - you have died!");
+    window.removeEventListener("keydown", this);
+}
 
 Game.init();
 

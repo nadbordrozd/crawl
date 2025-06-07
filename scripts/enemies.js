@@ -42,7 +42,7 @@ Pedro.prototype.act = function() {
         // Move towards the player
         x = path[0][0];
         y = path[0][1];
-        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+        Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
         this._x = x;
         this._y = y;
         this._draw();
@@ -123,7 +123,7 @@ Frog.prototype.act = function() {
         // If destination is free, jump there
         if (!occupiedByEnemy) {
             // Valid move found - perform the jump
-            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
             this._x = newX;
             this._y = newY;
             this._draw();
@@ -208,7 +208,7 @@ Rat.prototype.act = function() {
         // If tile is free, move there
         if (!occupiedByEnemy) {
             // Valid move found - perform the move
-            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+            Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
             this._x = newX;
             this._y = newY;
             this._draw();
@@ -338,7 +338,7 @@ MadFrog.prototype._tryJump = function(dir) {
     }
     
     // If destination is free, jump there
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
     this._x = newX;
     this._y = newY;
     this._draw();
@@ -453,7 +453,7 @@ MadRat.prototype._tryMove = function(dir) {
     }
     
     // If tile is free, move there
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
     this._x = newX;
     this._y = newY;
     this._draw();

@@ -32,51 +32,12 @@ Being.prototype.takeDamage = function(amount) {
 // Add die method to base Being class
 Being.prototype.die = function() {
     // Clear the being from the map display
-    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y]);
+    Game.display.draw(this._x, this._y, Game.map[this._x+","+this._y].terrain);
     
-    // Remove from appropriate array based on type
-    if (this instanceof Player) {
-        // Create death statistics message
-        var statsMessage = "GAME OVER - You have died!\n\n";
-        statsMessage += "Statistics:\n";
-        statsMessage += "Turns elapsed: " + this.getTurns() + "\n";
-        statsMessage += "Total distance traveled: " + this.getSteps() + " steps\n\n";
-        
-        var enemiesDefeated = this.getEnemiesDefeated();
-        var totalEnemiesDefeated = 0;
-        statsMessage += "Enemies defeated:\n";
-        
-        for (var enemyType in enemiesDefeated) {
-            var count = enemiesDefeated[enemyType];
-            totalEnemiesDefeated += count;
-            statsMessage += "- " + enemyType + ": " + count + "\n";
-        }
-        
-        if (totalEnemiesDefeated === 0) {
-            statsMessage += "- None defeated\n";
-        }
-        
-        statsMessage += "\nTotal enemies defeated: " + totalEnemiesDefeated;
-        
-        // Show the alert with statistics
-        alert(statsMessage);
-        
-        Game.player = null;
-        Game.engine.lock();
-        Game.message("Game over - you have died!");
-        window.removeEventListener("keydown", this);
-    } else {
-        // Remove from enemies array
-        var index = Game.enemies.indexOf(this);
-        if (index !== -1) Game.enemies.splice(index, 1);
-    }
+    // Remove from scheduler
+    Game.engine._scheduler.remove(this);
     
-    // Remove from scheduler if it exists
-    if (Game.engine && Game.engine._scheduler) {
-        try {
-            Game.engine._scheduler.remove(this);
-        } catch (e) {
-            console.log("Error removing from scheduler:", e);
-        }
-    }
+    // Generic death logic - remove from enemies array (Player will override this)
+    var index = Game.enemies.indexOf(this);
+    if (index !== -1) Game.enemies.splice(index, 1);
 } 
