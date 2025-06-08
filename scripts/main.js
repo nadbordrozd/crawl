@@ -90,13 +90,17 @@ var Game = {
         this.statsDisplay.clear();
         if (this.player) {
             var keys = this.player.getKeysCollected();
-            var status = this.player._isInvulnerable 
-                ? "Invulnerable (" + this.player._invulnerabilityTurns + ")" 
-                : this.player.getStatus();
-            if (this.player._isFast) {
+            var coins = this.player.getCoinsCollected();
+            var status = this.player.getStatus(); // Default status
+
+            // Status effects override the default status display
+            if (this.player._isInvulnerable) {
+                status = "Invulnerable (" + this.player._invulnerabilityTurns + ")";
+            } else if (this.player._isFast) {
                 status = "Fast (" + this.player._speedBoostTurns + ")";
             }
-            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3");
+            
+            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | Gold: " + coins);
         } else {
             this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber);
         }
@@ -218,6 +222,7 @@ var Player = function(x, y) {
     this._steps = 0;
     this._enemiesDefeated = {}; // Key-value store: enemy name -> count
     this._keysCollected = 0; // Track number of keys collected
+    this._coinsCollected = 0; // Track number of coins collected
     
     this._draw();
 }
@@ -236,10 +241,10 @@ Player.prototype._updateAppearance = function() {
     this._draw();
 };
 
-// Override getSpeed for Player
+// Override getSpeed for Player to work with the ROT.js speed scheduler
 Player.prototype.getSpeed = function() {
-    return this._isFast ? 200 : 100;
-}
+    return this._isFast ? 300 : 100;
+};
 
 // Apply the StoneSkin effect to the player
 Player.prototype.applyStoneSkin = function() {
@@ -265,6 +270,7 @@ Player.prototype.getSteps = function() { return this._steps; }
 Player.prototype.getEnemiesDefeated = function() { return this._enemiesDefeated; }
 Player.prototype.getStatus = function() { return this._status; }
 Player.prototype.getKeysCollected = function() { return this._keysCollected; }
+Player.prototype.getCoinsCollected = function() { return this._coinsCollected; }
 
 Player.prototype.act = function() {
     var statusChanged = false;

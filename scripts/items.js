@@ -184,5 +184,24 @@ SpeedPotion.prototype.pickup = function(player) {
     
     // Apply the speed boost effect
     player.applySpeedBoost();
-    Game.message("You drink the potion and feel yourself moving faster!");
+    Game.message("You feel yourself moving faster!");
+};
+
+// GoldCoin item: collectible currency
+var GoldCoin = function(x, y) {
+    // Unicode star: ✪
+    Item.call(this, x, y, "✪", "gold coin", "gold");
+};
+GoldCoin.prototype = Object.create(Item.prototype);
+GoldCoin.prototype.constructor = GoldCoin;
+
+GoldCoin.prototype.pickup = function(player) {
+    // Remove the item from the map
+    this._removeFromMap();
+    
+    // Increment player's coin counter
+    player._coinsCollected++;
+    
+    Game.message("You collected a gold coin! Gold: " + player._coinsCollected);
+    Game._drawStats(); // Update status bar
 }; 
