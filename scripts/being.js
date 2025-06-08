@@ -19,6 +19,7 @@ Being.prototype.getY = function() { return this._y; }
 Being.prototype.getHealth = function() { return this._health; }
 Being.prototype.getStrength = function() { return this._strength; }
 Being.prototype.getName = function() { return this._name; }
+Being.prototype.getChar = function() { return this._char; }
 Being.prototype._draw = function() {
     Game.display.draw(this._x, this._y, this._char, this._color);
 }
@@ -68,10 +69,15 @@ Being.prototype.setPosition = function(x, y) {
     this._draw();
 }
 
-// Add takeDamage method to Being prototype
-Being.prototype.takeDamage = function(amount) {
-    this._health -= amount;
-    // If health drops to 0 or below, the being dies
+// Take damage from an attacker
+Being.prototype.takeDamage = function(damage) {
+    // If invulnerable, take no damage
+    if (this._isInvulnerable) {
+        return false; // Not killed
+    }
+    
+    this._health -= damage;
+    
     if (this._health <= 0) {
         this.die();
         return true; // Return true if the being died

@@ -1,10 +1,10 @@
 // Base Item class
-var Item = function(x, y) {
+var Item = function(x, y, char, name, color) {
     this._x = x;
     this._y = y;
-    this._name = "item";
-    this._char = "?";
-    this._color = "white";
+    this._name = name || "item";
+    this._char = char || "?";
+    this._color = color || "white";
     
     // Add this item to the map
     var key = this._x + "," + this._y;
@@ -50,10 +50,7 @@ Item.prototype._removeFromMap = function() {
 
 // HealthPotion class - inherits from Item
 var HealthPotion = function(x, y) {
-    Item.call(this, x, y);
-    this._name = "health potion";
-    this._char = "♥"; // Red heart symbol
-    this._color = "red";
+    Item.call(this, x, y, "♥", "health potion", "red");
 }
 HealthPotion.prototype = Object.create(Item.prototype);
 HealthPotion.prototype.constructor = HealthPotion;
@@ -72,10 +69,7 @@ HealthPotion.prototype.pickup = function(player) {
 
 // GoldKey class - inherits from Item
 var GoldKey = function(x, y) {
-    Item.call(this, x, y);
-    this._name = "gold key";
-    this._char = "🗝️"; // Old timey key emoji
-    this._color = "gold";
+    Item.call(this, x, y, "🗝️", "gold key", "gold");
 }
 GoldKey.prototype = Object.create(Item.prototype);
 GoldKey.prototype.constructor = GoldKey;
@@ -94,10 +88,7 @@ GoldKey.prototype.pickup = function(player) {
 
 // Bomb class - inherits from Item
 var Bomb = function(x, y) {
-    Item.call(this, x, y);
-    this._name = "bomb";
-    this._char = "💣"; // Bomb emoji
-    this._color = "red";
+    Item.call(this, x, y, "💣", "bomb", "red");
     this._blastRadius = 3; // Blast radius (3 = 7x7 square)
 }
 Bomb.prototype = Object.create(Item.prototype);
@@ -146,10 +137,7 @@ Bomb.prototype.pickup = function(player) {
 
 // Exit class - inherits from Item
 var Exit = function(x, y) {
-    Item.call(this, x, y);
-    this._name = "exit";
-    this._char = "🔒"; // Locked padlock symbol
-    this._color = "yellow";
+    Item.call(this, x, y, "🔒", "exit", "yellow");
 }
 Exit.prototype = Object.create(Item.prototype);
 Exit.prototype.constructor = Exit;
@@ -164,4 +152,37 @@ Exit.prototype.pickup = function(player) {
     
     // Important: Do NOT remove the exit from the map!
     // The exit should remain on the map for future attempts
-} 
+}
+
+// StoneSkinPotion item: grants temporary invulnerability
+var StoneSkinPotion = function(x, y) {
+    Item.call(this, x, y, "🛡️", "StoneSkin Potion", "cyan");
+};
+StoneSkinPotion.prototype = Object.create(Item.prototype);
+StoneSkinPotion.prototype.constructor = StoneSkinPotion;
+
+StoneSkinPotion.prototype.pickup = function(player) {
+    // Remove the item from the map
+    this._removeFromMap();
+    
+    // Apply the invulnerability effect
+    player.applyStoneSkin();
+    Game.message("You drink the potion and your skin turns to stone!");
+};
+
+// SpeedPotion item: grants temporary speed boost
+var SpeedPotion = function(x, y) {
+    // Unicode running shoe: 👟
+    Item.call(this, x, y, "≫", "Speed Potion", "lightgreen");
+};
+SpeedPotion.prototype = Object.create(Item.prototype);
+SpeedPotion.prototype.constructor = SpeedPotion;
+
+SpeedPotion.prototype.pickup = function(player) {
+    // Remove the item from the map
+    this._removeFromMap();
+    
+    // Apply the speed boost effect
+    player.applySpeedBoost();
+    Game.message("You drink the potion and feel yourself moving faster!");
+}; 

@@ -66,7 +66,7 @@ var Game = {
         this.currentLevel.generate();
         
         // Create a new scheduler and engine
-        var scheduler = new ROT.Scheduler.Simple();
+        var scheduler = new ROT.Scheduler.Speed();
         
         // Add player to scheduler
         scheduler.add(this.player, true);
@@ -90,7 +90,13 @@ var Game = {
         this.statsDisplay.clear();
         if (this.player) {
             var keys = this.player.getKeysCollected();
-            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + this.player.getStatus() + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3");
+            var status = this.player._isInvulnerable 
+                ? "Invulnerable (" + this.player._invulnerabilityTurns + ")" 
+                : this.player.getStatus();
+            if (this.player._isFast) {
+                status = "Fast (" + this.player._speedBoostTurns + ")";
+            }
+            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3");
         } else {
             this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber);
         }
@@ -143,7 +149,7 @@ var Game = {
         this.currentLevel.generate();
 
         // Re-create scheduler and engine
-        var scheduler = new ROT.Scheduler.Simple();
+        var scheduler = new ROT.Scheduler.Speed();
         scheduler.add(this.player, true);
         for (var i = 0; i < this.enemies.length; i++) {
             scheduler.add(this.enemies[i], true);
@@ -200,6 +206,12 @@ var Player = function(x, y) {
     this._char = "@";
     this._color = "#ff0";
     this._status = "bored"; // Player's current status
+    this._isInvulnerable = false;
+    this._invulnerabilityTurns = 0;
+    this.INVULNERABILITY_DURATION = 30; // Configurable duration
+    this._isFast = false;
+    this._speedBoostTurns = 0;
+    this.SPEED_BOOST_DURATION = 40; // Configurable duration
     
     // Statistics tracking
     this._turns = 0;
@@ -212,6 +224,27 @@ var Player = function(x, y) {
 Player.prototype = Object.create(Being.prototype);
 Player.prototype.constructor = Player;
 
+// Override getSpeed for Player
+Player.prototype.getSpeed = function() {
+    return this._isFast ? 200 : 100;
+}
+
+// Apply the StoneSkin effect to the player
+Player.prototype.applyStoneSkin = function() {
+    this._isInvulnerable = true;
+    this._invulnerabilityTurns = this.INVULNERABILITY_DURATION;
+    this._color = "cyan";
+    this._draw();
+    Game._drawStats(); // Update status bar
+};
+
+// Apply the SpeedBoost effect to the player
+Player.prototype.applySpeedBoost = function() {
+    this._isFast = true;
+    this._speedBoostTurns = this.SPEED_BOOST_DURATION;
+    Game._drawStats(); // Update status bar
+};
+
 // Add methods to access statistics
 Player.prototype.getTurns = function() { return this._turns; }
 Player.prototype.getSteps = function() { return this._steps; }
@@ -220,6 +253,26 @@ Player.prototype.getStatus = function() { return this._status; }
 Player.prototype.getKeysCollected = function() { return this._keysCollected; }
 
 Player.prototype.act = function() {
+    // Handle invulnerability countdown
+    if (this._isInvulnerable) {
+        this._invulnerabilityTurns--;
+        if (this._invulnerabilityTurns <= 0) {
+            this._isInvulnerable = false;
+            this._color = "#ff0"; // Revert to default color
+            this._draw();
+            Game.message("Your skin returns to normal.");
+        }
+    }
+
+    // Handle speed boost countdown
+    if (this._isFast) {
+        this._speedBoostTurns--;
+        if (this._speedBoostTurns <= 0) {
+            this._isFast = false;
+            Game.message("You feel yourself slowing down.");
+        }
+    }
+
     Game.engine.lock();
     window.addEventListener("keydown", this);
 }
