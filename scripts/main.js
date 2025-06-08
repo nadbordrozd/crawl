@@ -224,6 +224,18 @@ var Player = function(x, y) {
 Player.prototype = Object.create(Being.prototype);
 Player.prototype.constructor = Player;
 
+// Handle player appearance changes for status effects
+Player.prototype._updateAppearance = function() {
+    if (this._isInvulnerable) {
+        this._color = "cyan";
+    } else if (this._isFast) {
+        this._color = "lightgreen";
+    } else {
+        this._color = "#ff0"; // Default yellow
+    }
+    this._draw();
+};
+
 // Override getSpeed for Player
 Player.prototype.getSpeed = function() {
     return this._isFast ? 200 : 100;
@@ -233,8 +245,8 @@ Player.prototype.getSpeed = function() {
 Player.prototype.applyStoneSkin = function() {
     this._isInvulnerable = true;
     this._invulnerabilityTurns = this.INVULNERABILITY_DURATION;
-    this._color = "cyan";
-    this._draw();
+    this._updateAppearance();
+    Game.message("You drink the potion and your skin turns to stone!");
     Game._drawStats(); // Update status bar
 };
 
@@ -242,6 +254,8 @@ Player.prototype.applyStoneSkin = function() {
 Player.prototype.applySpeedBoost = function() {
     this._isFast = true;
     this._speedBoostTurns = this.SPEED_BOOST_DURATION;
+    this._updateAppearance();
+    Game.message("You feel yourself moving faster!");
     Game._drawStats(); // Update status bar
 };
 
@@ -253,14 +267,15 @@ Player.prototype.getStatus = function() { return this._status; }
 Player.prototype.getKeysCollected = function() { return this._keysCollected; }
 
 Player.prototype.act = function() {
+    var statusChanged = false;
+
     // Handle invulnerability countdown
     if (this._isInvulnerable) {
         this._invulnerabilityTurns--;
         if (this._invulnerabilityTurns <= 0) {
             this._isInvulnerable = false;
-            this._color = "#ff0"; // Revert to default color
-            this._draw();
             Game.message("Your skin returns to normal.");
+            statusChanged = true;
         }
     }
 
@@ -270,9 +285,16 @@ Player.prototype.act = function() {
         if (this._speedBoostTurns <= 0) {
             this._isFast = false;
             Game.message("You feel yourself slowing down.");
+            statusChanged = true;
         }
     }
 
+    // Update appearance when any status changes
+    if (statusChanged) {
+        this._updateAppearance();
+    }
+
+    Game._drawStats();
     Game.engine.lock();
     window.addEventListener("keydown", this);
 }
@@ -453,4 +475,5 @@ Player.prototype._handleDeathScreenInput = function(e) {
 }
 
 Game.init();
+
 
