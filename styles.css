@@ -1,13 +1,14 @@
 /* General page styling */
 body {
-    font-family: 'Courier New', monospace;
-    background-color: #1a1a1a;
-    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333;
+    color: #eee;
     margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 h1 {
@@ -75,4 +76,11 @@ canvas {
         padding: 10px;
         gap: 8px;
     }
+}
+
+#main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    gap: 2rem; /* Add some space between the game and instructions */
 } 

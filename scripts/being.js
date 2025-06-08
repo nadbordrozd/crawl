@@ -6,10 +6,12 @@ var Being = function(x, y) {
     this._strength = 1; // Default strength value
     this._name = "being"; // Default name
     
-    // Add this being to the map
-    var key = this._x + "," + this._y;
-    if (Game.map[key]) {
-        Game.map[key].being = this;
+    // Add this being to the map only if coordinates are valid
+    if (x !== undefined && y !== undefined && Game.map) {
+        var key = this._x + "," + this._y;
+        if (Game.map[key]) {
+            Game.map[key].being = this;
+        }
     }
 }
 

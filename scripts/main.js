@@ -22,6 +22,7 @@ var Game = {
     currentLevel: null, // Current level instance
     statsDisplay: null,
     messageDisplay: null,
+    instructionsDisplay: null,
     messageHistory: [],
     
     init: function() {
@@ -62,9 +63,21 @@ var Game = {
         messageContainer.className = "message-display";
         container.appendChild(messageContainer);
         
+        // Create instructions display
+        var instructionsHeight = 1 + this.currentLevel.MAP_HEIGHT + 10;
+        this.instructionsDisplay = new ROT.Display({
+            width: 30,
+            height: instructionsHeight,
+            spacing: 1.1
+        });
+        var instructionsContainer = document.getElementById("instructions-container");
+        instructionsContainer.appendChild(this.instructionsDisplay.getContainer());
+
         // Generate the level (map + enemies + items)
         this.currentLevel.generate();
         
+        this._drawInstructions();
+
         // Create a new scheduler and engine
         var scheduler = new ROT.Scheduler.Speed();
         
@@ -84,6 +97,39 @@ var Game = {
         
         // Initial welcome message
         this.message("Welcome to the dungeon! Survive and explore!");
+    },
+    
+    _drawInstructions: function() {
+        var d = this.instructionsDisplay;
+        d.clear();
+        var y = 0;
+
+        d.drawText(0, y++, "%c{white}--- Controls ---");
+        d.drawText(0, y++, "%c{yellow}Arrow Keys,");
+        d.drawText(0, y++, "%c{yellow}Home, End,");
+        d.drawText(0, y++, "%c{yellow}PageUp, PageDown:");
+        d.drawText(2, y++, "%c{white}Move / Attack");
+        d.drawText(0, y++, "%c{yellow}Spacebar:");
+        d.drawText(2, y++, "%c{white}Wait a turn");
+        y++;
+
+        d.drawText(0, y++, "%c{white}--- Goal ---");
+        d.drawText(0, y++, "%c{yellow}🔒%c{white} : Reach the exit");
+        d.drawText(0, y++, "%c{white}   with 3 %c{gold}🗝️");
+        y++;
+
+        d.drawText(0, y++, "%c{white}--- Items (Good!) ---");
+        var items = [new HealthPotion(), new GoldKey(), new Bomb(), new StoneSkinPotion(), new SpeedPotion(), new GoldCoin()];
+        items.forEach(function(item) {
+            d.drawText(0, y++, `%c{${item._color}}${item._char}%c{white} : ${item._name}`);
+        });
+        y++;
+
+        d.drawText(0, y++, "%c{white}--- Enemies (Bad!) ---");
+        var enemies = [new Assassin(), new Frog(), new Rat(), new Snail(), new MadFrog(), new MadRat()];
+        enemies.forEach(function(enemy) {
+            d.drawText(0, y++, `%c{${enemy._color}}${enemy._char}%c{white} : ${enemy._name}`);
+        });
     },
     
     _drawStats: function() {

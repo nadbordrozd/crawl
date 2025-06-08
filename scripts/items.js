@@ -6,10 +6,12 @@ var Item = function(x, y, char, name, color) {
     this._char = char || "?";
     this._color = color || "white";
     
-    // Add this item to the map
-    var key = this._x + "," + this._y;
-    if (Game.map[key]) {
-        Game.map[key].item = this;
+    // Add this item to the map only if coordinates are valid
+    if (x !== undefined && y !== undefined && Game.map) {
+        var key = this._x + "," + this._y;
+        if (Game.map[key]) {
+            Game.map[key].item = this;
+        }
     }
 }
 
@@ -69,7 +71,7 @@ HealthPotion.prototype.pickup = function(player) {
 
 // GoldKey class - inherits from Item
 var GoldKey = function(x, y) {
-    Item.call(this, x, y, "🗝️", "gold key", "gold");
+    Item.call(this, x, y, "🔑", "gold key", "gold");
 }
 GoldKey.prototype = Object.create(Item.prototype);
 GoldKey.prototype.constructor = GoldKey;
@@ -88,7 +90,7 @@ GoldKey.prototype.pickup = function(player) {
 
 // Bomb class - inherits from Item
 var Bomb = function(x, y) {
-    Item.call(this, x, y, "💣", "bomb", "red");
+    Item.call(this, x, y, "٭", "bomb", "red");
     this._blastRadius = 3; // Blast radius (3 = 7x7 square)
 }
 Bomb.prototype = Object.create(Item.prototype);
@@ -137,7 +139,7 @@ Bomb.prototype.pickup = function(player) {
 
 // Exit class - inherits from Item
 var Exit = function(x, y) {
-    Item.call(this, x, y, "🔒", "exit", "yellow");
+    Item.call(this, x, y, "⌂", "exit", "yellow");
 }
 Exit.prototype = Object.create(Item.prototype);
 Exit.prototype.constructor = Exit;
@@ -172,8 +174,7 @@ StoneSkinPotion.prototype.pickup = function(player) {
 
 // SpeedPotion item: grants temporary speed boost
 var SpeedPotion = function(x, y) {
-    // Unicode running shoe: 👟
-    Item.call(this, x, y, "≫", "Speed Potion", "lightgreen");
+    Item.call(this, x, y, "»", "Speed Potion", "lightgreen");
 };
 SpeedPotion.prototype = Object.create(Item.prototype);
 SpeedPotion.prototype.constructor = SpeedPotion;
@@ -189,8 +190,7 @@ SpeedPotion.prototype.pickup = function(player) {
 
 // GoldCoin item: collectible currency
 var GoldCoin = function(x, y) {
-    // Unicode star: ✪
-    Item.call(this, x, y, "✪", "gold coin", "gold");
+    Item.call(this, x, y, "*", "gold coin", "gold");
 };
 GoldCoin.prototype = Object.create(Item.prototype);
 GoldCoin.prototype.constructor = GoldCoin;
