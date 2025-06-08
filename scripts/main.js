@@ -89,9 +89,10 @@ var Game = {
     _drawStats: function() {
         this.statsDisplay.clear();
         if (this.player) {
-            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + this.player.getStatus());
+            var keys = this.player.getKeysCollected();
+            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + this.player.getStatus() + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3");
         } else {
-            this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD) | Status: dead");
+            this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber);
         }
     },
     
@@ -131,6 +132,9 @@ var Game = {
         // Clear data from the previous level
         this.map = {};
         this.enemies = [];
+        
+        // Reset player's keys for the new level
+        this.player._keysCollected = 0;
         
         // Create the new level
         this.currentLevel = new levelClass();
