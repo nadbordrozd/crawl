@@ -31,20 +31,14 @@ Item.prototype.pickup = function(player) {
     this._removeFromMap();
 }
 
-// Helper method to remove item from map and redraw tile
+// Helper method to remove item from map
 Item.prototype._removeFromMap = function() {
     var tile = Game.map[this._x][this._y];
     if (tile) {
         tile.item = null;
     }
     
-    // Redraw the tile to remove the item visual
-    Game.display.draw(this._x, this._y, tile.terrain);
-    
-    // Add any beings back on top if they exist
-    if (tile.being) {
-        tile.being._draw();
-    }
+    // The main game loop will handle redrawing, so we don't need any drawing calls here.
 }
 
 // HealthPotion class - inherits from Item

@@ -26,12 +26,15 @@ Level.prototype.generate = function() {
 Level.prototype._generateMap = function() {
     var W = this.MAP_WIDTH;
     var H = this.MAP_HEIGHT;
-    // NEW: Initialize 2D array
+    // Initialize 2D arrays for map and explored status
     Game.map = [];
+    Game.explored = []; // NEW: Keep track of explored tiles
     for (var x = 0; x < W; x++) {
         Game.map[x] = [];
+        Game.explored[x] = [];
         for (var y = 0; y < H; y++) {
             Game.map[x][y] = null; // Represents a wall
+            Game.explored[x][y] = false; // All tiles start unexplored
         }
     }
     
@@ -41,18 +44,15 @@ Level.prototype._generateMap = function() {
     var digCallback = function(x, y, value) {
         if (value) { return; }
         
-        // NEW: 2D array access
         Game.map[x][y] = {
             terrain: ".",
             being: null,
             item: null
         };
-        // NEW: Store coordinate objects
         freeCells.push({x: x, y: y});
     }
     digger.create(digCallback.bind(this));
     
-    this._drawWholeMap();
     this.freeCells = freeCells; // Store for population
 }
 
@@ -78,8 +78,10 @@ Level.prototype._placePlayer = function(freeCells) {
     var y = cell.y;
 
     if (Game.player) {
+        // On subsequent levels, just move the existing player
         Game.player.setPosition(x, y);
     } else {
+        // On the first level, create the player
         Game.player = new Player(x, y);
     }
 }
@@ -145,58 +147,9 @@ Level.prototype._generateItems = function(ItemClass, count, freeCells) {
         var x = cell.x;
         var y = cell.y;
         var item = new ItemClass(x, y);
-        // Draw the item immediately since _drawWholeMap was called earlier
-        item._draw();
+        // NO DRAW CALL HERE
     }
 }
-
-// Draw the complete map (terrain and items)
-Level.prototype._drawWholeMap = function() {
-    for (var x = 0; x < this.MAP_WIDTH; x++) {
-        for (var y = 0; y < this.MAP_HEIGHT; y++) {
-            var tile = Game.map[x][y];
-            if (tile) { // If it's not a wall
-                // Draw terrain first
-                Game.display.draw(x, y, tile.terrain);
-                // Draw item if present
-                if (tile.item) {
-                    tile.item._draw();
-                }
-            }
-        }
-    }
-}
-
-// Level1 class - inherits from Level
-var Level1 = function() {
-    Level.call(this);
-    
-    // Define enemy counts for Level 1
-    this.enemyCounts = {
-        ASSASSIN: 2,
-        FROG: 5,
-        RAT: 5,
-        SNAIL: 1,
-        MADFROG: 2,
-        MADRAT: 2
-    };
-    
-    // Define item counts for Level 1
-    this.itemCounts = {
-        HEALTH_POTIONS: 2,
-        GOLD_KEYS: 3,
-        BOMBS: 1,
-        EXITS: 1,
-        STONESKIN_POTIONS: 1,
-        SPEED_POTIONS: 1,
-        GOLD_COINS: 5
-    };
-}
-Level1.prototype = Object.create(Level.prototype);
-Level1.prototype.constructor = Level1;
-
-
-
 
 // Level1 class - inherits from Level
 var Level1 = function() {
@@ -225,3 +178,20 @@ var Level1 = function() {
 }
 Level1.prototype = Object.create(Level.prototype);
 Level1.prototype.constructor = Level1;
+
+// Level2 class for variety
+var Level2 = function() {
+    Level.call(this);
+    this.MAP_WIDTH = 60;
+    this.MAP_HEIGHT = 30;
+    
+    this.enemyCounts = {
+        ASSASSIN: 6, FROG: 8, RAT: 8, SNAIL: 3, MADFROG: 6, MADRAT: 6
+    };
+    
+    this.itemCounts = {
+        HEALTH_POTIONS: 4, GOLD_KEYS: 3, BOMBS: 3, EXITS: 1, STONESKIN_POTIONS: 2, SPEED_POTIONS: 2, GOLD_COINS: 10
+    };
+}
+Level2.prototype = Object.create(Level.prototype);
+Level2.prototype.constructor = Level2;

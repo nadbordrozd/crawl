@@ -6,7 +6,6 @@ var Assassin = function(x, y) {
     this._name = "Assassin";
     this._char = "A";
     this._color = "red";
-    this._draw();
 }
 Assassin.prototype = Object.create(Being.prototype);
 Assassin.prototype.constructor = Assassin;
@@ -55,7 +54,6 @@ var Frog = function(x, y) {
     this._name = "frog";
     this._char = "f";
     this._color = "green";
-    this._draw();
 }
 Frog.prototype = Object.create(Being.prototype);
 Frog.prototype.constructor = Frog;
@@ -128,7 +126,6 @@ var Rat = function(x, y) {
     this._name = "rat";
     this._char = "r";
     this._color = "#808080"; // Grey color
-    this._draw();
 }
 Rat.prototype = Object.create(Being.prototype);
 Rat.prototype.constructor = Rat;
@@ -195,7 +192,6 @@ var Snail = function(x, y) {
     this._name = "snail";
     this._char = "s";
     this._color = "#8B4513"; // Brown color
-    this._draw();
 }
 Snail.prototype = Object.create(Being.prototype);
 Snail.prototype.constructor = Snail;
@@ -213,7 +209,6 @@ var MadFrog = function(x, y) {
     this._name = "mad frog";
     this._char = "f";
     this._color = "red"; // Red color to distinguish from regular frogs
-    this._draw();
 }
 MadFrog.prototype = Object.create(Being.prototype);
 MadFrog.prototype.constructor = MadFrog;
@@ -328,7 +323,6 @@ var MadRat = function(x, y) {
     this._name = "mad rat";
     this._char = "r";
     this._color = "red"; // Red color to distinguish from regular rats
-    this._draw();
 }
 MadRat.prototype = Object.create(Being.prototype);
 MadRat.prototype.constructor = MadRat;

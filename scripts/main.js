@@ -24,6 +24,9 @@ var Game = {
     messageDisplay: null,
     instructionsDisplay: null,
     messageHistory: [],
+    fov: null, // NEW: Field of Vision object
+    explored: [], // NEW: 2D array to track explored tiles
+    FOV_RADIUS: 7,
     
     init: function() {
         // Initialize Level 1
@@ -78,6 +81,13 @@ var Game = {
         // Generate the level (map + enemies + items)
         this.currentLevel.generate();
         
+        // --- NEW FOV Initialization ---
+        var fovPassableCallback = function(x, y) {
+            return Game.isValidTile(x, y);
+        }
+        this.fov = new ROT.FOV.PreciseShadowcasting(fovPassableCallback);
+        // --- END NEW ---
+
         this._drawInstructions();
 
         // Create a new scheduler and engine
@@ -94,8 +104,8 @@ var Game = {
         this.engine = new ROT.Engine(scheduler);
         this.engine.start();
         
-        // Initial stats display
-        this._drawStats();
+        // Initial draw
+        this._drawAll();
         
         // Initial welcome message
         this.message("Welcome to the dungeon! Survive and explore!");
@@ -138,6 +148,65 @@ var Game = {
         enemies.forEach(function(enemy) {
             d.drawText(1, y++, `%c{${enemy._color}}${enemy._char}%c{white} : ${enemy._name}`);
         });
+    },
+    
+    _drawAll: function() {
+        this._drawMapAndFov();
+        this._drawStats();
+    },
+
+    _drawMapAndFov: function() {
+        this.display.clear();
+        var fov = this.fov;
+        var player = this.player;
+
+        // Compute FOV
+        var visibleCells = {};
+        fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
+            visibleCells[x+","+y] = true;
+            Game.explored[x][y] = true;
+        });
+
+        // Draw the map
+        for (var x = 0; x < this.currentLevel.MAP_WIDTH; x++) {
+            for (var y = 0; y < this.currentLevel.MAP_HEIGHT; y++) {
+                if (!this.explored[x][y]) { continue; }
+
+                var tile = this.map[x][y];
+                if (!tile) { continue; } // Should not happen for explored tiles, but good practice
+
+                var isVisible = visibleCells[x+","+y];
+                var displayChar, displayColor;
+
+                if (isVisible) {
+                    // Currently visible: draw everything in full color
+                    var being = tile.being;
+                    var item = tile.item;
+
+                    if (being) {
+                        displayChar = being.getChar();
+                        displayColor = being._color;
+                    } else if (item) {
+                        displayChar = item.getChar();
+                        displayColor = item._color;
+                    } else {
+                        displayChar = tile.terrain;
+                        displayColor = "#ffffff"; // Bright color for visible terrain
+                    }
+                } else {
+                    // Not visible, but explored: draw terrain and items in dim color
+                    var item = tile.item;
+                    if (item) {
+                        displayChar = item.getChar();
+                        displayColor = "#808080"; // Dim gray for memory
+                    } else {
+                        displayChar = tile.terrain;
+                        displayColor = "#808080"; // Dim gray for memory
+                    }
+                }
+                this.display.draw(x, y, displayChar, displayColor);
+            }
+        }
     },
     
     _drawStats: function() {
@@ -190,32 +259,37 @@ var Game = {
 
         this.engine.lock(); // Stop the current game loop
 
-        // Clear the entire display
-        this.display.clear();
+        // --- Correctly reset the game state for the new level ---
 
+        // Clear all beings (except player) from the scheduler
+        var scheduler = this.engine._scheduler;
+        for (var i = 0; i < this.enemies.length; i++) {
+            scheduler.remove(this.enemies[i]);
+        }
+        
         // Clear data from the previous level
-        this.map = {};
+        this.map = [];       // Use array for map
+        this.explored = [];  // Use array for explored tiles
         this.enemies = [];
         
         // Reset player's keys for the new level
         this.player._keysCollected = 0;
         
-        // Create the new level
+        // Create the new level instance
         this.currentLevel = new levelClass();
-        
-        // Regenerate the world
-        this.currentLevel.generate();
 
-        // Re-create scheduler and engine
-        var scheduler = new ROT.Scheduler.Speed();
-        scheduler.add(this.player, true);
+        // Regenerate the world (this will also reposition the player)
+        this.currentLevel.generate();
+        
+        // Add all new enemies to the scheduler
         for (var i = 0; i < this.enemies.length; i++) {
             scheduler.add(this.enemies[i], true);
         }
-        this.engine = new ROT.Engine(scheduler);
+        
+        // --- End of state reset ---
 
         this.message("You have advanced to level " + this.levelNumber + "!");
-        this._drawStats();
+        this._drawAll();
         this.engine.unlock();
     },
 
@@ -279,8 +353,6 @@ var Player = function(x, y) {
     this._enemiesDefeated = {}; // Key-value store: enemy name -> count
     this._keysCollected = 0; // Track number of keys collected
     this._coinsCollected = 0; // Track number of coins collected
-    
-    this._draw();
 }
 Player.prototype = Object.create(Being.prototype);
 Player.prototype.constructor = Player;
@@ -294,8 +366,7 @@ Player.prototype._updateAppearance = function() {
     } else {
         this._color = "#ff0"; // Default yellow
     }
-    this._draw();
-};
+}
 
 // Override getSpeed for Player to work with the ROT.js speed scheduler
 Player.prototype.getSpeed = function() {
@@ -308,7 +379,7 @@ Player.prototype.applyStoneSkin = function() {
     this._invulnerabilityTurns = this.INVULNERABILITY_DURATION;
     this._updateAppearance();
     Game.message("You drink the potion and your skin turns to stone!");
-    Game._drawStats(); // Update status bar
+    Game._drawAll(); // Update status bar
 };
 
 // Apply the SpeedBoost effect to the player
@@ -317,7 +388,7 @@ Player.prototype.applySpeedBoost = function() {
     this._speedBoostTurns = this.SPEED_BOOST_DURATION;
     this._updateAppearance();
     Game.message("You feel yourself moving faster!");
-    Game._drawStats(); // Update status bar
+    Game._drawAll(); // Update status bar
 };
 
 // Add methods to access statistics
@@ -356,7 +427,7 @@ Player.prototype.act = function() {
         this._updateAppearance();
     }
 
-    Game._drawStats();
+    Game._drawAll();
     Game.engine.lock();
     window.addEventListener("keydown", this);
 }
@@ -373,7 +444,7 @@ Player.prototype.handleEvent = function(e) {
         // Check surroundings and skip turn
         this._checkSurroundings(this._x, this._y);
         Game.message("You look around carefully...");
-        Game._drawStats();
+        Game._drawAll();
         window.removeEventListener("keydown", this);
         Game.engine.unlock();
         return;
@@ -429,7 +500,7 @@ Player.prototype.handleEvent = function(e) {
         this._checkForItems();
     }
     
-    Game._drawStats();
+    Game._drawAll();
     window.removeEventListener("keydown", this);
     Game.engine.unlock();
 }

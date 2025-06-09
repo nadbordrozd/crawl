@@ -47,9 +47,6 @@ Being.prototype._moveTo = function(newX, newY) {
     if (Game.isValidTile(this._x, this._y)) {
         Game.map[this._x][this._y].being = this;
     }
-    
-    // Draw at new position
-    this._draw();
 }
 
 // Set the position of a being directly (used for level transitions)
@@ -60,9 +57,6 @@ Being.prototype.setPosition = function(x, y) {
     
     // Update the being's position on the map
     Game.map[x][y].being = this;
-    
-    // Redraw the being at its new location
-    this._draw();
 }
 
 // Take damage from an attacker
