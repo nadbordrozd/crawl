@@ -71,7 +71,7 @@ HealthPotion.prototype.pickup = function(player) {
 
 // GoldKey class - inherits from Item
 var GoldKey = function(x, y) {
-    Item.call(this, x, y, "🔑", "gold key", "gold");
+    Item.call(this, x, y, "🗝️", "gold key", "gold");
 }
 GoldKey.prototype = Object.create(Item.prototype);
 GoldKey.prototype.constructor = GoldKey;
@@ -139,7 +139,7 @@ Bomb.prototype.pickup = function(player) {
 
 // Exit class - inherits from Item
 var Exit = function(x, y) {
-    Item.call(this, x, y, "⌂", "exit", "yellow");
+    Item.call(this, x, y, "🔒", "exit", "yellow");
 }
 Exit.prototype = Object.create(Item.prototype);
 Exit.prototype.constructor = Exit;

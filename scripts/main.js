@@ -71,7 +71,9 @@ var Game = {
             spacing: 1.1
         });
         var instructionsContainer = document.getElementById("instructions-container");
-        instructionsContainer.appendChild(this.instructionsDisplay.getContainer());
+        var instructionsCanvas = this.instructionsDisplay.getContainer();
+        instructionsCanvas.className = "game-display"; // Apply the same class as the main game
+        instructionsContainer.appendChild(instructionsCanvas);
 
         // Generate the level (map + enemies + items)
         this.currentLevel.generate();
@@ -102,33 +104,39 @@ var Game = {
     _drawInstructions: function() {
         var d = this.instructionsDisplay;
         d.clear();
-        var y = 0;
+        var y = 1;
 
         d.drawText(0, y++, "%c{white}--- Controls ---");
-        d.drawText(0, y++, "%c{yellow}Arrow Keys,");
-        d.drawText(0, y++, "%c{yellow}Home, End,");
-        d.drawText(0, y++, "%c{yellow}PageUp, PageDown:");
+        d.drawText(0, y++, "%c{yellow}Arrow Keys:");
         d.drawText(2, y++, "%c{white}Move / Attack");
         d.drawText(0, y++, "%c{yellow}Spacebar:");
         d.drawText(2, y++, "%c{white}Wait a turn");
         y++;
 
+        d.drawText(0, y++, "%c{white}--- Player ---");
+        d.drawText(1, y++, `%c{${this.player._color}}${this.player._char}%c{white} : this is you`);
+        y++;
+        
         d.drawText(0, y++, "%c{white}--- Goal ---");
-        d.drawText(0, y++, "%c{yellow}🔒%c{white} : Reach the exit");
-        d.drawText(0, y++, "%c{white}   with 3 %c{gold}🗝️");
+        var exit = new Exit();
+        var key = new GoldKey();
+        d.draw(1, y, exit._char, exit._color);
+        d.drawText(3, y++, `%c{white} : Reach the exit`);
+        d.draw(4, y++, `with 3 ${key._char}`);
         y++;
 
         d.drawText(0, y++, "%c{white}--- Items (Good!) ---");
         var items = [new HealthPotion(), new GoldKey(), new Bomb(), new StoneSkinPotion(), new SpeedPotion(), new GoldCoin()];
         items.forEach(function(item) {
-            d.drawText(0, y++, `%c{${item._color}}${item._char}%c{white} : ${item._name}`);
+            d.draw(1, y, item._char, item._color);
+            d.drawText(3, y++, `%c{white} : ${item._name}`);
         });
         y++;
 
         d.drawText(0, y++, "%c{white}--- Enemies (Bad!) ---");
         var enemies = [new Assassin(), new Frog(), new Rat(), new Snail(), new MadFrog(), new MadRat()];
         enemies.forEach(function(enemy) {
-            d.drawText(0, y++, `%c{${enemy._color}}${enemy._char}%c{white} : ${enemy._name}`);
+            d.drawText(1, y++, `%c{${enemy._color}}${enemy._char}%c{white} : ${enemy._name}`);
         });
     },
     
