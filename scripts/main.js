@@ -164,18 +164,30 @@ var Game = {
         var visibleCells = {};
         fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
             visibleCells[x+","+y] = true;
+            // Ensure the explored array is initialized for this coordinate
+            if (!Game.explored[x]) { Game.explored[x] = []; }
             Game.explored[x][y] = true;
         });
 
         // Draw the map
         for (var x = 0; x < this.currentLevel.MAP_WIDTH; x++) {
             for (var y = 0; y < this.currentLevel.MAP_HEIGHT; y++) {
-                if (!this.explored[x][y]) { continue; }
+                if (!Game.explored[x] || !Game.explored[x][y]) { continue; }
 
                 var tile = this.map[x][y];
-                if (!tile) { continue; } // Should not happen for explored tiles, but good practice
-
                 var isVisible = visibleCells[x+","+y];
+
+                // If it's a wall
+                if (!tile) {
+                    if (isVisible) {
+                        this.display.draw(x, y, "#", "#ffffff"); // Bright wall
+                    } else {
+                        this.display.draw(x, y, "#", "#808080"); // Dim wall
+                    }
+                    continue;
+                }
+
+                // If it's a floor tile
                 var displayChar, displayColor;
 
                 if (isVisible) {
