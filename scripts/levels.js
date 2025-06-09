@@ -157,7 +157,7 @@ var Level1 = function() {
     
     // Define enemy counts for Level 1
     this.enemyCounts = {
-        ASSASSIN: 4,
+        ASSASSIN: 2,
         FROG: 5,
         RAT: 5,
         SNAIL: 1,
@@ -182,16 +182,114 @@ Level1.prototype.constructor = Level1;
 // Level2 class for variety
 var Level2 = function() {
     Level.call(this);
-    this.MAP_WIDTH = 60;
-    this.MAP_HEIGHT = 30;
     
+    // Define enemy counts for Level 1
     this.enemyCounts = {
-        ASSASSIN: 6, FROG: 8, RAT: 8, SNAIL: 3, MADFROG: 6, MADRAT: 6
+        ASSASSIN: 4,
+        FROG: 5,
+        RAT: 5,
+        SNAIL: 1,
+        MADFROG: 6,
+        MADRAT: 6
     };
     
+    // Define item counts for Level 1
     this.itemCounts = {
-        HEALTH_POTIONS: 4, GOLD_KEYS: 3, BOMBS: 3, EXITS: 1, STONESKIN_POTIONS: 2, SPEED_POTIONS: 2, GOLD_COINS: 10
+        HEALTH_POTIONS: 2,
+        GOLD_KEYS: 3,
+        BOMBS: 2,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5
     };
 }
 Level2.prototype = Object.create(Level.prototype);
 Level2.prototype.constructor = Level2;
+
+
+var Level3 = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Level 1
+    this.enemyCounts = {
+        ASSASSIN: 8,
+        FROG: 5,
+        RAT: 5,
+        SNAIL: 1,
+        MADFROG: 8,
+        MADRAT: 8
+    };
+    
+    // Define item counts for Level 1
+    this.itemCounts = {
+        HEALTH_POTIONS: 3,
+        GOLD_KEYS: 3,
+        BOMBS: 3,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5
+    };
+}
+Level3.prototype = Object.create(Level.prototype);
+Level3.prototype.constructor = Level3;
+
+
+
+
+var Level4 = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Level 1
+    this.enemyCounts = {
+        ASSASSIN: 16,
+        FROG: 5,
+        RAT: 5,
+        SNAIL: 1,
+        MADFROG: 8,
+        MADRAT: 8
+    };
+    
+    // Define item counts for Level 1
+    this.itemCounts = {
+        HEALTH_POTIONS: 3,
+        GOLD_KEYS: 3,
+        BOMBS: 3,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5
+    };
+}
+Level4.prototype = Object.create(Level.prototype);
+Level4.prototype.constructor = Level4;
+
+
+
+var Level5 = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Level 1
+    this.enemyCounts = {
+        ASSASSIN: 32,
+        FROG: 5,
+        RAT: 5,
+        SNAIL: 1,
+        MADFROG: 8,
+        MADRAT: 8
+    };
+    
+    // Define item counts for Level 1
+    this.itemCounts = {
+        HEALTH_POTIONS: 3,
+        GOLD_KEYS: 3,
+        BOMBS: 3,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5
+    };
+}
+Level5.prototype = Object.create(Level.prototype);
+Level5.prototype.constructor = Level5;

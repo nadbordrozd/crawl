@@ -346,7 +346,7 @@ var Game = {
 // Player class inherits from Being
 var Player = function(x, y) {
     Being.call(this, x, y);
-    this._health = 500; // Override default health for player
+    this._health = 5; // Override default health for player
     this._strength = 1; // Player's strength
     this._name = "player";
     this._char = "@";
@@ -450,7 +450,16 @@ Player.prototype.handleEvent = function(e) {
     // Increment turn counter for any action
     this._turns++;
     
-
+    // --- NEW CHEAT CODE ---
+    if (code == KEY_CODES.PAGE_UP) {
+        this._health = 500;
+        Game.message("%c{lime}Cheat activated: Health set to 500!");
+        Game._drawAll();
+        window.removeEventListener("keydown", this);
+        Game.engine.unlock();
+        return;
+    }
+    // --- END CHEAT CODE ---
     
     if (code == KEY_CODES.SPACE) {
         // Check surroundings and skip turn
@@ -464,7 +473,6 @@ Player.prototype.handleEvent = function(e) {
 
     var keyMap = {};
     keyMap[KEY_CODES.UP] = 0;
-    keyMap[KEY_CODES.PAGE_UP] = 1;
     keyMap[KEY_CODES.RIGHT] = 2;
     keyMap[KEY_CODES.PAGE_DOWN] = 3;
     keyMap[KEY_CODES.DOWN] = 4;
@@ -473,7 +481,10 @@ Player.prototype.handleEvent = function(e) {
     keyMap[KEY_CODES.HOME] = 7;
 
     /* one of numpad directions? */
-    if (!(code in keyMap)) { return; }
+    if (!(code in keyMap)) { 
+        this._turns--; // Not a valid key, so don't waste a turn
+        return; 
+    }
 
     /* is there a free space? */
     var dir = ROT.DIRS[8][keyMap[code]];
