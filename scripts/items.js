@@ -190,7 +190,7 @@ SpeedPotion.prototype.pickup = function(player) {
 
 // GoldCoin item: collectible currency
 var GoldCoin = function(x, y) {
-    Item.call(this, x, y, "*", "gold coin", "gold");
+    Item.call(this, x, y, "✪", "gold coin", "gold");
 };
 GoldCoin.prototype = Object.create(Item.prototype);
 GoldCoin.prototype.constructor = GoldCoin;
