@@ -26,19 +26,29 @@ Level.prototype.generate = function() {
 Level.prototype._generateMap = function() {
     var W = this.MAP_WIDTH;
     var H = this.MAP_HEIGHT;
+    // NEW: Initialize 2D array
+    Game.map = [];
+    for (var x = 0; x < W; x++) {
+        Game.map[x] = [];
+        for (var y = 0; y < H; y++) {
+            Game.map[x][y] = null; // Represents a wall
+        }
+    }
+    
     var digger = new ROT.Map.Digger(W, H);
     var freeCells = [];
     
     var digCallback = function(x, y, value) {
         if (value) { return; }
         
-        var key = x+","+y;
-        Game.map[key] = {
+        // NEW: 2D array access
+        Game.map[x][y] = {
             terrain: ".",
             being: null,
             item: null
         };
-        freeCells.push(key);
+        // NEW: Store coordinate objects
+        freeCells.push({x: x, y: y});
     }
     digger.create(digCallback.bind(this));
     
@@ -63,10 +73,9 @@ Level.prototype._populateLevel = function() {
 // Place the player in a free cell, creating them if they don't exist
 Level.prototype._placePlayer = function(freeCells) {
     var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
-    var key = freeCells.splice(index, 1)[0];
-    var parts = key.split(",");
-    var x = parseInt(parts[0]);
-    var y = parseInt(parts[1]);
+    var cell = freeCells.splice(index, 1)[0];
+    var x = cell.x;
+    var y = cell.y;
 
     if (Game.player) {
         Game.player.setPosition(x, y);
@@ -122,10 +131,9 @@ Level.prototype._createItems = function(freeCells) {
 // Helper method to create a being at a random free location
 Level.prototype._createBeing = function(what, freeCells) {
     var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
-    var key = freeCells.splice(index, 1)[0];
-    var parts = key.split(",");
-    var x = parseInt(parts[0]);
-    var y = parseInt(parts[1]);
+    var cell = freeCells.splice(index, 1)[0];
+    var x = cell.x;
+    var y = cell.y;
     return new what(x, y);
 }
 
@@ -133,10 +141,9 @@ Level.prototype._createBeing = function(what, freeCells) {
 Level.prototype._generateItems = function(ItemClass, count, freeCells) {
     for (var i = 0; i < count; i++) {
         var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
-        var key = freeCells.splice(index, 1)[0];
-        var parts = key.split(",");
-        var x = parseInt(parts[0]);
-        var y = parseInt(parts[1]);
+        var cell = freeCells.splice(index, 1)[0];
+        var x = cell.x;
+        var y = cell.y;
         var item = new ItemClass(x, y);
         // Draw the item immediately since _drawWholeMap was called earlier
         item._draw();
@@ -145,17 +152,17 @@ Level.prototype._generateItems = function(ItemClass, count, freeCells) {
 
 // Draw the complete map (terrain and items)
 Level.prototype._drawWholeMap = function() {
-    for (var key in Game.map) {
-        var parts = key.split(",");
-        var x = parseInt(parts[0]);
-        var y = parseInt(parts[1]);
-        
-        // Draw terrain first
-        Game.display.draw(x, y, Game.map[key].terrain);
-        
-        // Draw item if present
-        if (Game.map[key].item) {
-            Game.map[key].item._draw();
+    for (var x = 0; x < this.MAP_WIDTH; x++) {
+        for (var y = 0; y < this.MAP_HEIGHT; y++) {
+            var tile = Game.map[x][y];
+            if (tile) { // If it's not a wall
+                // Draw terrain first
+                Game.display.draw(x, y, tile.terrain);
+                // Draw item if present
+                if (tile.item) {
+                    tile.item._draw();
+                }
+            }
         }
     }
 }
@@ -166,12 +173,12 @@ var Level1 = function() {
     
     // Define enemy counts for Level 1
     this.enemyCounts = {
-        ASSASSIN: 1,
+        ASSASSIN: 2,
         FROG: 5,
         RAT: 5,
-        SNAIL: 5,
-        MADFROG: 5,
-        MADRAT: 25
+        SNAIL: 1,
+        MADFROG: 2,
+        MADRAT: 2
     };
     
     // Define item counts for Level 1
@@ -188,38 +195,33 @@ var Level1 = function() {
 Level1.prototype = Object.create(Level.prototype);
 Level1.prototype.constructor = Level1;
 
-// Level2 class - inherits from Level
-var Level2 = function() {
-    Level.call(this);
-    this.enemyCounts = { ASSASSIN: 2, FROG: 7, RAT: 7, SNAIL: 5, MADFROG: 7, MADRAT: 30 };
-    this.itemCounts = { HEALTH_POTIONS: 2, GOLD_KEYS: 3, BOMBS: 2, EXITS: 1, STONESKIN_POTIONS: 1, SPEED_POTIONS: 1, GOLD_COINS: 6 };
-}
-Level2.prototype = Object.create(Level.prototype);
-Level2.prototype.constructor = Level2;
 
-// Level3 class - inherits from Level
-var Level3 = function() {
-    Level.call(this);
-    this.enemyCounts = { ASSASSIN: 3, FROG: 10, RAT: 10, SNAIL: 5, MADFROG: 10, MADRAT: 35 };
-    this.itemCounts = { HEALTH_POTIONS: 3, GOLD_KEYS: 3, BOMBS: 2, EXITS: 1, STONESKIN_POTIONS: 1, SPEED_POTIONS: 1, GOLD_COINS: 7 };
-}
-Level3.prototype = Object.create(Level.prototype);
-Level3.prototype.constructor = Level3;
 
-// Level4 class - inherits from Level
-var Level4 = function() {
-    Level.call(this);
-    this.enemyCounts = { ASSASSIN: 4, FROG: 12, RAT: 12, SNAIL: 5, MADFROG: 12, MADRAT: 40 };
-    this.itemCounts = { HEALTH_POTIONS: 3, GOLD_KEYS: 3, BOMBS: 3, EXITS: 1, STONESKIN_POTIONS: 1, SPEED_POTIONS: 1, GOLD_COINS: 8 };
-}
-Level4.prototype = Object.create(Level.prototype);
-Level4.prototype.constructor = Level4;
 
-// Level5 class - inherits from Level
-var Level5 = function() {
+// Level1 class - inherits from Level
+var Level1 = function() {
     Level.call(this);
-    this.enemyCounts = { ASSASSIN: 5, FROG: 15, RAT: 15, SNAIL: 5, MADFROG: 15, MADRAT: 50 };
-    this.itemCounts = { HEALTH_POTIONS: 4, GOLD_KEYS: 3, BOMBS: 3, EXITS: 1, STONESKIN_POTIONS: 1, SPEED_POTIONS: 1, GOLD_COINS: 10 };
+    
+    // Define enemy counts for Level 1
+    this.enemyCounts = {
+        ASSASSIN: 4,
+        FROG: 5,
+        RAT: 5,
+        SNAIL: 1,
+        MADFROG: 4,
+        MADRAT: 4
+    };
+    
+    // Define item counts for Level 1
+    this.itemCounts = {
+        HEALTH_POTIONS: 2,
+        GOLD_KEYS: 3,
+        BOMBS: 1,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5
+    };
 }
-Level5.prototype = Object.create(Level.prototype);
-Level5.prototype.constructor = Level5; 
+Level1.prototype = Object.create(Level.prototype);
+Level1.prototype.constructor = Level1;

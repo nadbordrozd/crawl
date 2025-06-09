@@ -7,11 +7,8 @@ var Item = function(x, y, char, name, color) {
     this._color = color || "white";
     
     // Add this item to the map only if coordinates are valid
-    if (x !== undefined && y !== undefined && Game.map) {
-        var key = this._x + "," + this._y;
-        if (Game.map[key]) {
-            Game.map[key].item = this;
-        }
+    if (x !== undefined && y !== undefined && Game.isValidTile(x, y)) {
+        Game.map[x][y].item = this;
     }
 }
 
@@ -36,17 +33,17 @@ Item.prototype.pickup = function(player) {
 
 // Helper method to remove item from map and redraw tile
 Item.prototype._removeFromMap = function() {
-    var key = this._x + "," + this._y;
-    if (Game.map[key]) {
-        Game.map[key].item = null;
+    var tile = Game.map[this._x][this._y];
+    if (tile) {
+        tile.item = null;
     }
     
     // Redraw the tile to remove the item visual
-    Game.display.draw(this._x, this._y, Game.map[key].terrain);
+    Game.display.draw(this._x, this._y, tile.terrain);
     
     // Add any beings back on top if they exist
-    if (Game.map[key].being) {
-        Game.map[key].being._draw();
+    if (tile.being) {
+        tile.being._draw();
     }
 }
 

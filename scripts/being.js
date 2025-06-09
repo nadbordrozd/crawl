@@ -7,11 +7,8 @@ var Being = function(x, y) {
     this._name = "being"; // Default name
     
     // Add this being to the map only if coordinates are valid
-    if (x !== undefined && y !== undefined && Game.map) {
-        var key = this._x + "," + this._y;
-        if (Game.map[key]) {
-            Game.map[key].being = this;
-        }
+    if (x !== undefined && y !== undefined && Game.isValidTile(x, y)) {
+        Game.map[x][y].being = this;
     }
 }
 
@@ -29,17 +26,17 @@ Being.prototype._draw = function() {
 // Method to move a being and update map tracking
 Being.prototype._moveTo = function(newX, newY) {
     // Remove from old position
-    var oldKey = this._x + "," + this._y;
-    if (Game.map[oldKey]) {
-        Game.map[oldKey].being = null;
+    if (Game.isValidTile(this._x, this._y)) {
+        Game.map[this._x][this._y].being = null;
     }
     
     // Clear old position on display - redraw terrain and any items
-    Game.display.draw(this._x, this._y, Game.map[oldKey].terrain);
+    var oldTile = Game.map[this._x][this._y];
+    Game.display.draw(this._x, this._y, oldTile.terrain);
     
     // If there's an item on the old position, redraw it
-    if (Game.map[oldKey] && Game.map[oldKey].item) {
-        Game.map[oldKey].item._draw();
+    if (oldTile.item) {
+        oldTile.item._draw();
     }
     
     // Update position
@@ -47,9 +44,8 @@ Being.prototype._moveTo = function(newX, newY) {
     this._y = newY;
     
     // Add to new position
-    var newKey = this._x + "," + this._y;
-    if (Game.map[newKey]) {
-        Game.map[newKey].being = this;
+    if (Game.isValidTile(this._x, this._y)) {
+        Game.map[this._x][this._y].being = this;
     }
     
     // Draw at new position
@@ -58,14 +54,12 @@ Being.prototype._moveTo = function(newX, newY) {
 
 // Set the position of a being directly (used for level transitions)
 Being.prototype.setPosition = function(x, y) {
-    var newKey = x + "," + y;
-    
     // Update coordinates
     this._x = x;
     this._y = y;
     
     // Update the being's position on the map
-    Game.map[newKey].being = this;
+    Game.map[x][y].being = this;
     
     // Redraw the being at its new location
     this._draw();
@@ -91,17 +85,17 @@ Being.prototype.takeDamage = function(damage) {
 // Add die method to base Being class
 Being.prototype.die = function() {
     // Remove from map tracking
-    var key = this._x + "," + this._y;
-    if (Game.map[key]) {
-        Game.map[key].being = null;
+    var tile = Game.map[this._x][this._y];
+    if (tile) {
+        tile.being = null;
     }
     
     // Clear the being from the map display - redraw terrain and any items
-    Game.display.draw(this._x, this._y, Game.map[key].terrain);
+    Game.display.draw(this._x, this._y, tile.terrain);
     
     // If there's an item on this position, redraw it
-    if (Game.map[key] && Game.map[key].item) {
-        Game.map[key].item._draw();
+    if (tile && tile.item) {
+        tile.item._draw();
     }
     
     // Remove from scheduler

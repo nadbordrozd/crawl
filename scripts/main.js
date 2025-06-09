@@ -228,22 +228,24 @@ var Game = {
         Game.display.drawText(x, y, msg);
     },
     
+    // NEW: Helper function to check if a tile is valid (i.e., within map bounds and not a wall)
+    isValidTile: function(x, y) {
+        return this.map[x] && this.map[x][y];
+    },
+    
     // Helper function to check if a position is occupied
     _isOccupied: function(x, y) {
-        var key = x + "," + y;
-        return this.map[key] && this.map[key].being !== null;
+        return this.isValidTile(x, y) && this.map[x][y].being !== null;
     },
     
     // Helper function to get the being at a position
     getBeingAt: function(x, y) {
-        var key = x + "," + y;
-        return this.map[key] ? this.map[key].being : null;
+        return this.isValidTile(x, y) ? this.map[x][y].being : null;
     },
     
     // Helper function to get the item at a position
     getItemAt: function(x, y) {
-        var key = x + "," + y;
-        return this.map[key] ? this.map[key].item : null;
+        return this.isValidTile(x, y) ? this.map[x][y].item : null;
     },
     
     // Add a method to Game to debug the current state
@@ -394,8 +396,7 @@ Player.prototype.handleEvent = function(e) {
     var dir = ROT.DIRS[8][keyMap[code]];
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
-    var newKey = newX + "," + newY;
-    if (!(newKey in Game.map)) { return; }
+    if (!Game.isValidTile(newX, newY)) { return; }
 
     // Check for enemies at the target position
     var targetEnemy = Game.getBeingAt(newX, newY);
@@ -465,8 +466,7 @@ Player.prototype._checkSurroundings = function(newX, newY) {
 
 // Method to check for items at the player's current position
 Player.prototype._checkForItems = function() {
-    var key = this._x + "," + this._y;
-    var item = Game.map[key].item;
+    var item = Game.map[this._x][this._y].item;
     
     if (item) {
         // Pick up the item
