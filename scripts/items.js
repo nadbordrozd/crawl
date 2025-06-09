@@ -90,7 +90,7 @@ GoldKey.prototype.pickup = function(player) {
 
 // Bomb class - inherits from Item
 var Bomb = function(x, y) {
-    Item.call(this, x, y, "٭", "bomb", "red");
+    Item.call(this, x, y, "💣", "bomb", "red");
     this._blastRadius = 3; // Blast radius (3 = 7x7 square)
 }
 Bomb.prototype = Object.create(Item.prototype);
