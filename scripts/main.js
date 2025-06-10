@@ -501,6 +501,7 @@ Player.prototype.handleEvent = function(e) {
 
     // If there's an enemy, attack it instead of moving
     if (targetEnemy) {
+        this._flash(); // NEW: Player flashes red when attacking
         // Player attacks enemy with their strength
         var killed = targetEnemy.takeDamage(this._strength);
         if (killed) {

@@ -98,4 +98,21 @@ Being.prototype.die = function() {
     // Generic death logic - remove from enemies array (Player will override this)
     var index = Game.enemies.indexOf(this);
     if (index !== -1) Game.enemies.splice(index, 1);
+}
+
+// Visual flash effect for a being
+Being.prototype._flash = function(color) {
+    var flashColor = color || "red"; // Default to red if no color is provided
+    var self = this; // Store 'this' for use in the timeout
+
+    // Defer the initial flash draw to the next event loop tick.
+    // This prevents the main game loop's draw call from overwriting it instantly.
+    setTimeout(function() {
+        Game.display.draw(self._x, self._y, self._char, self._color, flashColor);
+    }, 0);
+
+    // After a short delay, redraw the entire game screen to remove the flash
+    setTimeout(function() {
+        Game._drawAll();
+    }, 100);
 } 
