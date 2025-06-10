@@ -5,7 +5,7 @@ var Assassin = function(x, y) {
     this._strength = 1; // Enemy strength
     this._name = "Assassin";
     this._char = "A";
-    this._color = "red";
+    this._color = "purple";
 }
 Assassin.prototype = Object.create(Being.prototype);
 Assassin.prototype.constructor = Assassin;
