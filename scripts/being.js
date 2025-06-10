@@ -111,8 +111,8 @@ Being.prototype._flash = function(color) {
         Game.display.draw(self._x, self._y, self._char, self._color, flashColor);
     }, 0);
 
-    // After a short delay, redraw the entire game screen to remove the flash
+    // After a short delay, redraw just this tile to remove the flash
     setTimeout(function() {
-        Game._drawAll();
+        Game._drawTile(self._x, self._y);
     }, 100);
 } 

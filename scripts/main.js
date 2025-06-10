@@ -27,6 +27,7 @@ var Game = {
     fov: null, // NEW: Field of Vision object
     explored: [], // NEW: 2D array to track explored tiles
     FOV_RADIUS: 7,
+    visibleCells: {}, // NEW: Cache for visible cells, updated each turn
     
     init: function() {
         // Initialize Level 1
@@ -157,68 +158,72 @@ var Game = {
 
     _drawMapAndFov: function() {
         this.display.clear();
-        var fov = this.fov;
         var player = this.player;
 
-        // Compute FOV
-        var visibleCells = {};
-        fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
-            visibleCells[x+","+y] = true;
+        // Compute FOV and update the cache
+        this.visibleCells = {};
+        var self = this;
+        this.fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
+            self.visibleCells[x+","+y] = true;
             // Ensure the explored array is initialized for this coordinate
-            if (!Game.explored[x]) { Game.explored[x] = []; }
-            Game.explored[x][y] = true;
+            if (!self.explored[x]) { self.explored[x] = []; }
+            self.explored[x][y] = true;
         });
 
-        // Draw the map
+        // Draw the map by drawing each tile
         for (var x = 0; x < this.currentLevel.MAP_WIDTH; x++) {
             for (var y = 0; y < this.currentLevel.MAP_HEIGHT; y++) {
-                if (!Game.explored[x] || !Game.explored[x][y]) { continue; }
-
-                var tile = this.map[x][y];
-                var isVisible = visibleCells[x+","+y];
-
-                // If it's a wall
-                if (!tile) {
-                    if (isVisible) {
-                        this.display.draw(x, y, "#", "#ffffff"); // Bright wall
-                    } else {
-                        this.display.draw(x, y, "#", "#808080"); // Dim wall
-                    }
-                    continue;
-                }
-
-                // If it's a floor tile
-                var displayChar, displayColor;
-
-                if (isVisible) {
-                    // Currently visible: draw everything in full color
-                    var being = tile.being;
-                    var item = tile.item;
-
-                    if (being) {
-                        displayChar = being.getChar();
-                        displayColor = being._color;
-                    } else if (item) {
-                        displayChar = item.getChar();
-                        displayColor = item._color;
-                    } else {
-                        displayChar = tile.terrain;
-                        displayColor = "#ffffff"; // Bright color for visible terrain
-                    }
-                } else {
-                    // Not visible, but explored: draw terrain and items in dim color
-                    var item = tile.item;
-                    if (item) {
-                        displayChar = item.getChar();
-                        displayColor = "#808080"; // Dim gray for memory
-                    } else {
-                        displayChar = tile.terrain;
-                        displayColor = "#808080"; // Dim gray for memory
-                    }
-                }
-                this.display.draw(x, y, displayChar, displayColor);
+                this._drawTile(x, y);
             }
         }
+    },
+    
+    _drawTile: function(x, y) {
+        if (!this.explored[x] || !this.explored[x][y]) { return; }
+
+        var tile = this.map[x][y];
+        var isVisible = this.visibleCells[x+","+y];
+
+        // If it's a wall
+        if (!tile) {
+            if (isVisible) {
+                this.display.draw(x, y, "#", "#ffffff"); // Bright wall
+            } else {
+                this.display.draw(x, y, "#", "#808080"); // Dim wall
+            }
+            return;
+        }
+
+        // If it's a floor tile
+        var displayChar, displayColor;
+
+        if (isVisible) {
+            // Currently visible: draw everything in full color
+            var being = tile.being;
+            var item = tile.item;
+
+            if (being) {
+                displayChar = being.getChar();
+                displayColor = being._color;
+            } else if (item) {
+                displayChar = item.getChar();
+                displayColor = item._color;
+            } else {
+                displayChar = tile.terrain;
+                displayColor = "#ffffff"; // Bright color for visible terrain
+            }
+        } else {
+            // Not visible, but explored: draw terrain and items in dim color
+            var item = tile.item;
+            if (item) {
+                displayChar = item.getChar();
+                displayColor = "#808080"; // Dim gray for memory
+            } else {
+                displayChar = tile.terrain;
+                displayColor = "#808080"; // Dim gray for memory
+            }
+        }
+        this.display.draw(x, y, displayChar, displayColor);
     },
     
     _drawStats: function() {
@@ -613,7 +618,7 @@ Player.prototype.die = function() {
     
     // Player-specific cleanup
     Game.player = null;
-    Game.engine.lock();
+        Game.engine.lock();
     Game.message("Game over - you have died!");
     window.removeEventListener("keydown", this);
 

@@ -27,22 +27,23 @@ Assassin.prototype.act = function() {
 
     path.shift(); // Remove Assassin's current position
     
-    if (path.length === 0) {
-        // This should not normally happen, but handle it gracefully
-        return;
-    }
-    
-    if (path.length === 1) {
-        // Assassin is adjacent to the player, attack instead of moving
+    if (path.length <= 1) { // If path is 1, we are adjacent. If 0, we are blocked.
+        this._flash();
         Game.message("The Assassin strikes you!");
         Game.player.takeDamage(this._strength);
-        Game._drawStats(); // Update stats display to show new health
+        Game._drawStats();
     } else {
         // Move towards the player
-        x = path[0][0];
-        y = path[0][1];
-        this._moveTo(x, y);
-        
+        var newX = path[0][0];
+        var newY = path[0][1];
+
+        // NEW: Check if the destination is occupied before moving
+        var targetBeing = Game.getBeingAt(newX, newY);
+        if (targetBeing) {
+            // Blocked, do nothing
+            return;
+        }
+        this._moveTo(newX, newY);
     }
 }
 
@@ -97,6 +98,7 @@ Frog.prototype.act = function() {
         
         // Check if the destination tile is occupied by the player
         if (targetBeing === Game.player) {
+            this._flash();
             // Attack the player!
             Game.message("A frog leaps at you and attacks!");
             Game.player.takeDamage(this._strength);
@@ -164,6 +166,7 @@ Rat.prototype.act = function() {
         
         // Check if the tile is occupied by the player
         if (targetBeing === Game.player) {
+            this._flash();
             // Attack the player!
             Game.message("A rat bites you!");
             Game.player.takeDamage(this._strength);
@@ -296,6 +299,7 @@ MadFrog.prototype._tryJump = function(dir) {
     
     // Check if the destination tile is occupied by the player
     if (targetBeing === Game.player) {
+        this._flash();
         // Attack the player!
         Game.message("A mad frog leaps at you furiously!");
         Game.player.takeDamage(this._strength);
@@ -393,7 +397,6 @@ MadRat.prototype.act = function() {
 MadRat.prototype._tryMove = function(dir) {
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
-    var newKey = newX + "," + newY;
     
     // Check if the tile is passable
     if (!Game.isValidTile(newX, newY)) {
@@ -403,18 +406,19 @@ MadRat.prototype._tryMove = function(dir) {
     // Check what's at the destination tile
     var targetBeing = Game.getBeingAt(newX, newY);
     
-    // Check if the tile is occupied by the player
+    // If the destination is the player, attack but don't move.
     if (targetBeing === Game.player) {
-        // Attack the player!
+        this._flash();
         Game.message("A mad rat bites you viciously!");
         Game.player.takeDamage(this._strength);
+        Game.message("The " + this.getName() + " attacks you for " + this._strength + " damage!");
         Game._drawStats();
         return true; // Successfully attacked
     }
     
-    // Check if the tile is occupied by another enemy
-    if (targetBeing !== null && targetBeing !== this) {
-        return false; // Blocked by enemy
+    // If the destination is occupied by anything else, the move is blocked.
+    if (targetBeing) {
+        return false; // Blocked by another being
     }
     
     // If tile is free, move there
