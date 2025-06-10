@@ -1,5 +1,6 @@
 /* General page styling */
 body {
+    position: relative; /* For positioning context */
     font-family: 'Courier New', Courier, monospace;
     background-color: #333;
     color: #eee;
@@ -83,4 +84,24 @@ canvas {
     justify-content: center;
     align-items: flex-start; /* Align items to the top */
     gap: 2rem; /* Add some space between the game and instructions */
+}
+
+#controls-container {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+#music-toggle-button {
+    padding: 8px 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #555;
+    color: #eee;
+    border: 2px solid #888;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#music-toggle-button:hover {
+    background-color: #777;
 } 

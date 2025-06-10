@@ -110,6 +110,33 @@ var Game = {
         
         // Initial welcome message
         this.message("Welcome to the dungeon! Survive and explore!");
+
+        // --- NEW Music Controls ---
+        var music = document.getElementById("game-music");
+        var musicButton = document.getElementById("music-toggle-button");
+        var musicPlaylist = ["music/tavern.mp3", "music/freak.mp3"]; // Your playlist
+        var currentTrackIndex = 0;
+        
+        music.volume = 0.3; // Set a reasonable volume
+
+        musicButton.addEventListener("click", function() {
+            if (music.paused) {
+                music.play();
+                musicButton.textContent = "Pause Music";
+            } else {
+                music.pause();
+                musicButton.textContent = "Play Music";
+            }
+        });
+
+        // Add event listener for when the current track ends
+        music.addEventListener("ended", function() {
+            // Move to the next track, or loop to the beginning
+            currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.length;
+            music.src = musicPlaylist[currentTrackIndex];
+            music.play();
+        });
+        // --- END NEW ---
     },
     
     _drawInstructions: function() {
