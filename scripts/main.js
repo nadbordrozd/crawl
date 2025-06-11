@@ -114,7 +114,7 @@ var Game = {
         // --- NEW Music Controls ---
         var music = document.getElementById("game-music");
         var musicButton = document.getElementById("music-toggle-button");
-        var musicPlaylist = ["music/tavern.mp3", "music/freak.mp3"]; // Your playlist
+        var musicPlaylist = ["music/tavern.mp3", "music/prism.mp3", "departures.mp3", "lifeline.mp3", "footprints.mp3", "sunken_days.mp3", "roadway.mp3"]; // Your playlist
         var currentTrackIndex = 0;
         
         music.volume = 0.3; // Set a reasonable volume
