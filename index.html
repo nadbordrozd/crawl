@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Vibe Crawler</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="preload" href="assets/tileset.png" as="image">
         <script src="https://cdn.jsdelivr.net/npm/rot-js@2/dist/rot.js"></script>
     </head>
     <body>
@@ -21,10 +22,14 @@
             <div id="instructions-container">
                 <!-- Instructions display will be added here -->
             </div>
+            <!-- New sprite test canvas -->
+            <canvas id="sprite-test-canvas" width="160" height="160" style="display:block; margin-top:20px; border:1px solid #444;"></canvas>
         </div>
+        <script src="scripts/sprites.js"></script>
         <script src="scripts/being.js"></script>
-        <script src="scripts/items.js"></script>
+        <script src="scripts/player.js"></script>
         <script src="scripts/enemies.js"></script>
+        <script src="scripts/items.js"></script>
         <script src="scripts/levels.js"></script>
         <script src="scripts/main.js"></script>
     </body>
