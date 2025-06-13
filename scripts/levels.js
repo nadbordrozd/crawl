@@ -18,6 +18,10 @@ Level.prototype.validTile = function(x, y) {
     return x >= 0 && x < this.MAP_WIDTH && y >= 0 && y < this.MAP_HEIGHT;
 }
 
+Level.prototype.isPassable = function(x, y) {
+    return this.validTile(x, y) && this.map[x][y].passable;
+}
+
 // Generate the complete level (map + enemies + items)
 Level.prototype.generate = function() {
     this._generateMap();
@@ -39,7 +43,7 @@ Level.prototype._generateMap = function() {
         this.map[x] = [];
         for (var y = 0; y < H; y++) {
             // All tiles start as walls
-            this.map[x][y] = { terrain: '#', explored: false, being: null, item: null };
+            this.map[x][y] = { terrain: '#', explored: false, being: null, item: null, passable: false };
         }
     }
     
@@ -54,7 +58,8 @@ Level.prototype._generateMap = function() {
             terrain: ".",
             being: null,
             item: null,
-            explored: false
+            explored: false,
+            passable: true
         };
         freeCells.push({x: x, y: y});
     }

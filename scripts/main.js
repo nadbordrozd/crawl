@@ -346,9 +346,9 @@ var Game = {
         return this.currentLevel.validTile(x, y);
     },
     
-    // NEW: Helper function to check if a tile is passable (i.e., within map bounds and not a wall)
+    // NEW: Helper function to check if a tile is passable by delegating to the current level
     isPassableTile: function(x, y) {
-        return this.currentLevel.map[x] && this.currentLevel.map[x][y] && this.currentLevel.map[x][y].terrain !== '#';
+        return this.currentLevel.isPassable(x, y);
     },
     
     // Helper function to check if a position is occupied
