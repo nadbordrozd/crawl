@@ -7,7 +7,7 @@ var Item = function(x, y, char, name, color) {
     this._color = color || "white";
     
     // Add this item to the map only if coordinates are valid
-    if (x !== undefined && y !== undefined && Game.isValidTile(x, y)) {
+    if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
         Game.currentLevel.map[x][y].item = this;
     }
 }

@@ -5,7 +5,6 @@ var Level = function() {
     this.MAP_HEIGHT = 25;
     
     this.map = [];
-    this.explored = [];
 
     // Enemy counts - to be defined by subclasses
     this.enemyCounts = {};
@@ -29,15 +28,13 @@ Level.prototype.generate = function() {
 Level.prototype._generateMap = function() {
     var W = this.MAP_WIDTH;
     var H = this.MAP_HEIGHT;
-    // Initialize 2D arrays for map and explored status
+    // Initialize 2D array for map
     this.map = [];
-    this.explored = []; // NEW: Keep track of explored tiles
     for (var x = 0; x < W; x++) {
         this.map[x] = [];
-        this.explored[x] = [];
         for (var y = 0; y < H; y++) {
-            this.map[x][y] = null; // Represents a wall
-            this.explored[x][y] = false; // All tiles start unexplored
+            // All tiles start as walls
+            this.map[x][y] = { terrain: '#', explored: false, being: null, item: null };
         }
     }
     
@@ -47,10 +44,12 @@ Level.prototype._generateMap = function() {
     var digCallback = function(x, y, value) {
         if (value) { return; }
         
+        // Carve out a floor tile
         this.map[x][y] = {
             terrain: ".",
             being: null,
-            item: null
+            item: null,
+            explored: false
         };
         freeCells.push({x: x, y: y});
     }

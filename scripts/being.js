@@ -7,7 +7,7 @@ var Being = function(x, y) {
     this._name = "being"; // Default name
     
     // Add this being to the map only if coordinates are valid
-    if (x !== undefined && y !== undefined && Game.isValidTile(x, y)) {
+    if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
         Game.currentLevel.map[x][y].being = this;
     }
 }
@@ -26,7 +26,7 @@ Being.prototype._draw = function() {
 // Method to move a being and update map tracking
 Being.prototype._moveTo = function(newX, newY) {
     // Remove from old position
-    if (Game.isValidTile(this._x, this._y)) {
+    if (Game.isPassableTile(this._x, this._y)) {
         Game.currentLevel.map[this._x][this._y].being = null;
     }
     
@@ -44,7 +44,7 @@ Being.prototype._moveTo = function(newX, newY) {
     this._y = newY;
     
     // Add to new position
-    if (Game.isValidTile(this._x, this._y)) {
+    if (Game.isPassableTile(this._x, this._y)) {
         Game.currentLevel.map[this._x][this._y].being = this;
     }
 }

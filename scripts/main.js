@@ -82,7 +82,7 @@ var Game = {
         
         // --- NEW FOV Initialization ---
         var fovPassableCallback = function(x, y) {
-            return Game.isValidTile(x, y);
+            return Game.isPassableTile(x, y);
         }
         this.fov = new ROT.FOV.PreciseShadowcasting(fovPassableCallback);
         // --- END NEW ---
@@ -190,9 +190,9 @@ var Game = {
         var self = this;
         this.fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
             self.visibleCells[x+","+y] = true;
-            // Ensure the explored array is initialized for this coordinate
-            if (!self.currentLevel.explored[x]) { self.currentLevel.explored[x] = []; }
-            self.currentLevel.explored[x][y] = true;
+            if (self.currentLevel.map[x] && self.currentLevel.map[x][y]) {
+                self.currentLevel.map[x][y].explored = true;
+            }
         });
 
         // Draw the map by drawing each tile
@@ -204,13 +204,13 @@ var Game = {
     },
     
     _drawTile: function(x, y) {
-        if (!this.currentLevel.explored[x] || !this.currentLevel.explored[x][y]) { return; }
-
         var tile = this.currentLevel.map[x][y];
+        if (!tile.explored) { return; }
+
         var isVisible = this.visibleCells[x+","+y];
 
         // If it's a wall
-        if (!tile) {
+        if (tile.terrain === '#') {
             if (isVisible) {
                 this.display.draw(x, y, "#", "#ffffff"); // Bright wall
             } else {
@@ -342,24 +342,24 @@ var Game = {
         Game.display.drawText(x, y, msg);
     },
     
-    // NEW: Helper function to check if a tile is valid (i.e., within map bounds and not a wall)
-    isValidTile: function(x, y) {
-        return this.currentLevel.map[x] && this.currentLevel.map[x][y];
+    // NEW: Helper function to check if a tile is passable (i.e., within map bounds and not a wall)
+    isPassableTile: function(x, y) {
+        return this.currentLevel.map[x] && this.currentLevel.map[x][y] && this.currentLevel.map[x][y].terrain !== '#';
     },
     
     // Helper function to check if a position is occupied
     _isOccupied: function(x, y) {
-        return this.isValidTile(x, y) && this.currentLevel.map[x][y].being !== null;
+        return this.isPassableTile(x, y) && this.currentLevel.map[x][y].being !== null;
     },
     
     // Helper function to get the being at a position
     getBeingAt: function(x, y) {
-        return this.isValidTile(x, y) ? this.currentLevel.map[x][y].being : null;
+        return (this.isPassableTile(x, y)) ? this.currentLevel.map[x][y].being : null;
     },
     
     // Helper function to get the item at a position
     getItemAt: function(x, y) {
-        return this.isValidTile(x, y) ? this.currentLevel.map[x][y].item : null;
+        return (this.isPassableTile) ? this.currentLevel.map[x][y].item : null;
     },
     
     // Add a method to Game to debug the current state

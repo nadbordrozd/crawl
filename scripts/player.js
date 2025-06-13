@@ -145,7 +145,7 @@ Player.prototype.handleEvent = function(e) {
     var dir = ROT.DIRS[8][keyMap[code]];
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
-    if (!Game.isValidTile(newX, newY)) { return; }
+    if (!Game.isPassableTile(newX, newY)) { return; }
 
     // Check for enemies at the target position
     var targetEnemy = Game.getBeingAt(newX, newY);

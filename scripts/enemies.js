@@ -15,7 +15,7 @@ Assassin.prototype.act = function() {
     var y = Game.player.getY();
 
     var passableCallback = function(x, y) {
-        return Game.isValidTile(x, y);
+        return Game.isPassableTile(x, y);
     }
     var astar = new ROT.Path.AStar(x, y, passableCallback, {topology:4});
 
@@ -86,7 +86,7 @@ Frog.prototype.act = function() {
         
         
         // Skip if intermediate or destination tiles are impassable
-        if (!Game.isValidTile(midX, midY) || !Game.isValidTile(newX, newY)) {
+        if (!Game.isPassableTile(midX, midY) || !Game.isPassableTile(newX, newY)) {
             continue;
         }
         
@@ -154,7 +154,7 @@ Rat.prototype.act = function() {
         var newKey = newX + "," + newY;
         
         // Check if the tile is passable
-        if (!Game.isValidTile(newX, newY)) {
+        if (!Game.isPassableTile(newX, newY)) {
             continue; // Skip impassable tiles
         }
         
@@ -284,7 +284,7 @@ MadFrog.prototype._tryJump = function(dir) {
     
     
     // Skip if intermediate or destination tiles are impassable
-    if (!Game.isValidTile(midX, midY) || !Game.isValidTile(newX, newY)) {
+    if (!Game.isPassableTile(midX, midY) || !Game.isPassableTile(newX, newY)) {
         return false;
     }
     
@@ -393,7 +393,7 @@ MadRat.prototype._tryMove = function(dir) {
     var newY = this._y + dir[1];
     
     // Check if the tile is passable
-    if (!Game.isValidTile(newX, newY)) {
+    if (!Game.isPassableTile(newX, newY)) {
         return false; // Impassable tile
     }
     
