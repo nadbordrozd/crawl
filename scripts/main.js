@@ -179,6 +179,8 @@ var Game = {
     _drawAll: function() {
         this._drawMapAndFov();
         this._drawStats();
+
+        if(GameV2.currentLevel){GameV2._drawMap();}
     },
 
     _drawMapAndFov: function() {
@@ -210,7 +212,7 @@ var Game = {
         var isVisible = this.currentLevel.visibleCells[x+","+y];
 
         // If it's a wall
-        if (tile.terrain === '#') {
+        if (!tile.passable) {
             if (isVisible) {
                 this.display.draw(x, y, "#", "#ffffff"); // Bright wall
             } else {
@@ -234,7 +236,7 @@ var Game = {
                 displayChar = item.getChar();
                 displayColor = item._color;
             } else {
-                displayChar = tile.terrain;
+                displayChar = '.';
                 displayColor = "#ffffff"; // Bright color for visible terrain
             }
         } else {
@@ -244,7 +246,7 @@ var Game = {
                 displayChar = item.getChar();
                 displayColor = "#808080"; // Dim gray for memory
             } else {
-                displayChar = tile.terrain;
+                displayChar = '.';
                 displayColor = "#808080"; // Dim gray for memory
             }
         }
@@ -444,10 +446,15 @@ var GameV2 = {
     },
 
     _drawTile: function(x, y) {
-        // This method always draws the 'shield' tile.
-        // It assumes that the SPRITES object in sprites.js contains a mapping
-        // for the "S" character to the shield tile coordinates. e.g. "S": [x, y]
-        this.display.draw(x, y, "shield");
+        // Get the terrain from the corresponding tile in the main Game's map
+        var tile = Game.currentLevel.map[x][y];
+        this.display.draw(x, y, tile.terrain);
+        if (tile.item) {
+            this.display.draw(x, y, tile.item._sprite);
+        }
+        if (tile.being) {
+            this.display.draw(x, y, tile.being._sprite)
+        }
     }
 };
 

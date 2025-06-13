@@ -5,6 +5,7 @@ var Being = function(x, y) {
     this._health = 1; // Default health value
     this._strength = 1; // Default strength value
     this._name = "being"; // Default name
+    this._sprite = "placeholder";
     
     // Add this being to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {

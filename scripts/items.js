@@ -1,10 +1,11 @@
 // Base Item class
-var Item = function(x, y, char, name, color) {
+var Item = function(x, y, char, name, color, sprite) {
     this._x = x;
     this._y = y;
     this._name = name || "item";
     this._char = char || "?";
     this._color = color || "white";
+    this._sprite = sprite || "placeholder";
     
     // Add this item to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
@@ -43,7 +44,7 @@ Item.prototype._removeFromMap = function() {
 
 // HealthPotion class - inherits from Item
 var HealthPotion = function(x, y) {
-    Item.call(this, x, y, "♥", "health potion", "red");
+    Item.call(this, x, y, "♥", "health potion", "red", "health_potion");
 }
 HealthPotion.prototype = Object.create(Item.prototype);
 HealthPotion.prototype.constructor = HealthPotion;
@@ -81,7 +82,7 @@ GoldKey.prototype.pickup = function(player) {
 
 // Bomb class - inherits from Item
 var Bomb = function(x, y) {
-    Item.call(this, x, y, "💣", "bomb", "red");
+    Item.call(this, x, y, "💣", "bomb", "red", "bomb");
     this._blastRadius = 3; // Blast radius (3 = 7x7 square)
 }
 Bomb.prototype = Object.create(Item.prototype);
@@ -130,7 +131,7 @@ Bomb.prototype.pickup = function(player) {
 
 // Exit class - inherits from Item
 var Exit = function(x, y) {
-    Item.call(this, x, y, "🔒", "exit", "yellow");
+    Item.call(this, x, y, "🔒", "exit", "yellow", "gate");
 }
 Exit.prototype = Object.create(Item.prototype);
 Exit.prototype.constructor = Exit;
@@ -149,7 +150,7 @@ Exit.prototype.pickup = function(player) {
 
 // StoneSkinPotion item: grants temporary invulnerability
 var StoneSkinPotion = function(x, y) {
-    Item.call(this, x, y, "🛡️", "StoneSkin Potion", "cyan");
+    Item.call(this, x, y, "🛡️", "StoneSkin Potion", "cyan", "shield");
 };
 StoneSkinPotion.prototype = Object.create(Item.prototype);
 StoneSkinPotion.prototype.constructor = StoneSkinPotion;
@@ -165,7 +166,7 @@ StoneSkinPotion.prototype.pickup = function(player) {
 
 // SpeedPotion item: grants temporary speed boost
 var SpeedPotion = function(x, y) {
-    Item.call(this, x, y, "»", "Speed Potion", "lightgreen");
+    Item.call(this, x, y, "»", "Speed Potion", "lightgreen", 'speed_potion');
 };
 SpeedPotion.prototype = Object.create(Item.prototype);
 SpeedPotion.prototype.constructor = SpeedPotion;
@@ -181,7 +182,7 @@ SpeedPotion.prototype.pickup = function(player) {
 
 // GoldCoin item: collectible currency
 var GoldCoin = function(x, y) {
-    Item.call(this, x, y, "✪", "gold coin", "gold");
+    Item.call(this, x, y, "✪", "gold coin", "gold", "coin");
 };
 GoldCoin.prototype = Object.create(Item.prototype);
 GoldCoin.prototype.constructor = GoldCoin;

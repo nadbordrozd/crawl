@@ -6,6 +6,7 @@ var Player = function(x, y) {
     this._name = "player";
     this._char = "@";
     this._color = "#ff0";
+    this._sprite = "player";
     this._status = "bored"; // Player's current status
     this._isInvulnerable = false;
     this._invulnerabilityTurns = 0;

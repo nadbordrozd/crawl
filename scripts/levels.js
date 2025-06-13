@@ -43,7 +43,7 @@ Level.prototype._generateMap = function() {
         this.map[x] = [];
         for (var y = 0; y < H; y++) {
             // All tiles start as walls
-            this.map[x][y] = { terrain: '#', explored: false, being: null, item: null, passable: false };
+            this.map[x][y] = { terrain: 'wall', explored: false, being: null, item: null, passable: false };
         }
     }
     
@@ -55,7 +55,7 @@ Level.prototype._generateMap = function() {
         
         // Carve out a floor tile
         this.map[x][y] = {
-            terrain: ".",
+            terrain: "floor",
             being: null,
             item: null,
             explored: false,
