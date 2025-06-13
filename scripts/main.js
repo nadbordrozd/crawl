@@ -186,10 +186,10 @@ var Game = {
         var player = this.player;
 
         // Compute FOV and update the cache
-        this.visibleCells = {};
+        this.currentLevel.visibleCells = {};
         var self = this;
         this.fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
-            self.visibleCells[x+","+y] = true;
+            self.currentLevel.visibleCells[x+","+y] = true;
             if (self.currentLevel.map[x] && self.currentLevel.map[x][y]) {
                 self.currentLevel.map[x][y].explored = true;
             }
@@ -207,7 +207,7 @@ var Game = {
         var tile = this.currentLevel.map[x][y];
         if (!tile.explored) { return; }
 
-        var isVisible = this.visibleCells[x+","+y];
+        var isVisible = this.currentLevel.visibleCells[x+","+y];
 
         // If it's a wall
         if (tile.terrain === '#') {
@@ -340,6 +340,10 @@ var Game = {
         var x = Math.floor((this.currentLevel.MAP_WIDTH - (msg.length - 9)) / 2);
         var y = Math.floor(this.currentLevel.MAP_HEIGHT / 2);
         Game.display.drawText(x, y, msg);
+    },
+    
+    isValidTile: function(x, y) {
+        return this.currentLevel.validTile(x, y);
     },
     
     // NEW: Helper function to check if a tile is passable (i.e., within map bounds and not a wall)

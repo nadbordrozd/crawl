@@ -5,12 +5,17 @@ var Level = function() {
     this.MAP_HEIGHT = 25;
     
     this.map = [];
+    this.visibleCells = {};
 
     // Enemy counts - to be defined by subclasses
     this.enemyCounts = {};
     
     // Item counts - to be defined by subclasses  
     this.itemCounts = {};
+}
+
+Level.prototype.validTile = function(x, y) {
+    return x >= 0 && x < this.MAP_WIDTH && y >= 0 && y < this.MAP_HEIGHT;
 }
 
 // Generate the complete level (map + enemies + items)
