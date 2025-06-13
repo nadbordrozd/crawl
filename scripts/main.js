@@ -14,7 +14,6 @@ const KEY_CODES = {
 var Game = {
     
     display: null,
-    map: {},
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
@@ -25,7 +24,6 @@ var Game = {
     instructionsDisplay: null,
     messageHistory: [],
     fov: null, // NEW: Field of Vision object
-    explored: [], // NEW: 2D array to track explored tiles
     FOV_RADIUS: 7,
     visibleCells: {}, // NEW: Cache for visible cells, updated each turn
     
@@ -193,8 +191,8 @@ var Game = {
         this.fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
             self.visibleCells[x+","+y] = true;
             // Ensure the explored array is initialized for this coordinate
-            if (!self.explored[x]) { self.explored[x] = []; }
-            self.explored[x][y] = true;
+            if (!self.currentLevel.explored[x]) { self.currentLevel.explored[x] = []; }
+            self.currentLevel.explored[x][y] = true;
         });
 
         // Draw the map by drawing each tile
@@ -206,9 +204,9 @@ var Game = {
     },
     
     _drawTile: function(x, y) {
-        if (!this.explored[x] || !this.explored[x][y]) { return; }
+        if (!this.currentLevel.explored[x] || !this.currentLevel.explored[x][y]) { return; }
 
-        var tile = this.map[x][y];
+        var tile = this.currentLevel.map[x][y];
         var isVisible = this.visibleCells[x+","+y];
 
         // If it's a wall
@@ -312,8 +310,6 @@ var Game = {
         }
         
         // Clear data from the previous level
-        this.map = [];       // Use array for map
-        this.explored = [];  // Use array for explored tiles
         this.enemies = [];
         
         // Reset player's keys for the new level
@@ -348,22 +344,22 @@ var Game = {
     
     // NEW: Helper function to check if a tile is valid (i.e., within map bounds and not a wall)
     isValidTile: function(x, y) {
-        return this.map[x] && this.map[x][y];
+        return this.currentLevel.map[x] && this.currentLevel.map[x][y];
     },
     
     // Helper function to check if a position is occupied
     _isOccupied: function(x, y) {
-        return this.isValidTile(x, y) && this.map[x][y].being !== null;
+        return this.isValidTile(x, y) && this.currentLevel.map[x][y].being !== null;
     },
     
     // Helper function to get the being at a position
     getBeingAt: function(x, y) {
-        return this.isValidTile(x, y) ? this.map[x][y].being : null;
+        return this.isValidTile(x, y) ? this.currentLevel.map[x][y].being : null;
     },
     
     // Helper function to get the item at a position
     getItemAt: function(x, y) {
-        return this.isValidTile(x, y) ? this.map[x][y].item : null;
+        return this.isValidTile(x, y) ? this.currentLevel.map[x][y].item : null;
     },
     
     // Add a method to Game to debug the current state
@@ -375,7 +371,6 @@ var Game = {
 
 var GameV2 = {
     display: null,
-    map: {},
     engine: null,
     player: null,
     enemies: [],
@@ -386,13 +381,11 @@ var GameV2 = {
     instructionsDisplay: null,
     messageHistory: [],
     fov: null,
-    explored: [],
     FOV_RADIUS: 7,
     visibleCells: {},
 
     init: function() {
         // Copy properties from the initialized Game object
-        this.map = Game.map;
         this.engine = Game.engine;
         this.player = Game.player;
         this.enemies = Game.enemies;
@@ -403,7 +396,6 @@ var GameV2 = {
         this.instructionsDisplay = Game.instructionsDisplay;
         this.messageHistory = Game.messageHistory;
         this.fov = Game.fov;
-        this.explored = Game.explored;
         this.FOV_RADIUS = Game.FOV_RADIUS;
         this.visibleCells = Game.visibleCells;
 

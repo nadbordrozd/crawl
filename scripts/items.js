@@ -8,7 +8,7 @@ var Item = function(x, y, char, name, color) {
     
     // Add this item to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isValidTile(x, y)) {
-        Game.map[x][y].item = this;
+        Game.currentLevel.map[x][y].item = this;
     }
 }
 
@@ -33,7 +33,7 @@ Item.prototype.pickup = function(player) {
 
 // Helper method to remove item from map
 Item.prototype._removeFromMap = function() {
-    var tile = Game.map[this._x][this._y];
+    var tile = Game.currentLevel.map[this._x][this._y];
     if (tile) {
         tile.item = null;
     }

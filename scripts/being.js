@@ -8,7 +8,7 @@ var Being = function(x, y) {
     
     // Add this being to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isValidTile(x, y)) {
-        Game.map[x][y].being = this;
+        Game.currentLevel.map[x][y].being = this;
     }
 }
 
@@ -27,11 +27,11 @@ Being.prototype._draw = function() {
 Being.prototype._moveTo = function(newX, newY) {
     // Remove from old position
     if (Game.isValidTile(this._x, this._y)) {
-        Game.map[this._x][this._y].being = null;
+        Game.currentLevel.map[this._x][this._y].being = null;
     }
     
     // Clear old position on display - redraw terrain and any items
-    var oldTile = Game.map[this._x][this._y];
+    var oldTile = Game.currentLevel.map[this._x][this._y];
     Game.display.draw(this._x, this._y, oldTile.terrain);
     
     // If there's an item on the old position, redraw it
@@ -45,7 +45,7 @@ Being.prototype._moveTo = function(newX, newY) {
     
     // Add to new position
     if (Game.isValidTile(this._x, this._y)) {
-        Game.map[this._x][this._y].being = this;
+        Game.currentLevel.map[this._x][this._y].being = this;
     }
 }
 
@@ -56,7 +56,7 @@ Being.prototype.setPosition = function(x, y) {
     this._y = y;
     
     // Update the being's position on the map
-    Game.map[x][y].being = this;
+    Game.currentLevel.map[x][y].being = this;
 }
 
 // Take damage from an attacker
@@ -79,7 +79,7 @@ Being.prototype.takeDamage = function(damage) {
 // Add die method to base Being class
 Being.prototype.die = function() {
     // Remove from map tracking
-    var tile = Game.map[this._x][this._y];
+    var tile = Game.currentLevel.map[this._x][this._y];
     if (tile) {
         tile.being = null;
     }

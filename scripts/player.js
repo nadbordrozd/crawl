@@ -216,7 +216,7 @@ Player.prototype._checkSurroundings = function(newX, newY) {
 
 // Method to check for items at the player's current position
 Player.prototype._checkForItems = function() {
-    var item = Game.map[this._x][this._y].item;
+    var item = Game.currentLevel.map[this._x][this._y].item;
     
     if (item) {
         // Pick up the item

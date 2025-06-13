@@ -84,9 +84,6 @@ Frog.prototype.act = function() {
         var midX = this._x + dir[0]/2;
         var midY = this._y + dir[1]/2;
         
-        // Check if both intermediate and destination tiles are valid
-        var midTile = Game.map[midX] && Game.map[midX][midY];
-        var newTile = Game.map[newX] && Game.map[newX][newY];
         
         // Skip if intermediate or destination tiles are impassable
         if (!Game.isValidTile(midX, midY) || !Game.isValidTile(newX, newY)) {
@@ -285,9 +282,6 @@ MadFrog.prototype._tryJump = function(dir) {
     var midX = this._x + dir[0]/2;
     var midY = this._y + dir[1]/2;
     
-    // Check if both intermediate and destination tiles are valid
-    var midTile = Game.map[midX] && Game.map[midX][midY];
-    var newTile = Game.map[newX] && Game.map[newX][newY];
     
     // Skip if intermediate or destination tiles are impassable
     if (!Game.isValidTile(midX, midY) || !Game.isValidTile(newX, newY)) {
