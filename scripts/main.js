@@ -373,6 +373,87 @@ var Game = {
     }
 };
 
+var GameV2 = {
+    display: null,
+    map: {},
+    engine: null,
+    player: null,
+    enemies: [],
+    levelNumber: 1,
+    currentLevel: null,
+    statsDisplay: null,
+    messageDisplay: null,
+    instructionsDisplay: null,
+    messageHistory: [],
+    fov: null,
+    explored: [],
+    FOV_RADIUS: 7,
+    visibleCells: {},
+
+    init: function() {
+        // Copy properties from the initialized Game object
+        this.map = Game.map;
+        this.engine = Game.engine;
+        this.player = Game.player;
+        this.enemies = Game.enemies;
+        this.levelNumber = Game.levelNumber;
+        this.currentLevel = Game.currentLevel;
+        this.statsDisplay = Game.statsDisplay;
+        this.messageDisplay = Game.messageDisplay;
+        this.instructionsDisplay = Game.instructionsDisplay;
+        this.messageHistory = Game.messageHistory;
+        this.fov = Game.fov;
+        this.explored = Game.explored;
+        this.FOV_RADIUS = Game.FOV_RADIUS;
+        this.visibleCells = Game.visibleCells;
+
+        // Since sprites.js is not provided, we assume it defines a global 'tileMap' variable.
+        // You must create sprites.js and ensure it's loaded before this script in your HTML.
+        // Example tileMap in sprites.js:
+        // var tileMap = { ".": [0,0], "#": [16,0], "@": [32,0] };
+
+        var tileSet = document.createElement("img");
+        tileSet.src = "assets/tileset.png"; // Assumes tileset is in an 'assets' directory
+
+        tileSet.onload = function() {
+            this.display = new ROT.Display({
+                width: this.currentLevel.MAP_WIDTH,
+                height: this.currentLevel.MAP_HEIGHT,
+                layout: "tile",
+                tileWidth: 16,
+                tileHeight: 16,
+                tileSet: tileSet,
+                tileMap: SPRITES // This variable must be defined in sprites.js
+            });
+
+            // Add the new display to the main game container
+            var container = document.getElementById("game-container");
+            var newContainer = this.display.getContainer();
+            newContainer.className = "game-v2-display";
+            container.appendChild(newContainer);
+
+            // Draw the map
+            this._drawMap();
+
+        }.bind(this);
+    },
+
+    _drawMap: function() {
+        // Draw the shield tile over the whole display
+        for (var x = 0; x < this.currentLevel.MAP_WIDTH; x++) {
+            for (var y = 0; y < this.currentLevel.MAP_HEIGHT; y++) {
+                this._drawTile(x, y);
+            }
+        }
+    },
+
+    _drawTile: function(x, y) {
+        // This method always draws the 'shield' tile.
+        // It assumes that the SPRITES object in sprites.js contains a mapping
+        // for the "S" character to the shield tile coordinates. e.g. "S": [x, y]
+        this.display.draw(x, y, "shield");
+    }
+};
+
 Game.init();
-
-
+GameV2.init();
