@@ -377,6 +377,8 @@ var Game = {
 
 var GameV2 = {
     display: null,
+    zoomLevel: 1.4, // Change this value to zoom more or less
+    map: {},
     engine: null,
     player: null,
     enemies: [],
@@ -429,6 +431,10 @@ var GameV2 = {
             var newContainer = this.display.getContainer();
             newContainer.className = "game-v2-display";
             container.appendChild(newContainer);
+
+            // Apply zoom via CSS transform
+            newContainer.style.transform = "scale(" + this.zoomLevel + ")";
+            newContainer.style.transformOrigin = "top left";
 
             // Draw the map
             this._drawMap();
