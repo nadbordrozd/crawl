@@ -63,7 +63,7 @@ HealthPotion.prototype.pickup = function(player) {
 
 // GoldKey class - inherits from Item
 var GoldKey = function(x, y) {
-    Item.call(this, x, y, "🗝️", "gold key", "gold");
+    Item.call(this, x, y, "🗝️", "gold key", "gold", "key");
 }
 GoldKey.prototype = Object.create(Item.prototype);
 GoldKey.prototype.constructor = GoldKey;

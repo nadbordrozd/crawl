@@ -187,22 +187,22 @@ Rat.prototype.act = function() {
     // If no valid moves found, rat stays in place (skips turn)
 }
 
-// Snail class inherits from Being
-var Snail = function(x, y) {
+// CarnivorousPlant class inherits from Being
+var CarnivorousPlant = function(x, y) {
     Being.call(this, x, y);
     this._health = 1; // Enemy health
     this._strength = 1; // Enemy strength
-    this._name = "snail";
-    this._char = "s";
-    this._color = "#8B4513"; // Brown color
+    this._name = "Carnivorous Plant";
+    this._char = "C";
+    this._color = "darkgreen";
     this._sprite = "audrey_2";
 }
-Snail.prototype = Object.create(Being.prototype);
-Snail.prototype.constructor = Snail;
+CarnivorousPlant.prototype = Object.create(Being.prototype);
+CarnivorousPlant.prototype.constructor = CarnivorousPlant;
 
-// Snail doesn't move or do anything in its turn
-Snail.prototype.act = function() {
-    // Snails just sit there doing nothing
+// CarnivorousPlant doesn't move or do anything in its turn
+CarnivorousPlant.prototype.act = function() {
+    // It just sits there doing nothing
 }
 
 // MadFrog class inherits from Being
@@ -318,20 +318,20 @@ MadFrog.prototype._tryJump = function(dir) {
     return true; // Successfully moved
 }
 
-// MadRat class inherits from Being
-var MadRat = function(x, y) {
+// Scorpion class inherits from Being
+var Scorpion = function(x, y) {
     Being.call(this, x, y);
     this._health = 1; // Enemy health
     this._strength = 1; // Enemy strength
-    this._name = "mad rat";
-    this._char = "r";
-    this._color = "red"; // Red color to distinguish from regular rats
+    this._name = "scorpion";
+    this._char = "S";
+    this._color = "orange";
     this._sprite = "scorpion";
 }
-MadRat.prototype = Object.create(Being.prototype);
-MadRat.prototype.constructor = MadRat;
+Scorpion.prototype = Object.create(Being.prototype);
+Scorpion.prototype.constructor = Scorpion;
 
-MadRat.prototype.act = function() {
+Scorpion.prototype.act = function() {
     if (!Game.player) return; // No player to chase
     
     // Possible movement directions: up, right, down, left
@@ -394,7 +394,7 @@ MadRat.prototype.act = function() {
     // If no valid moves found, mad rat stays in place (skips turn)
 }
 
-MadRat.prototype._tryMove = function(dir) {
+Scorpion.prototype._tryMove = function(dir) {
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
     
@@ -409,7 +409,7 @@ MadRat.prototype._tryMove = function(dir) {
     // If the destination is the player, attack but don't move.
     if (targetBeing === Game.player) {
         this._flash();
-        Game.message("A mad rat bites you viciously!");
+        Game.message("A Scorpion stings you viciously!");
         Game.player.takeDamage(this._strength);
         Game.message("The " + this.getName() + " attacks you for " + this._strength + " damage!");
         Game._drawStats();

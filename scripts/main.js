@@ -170,7 +170,7 @@ var Game = {
         y++;
 
         d.drawText(0, y++, "%c{white}--- Enemies (Bad!) ---");
-        var enemies = [new Assassin(), new Frog(), new Rat(), new Snail(), new MadFrog(), new MadRat()];
+        var enemies = [new Assassin(), new Frog(), new Rat(), new CarnivorousPlant(), new MadFrog(), new Scorpion()];
         enemies.forEach(function(enemy) {
             d.drawText(1, y++, `%c{${enemy._color}}${enemy._char}%c{white} : ${enemy._name}`);
         });

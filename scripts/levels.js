@@ -224,9 +224,9 @@ Level.prototype._createEnemies = function(freeCells) {
         Game.enemies.push(this._createBeing(Rat, freeCells));
     }
     
-    // Create snails
-    for (var i = 0; i < this.enemyCounts.SNAIL; i++) {
-        Game.enemies.push(this._createBeing(Snail, freeCells));
+    // Create Carnivorous Plants
+    for (var i = 0; i < this.enemyCounts.CARNIVOROUS_PLANT; i++) {
+        Game.enemies.push(this._createBeing(CarnivorousPlant, freeCells));
     }
     
     // Create mad frogs
@@ -234,9 +234,9 @@ Level.prototype._createEnemies = function(freeCells) {
         Game.enemies.push(this._createBeing(MadFrog, freeCells));
     }
     
-    // Create mad rats
-    for (var i = 0; i < this.enemyCounts.MADRAT; i++) {
-        Game.enemies.push(this._createBeing(MadRat, freeCells));
+    // Create Scorpions
+    for (var i = 0; i < this.enemyCounts.SCORPION; i++) {
+        Game.enemies.push(this._createBeing(Scorpion, freeCells));
     }
 }
 
@@ -281,9 +281,9 @@ var Level1 = function() {
         ASSASSIN: 2,
         FROG: 5,
         RAT: 5,
-        SNAIL: 1,
+        CARNIVOROUS_PLANT: 1,
         MADFROG: 4,
-        MADRAT: 4
+        SCORPION: 4
     };
     
     // Define item counts for Level 1
@@ -309,9 +309,9 @@ var Level2 = function() {
         ASSASSIN: 4,
         FROG: 5,
         RAT: 5,
-        SNAIL: 1,
+        CARNIVOROUS_PLANT: 1,
         MADFROG: 6,
-        MADRAT: 6
+        SCORPION: 6
     };
     
     // Define item counts for Level 1
@@ -337,9 +337,9 @@ var Level3 = function() {
         ASSASSIN: 8,
         FROG: 5,
         RAT: 5,
-        SNAIL: 1,
+        CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
-        MADRAT: 8
+        SCORPION: 8
     };
     
     // Define item counts for Level 1
@@ -367,9 +367,9 @@ var Level4 = function() {
         ASSASSIN: 16,
         FROG: 5,
         RAT: 5,
-        SNAIL: 1,
+        CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
-        MADRAT: 8
+        SCORPION: 8
     };
     
     // Define item counts for Level 1
@@ -396,9 +396,9 @@ var Level5 = function() {
         ASSASSIN: 32,
         FROG: 5,
         RAT: 5,
-        SNAIL: 1,
+        CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
-        MADRAT: 8
+        SCORPION: 8
     };
     
     // Define item counts for Level 1
