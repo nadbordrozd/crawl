@@ -22,6 +22,114 @@ Level.prototype.isPassable = function(x, y) {
     return this.validTile(x, y) && this.map[x][y].passable;
 }
 
+Level.prototype.prettifyTerrain = function() {
+    for (var x = 0; x < this.MAP_WIDTH; x++) {
+        for (var y = 0; y < this.MAP_HEIGHT; y++) {
+            var tile = this.map[x][y];
+            if(tile.passable){
+                continue;
+            }
+            // 789
+            // 456
+            // 123
+
+            var passable7 = this.isPassable(x-1, y-1);
+            var passable8 = this.isPassable(x, y-1);
+            var passable9 = this.isPassable(x+1, y-1);
+            var passable4 = this.isPassable(x-1, y);
+            var passable5 = this.isPassable(x, y);
+            var passable6 = this.isPassable(x+1, y);
+            var passable1 = this.isPassable(x-1, y+1);
+            var passable2 = this.isPassable(x, y+1);
+            var passable3 = this.isPassable(x+1, y+1);
+
+            var wall7 = !this.isPassable(x-1, y-1);
+            var wall8 = !this.isPassable(x, y-1);
+            var wall9 = !this.isPassable(x+1, y-1);
+            var wall4 = !this.isPassable(x-1, y);
+            var wall5 = !this.isPassable(x, y);
+            var wall6 = !this.isPassable(x+1, y);
+            var wall1 = !this.isPassable(x-1, y+1);
+            var wall2 = !this.isPassable(x, y+1);
+            var wall3 = !this.isPassable(x+1, y+1);
+
+// if(wall8 && wall2 && wall4 && passable9 && passable6 && passable3 && (passable7 || passable1)){
+//     tile.terrain = "NS_wall";
+// }else 
+            
+            if((wall4 || wall6) && passable8 && passable2){
+                tile.terrain = "WE_wall";
+            } else if((wall8 || wall2) && passable4 && passable6){
+                tile.terrain = "NS_wall";
+            } else if(wall4 && wall6 && wall8 && passable7 && passable9) {
+                tile.terrain = "reverse_t_wall";
+            } else if(wall4 && wall6 && wall8 && passable2 && (passable7 || passable9)) {
+                tile.terrain = "reverse_t_wall";
+            } else if(wall4 && wall6 && wall2 && (passable1 && passable3)){
+                tile.terrain = "t_wall";
+            } else if(wall4 && wall6 && wall2 && passable8 && (passable1 || passable3)){
+                tile.terrain = "t_wall";
+            } else if((wall8 && wall6) && ((passable4 && passable2) || passable9)){
+                tile.terrain = "SW_corner";
+            } else if((wall4 && wall8) && ((passable6 && passable2) || passable7)){
+                tile.terrain = "SE_corner";
+            } else if((wall4 && wall2) && ((passable8 && passable6) || passable1)){
+                tile.terrain = "NE_corner";
+            } else if((wall6 && wall2) && ((passable4 && passable8) || passable3)){
+                tile.terrain = "NW_corner";
+            } else if(wall8 && wall2){
+                tile.terrain = "NS_wall";
+            } else {
+                tile.terrain = "WE_wall";
+            }
+
+            if(passable2 && tile.terrain == 'WE_wall'){
+                // pick a random integer number from 0 to 10
+                    var randomNumber = Math.floor(ROT.RNG.getUniform() * 10);
+                if(randomNumber == 2) {
+                    tile.terrain = "torch_wall";
+                } else if (randomNumber == 1) {
+                    tile.terrain = "grate_wall";
+                }
+            }
+        //    if(wall4 && wall8 && wall6 && wall2){
+        //         tile.terrain = "tower";
+        //     } else if(wall4 && wall8 && wall6){
+        //         tile.terrain = "reverse_t_wall";
+        //     } else if(wall4 && wall2 && wall6){
+        //         tile.terrain = "t_wall";
+        //     } else if(wall4 && wall8 && wall2){
+        //         tile.terrain = "NS_wall";
+        //     } else if(wall8 && wall6 && wall2){
+        //         tile.terrain = "NS_wall";                
+        //     }
+
+            // if (!tile.passable) { // It's a wall
+            //     var topPassable = (y > 0) && this.map[x][y-1].passable;
+            //     var bottomPassable = (y < this.MAP_HEIGHT - 1) && this.map[x][y+1].passable;
+            //     var leftPassable = (x > 0) && this.map[x-1][y].passable;
+            //     var rightPassable = (x < this.MAP_WIDTH - 1) && this.map[x+1][y].passable;
+
+            //     if (topPassable && bottomPassable) {
+            //         tile.terrain = "WE_wall";
+            //     } else if (leftPassable && rightPassable) {
+            //         tile.terrain = "NS_wall";
+            //     } else if (topPassable && rightPassable) {
+            //         tile.terrain = "NE_corner";
+            //     } else if (topPassable && leftPassable) {
+            //         tile.terrain = "NW_corner";
+            //     } else if (bottomPassable && leftPassable) {
+            //         tile.terrain = "SW_corner";
+            //     } else if (bottomPassable && rightPassable) {
+            //         tile.terrain = "SE_corner";
+            //     } else if (leftPassable || rightPassable) {
+            //         tile.terrain = "NS_wall";
+            //     }
+            // }
+        }
+    }
+}
+
 // Generate the complete level (map + enemies + items)
 Level.prototype.generate = function() {
     this._generateMap();
@@ -46,7 +154,7 @@ Level.prototype._generateMap = function() {
             this.map[x][y] = { terrain: 'wall', explored: false, being: null, item: null, passable: false };
         }
     }
-    
+    ROT.RNG.setSeed(1);
     var digger = new ROT.Map.Digger(W, H);
     var freeCells = [];
     
@@ -66,6 +174,7 @@ Level.prototype._generateMap = function() {
     digger.create(digCallback.bind(this));
     
     this.freeCells = freeCells; // Store for population
+    this.prettifyTerrain(); // Prettify the walls
 }
 
 // Populate the level with player, enemies, and items
