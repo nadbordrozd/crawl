@@ -3,6 +3,9 @@
 // Edit these values to match your actual tileset
 
 const SPRITES = {
+    transparent: [64, 32],
+    purple_background: [0, 0],
+    black_background: [16, 0],
     placeholder: [192, 540],
     wall: [96, 304],      // x, y position in the spritesheet (edit as needed)
     floor: [96, 144],    // x, y position in the spritesheet (edit as needed)

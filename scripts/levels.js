@@ -1,7 +1,7 @@
 // Base Level class
 var Level = function() {
     // Map dimensions - can be overridden by subclasses
-    this.MAP_WIDTH = 80;
+    this.MAP_WIDTH = 60;
     this.MAP_HEIGHT = 25;
     
     this.map = [];

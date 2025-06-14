@@ -377,7 +377,7 @@ var Game = {
 
 var GameV2 = {
     display: null,
-    zoomLevel: 1.4, // Change this value to zoom more or less
+    zoomLevel: 1, // Change this value to zoom more or less
     map: {},
     engine: null,
     player: null,
@@ -452,15 +452,34 @@ var GameV2 = {
     },
 
     _drawTile: function(x, y) {
-        // Get the terrain from the corresponding tile in the main Game's map
         var tile = Game.currentLevel.map[x][y];
-        this.display.draw(x, y, tile.terrain);
-        if (tile.item) {
-            this.display.draw(x, y, tile.item._sprite);
+        if (!tile.explored) { return; }
+
+        var isVisible = Game.currentLevel.visibleCells[x+","+y];
+        var spritesToDraw = [];
+
+        // Always start with the base terrain
+        spritesToDraw.push(tile.terrain);
+
+        if (isVisible) {
+            // If visible, draw items and beings on top
+            if (tile.item) {
+                spritesToDraw.push(tile.item._sprite);
+            }
+            if (tile.being) {
+                spritesToDraw.push(tile.being._sprite);
+            }
+        } else {
+            // If not visible but explored, only draw items...
+            if (tile.item) {
+                spritesToDraw.push(tile.item._sprite);
+            }
+            // ...and then the fog of war sprite over everything.
+            spritesToDraw.push('black_background');
         }
-        if (tile.being) {
-            this.display.draw(x, y, tile.being._sprite)
-        }
+        
+        // Draw all collected sprites for this tile at once
+        this.display.draw(x, y, spritesToDraw);
     }
 };
 
