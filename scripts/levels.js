@@ -27,6 +27,14 @@ Level.prototype.prettifyTerrain = function() {
         for (var y = 0; y < this.MAP_HEIGHT; y++) {
             var tile = this.map[x][y];
             if(tile.passable){
+                tile.terrain = 'dirt18';
+                if (ROT.RNG.getUniform() < 0.005) {
+                    tile.decoration = 'ribcage';
+                } else if (ROT.RNG.getUniform() < 0.005) {
+                    tile.decoration = 'bull_skull';
+                } else if (ROT.RNG.getUniform() < 0.005) {
+                    tile.decoration = 'skeleton_remains';
+                }
                 continue;
             }
             // 789
@@ -52,10 +60,7 @@ Level.prototype.prettifyTerrain = function() {
             var wall1 = !this.isPassable(x-1, y+1);
             var wall2 = !this.isPassable(x, y+1);
             var wall3 = !this.isPassable(x+1, y+1);
-
-// if(wall8 && wall2 && wall4 && passable9 && passable6 && passable3 && (passable7 || passable1)){
-//     tile.terrain = "NS_wall";
-// }else 
+ 
             
             if((wall4 || wall6) && passable8 && passable2){
                 tile.terrain = "WE_wall";
@@ -92,40 +97,8 @@ Level.prototype.prettifyTerrain = function() {
                     tile.terrain = "grate_wall";
                 }
             }
-        //    if(wall4 && wall8 && wall6 && wall2){
-        //         tile.terrain = "tower";
-        //     } else if(wall4 && wall8 && wall6){
-        //         tile.terrain = "reverse_t_wall";
-        //     } else if(wall4 && wall2 && wall6){
-        //         tile.terrain = "t_wall";
-        //     } else if(wall4 && wall8 && wall2){
-        //         tile.terrain = "NS_wall";
-        //     } else if(wall8 && wall6 && wall2){
-        //         tile.terrain = "NS_wall";                
-        //     }
 
-            // if (!tile.passable) { // It's a wall
-            //     var topPassable = (y > 0) && this.map[x][y-1].passable;
-            //     var bottomPassable = (y < this.MAP_HEIGHT - 1) && this.map[x][y+1].passable;
-            //     var leftPassable = (x > 0) && this.map[x-1][y].passable;
-            //     var rightPassable = (x < this.MAP_WIDTH - 1) && this.map[x+1][y].passable;
 
-            //     if (topPassable && bottomPassable) {
-            //         tile.terrain = "WE_wall";
-            //     } else if (leftPassable && rightPassable) {
-            //         tile.terrain = "NS_wall";
-            //     } else if (topPassable && rightPassable) {
-            //         tile.terrain = "NE_corner";
-            //     } else if (topPassable && leftPassable) {
-            //         tile.terrain = "NW_corner";
-            //     } else if (bottomPassable && leftPassable) {
-            //         tile.terrain = "SW_corner";
-            //     } else if (bottomPassable && rightPassable) {
-            //         tile.terrain = "SE_corner";
-            //     } else if (leftPassable || rightPassable) {
-            //         tile.terrain = "NS_wall";
-            //     }
-            // }
         }
     }
 }
@@ -151,7 +124,14 @@ Level.prototype._generateMap = function() {
         this.map[x] = [];
         for (var y = 0; y < H; y++) {
             // All tiles start as walls
-            this.map[x][y] = { terrain: 'wall', explored: false, being: null, item: null, passable: false };
+            this.map[x][y] = {
+                terrain: 'wall',
+                passable: false,
+                explored: false,
+                being: null,
+                item: null,
+                decoration: null
+            };
         }
     }
     ROT.RNG.setSeed(1);
