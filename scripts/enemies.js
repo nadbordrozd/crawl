@@ -30,6 +30,7 @@ Assassin.prototype.act = function() {
     
     if (path.length <= 1) { // If path is 1, we are adjacent. If 0, we are blocked.
         this._flash();
+        this.playAttackAnimation();
         Game.message("The Assassin strikes you!");
         Game.player.takeDamage(this._strength);
         Game._drawStats();
@@ -97,11 +98,10 @@ Frog.prototype.act = function() {
         
         // Check if the destination tile is occupied by the player
         if (targetBeing === Game.player) {
-            this._flash();
+            this.playAttackAnimation();
             // Attack the player!
             Game.message("A frog leaps at you and attacks!");
             Game.player.takeDamage(this._strength);
-            Game._drawStats();
             return; // End turn after attacking
         }
         
@@ -166,11 +166,10 @@ Rat.prototype.act = function() {
         
         // Check if the tile is occupied by the player
         if (targetBeing === Game.player) {
-            this._flash();
+            this.playAttackAnimation();
             // Attack the player!
             Game.message("A rat bites you!");
             Game.player.takeDamage(this._strength);
-            Game._drawStats();
             return; // End turn after attacking
         }
         
@@ -298,11 +297,10 @@ MadFrog.prototype._tryJump = function(dir) {
     
     // Check if the destination tile is occupied by the player
     if (targetBeing === Game.player) {
-        this._flash();
+        this.playAttackAnimation();
         // Attack the player!
         Game.message("A mad frog leaps at you furiously!");
         Game.player.takeDamage(this._strength);
-        Game._drawStats();
         return true; // Successfully attacked
     }
     
@@ -408,11 +406,10 @@ Scorpion.prototype._tryMove = function(dir) {
     
     // If the destination is the player, attack but don't move.
     if (targetBeing === Game.player) {
-        this._flash();
+        this.playAttackAnimation();
         Game.message("A Scorpion stings you viciously!");
         Game.player.takeDamage(this._strength);
         Game.message("The " + this.getName() + " attacks you for " + this._strength + " damage!");
-        Game._drawStats();
         return true; // Successfully attacked
     }
     

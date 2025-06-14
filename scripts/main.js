@@ -468,6 +468,9 @@ var GameV2 = {
             }
             if (tile.being) {
                 spritesToDraw.push(tile.being._sprite);
+                if (tile.being._isAttacking) {
+                    spritesToDraw.push('attack_effect');
+                }
             }
         } else {
             // If not visible but explored, only draw items...

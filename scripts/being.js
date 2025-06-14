@@ -6,6 +6,7 @@ var Being = function(x, y) {
     this._strength = 1; // Default strength value
     this._name = "being"; // Default name
     this._sprite = "placeholder";
+    this._isAttacking = false;
     
     // Add this being to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
@@ -116,4 +117,20 @@ Being.prototype._flash = function(color) {
     setTimeout(function() {
         Game._drawTile(self._x, self._y);
     }, 100);
+}
+
+Being.prototype.playAttackAnimation = function() {
+    this._isAttacking = true;
+    Game._drawAll();
+
+    setTimeout(() => {
+        this._isAttacking = false;
+        Game._drawAll();
+    }, 150); // Animation duration
+}
+
+// Visual flash effect for a being
+Being.prototype.flash = function() {
+    this._flashing = true;
+    // ... existing code ...
 } 

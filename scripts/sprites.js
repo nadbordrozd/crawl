@@ -5,11 +5,12 @@
 const SPRITES = {
     transparent: [64, 32],
     purple_background: [0, 0],
+    
     black_background: [16, 0],
     placeholder: [192, 540],
-    wall: [96, 304],      // x, y position in the spritesheet (edit as needed)
-    floor: [96, 144],    // x, y position in the spritesheet (edit as needed)
-    player: [144, 528],   // x, y position in the spritesheet (edit as needed)
+    wall: [96, 304],
+    floor: [96, 144],
+    player: [144, 528],
     shield: [192, 560],
     health_potion: [64, 576],
     key: [112, 576],
@@ -34,7 +35,9 @@ const SPRITES = {
     torch_wall: [96, 320],
     SE_corner: [112, 320],
     tower: [96, 288],
-    diamond: [80, 592]
+    diamond: [80, 592],
+    sword: [80, 544],
+    attack_effect: [80, 544]
 
 
 
