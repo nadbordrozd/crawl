@@ -14,7 +14,7 @@ const KEY_CODES = {
 var Game = {
     
     display: null,
-    zoomLevel: 1.5, // Change this value to zoom more or less
+    zoomLevel: 1.7, // Change this value to zoom more or less
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
@@ -195,7 +195,7 @@ var Game = {
     },
     
     _createInstructionsDisplay: function() {
-        var instructionsContainer = document.getElementById("instructions-container");
+        var instructionsContainer = document.getElementById("instructions-overlay");
         
         // Create the main instructions div
         var instructionsDiv = document.createElement('div');
@@ -204,11 +204,18 @@ var Game = {
         instructionsDiv.style.fontSize = '14px';
         instructionsDiv.style.color = '#ffffff';
         instructionsDiv.style.backgroundColor = '#000000';
-        instructionsDiv.style.padding = '10px';
-        instructionsDiv.style.border = '1px solid #333';
-        instructionsDiv.style.maxWidth = '300px';
-        instructionsDiv.style.float = 'left';
+        instructionsDiv.style.padding = '20px';
+        instructionsDiv.style.border = '2px solid #333';
+        instructionsDiv.style.borderRadius = '8px';
+        instructionsDiv.style.maxWidth = '400px';
+        instructionsDiv.style.maxHeight = '80vh';
+        instructionsDiv.style.overflowY = 'auto';
         instructionsDiv.style.textAlign = 'left';
+        instructionsDiv.style.position = 'absolute';
+        instructionsDiv.style.top = '20px';
+        instructionsDiv.style.left = '20px';
+        instructionsDiv.style.zIndex = '1000';
+        instructionsDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.7)';
         
         // Build the instructions HTML
         var html = '<div style="color: #ffffff; font-weight: bold; margin-bottom: 10px;">--- Controls ---</div>';
@@ -252,8 +259,26 @@ var Game = {
             html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[enemy.sprite][0] + 'px -' + SPRITES[enemy.sprite][1] + 'px; vertical-align: middle;"> : ' + enemy.name + '</div>';
         });
         
+        // Add a close button
+        html += '<div style="margin-top: 20px; text-align: center;"><button onclick="Game.toggleInstructions()" style="padding: 8px 16px; background: #333; color: #fff; border: 1px solid #666; border-radius: 4px; cursor: pointer;">Close</button></div>';
+        
         instructionsDiv.innerHTML = html;
         instructionsContainer.appendChild(instructionsDiv);
+        
+        // Add instructions toggle functionality
+        var instructionsButton = document.getElementById("instructions-toggle-button");
+        instructionsButton.addEventListener("click", function() {
+            Game.toggleInstructions();
+        });
+    },
+    
+    toggleInstructions: function() {
+        var overlay = document.getElementById("instructions-overlay");
+        if (overlay.style.display === "none") {
+            overlay.style.display = "block";
+        } else {
+            overlay.style.display = "none";
+        }
     },
     
     _drawInstructions: function() {
