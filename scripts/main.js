@@ -69,17 +69,8 @@ var Game = {
         container.style.display = "flex";
         container.style.flexDirection = "column";
         
-        // Create instructions display
-        var instructionsHeight = 1 + this.currentLevel.MAP_HEIGHT + 10;
-        this.instructionsDisplay = new ROT.Display({
-            width: 30,
-            height: instructionsHeight,
-            spacing: 1.1
-        });
-        var instructionsContainer = document.getElementById("instructions-container");
-        var instructionsCanvas = this.instructionsDisplay.getContainer();
-        instructionsCanvas.className = "game-display"; // Apply the same class as the main game
-        instructionsContainer.appendChild(instructionsCanvas);
+        // Create instructions display as HTML div
+        this._createInstructionsDisplay();
 
         // Generate the level (map + enemies + items)
         this.currentLevel.generate();
@@ -90,8 +81,6 @@ var Game = {
         }
         this.fov = new ROT.FOV.PreciseShadowcasting(fovPassableCallback);
         // --- END NEW ---
-
-        this._drawInstructions();
 
         // Create a new scheduler and engine
         var scheduler = new ROT.Scheduler.Speed();
@@ -184,43 +173,70 @@ var Game = {
         }.bind(this);
     },
     
-    _drawInstructions: function() {
-        var d = this.instructionsDisplay;
-        d.clear();
-        var y = 1;
-
-        d.drawText(0, y++, "%c{white}--- Controls ---");
-        d.drawText(0, y++, "%c{yellow}Arrow Keys:");
-        d.drawText(2, y++, "%c{white}Move / Attack");
-        d.drawText(0, y++, "%c{yellow}Spacebar:");
-        d.drawText(2, y++, "%c{white}Wait a turn");
-        y++;
-
-        d.drawText(0, y++, "%c{white}--- Player ---");
-        d.drawText(1, y++, `%c{${this.player._color}}${this.player._char}%c{white} : this is you`);
-        y++;
+    _createInstructionsDisplay: function() {
+        var instructionsContainer = document.getElementById("instructions-container");
         
-        d.drawText(0, y++, "%c{white}--- Goal ---");
-        var exit = new Exit();
-        var key = new GoldKey();
-        d.draw(1, y, exit._char, exit._color);
-        d.drawText(3, y++, `%c{white} : Reach the exit`);
-        d.draw(4, y++, `with 3 ${key._char}`);
-        y++;
-
-        d.drawText(0, y++, "%c{white}--- Items (Good!) ---");
-        var items = [new HealthPotion(), new GoldKey(), new Bomb(), new StoneSkinPotion(), new SpeedPotion(), new GoldCoin()];
+        // Create the main instructions div
+        var instructionsDiv = document.createElement('div');
+        instructionsDiv.className = 'instructions-display';
+        instructionsDiv.style.fontFamily = 'monospace';
+        instructionsDiv.style.fontSize = '14px';
+        instructionsDiv.style.color = '#ffffff';
+        instructionsDiv.style.backgroundColor = '#000000';
+        instructionsDiv.style.padding = '10px';
+        instructionsDiv.style.border = '1px solid #333';
+        instructionsDiv.style.maxWidth = '300px';
+        instructionsDiv.style.float = 'left';
+        instructionsDiv.style.textAlign = 'left';
+        
+        // Build the instructions HTML
+        var html = '<div style="color: #ffffff; font-weight: bold; margin-bottom: 10px;">--- Controls ---</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Arrow Keys:</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 5px;">Move / Attack</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Spacebar:</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 10px;">Wait a turn</div>';
+        
+        html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Player ---</div>';
+        html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['player'][0] + 'px -' + SPRITES['player'][1] + 'px; vertical-align: middle;"> : this is you</div>';
+        
+        html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Goal ---</div>';
+        html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['gate'][0] + 'px -' + SPRITES['gate'][1] + 'px; vertical-align: middle;"> : Reach the exit</div>';
+        html += '<div style="margin-left: 20px;">with 3 <img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['key'][0] + 'px -' + SPRITES['key'][1] + 'px; vertical-align: middle;"></div>';
+        
+        html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Items (Good!) ---</div>';
+        var items = [
+            {sprite: 'health_potion', name: 'health potion'},
+            {sprite: 'key', name: 'gold key'},
+            {sprite: 'bomb', name: 'bomb'},
+            {sprite: 'shield', name: 'StoneSkin Potion'},
+            {sprite: 'speed_potion', name: 'Speed Potion'},
+            {sprite: 'coin', name: 'gold coin'}
+        ];
+        
         items.forEach(function(item) {
-            d.draw(1, y, item._char, item._color);
-            d.drawText(3, y++, `%c{white} : ${item._name}`);
+            html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[item.sprite][0] + 'px -' + SPRITES[item.sprite][1] + 'px; vertical-align: middle;"> : ' + item.name + '</div>';
         });
-        y++;
-
-        d.drawText(0, y++, "%c{white}--- Enemies (Bad!) ---");
-        var enemies = [new Assassin(), new Frog(), new Rat(), new CarnivorousPlant(), new MadFrog(), new Scorpion()];
+        
+        html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Enemies (Bad!) ---</div>';
+        var enemies = [
+            {sprite: 'assassin', name: 'Assassin'},
+            {sprite: 'frog', name: 'frog'},
+            {sprite: 'rat', name: 'rat'},
+            {sprite: 'audrey_2', name: 'Carnivorous Plant'},
+            {sprite: 'mad_frog', name: 'mad frog'},
+            {sprite: 'scorpion', name: 'Scorpion'}
+        ];
+        
         enemies.forEach(function(enemy) {
-            d.drawText(1, y++, `%c{${enemy._color}}${enemy._char}%c{white} : ${enemy._name}`);
+            html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[enemy.sprite][0] + 'px -' + SPRITES[enemy.sprite][1] + 'px; vertical-align: middle;"> : ' + enemy.name + '</div>';
         });
+        
+        instructionsDiv.innerHTML = html;
+        instructionsContainer.appendChild(instructionsDiv);
+    },
+    
+    _drawInstructions: function() {
+        // This method is now obsolete but kept for compatibility
     },
     
     _drawAll: function() {
