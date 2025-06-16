@@ -14,7 +14,7 @@ const KEY_CODES = {
 var Game = {
     
     display: null,
-    zoomLevel: 1, // Change this value to zoom more or less
+    zoomLevel: 1.5, // Change this value to zoom more or less
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
@@ -142,30 +142,51 @@ var Game = {
                 width: this.currentLevel.MAP_WIDTH,
                 height: this.currentLevel.MAP_HEIGHT,
                 layout: "tile",
-                tileWidth: 16,
-                tileHeight: 16,
+                tileWidth: 16, // Keep original tile size for sprite mapping
+                tileHeight: 16, // Keep original tile size for sprite mapping
                 tileSet: tileSet,
                 tileMap: SPRITES // This variable must be defined in sprites.js
             });
 
             // Add the new display to the main game container at the correct position
             var container = document.getElementById("game-container");
+            
+            // Create a wrapper div to handle the scaling layout properly
+            var wrapperDiv = document.createElement('div');
+            wrapperDiv.className = "game-v2-wrapper";
+            wrapperDiv.style.order = "2";
+            wrapperDiv.style.position = "relative";
+            
             var newContainer = this.display.getContainer();
             newContainer.className = "game-v2-display";
-            newContainer.style.order = "2";
-            newContainer.style.position = "relative";
+            
+            // Calculate dimensions
+            var originalWidth = this.currentLevel.MAP_WIDTH * 16;
+            var originalHeight = this.currentLevel.MAP_HEIGHT * 16;
+            var scaledWidth = originalWidth * this.zoomLevel;
+            var scaledHeight = originalHeight * this.zoomLevel;
+            
+            // Set wrapper size to the scaled dimensions (reserves layout space)
+            wrapperDiv.style.width = scaledWidth + "px";
+            wrapperDiv.style.height = scaledHeight + "px";
+            
+            // Apply transform to the canvas container
+            newContainer.style.transform = "scale(" + this.zoomLevel + ")";
+            newContainer.style.transformOrigin = "top left";
+            newContainer.style.position = "absolute";
+            newContainer.style.top = "0";
+            newContainer.style.left = "0";
+            
+            // Add canvas to wrapper, then wrapper to main container
+            wrapperDiv.appendChild(newContainer);
             
             // Insert after stats display but before message display
             var messageDisplay = container.querySelector('.message-display');
             if (messageDisplay) {
-                container.insertBefore(newContainer, messageDisplay);
+                container.insertBefore(wrapperDiv, messageDisplay);
             } else {
-                container.appendChild(newContainer);
+                container.appendChild(wrapperDiv);
             }
-
-            // Apply zoom via CSS transform
-            newContainer.style.transform = "scale(" + this.zoomLevel + ")";
-            newContainer.style.transformOrigin = "top left";
 
             // Draw the map
             this._drawMap();
