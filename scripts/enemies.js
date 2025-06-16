@@ -201,7 +201,30 @@ CarnivorousPlant.prototype.constructor = CarnivorousPlant;
 
 // CarnivorousPlant doesn't move or do anything in its turn
 CarnivorousPlant.prototype.act = function() {
-    // It just sits there doing nothing
+    // Check the 4 cardinal directions for the player
+    var directions = [
+        [0, -1],  // Up
+        [1,  0],  // Right
+        [0,  1],  // Down
+        [-1, 0]   // Left
+    ];
+    
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        var checkX = this._x + dir[0];
+        var checkY = this._y + dir[1];
+        
+        // Check if the player is at this adjacent position
+        var targetBeing = Game.getBeingAt(checkX, checkY);
+        if (targetBeing === Game.player) {
+            this.playAttackAnimation();
+            Game.message("The Carnivorous Plant snaps at you!");
+            Game.player.takeDamage(this._strength);
+            return; // End turn after attacking
+        }
+    }
+    
+    // If no player is adjacent, the plant just sits there
 }
 
 // MadFrog class inherits from Being
