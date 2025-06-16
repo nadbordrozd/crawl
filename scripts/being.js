@@ -7,6 +7,7 @@ var Being = function(x, y) {
     this._name = "being"; // Default name
     this._sprite = "placeholder";
     this._isAttacking = false;
+    this._isTakingDamage = false;
     
     // Add this being to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
@@ -59,17 +60,52 @@ Being.prototype.takeDamage = function(damage) {
         return false; // Not killed
     }
     
+    // Set damage animation flag immediately
+    this._isTakingDamage = true;
+    
     this._health -= damage;
     
     if (this._health <= 0) {
-        this.die();
+        // Special handling for player death - use immediate cleanup
+        if (this === Game.player) {
+            this._isTakingDamage = false; // Clear animation immediately
+            this.die(); // Use normal die method for player
+            return true;
+        }
+        
+        // For enemies: Remove from scheduler immediately (dies mechanically)
+        Game.engine._scheduler.remove(this);
+        
+        // Remove from enemies array immediately
+        var index = Game.enemies.indexOf(this);
+        if (index !== -1) Game.enemies.splice(index, 1);
+        
+        // Queue visual cleanup after animation
+        var self = this;
+        Game.queueAnimation(function() {
+            // Clear damage animation flag
+            self._isTakingDamage = false;
+            
+            // Remove from map visually
+            var tile = Game.currentLevel.map[self._x][self._y];
+            if (tile && tile.being === self) {
+                tile.being = null;
+            }
+        });
+        
         return true; // Return true if the being died
+    } else {
+        // Queue clearing damage animation for living beings
+        var self = this;
+        Game.queueAnimation(function() {
+            self._isTakingDamage = false;
+        });
     }
     
     return false; // Return false if the being is still alive
 }
 
-// Add die method to base Being class
+// Update die method to handle both player and enemy deaths
 Being.prototype.die = function() {
     // Remove from map tracking
     var tile = Game.currentLevel.map[this._x][this._y];
@@ -80,9 +116,11 @@ Being.prototype.die = function() {
     // Remove from scheduler
     Game.engine._scheduler.remove(this);
     
-    // Generic death logic - remove from enemies array (Player will override this)
-    var index = Game.enemies.indexOf(this);
-    if (index !== -1) Game.enemies.splice(index, 1);
+    // For enemies, remove from enemies array (Player class will override this method)
+    if (this !== Game.player) {
+        var index = Game.enemies.indexOf(this);
+        if (index !== -1) Game.enemies.splice(index, 1);
+    }
 }
 
 Being.prototype.playAttackAnimation = function() {
@@ -92,7 +130,11 @@ Being.prototype.playAttackAnimation = function() {
     setTimeout(() => {
         this._isAttacking = false;
         Game._drawAll();
-    }, 150); // Animation duration
+    }, 550); // Animation duration
+}
+
+Being.prototype.playDamageAnimation = function() {
+    // This method is now obsolete - damage animation is handled in takeDamage
 }
 
 // Visual flash effect for a being

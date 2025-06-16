@@ -14,7 +14,7 @@ const KEY_CODES = {
 var Game = {
     
     display: null,
-    zoomLevel: 1.7, // Change this value to zoom more or less
+    zoomLevel: 1.4, // Change this value to zoom more or less
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
@@ -26,6 +26,10 @@ var Game = {
     messageHistory: [],
     fov: null, // NEW: Field of Vision object
     FOV_RADIUS: 7,
+    
+    // Global animation system
+    animationTimeout: null,
+    animationCallbacks: [],
     
     init: function() {
         // Initialize Level 1
@@ -335,6 +339,9 @@ var Game = {
                 if (tile.being._isAttacking) {
                     spritesToDraw.push('attack_effect');
                 }
+                if (tile.being._isTakingDamage) {
+                    spritesToDraw.push('blood_splatter');
+                }
             }
         } else {
             // If not visible but explored, only draw items...
@@ -455,6 +462,35 @@ var Game = {
     // Helper function to get the being at a position
     getBeingAt: function(x, y) {
         return (this.isPassableTile(x, y)) ? this.currentLevel.map[x][y].being : null;
+    },
+
+    // Global animation system methods
+    queueAnimation: function(callback, delay) {
+        delay = delay || 550; // Default animation duration
+        this.animationCallbacks.push(callback);
+        
+        // Clear existing timeout and set a new one
+        if (this.animationTimeout) {
+            clearTimeout(this.animationTimeout);
+        }
+        
+        this.animationTimeout = setTimeout(() => {
+            this.processAnimationQueue();
+        }, delay);
+    },
+    
+    processAnimationQueue: function() {
+        // Execute all queued callbacks
+        for (var i = 0; i < this.animationCallbacks.length; i++) {
+            this.animationCallbacks[i]();
+        }
+        
+        // Clear the queue
+        this.animationCallbacks = [];
+        this.animationTimeout = null;
+        
+        // Redraw everything
+        this._drawAll();
     }
 };
 
