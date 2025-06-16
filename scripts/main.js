@@ -121,13 +121,16 @@ var Game = {
         
         music.volume = 0.3; // Set a reasonable volume
 
+        // Set initial button text
+        musicButton.innerHTML = "Music ON/<b><u>OFF</u></b>";
+
         musicButton.addEventListener("click", function() {
             if (music.paused) {
                 music.play();
-                musicButton.textContent = "Pause Music";
+                musicButton.innerHTML = "Music <b><u>ON</u></b>/OFF";
             } else {
                 music.pause();
-                musicButton.textContent = "Play Music";
+                musicButton.innerHTML = "Music ON/<b><u>OFF</u></b>";
             }
         });
 
