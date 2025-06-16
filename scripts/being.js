@@ -22,7 +22,7 @@ Being.prototype.getStrength = function() { return this._strength; }
 Being.prototype.getName = function() { return this._name; }
 Being.prototype.getChar = function() { return this._char; }
 Being.prototype._draw = function() {
-    Game.display.draw(this._x, this._y, this._char, this._color);
+    // Drawing is now handled by GameV2, so this method is no longer needed
 }
 
 // Method to move a being and update map tracking
@@ -30,15 +30,6 @@ Being.prototype._moveTo = function(newX, newY) {
     // Remove from old position
     if (Game.isPassableTile(this._x, this._y)) {
         Game.currentLevel.map[this._x][this._y].being = null;
-    }
-    
-    // Clear old position on display - redraw terrain and any items
-    var oldTile = Game.currentLevel.map[this._x][this._y];
-    Game.display.draw(this._x, this._y, oldTile.terrain);
-    
-    // If there's an item on the old position, redraw it
-    if (oldTile.item) {
-        oldTile.item._draw();
     }
     
     // Update position
@@ -86,37 +77,12 @@ Being.prototype.die = function() {
         tile.being = null;
     }
     
-    // Clear the being from the map display - redraw terrain and any items
-    Game.display.draw(this._x, this._y, tile.terrain);
-    
-    // If there's an item on this position, redraw it
-    if (tile && tile.item) {
-        tile.item._draw();
-    }
-    
     // Remove from scheduler
     Game.engine._scheduler.remove(this);
     
     // Generic death logic - remove from enemies array (Player will override this)
     var index = Game.enemies.indexOf(this);
     if (index !== -1) Game.enemies.splice(index, 1);
-}
-
-// Visual flash effect for a being
-Being.prototype._flash = function(color) {
-    var flashColor = color || "red"; // Default to red if no color is provided
-    var self = this; // Store 'this' for use in the timeout
-
-    // Defer the initial flash draw to the next event loop tick.
-    // This prevents the main game loop's draw call from overwriting it instantly.
-    setTimeout(function() {
-        Game.display.draw(self._x, self._y, self._char, self._color, flashColor);
-    }, 0);
-
-    // After a short delay, redraw just this tile to remove the flash
-    setTimeout(function() {
-        Game._drawTile(self._x, self._y);
-    }, 100);
 }
 
 Being.prototype.playAttackAnimation = function() {
@@ -130,7 +96,7 @@ Being.prototype.playAttackAnimation = function() {
 }
 
 // Visual flash effect for a being
-Being.prototype.flash = function() {
-    this._flashing = true;
-    // ... existing code ...
+Being.prototype._flash = function(color) {
+    // Flash effect is now handled by the attack animation system
+    // This method is kept for compatibility but does nothing
 } 

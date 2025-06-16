@@ -226,8 +226,6 @@ Player.prototype._checkForItems = function() {
     }
 }
 
-
-
 // Override die method for Player-specific behavior
 Player.prototype.die = function() {
     // Call parent die method for basic cleanup (clear display, remove from scheduler)
@@ -251,36 +249,108 @@ Player.prototype.die = function() {
     }
     
     if (totalEnemiesDefeated === 0) {
-        statsMessage += "- None defeated\\n";
+        statsMessage += "- None\\n";
     }
     
     statsMessage += "\\nTotal enemies defeated: " + totalEnemiesDefeated;
     statsMessage += "\\n\\n%c{lime}To start again, press ENTER";
     
-    // Clear the main display and show the game over message
-    Game.display.clear();
-    var lines = statsMessage.split('\\n');
-    var y_start = Math.floor((Game.currentLevel.MAP_HEIGHT - lines.length) / 2);
-
-    for (var i = 0; i < lines.length; i++) {
-        var x_start = Math.floor((Game.currentLevel.MAP_WIDTH - lines[i].length) / 2);
-        // Add ROT.js color formatting
-        Game.display.drawText(x_start, y_start + i, "%c{#fff}%b{#000}" + lines[i]);
-    }
+    // Display comprehensive death statistics on the main game display
+    this._showDeathStatistics();
     
     // Player-specific cleanup
     Game.player = null;
-        Game.engine.lock();
-    Game.message("Game over - you have died!");
+    Game.engine.lock();
     window.removeEventListener("keydown", this);
 
     // Listen for Enter key to restart
     window.addEventListener("keydown", this._handleDeathScreenInput.bind(this));
 }
 
+// Show death statistics using a custom HTML overlay
+Player.prototype._showDeathStatistics = function() {
+    // Clear the tile display
+    if (Game.display) {
+        Game.display.clear();
+    }
+    
+    // Build comprehensive statistics
+    var enemiesDefeated = this.getEnemiesDefeated();
+    var totalEnemiesDefeated = 0;
+    
+    for (var enemyType in enemiesDefeated) {
+        totalEnemiesDefeated += enemiesDefeated[enemyType];
+    }
+    
+    // Create the overlay HTML
+    var overlay = document.createElement('div');
+    overlay.id = 'death-stats-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = '1000';
+    overlay.style.fontFamily = 'monospace';
+    overlay.style.fontSize = '18px';
+    
+    // Create the stats content
+    var statsContent = document.createElement('div');
+    statsContent.style.backgroundColor = '#2a2a2a';
+    statsContent.style.border = '3px solid #555';
+    statsContent.style.borderRadius = '10px';
+    statsContent.style.padding = '30px';
+    statsContent.style.textAlign = 'center';
+    statsContent.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.8)';
+    statsContent.style.maxWidth = '500px';
+    
+    // Build the stats HTML
+    var statsHTML = '<div style="color: #ff4444; font-size: 24px; font-weight: bold; margin-bottom: 20px;">GAME OVER - You have died!</div>';
+    statsHTML += '<div style="color: #ffff44; font-size: 20px; font-weight: bold; margin-bottom: 15px;">FINAL STATISTICS</div>';
+    statsHTML += '<div style="color: #ffffff; text-align: left; margin-bottom: 20px;">';
+    statsHTML += '<div style="margin: 5px 0;">Level reached: <span style="color: #44ff44;">' + Game.levelNumber + '</span></div>';
+    statsHTML += '<div style="margin: 5px 0;">Rounds survived: <span style="color: #44ff44;">' + this.getTurns() + '</span></div>';
+    statsHTML += '<div style="margin: 5px 0;">Steps traveled: <span style="color: #44ff44;">' + this.getSteps() + '</span></div>';
+    statsHTML += '<div style="margin: 5px 0;">Gold collected: <span style="color: #44ff44;">' + this.getCoinsCollected() + '</span></div>';
+    statsHTML += '</div>';
+    
+    // Add monster statistics
+    statsHTML += '<div style="color: #cccccc; margin: 15px 0; font-weight: bold;">Monsters defeated:</div>';
+    statsHTML += '<div style="color: #ffffff; text-align: left;">';
+    
+    if (totalEnemiesDefeated === 0) {
+        statsHTML += '<div style="margin: 5px 0; text-align: center; color: #888;">None</div>';
+    } else {
+        for (var enemyType in enemiesDefeated) {
+            var count = enemiesDefeated[enemyType];
+            statsHTML += '<div style="margin: 5px 0;">• ' + enemyType + ': <span style="color: #44ff44;">' + count + '</span></div>';
+        }
+    }
+    
+    statsHTML += '</div>';
+    statsHTML += '<div style="color: #ffaa44; margin: 15px 0; font-weight: bold;">Total monsters defeated: ' + totalEnemiesDefeated + '</div>';
+    statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Press ENTER to start over</div>';
+    
+    statsContent.innerHTML = statsHTML;
+    overlay.appendChild(statsContent);
+    
+    // Add to document
+    document.body.appendChild(overlay);
+}
+
 // Handle input on the death screen
 Player.prototype._handleDeathScreenInput = function(e) {
     if (e.keyCode === KEY_CODES.ENTER) {
+        // Remove the overlay
+        var overlay = document.getElementById('death-stats-overlay');
+        if (overlay) {
+            document.body.removeChild(overlay);
+        }
+        
         window.removeEventListener("keydown", this);
         location.reload();
     }

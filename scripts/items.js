@@ -20,7 +20,7 @@ Item.prototype.getChar = function() { return this._char; }
 Item.prototype.getColor = function() { return this._color; }
 
 Item.prototype._draw = function() {
-    Game.display.draw(this._x, this._y, this._char, this._color);
+    // Drawing is now handled by GameV2, so this method is no longer needed
 }
 
 // Base pickup method - should be overridden by subclasses

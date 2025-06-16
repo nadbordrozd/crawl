@@ -14,6 +14,7 @@ const KEY_CODES = {
 var Game = {
     
     display: null,
+    zoomLevel: 1, // Change this value to zoom more or less
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
@@ -25,14 +26,10 @@ var Game = {
     messageHistory: [],
     fov: null, // NEW: Field of Vision object
     FOV_RADIUS: 7,
-    visibleCells: {}, // NEW: Cache for visible cells, updated each turn
     
     init: function() {
         // Initialize Level 1
         this.currentLevel = new Level1();
-        
-        // Create the main game display with level dimensions
-        this.display = new ROT.Display({width: this.currentLevel.MAP_WIDTH, height: this.currentLevel.MAP_HEIGHT, spacing:1.1});
         
         // Create the stats display with the same width as main display
         this.statsDisplay = new ROT.Display({width: this.currentLevel.MAP_WIDTH, height: 1, spacing: 1.1});
@@ -50,20 +47,27 @@ var Game = {
         // Add all displays to the existing container with proper CSS classes
         var container = document.getElementById("game-container");
         
-        // Add stats display with CSS class
+        // Add stats display with CSS class FIRST (so it appears above)
         var statsContainer = this.statsDisplay.getContainer();
         statsContainer.className = "stats-display";
+        statsContainer.style.order = "1";
+        statsContainer.style.position = "relative";
+        statsContainer.style.zIndex = "10";
         container.appendChild(statsContainer);
         
-        // Add main game display with CSS class
-        var gameContainer = this.display.getContainer();
-        gameContainer.className = "game-display";
-        container.appendChild(gameContainer);
+        // Initialize tile-based display
+        this._initTileDisplay();
         
-        // Add message display with CSS class
+        // Add message display with CSS class LAST (so it appears below)
         var messageContainer = this.messageDisplay.getContainer();
         messageContainer.className = "message-display";
+        messageContainer.style.order = "3";
+        messageContainer.style.position = "relative";
         container.appendChild(messageContainer);
+        
+        // Ensure the container uses flexbox layout
+        container.style.display = "flex";
+        container.style.flexDirection = "column";
         
         // Create instructions display
         var instructionsHeight = 1 + this.currentLevel.MAP_HEIGHT + 10;
@@ -136,6 +140,46 @@ var Game = {
         });
         // --- END NEW ---
     },
+
+    _initTileDisplay: function() {
+        var tileSet = document.createElement("img");
+        tileSet.src = "assets/tileset.png"; // Assumes tileset is in an 'assets' directory
+
+        tileSet.onload = function() {
+            this.display = new ROT.Display({
+                width: this.currentLevel.MAP_WIDTH,
+                height: this.currentLevel.MAP_HEIGHT,
+                layout: "tile",
+                tileWidth: 16,
+                tileHeight: 16,
+                tileSet: tileSet,
+                tileMap: SPRITES // This variable must be defined in sprites.js
+            });
+
+            // Add the new display to the main game container at the correct position
+            var container = document.getElementById("game-container");
+            var newContainer = this.display.getContainer();
+            newContainer.className = "game-v2-display";
+            newContainer.style.order = "2";
+            newContainer.style.position = "relative";
+            
+            // Insert after stats display but before message display
+            var messageDisplay = container.querySelector('.message-display');
+            if (messageDisplay) {
+                container.insertBefore(newContainer, messageDisplay);
+            } else {
+                container.appendChild(newContainer);
+            }
+
+            // Apply zoom via CSS transform
+            newContainer.style.transform = "scale(" + this.zoomLevel + ")";
+            newContainer.style.transformOrigin = "top left";
+
+            // Draw the map
+            this._drawMap();
+
+        }.bind(this);
+    },
     
     _drawInstructions: function() {
         var d = this.instructionsDisplay;
@@ -177,80 +221,67 @@ var Game = {
     },
     
     _drawAll: function() {
-        this._drawMapAndFov();
         this._drawStats();
 
-        if(GameV2.currentLevel){GameV2._drawMap();}
+        if(this.display){ this._drawMap(); }
     },
 
-    _drawMapAndFov: function() {
-        this.display.clear();
-        var player = this.player;
-
+    _drawMap: function() {
+        if (!this.player) { return; } // Don't draw if the player is dead
+        
         // Compute FOV and update the cache
         this.currentLevel.visibleCells = {};
-        var self = this;
-        this.fov.compute(player.getX(), player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
-            self.currentLevel.visibleCells[x+","+y] = true;
-            if (self.currentLevel.map[x] && self.currentLevel.map[x][y]) {
-                self.currentLevel.map[x][y].explored = true;
+        this.fov.compute(this.player.getX(), this.player.getY(), this.FOV_RADIUS, function(x, y, r, visibility) {
+            Game.currentLevel.visibleCells[x+","+y] = true;
+            if (Game.currentLevel.map[x] && Game.currentLevel.map[x][y]) {
+                Game.currentLevel.map[x][y].explored = true;
             }
         });
 
-        // Draw the map by drawing each tile
+        // Draw the shield tile over the whole display
         for (var x = 0; x < this.currentLevel.MAP_WIDTH; x++) {
             for (var y = 0; y < this.currentLevel.MAP_HEIGHT; y++) {
                 this._drawTile(x, y);
             }
         }
     },
-    
+
     _drawTile: function(x, y) {
         var tile = this.currentLevel.map[x][y];
         if (!tile.explored) { return; }
 
         var isVisible = this.currentLevel.visibleCells[x+","+y];
+        var spritesToDraw = [];
 
-        // If it's a wall
-        if (!tile.passable) {
-            if (isVisible) {
-                this.display.draw(x, y, "#", "#ffffff"); // Bright wall
-            } else {
-                this.display.draw(x, y, "#", "#808080"); // Dim wall
-            }
-            return;
+        // Always start with the base terrain
+        spritesToDraw.push(tile.terrain);
+
+        if (tile.decoration) {
+            spritesToDraw.push(tile.decoration);
         }
-
-        // If it's a floor tile
-        var displayChar, displayColor;
 
         if (isVisible) {
-            // Currently visible: draw everything in full color
-            var being = tile.being;
-            var item = tile.item;
-
-            if (being) {
-                displayChar = being.getChar();
-                displayColor = being._color;
-            } else if (item) {
-                displayChar = item.getChar();
-                displayColor = item._color;
-            } else {
-                displayChar = '.';
-                displayColor = "#ffffff"; // Bright color for visible terrain
+            // If visible, draw items and beings on top
+            if (tile.item) {
+                spritesToDraw.push(tile.item._sprite);
+            }
+            if (tile.being) {
+                spritesToDraw.push(tile.being._sprite);
+                if (tile.being._isAttacking) {
+                    spritesToDraw.push('attack_effect');
+                }
             }
         } else {
-            // Not visible, but explored: draw terrain and items in dim color
-            var item = tile.item;
-            if (item) {
-                displayChar = item.getChar();
-                displayColor = "#808080"; // Dim gray for memory
-            } else {
-                displayChar = '.';
-                displayColor = "#808080"; // Dim gray for memory
+            // If not visible but explored, only draw items...
+            if (tile.item) {
+                spritesToDraw.push(tile.item._sprite);
             }
+            // ...and then the fog of war sprite over everything.
+            spritesToDraw.push('black_background');
         }
-        this.display.draw(x, y, displayChar, displayColor);
+        
+        // Draw all collected sprites for this tile at once
+        this.display.draw(x, y, spritesToDraw);
     },
     
     _drawStats: function() {
@@ -323,6 +354,11 @@ var Game = {
         // Regenerate the world (this will also reposition the player)
         this.currentLevel.generate();
         
+        // Clear the display to remove any visual artifacts from the previous level
+        if (this.display) {
+            this.display.clear();
+        }
+        
         // Add all new enemies to the scheduler
         for (var i = 0; i < this.enemies.length; i++) {
             scheduler.add(this.enemies[i], true);
@@ -337,154 +373,24 @@ var Game = {
 
     _gameWon: function() {
         this.engine.lock();
-        Game.display.clear();
-        var msg = "%c{lime}CONGRATULATIONS! You have won the game!";
-        var x = Math.floor((this.currentLevel.MAP_WIDTH - (msg.length - 9)) / 2);
-        var y = Math.floor(this.currentLevel.MAP_HEIGHT / 2);
-        Game.display.drawText(x, y, msg);
+        if (this.display) {
+            this.display.clear();
+            var msg = "CONGRATULATIONS! You have won the game!";
+            var x = Math.floor((this.currentLevel.MAP_WIDTH - msg.length) / 2);
+            var y = Math.floor(this.currentLevel.MAP_HEIGHT / 2);
+            // Note: this uses sprites, so we'll just show the message in the message display
+        }
+        this.message("CONGRATULATIONS! You have won the game!");
     },
     
-    isValidTile: function(x, y) {
-        return this.currentLevel.validTile(x, y);
-    },
-    
-    // NEW: Helper function to check if a tile is passable by delegating to the current level
     isPassableTile: function(x, y) {
         return this.currentLevel.isPassable(x, y);
-    },
-    
-    // Helper function to check if a position is occupied
-    _isOccupied: function(x, y) {
-        return this.isPassableTile(x, y) && this.currentLevel.map[x][y].being !== null;
     },
     
     // Helper function to get the being at a position
     getBeingAt: function(x, y) {
         return (this.isPassableTile(x, y)) ? this.currentLevel.map[x][y].being : null;
-    },
-    
-    // Helper function to get the item at a position
-    getItemAt: function(x, y) {
-        return (this.isPassableTile) ? this.currentLevel.map[x][y].item : null;
-    },
-    
-    // Add a method to Game to debug the current state
-    _debugState: function() {
-        console.log("Enemies in array:", this.enemies.length);
-        console.log("Current scheduler:", this.engine._scheduler);
-    }
-};
-
-var GameV2 = {
-    display: null,
-    zoomLevel: 1, // Change this value to zoom more or less
-    map: {},
-    engine: null,
-    player: null,
-    enemies: [],
-    levelNumber: 1,
-    currentLevel: null,
-    statsDisplay: null,
-    messageDisplay: null,
-    instructionsDisplay: null,
-    messageHistory: [],
-    fov: null,
-    FOV_RADIUS: 7,
-    visibleCells: {},
-
-    init: function() {
-        // Copy properties from the initialized Game object
-        this.engine = Game.engine;
-        this.player = Game.player;
-        this.enemies = Game.enemies;
-        this.levelNumber = Game.levelNumber;
-        this.currentLevel = Game.currentLevel;
-        this.statsDisplay = Game.statsDisplay;
-        this.messageDisplay = Game.messageDisplay;
-        this.instructionsDisplay = Game.instructionsDisplay;
-        this.messageHistory = Game.messageHistory;
-        this.fov = Game.fov;
-        this.FOV_RADIUS = Game.FOV_RADIUS;
-        this.visibleCells = Game.visibleCells;
-
-        // Since sprites.js is not provided, we assume it defines a global 'tileMap' variable.
-        // You must create sprites.js and ensure it's loaded before this script in your HTML.
-        // Example tileMap in sprites.js:
-        // var tileMap = { ".": [0,0], "#": [16,0], "@": [32,0] };
-
-        var tileSet = document.createElement("img");
-        tileSet.src = "assets/tileset.png"; // Assumes tileset is in an 'assets' directory
-
-        tileSet.onload = function() {
-            this.display = new ROT.Display({
-                width: this.currentLevel.MAP_WIDTH,
-                height: this.currentLevel.MAP_HEIGHT,
-                layout: "tile",
-                tileWidth: 16,
-                tileHeight: 16,
-                tileSet: tileSet,
-                tileMap: SPRITES // This variable must be defined in sprites.js
-            });
-
-            // Add the new display to the main game container
-            var container = document.getElementById("game-container");
-            var newContainer = this.display.getContainer();
-            newContainer.className = "game-v2-display";
-            container.appendChild(newContainer);
-
-            // Apply zoom via CSS transform
-            newContainer.style.transform = "scale(" + this.zoomLevel + ")";
-            newContainer.style.transformOrigin = "top left";
-
-            // Draw the map
-            this._drawMap();
-
-        }.bind(this);
-    },
-
-    _drawMap: function() {
-        // Draw the shield tile over the whole display
-        for (var x = 0; x < this.currentLevel.MAP_WIDTH; x++) {
-            for (var y = 0; y < this.currentLevel.MAP_HEIGHT; y++) {
-                this._drawTile(x, y);
-            }
-        }
-    },
-
-    _drawTile: function(x, y) {
-        var tile = Game.currentLevel.map[x][y];
-        if (!tile.explored) { return; }
-
-        var isVisible = Game.currentLevel.visibleCells[x+","+y];
-        var spritesToDraw = [];
-
-        // Always start with the base terrain
-        spritesToDraw.push(tile.terrain);
-
-        if (isVisible) {
-            // If visible, draw items and beings on top
-            if (tile.item) {
-                spritesToDraw.push(tile.item._sprite);
-            }
-            if (tile.being) {
-                spritesToDraw.push(tile.being._sprite);
-                if (tile.being._isAttacking) {
-                    spritesToDraw.push('attack_effect');
-                }
-            }
-        } else {
-            // If not visible but explored, only draw items...
-            if (tile.item) {
-                spritesToDraw.push(tile.item._sprite);
-            }
-            // ...and then the fog of war sprite over everything.
-            spritesToDraw.push('black_background');
-        }
-        
-        // Draw all collected sprites for this tile at once
-        this.display.draw(x, y, spritesToDraw);
     }
 };
 
 Game.init();
-GameV2.init();

@@ -134,7 +134,7 @@ Level.prototype._generateMap = function() {
             };
         }
     }
-    ROT.RNG.setSeed(1);
+    // ROT.RNG.setSeed(1);
     var digger = new ROT.Map.Digger(W, H);
     var freeCells = [];
     
