@@ -70,8 +70,9 @@ const SPRITES = {
     tower: [96, 288],
     diamond: [80, 592],
     sword: [80, 544],
-    attack_effect: [80, 544]
-
+    attack_effect: [80, 544],
+    spider: [192, 448],
+    ghost: [144, 496]
 
 
 

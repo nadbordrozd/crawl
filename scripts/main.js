@@ -331,7 +331,18 @@ var Game = {
                 spritesToDraw.push(tile.item._sprite);
             }
             if (tile.being) {
+                // Special case for player status effects - draw halos first
+                if (tile.being === Game.player) {
+                    if (Game.player._isInvulnerable) {
+                        spritesToDraw.push('blue_halo');
+                    }
+                    if (Game.player._isFast) {
+                        spritesToDraw.push('green_halo');
+                    }
+                }
+                
                 spritesToDraw.push(tile.being._sprite);
+                
                 if (tile.being._isAttacking) {
                     spritesToDraw.push('attack_effect');
                 }
