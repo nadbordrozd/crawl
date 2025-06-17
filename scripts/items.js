@@ -96,6 +96,7 @@ Bomb.prototype.pickup = function(player) {
     var enemiesHit = 0;
     var radius = this._blastRadius;
     var area = (radius * 2 + 1) + "x" + (radius * 2 + 1);
+    var explosionTiles = []; // Track tiles that will have explosion effects
     
     // Iterate over all positions in blast area (radius tiles in each direction)
     for (var dx = -radius; dx <= radius; dx++) {
@@ -103,16 +104,28 @@ Bomb.prototype.pickup = function(player) {
             var checkX = playerX + dx;
             var checkY = playerY + dy;
             
-            // Check if this position has an enemy
-            var enemy = Game.getBeingAt(checkX, checkY);
-            
-            // If there's an enemy (and it's not the player), damage it
-            if (enemy && enemy !== player) {
-                var killed = enemy.takeDamage(1);
-                enemiesHit++;
+            // Check if this position is valid and within map bounds
+            if (checkX >= 0 && checkX < Game.currentLevel.MAP_WIDTH && 
+                checkY >= 0 && checkY < Game.currentLevel.MAP_HEIGHT) {
                 
-                if (killed) {
-                    Game.message("The explosion killed the " + enemy.getName() + "!");
+                // Add explosion effect to this tile
+                var tile = Game.currentLevel.map[checkX][checkY];
+                if (tile) {
+                    tile._isExploding = true;
+                    explosionTiles.push({x: checkX, y: checkY});
+                }
+                
+                // Check if this position has an enemy
+                var enemy = Game.getBeingAt(checkX, checkY);
+                
+                // If there's an enemy (and it's not the player), damage it
+                if (enemy && enemy !== player) {
+                    var killed = enemy.takeDamage(1);
+                    enemiesHit++;
+                    
+                    if (killed) {
+                        Game.message("The explosion killed the " + enemy.getName() + "!");
+                    }
                 }
             }
         }
@@ -127,6 +140,21 @@ Bomb.prototype.pickup = function(player) {
     
     // Remove from map
     this._removeFromMap();
+    
+    // Redraw immediately to show explosion effects
+    Game._drawAll();
+    
+    // Queue animation to clear explosion effects after a delay
+    Game.queueAnimation(function() {
+        // Clear explosion effects from all affected tiles
+        for (var i = 0; i < explosionTiles.length; i++) {
+            var tileCoords = explosionTiles[i];
+            var tile = Game.currentLevel.map[tileCoords.x][tileCoords.y];
+            if (tile) {
+                tile._isExploding = false;
+            }
+        }
+    }, 400); // Show explosion for 400ms
 }
 
 // Exit class - inherits from Item

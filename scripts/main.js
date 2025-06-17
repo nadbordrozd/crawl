@@ -359,6 +359,11 @@ var Game = {
             spritesToDraw.push('darker_black');
         }
         
+        // Add explosion effect on top of everything if this tile is exploding
+        if (tile._isExploding) {
+            spritesToDraw.push('explosion');
+        }
+        
         // Draw all collected sprites for this tile at once
         this.display.draw(x, y, spritesToDraw);
     },
