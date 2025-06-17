@@ -409,4 +409,132 @@ Scorpion.prototype._tryMove = function(dir) {
     // If tile is free, move there
     this._moveTo(newX, newY);
     return true;
+}
+
+// Ghost class inherits from Being
+var Ghost = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1;
+    this._strength = 1;
+    this._name = "ghost";
+    this._sprite = "ghost";
+}
+Ghost.prototype = Object.create(Being.prototype);
+Ghost.prototype.constructor = Ghost;
+
+Ghost.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    // Possible movement directions: up, right, down, left
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    // Calculate Manhattan distance to player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var manhattanDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // If player is within Manhattan distance 5, move towards player
+    if (manhattanDistance <= 5) {
+        // Find direction that gets us closest to the player
+        var bestDirection = null;
+        var bestDistance = manhattanDistance;
+        
+        for (var i = 0; i < directions.length; i++) {
+            var dir = directions[i];
+            var newX = this._x + dir[0];
+            var newY = this._y + dir[1];
+            
+            // Check if new position is within map bounds
+            if (newX < 0 || newX >= Game.currentLevel.MAP_WIDTH || 
+                newY < 0 || newY >= Game.currentLevel.MAP_HEIGHT) {
+                continue;
+            }
+            
+            // Calculate distance to player from this new position
+            var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+            
+            // If this gets us closer, it's our best option
+            if (distance < bestDistance) {
+                bestDirection = dir;
+                bestDistance = distance;
+            }
+        }
+        
+        // Try to move in the best direction
+        if (bestDirection && this._tryGhostMove(bestDirection)) {
+            return;
+        }
+        
+        // If best direction failed, try any valid direction towards player
+        for (var i = 0; i < directions.length; i++) {
+            var dir = directions[i];
+            var newX = this._x + dir[0];
+            var newY = this._y + dir[1];
+            
+            // Check bounds
+            if (newX < 0 || newX >= Game.currentLevel.MAP_WIDTH || 
+                newY < 0 || newY >= Game.currentLevel.MAP_HEIGHT) {
+                continue;
+            }
+            
+            var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+            
+            // Only try moves that don't make us farther from player
+            if (distance <= manhattanDistance && this._tryGhostMove(dir)) {
+                return;
+            }
+        }
+    } else {
+        // Player is far away, move randomly
+        // Shuffle directions randomly
+        for (var i = directions.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directions[i];
+            directions[i] = directions[j];
+            directions[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move
+        for (var i = 0; i < directions.length; i++) {
+            if (this._tryGhostMove(directions[i])) {
+                return;
+            }
+        }
+    }
+}
+
+Ghost.prototype._tryGhostMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    
+    // Check if new position is within map bounds
+    if (newX < 0 || newX >= Game.currentLevel.MAP_WIDTH || 
+        newY < 0 || newY >= Game.currentLevel.MAP_HEIGHT) {
+        return false;
+    }
+    
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
+    // If the destination is the player, attack
+    if (targetBeing === Game.player) {
+        this.playAttackAnimation();
+        Game.message("A ghost phases through the wall and attacks you!");
+        Game.player.takeDamage(this._strength);
+        return true;
+    }
+    
+    // If destination is occupied by another being (not player), move is blocked
+    if (targetBeing !== null && targetBeing !== this) {
+        return false;
+    }
+    
+    // Ghosts can move anywhere (ignoring terrain), so move there
+    this._moveTo(newX, newY);
+    return true;
 } 

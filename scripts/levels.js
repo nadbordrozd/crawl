@@ -218,6 +218,11 @@ Level.prototype._createEnemies = function(freeCells) {
     for (var i = 0; i < this.enemyCounts.SCORPION; i++) {
         Game.enemies.push(this._createBeing(Scorpion, freeCells));
     }
+    
+    // Create Ghosts (can spawn anywhere, including walls)
+    for (var i = 0; i < this.enemyCounts.GHOST; i++) {
+        Game.enemies.push(this._createGhost());
+    }
 }
 
 // Create all items based on this level's configuration
@@ -238,6 +243,13 @@ Level.prototype._createBeing = function(what, freeCells) {
     var x = cell.x;
     var y = cell.y;
     return new what(x, y);
+}
+
+// Helper method to create a ghost at any random location (including walls)
+Level.prototype._createGhost = function() {
+    var x = Math.floor(ROT.RNG.getUniform() * this.MAP_WIDTH);
+    var y = Math.floor(ROT.RNG.getUniform() * this.MAP_HEIGHT);
+    return new Ghost(x, y);
 }
 
 // Generic item generation function
@@ -263,7 +275,8 @@ var Level1 = function() {
         RAT: 5,
         CARNIVOROUS_PLANT: 1,
         MADFROG: 4,
-        SCORPION: 4
+        SCORPION: 4,
+        GHOST: 1
     };
     
     // Define item counts for Level 1
@@ -284,14 +297,15 @@ Level1.prototype.constructor = Level1;
 var Level2 = function() {
     Level.call(this);
     
-    // Define enemy counts for Level 1
+    // Define enemy counts for Level 2
     this.enemyCounts = {
         ASSASSIN: 4,
         FROG: 5,
         RAT: 5,
         CARNIVOROUS_PLANT: 1,
         MADFROG: 6,
-        SCORPION: 6
+        SCORPION: 6,
+        GHOST: 2
     };
     
     // Define item counts for Level 1
@@ -312,14 +326,15 @@ Level2.prototype.constructor = Level2;
 var Level3 = function() {
     Level.call(this);
     
-    // Define enemy counts for Level 1
+    // Define enemy counts for Level 3
     this.enemyCounts = {
         ASSASSIN: 8,
         FROG: 5,
         RAT: 5,
         CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
-        SCORPION: 8
+        SCORPION: 8,
+        GHOST: 3
     };
     
     // Define item counts for Level 1
@@ -342,14 +357,15 @@ Level3.prototype.constructor = Level3;
 var Level4 = function() {
     Level.call(this);
     
-    // Define enemy counts for Level 1
+    // Define enemy counts for Level 4
     this.enemyCounts = {
         ASSASSIN: 16,
         FROG: 5,
         RAT: 5,
         CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
-        SCORPION: 8
+        SCORPION: 8,
+        GHOST: 4
     };
     
     // Define item counts for Level 1
@@ -371,14 +387,15 @@ Level4.prototype.constructor = Level4;
 var Level5 = function() {
     Level.call(this);
     
-    // Define enemy counts for Level 1
+    // Define enemy counts for Level 5
     this.enemyCounts = {
         ASSASSIN: 32,
         FROG: 5,
         RAT: 5,
         CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
-        SCORPION: 8
+        SCORPION: 8,
+        GHOST: 5
     };
     
     // Define item counts for Level 1

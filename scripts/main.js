@@ -252,7 +252,8 @@ var Game = {
             {sprite: 'rat', name: 'rat'},
             {sprite: 'audrey_2', name: 'Carnivorous Plant'},
             {sprite: 'mad_frog', name: 'mad frog'},
-            {sprite: 'scorpion', name: 'Scorpion'}
+            {sprite: 'scorpion', name: 'Scorpion'},
+            {sprite: 'ghost', name: 'ghost'}
         ];
         
         enemies.forEach(function(enemy) {
