@@ -14,7 +14,7 @@ const KEY_CODES = {
 var Game = {
     
     display: null,
-    zoomLevel: 1.4, // Change this value to zoom more or less
+    zoomLevel: 1.6, // Change this value to zoom more or less
     engine: null,
     player: null,
     enemies: [], // Single array for all enemies
@@ -26,9 +26,11 @@ var Game = {
     messageHistory: [],
     fov: null, // NEW: Field of Vision object
     FOV_RADIUS: 7,
+    MESSAGE_LINES: 5, // Configurable number of message lines
     
     // Global animation system
     animationTimeout: null,
+    animationDelay: 200,
     animationCallbacks: [],
     
     init: function() {
@@ -41,7 +43,7 @@ var Game = {
         // Create the message display with the same width as main display  
         this.messageDisplay = new ROT.Display({
             width: this.currentLevel.MAP_WIDTH,
-            height: 10, 
+            height: this.MESSAGE_LINES, 
             spacing: 1.1,
             fg: "#fff",
             bg: "#000",
@@ -349,7 +351,7 @@ var Game = {
                 spritesToDraw.push(tile.item._sprite);
             }
             // ...and then the fog of war sprite over everything.
-            spritesToDraw.push('black_background');
+            spritesToDraw.push('darker_black');
         }
         
         // Draw all collected sprites for this tile at once
@@ -380,8 +382,8 @@ var Game = {
     message: function(text) {
         // Add the new message to the history
         this.messageHistory.unshift(text);
-        // Keep only the last 10 messages
-        if (this.messageHistory.length > 10) {
+        // Keep only the configured number of messages
+        if (this.messageHistory.length > this.MESSAGE_LINES) {
             this.messageHistory.pop();
         }
         
@@ -459,14 +461,21 @@ var Game = {
         return this.currentLevel.isPassable(x, y);
     },
     
-    // Helper function to get the being at a position
+    // Helper function to get the living being at a position (filters out dead beings)
     getBeingAt: function(x, y) {
-        return (this.isPassableTile(x, y)) ? this.currentLevel.map[x][y].being : null;
+        if (!this.isPassableTile(x, y)) return null;
+        var being = this.currentLevel.map[x][y].being;
+        return (being && !being._isDead) ? being : null;
+    },
+    
+    // Helper function to get any being at a position (including dead beings for visual purposes)
+    getVisualBeingAt: function(x, y) {
+        return this.isPassableTile(x, y) ? this.currentLevel.map[x][y].being : null;
     },
 
     // Global animation system methods
     queueAnimation: function(callback, delay) {
-        delay = delay || 550; // Default animation duration
+        delay = delay || 200; // Default animation duration
         this.animationCallbacks.push(callback);
         
         // Clear existing timeout and set a new one

@@ -8,6 +8,7 @@ var Being = function(x, y) {
     this._sprite = "placeholder";
     this._isAttacking = false;
     this._isTakingDamage = false;
+    this._isDead = false; // Ghost flag for mechanically dead beings
     
     // Add this being to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
@@ -73,7 +74,10 @@ Being.prototype.takeDamage = function(damage) {
             return true;
         }
         
-        // For enemies: Remove from scheduler immediately (dies mechanically)
+        // For enemies: Mark as dead immediately (becomes a "ghost")
+        this._isDead = true;
+        
+        // Remove from scheduler immediately (dies mechanically)
         Game.engine._scheduler.remove(this);
         
         // Remove from enemies array immediately
@@ -127,10 +131,11 @@ Being.prototype.playAttackAnimation = function() {
     this._isAttacking = true;
     Game._drawAll();
 
-    setTimeout(() => {
-        this._isAttacking = false;
-        Game._drawAll();
-    }, 550); // Animation duration
+    // Use the global animation system
+    var self = this;
+    Game.queueAnimation(function() {
+        self._isAttacking = false;
+    });
 }
 
 Being.prototype.playDamageAnimation = function() {
