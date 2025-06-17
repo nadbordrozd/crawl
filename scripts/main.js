@@ -37,8 +37,8 @@ var Game = {
         // Initialize Level 1
         this.currentLevel = new Level1();
         
-        // Create the stats display with the same width as main display
-        this.statsDisplay = new ROT.Display({width: this.currentLevel.MAP_WIDTH, height: 1, spacing: 1.1});
+        // Create HTML-based stats display instead of canvas
+        this._createHtmlStatsDisplay();
         
         // Create HTML-based message display instead of canvas
         this._createHtmlMessageDisplay();
@@ -46,13 +46,9 @@ var Game = {
         // Add all displays to the existing container with proper CSS classes
         var container = document.getElementById("game-container");
         
-        // Add stats display with CSS class FIRST (so it appears above)
-        var statsContainer = this.statsDisplay.getContainer();
-        statsContainer.className = "stats-display";
-        statsContainer.style.order = "1";
-        statsContainer.style.position = "relative";
-        statsContainer.style.zIndex = "10";
-        container.appendChild(statsContainer);
+        // Add HTML stats display with CSS class FIRST (so it appears above)
+        this.statsDisplayHtml.style.order = "1";
+        container.appendChild(this.statsDisplayHtml);
         
         // Initialize tile-based display
         this._initTileDisplay();
@@ -176,19 +172,22 @@ var Game = {
             // Add canvas to wrapper, then wrapper to main container
             wrapperDiv.appendChild(newContainer);
             
-            // Set the HTML message display width to match the game display
+            // Set the HTML stats and message display widths to match the game display
+            if (this.statsDisplayHtml) {
+                this.statsDisplayHtml.style.width = scaledWidth + "px";
+            }
             if (this.messageDisplayHtml) {
                 this.messageDisplayHtml.style.width = scaledWidth + "px";
             }
             
-            // Insert after stats display but before message display
+            // Insert game display after stats display but before message display
             var messageDisplay = container.querySelector('.html-message-display');
             if (messageDisplay) {
                 container.insertBefore(wrapperDiv, messageDisplay);
             } else {
                 container.appendChild(wrapperDiv);
             }
-
+            
             // Draw the map
             this._drawMap();
 
@@ -354,7 +353,7 @@ var Game = {
     },
     
     _drawStats: function() {
-        this.statsDisplay.clear();
+        var statsText = "";
         if (this.player) {
             var keys = this.player.getKeysCollected();
             var coins = this.player.getCoinsCollected();
@@ -367,9 +366,14 @@ var Game = {
                 status = "Fast (" + this.player._speedBoostTurns + ")";
             }
             
-            this.statsDisplay.drawText(0, 0, "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | Gold: " + coins);
+            statsText = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | Gold: " + coins;
         } else {
-            this.statsDisplay.drawText(0, 0, "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber);
+            statsText = "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber;
+        }
+        
+        // Update HTML stats display
+        if (this.statsDisplayHtml) {
+            this.statsDisplayHtml.textContent = statsText;
         }
     },
     
@@ -497,6 +501,31 @@ var Game = {
         
         // Redraw everything
         this._drawAll();
+    },
+    
+    _createHtmlStatsDisplay: function() {
+        // Create the HTML stats display container
+        var statsDiv = document.createElement('div');
+        statsDiv.id = 'html-stats-display';
+        statsDiv.className = 'html-stats-display';
+        
+        // Style the stats display
+        statsDiv.style.fontFamily = 'monospace';
+        statsDiv.style.fontSize = '14px';
+        statsDiv.style.color = '#ffffff';
+        statsDiv.style.backgroundColor = '#333';
+        statsDiv.style.border = '2px solid #666';
+        statsDiv.style.borderRadius = '4px';
+        statsDiv.style.padding = '8px';
+        statsDiv.style.height = '30px'; // Single line height
+        statsDiv.style.position = 'relative';
+        statsDiv.style.boxSizing = 'border-box';
+        statsDiv.style.textAlign = 'left'; // Align text to the left
+        statsDiv.style.display = 'flex';
+        statsDiv.style.alignItems = 'center'; // Center text vertically
+        
+        // Store reference for easy access
+        this.statsDisplayHtml = statsDiv;
     },
     
     _createHtmlMessageDisplay: function() {

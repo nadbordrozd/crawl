@@ -150,6 +150,17 @@ canvas {
     box-sizing: border-box;
 }
 
+/* HTML Stats Display styling */
+.html-stats-display {
+    order: 1;
+    border: 2px solid #666;
+    background-color: #333;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
 /* Custom scrollbar for message display */
 .html-message-display::-webkit-scrollbar {
     width: 8px;
