@@ -22,10 +22,7 @@ Being.prototype.getY = function() { return this._y; }
 Being.prototype.getHealth = function() { return this._health; }
 Being.prototype.getStrength = function() { return this._strength; }
 Being.prototype.getName = function() { return this._name; }
-Being.prototype.getChar = function() { return this._char; }
-Being.prototype._draw = function() {
-    // Drawing is now handled by GameV2, so this method is no longer needed
-}
+
 
 // Method to move a being and update map tracking
 Being.prototype._moveTo = function(newX, newY) {

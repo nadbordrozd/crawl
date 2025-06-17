@@ -1,11 +1,9 @@
 // Assassin class inherits from Being
 var Assassin = function(x, y) {
     Being.call(this, x, y);
-    this._health = 1; // Enemy health
-    this._strength = 1; // Enemy strength
+    this._health = 1;
+    this._strength = 1;
     this._name = "Assassin";
-    this._char = "A";
-    this._color = "purple";
     this._sprite = "assassin";
 }
 Assassin.prototype = Object.create(Being.prototype);
@@ -29,17 +27,15 @@ Assassin.prototype.act = function() {
     path.shift(); // Remove Assassin's current position
     
     if (path.length <= 1) { // If path is 1, we are adjacent. If 0, we are blocked.
-        this._flash();
         this.playAttackAnimation();
         Game.message("The Assassin strikes you!");
         Game.player.takeDamage(this._strength);
-        Game._drawStats();
     } else {
         // Move towards the player
         var newX = path[0][0];
         var newY = path[0][1];
 
-        // NEW: Check if the destination is occupied before moving
+        // Check if the destination is occupied before moving
         var targetBeing = Game.getBeingAt(newX, newY);
         if (targetBeing) {
             // Blocked, do nothing
@@ -52,11 +48,9 @@ Assassin.prototype.act = function() {
 // Frog class inherits from Being
 var Frog = function(x, y) {
     Being.call(this, x, y);
-    this._health = 1; // Enemy health
-    this._strength = 1; // Enemy strength
+    this._health = 1;
+    this._strength = 1;
     this._name = "frog";
-    this._char = "f";
-    this._color = "green";
     this._sprite = "frog";
 }
 Frog.prototype = Object.create(Being.prototype);
@@ -87,7 +81,6 @@ Frog.prototype.act = function() {
         var midX = this._x + dir[0]/2;
         var midY = this._y + dir[1]/2;
         
-        
         // Skip if intermediate or destination tiles are impassable
         if (!Game.isPassableTile(midX, midY) || !Game.isPassableTile(newX, newY)) {
             continue;
@@ -99,7 +92,6 @@ Frog.prototype.act = function() {
         // Check if the destination tile is occupied by the player
         if (targetBeing === Game.player) {
             this.playAttackAnimation();
-            // Attack the player!
             Game.message("A frog leaps at you and attacks!");
             Game.player.takeDamage(this._strength);
             return; // End turn after attacking
@@ -110,9 +102,7 @@ Frog.prototype.act = function() {
         
         // If destination is free, jump there
         if (!occupiedByEnemy) {
-            // Valid move found - perform the jump
             this._moveTo(newX, newY);
-            
             return; // End turn after moving
         }
     }
@@ -122,11 +112,9 @@ Frog.prototype.act = function() {
 // Rat class inherits from Being
 var Rat = function(x, y) {
     Being.call(this, x, y);
-    this._health = 1; // Enemy health
-    this._strength = 1; // Enemy strength
+    this._health = 1;
+    this._strength = 1;
     this._name = "rat";
-    this._char = "r";
-    this._color = "#808080"; // Grey color
     this._sprite = "rat";
 }
 Rat.prototype = Object.create(Being.prototype);
@@ -154,7 +142,6 @@ Rat.prototype.act = function() {
         var dir = directions[i];
         var newX = this._x + dir[0];
         var newY = this._y + dir[1];
-        var newKey = newX + "," + newY;
         
         // Check if the tile is passable
         if (!Game.isPassableTile(newX, newY)) {
@@ -167,7 +154,6 @@ Rat.prototype.act = function() {
         // Check if the tile is occupied by the player
         if (targetBeing === Game.player) {
             this.playAttackAnimation();
-            // Attack the player!
             Game.message("A rat bites you!");
             Game.player.takeDamage(this._strength);
             return; // End turn after attacking
@@ -178,7 +164,6 @@ Rat.prototype.act = function() {
         
         // If tile is free, move there
         if (!occupiedByEnemy) {
-            // Valid move found - perform the move
             this._moveTo(newX, newY);
             return; // End turn after moving
         }
@@ -189,17 +174,14 @@ Rat.prototype.act = function() {
 // CarnivorousPlant class inherits from Being
 var CarnivorousPlant = function(x, y) {
     Being.call(this, x, y);
-    this._health = 1; // Enemy health
-    this._strength = 1; // Enemy strength
+    this._health = 1;
+    this._strength = 1;
     this._name = "Carnivorous Plant";
-    this._char = "C";
-    this._color = "darkgreen";
     this._sprite = "audrey_2";
 }
 CarnivorousPlant.prototype = Object.create(Being.prototype);
 CarnivorousPlant.prototype.constructor = CarnivorousPlant;
 
-// CarnivorousPlant doesn't move or do anything in its turn
 CarnivorousPlant.prototype.act = function() {
     // Check the 4 cardinal directions for the player
     var directions = [
@@ -230,11 +212,9 @@ CarnivorousPlant.prototype.act = function() {
 // MadFrog class inherits from Being
 var MadFrog = function(x, y) {
     Being.call(this, x, y);
-    this._health = 1; // Enemy health
-    this._strength = 1; // Enemy strength
+    this._health = 1;
+    this._strength = 1;
     this._name = "mad frog";
-    this._char = "f";
-    this._color = "red"; // Red color to distinguish from regular frogs
     this._sprite = "mad_frog";
 }
 MadFrog.prototype = Object.create(Being.prototype);
@@ -258,7 +238,7 @@ MadFrog.prototype.act = function() {
     
     // Find all directions that reduce distance to player
     var goodDirections = [];
-    var bestDistance = currentDistance; // Start with current distance
+    var bestDistance = currentDistance;
     
     for (var i = 0; i < directions.length; i++) {
         var dir = directions[i];
@@ -270,18 +250,16 @@ MadFrog.prototype.act = function() {
         
         // Only consider moves that get us closer or at least don't make us farther
         if (distance < bestDistance) {
-            // This direction is better, clear previous good directions
             goodDirections = [dir];
             bestDistance = distance;
         } else if (distance === bestDistance) {
-            // This direction is equally good, add it to options
             goodDirections.push(dir);
         }
     }
     
     // If no directions reduce distance, try all directions (fallback behavior)
     if (goodDirections.length === 0) {
-        goodDirections = directions.slice(); // Copy all directions
+        goodDirections = directions.slice();
     }
     
     // Shuffle the good directions to avoid bias
@@ -299,8 +277,6 @@ MadFrog.prototype.act = function() {
             return;
         }
     }
-    
-    // If no valid moves found, mad frog stays in place (skips turn)
 }
 
 MadFrog.prototype._tryJump = function(dir) {
@@ -308,7 +284,6 @@ MadFrog.prototype._tryJump = function(dir) {
     var newY = this._y + dir[1];
     var midX = this._x + dir[0]/2;
     var midY = this._y + dir[1]/2;
-    
     
     // Skip if intermediate or destination tiles are impassable
     if (!Game.isPassableTile(midX, midY) || !Game.isPassableTile(newX, newY)) {
@@ -321,32 +296,27 @@ MadFrog.prototype._tryJump = function(dir) {
     // Check if the destination tile is occupied by the player
     if (targetBeing === Game.player) {
         this.playAttackAnimation();
-        // Attack the player!
         Game.message("A mad frog leaps at you furiously!");
         Game.player.takeDamage(this._strength);
-        return true; // Successfully attacked
+        return true;
     }
     
     // Check if destination is occupied by another enemy
     if (targetBeing !== null && targetBeing !== this) {
-        return false; // Blocked by enemy
+        return false;
     }
     
     // If destination is free, jump there
     this._moveTo(newX, newY);
-    
-    
-    return true; // Successfully moved
+    return true;
 }
 
 // Scorpion class inherits from Being
 var Scorpion = function(x, y) {
     Being.call(this, x, y);
-    this._health = 1; // Enemy health
-    this._strength = 1; // Enemy strength
+    this._health = 1;
+    this._strength = 1;
     this._name = "scorpion";
-    this._char = "S";
-    this._color = "orange";
     this._sprite = "scorpion";
 }
 Scorpion.prototype = Object.create(Being.prototype);
@@ -370,7 +340,7 @@ Scorpion.prototype.act = function() {
     
     // Find all directions that reduce distance to player
     var goodDirections = [];
-    var bestDistance = currentDistance; // Start with current distance
+    var bestDistance = currentDistance;
     
     for (var i = 0; i < directions.length; i++) {
         var dir = directions[i];
@@ -382,18 +352,16 @@ Scorpion.prototype.act = function() {
         
         // Only consider moves that get us closer or at least don't make us farther
         if (distance < bestDistance) {
-            // This direction is better, clear previous good directions
             goodDirections = [dir];
             bestDistance = distance;
         } else if (distance === bestDistance) {
-            // This direction is equally good, add it to options
             goodDirections.push(dir);
         }
     }
     
     // If no directions reduce distance, try all directions (fallback behavior)
     if (goodDirections.length === 0) {
-        goodDirections = directions.slice(); // Copy all directions
+        goodDirections = directions.slice();
     }
     
     // Shuffle the good directions to avoid bias
@@ -411,8 +379,6 @@ Scorpion.prototype.act = function() {
             return;
         }
     }
-    
-    // If no valid moves found, mad rat stays in place (skips turn)
 }
 
 Scorpion.prototype._tryMove = function(dir) {
@@ -421,27 +387,26 @@ Scorpion.prototype._tryMove = function(dir) {
     
     // Check if the tile is passable
     if (!Game.isPassableTile(newX, newY)) {
-        return false; // Impassable tile
+        return false;
     }
     
     // Check what's at the destination tile
     var targetBeing = Game.getBeingAt(newX, newY);
     
-    // If the destination is the player, attack but don't move.
+    // If the destination is the player, attack but don't move
     if (targetBeing === Game.player) {
         this.playAttackAnimation();
         Game.message("A Scorpion stings you viciously!");
         Game.player.takeDamage(this._strength);
-        Game.message("The " + this.getName() + " attacks you for " + this._strength + " damage!");
-        return true; // Successfully attacked
+        return true;
     }
     
-    // If the destination is occupied by anything else, the move is blocked.
+    // If the destination is occupied by anything else, the move is blocked
     if (targetBeing) {
-        return false; // Blocked by another being
+        return false;
     }
     
     // If tile is free, move there
     this._moveTo(newX, newY);
-    return true; // Successfully moved
+    return true;
 } 
