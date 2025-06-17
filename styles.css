@@ -139,4 +139,32 @@ canvas {
     z-index: 1001 !important;
     background-color: rgba(0, 0, 0, 0.95) !important;
     backdrop-filter: blur(2px);
+}
+
+/* HTML Message Display styling */
+.html-message-display {
+    order: 3;
+    border: 2px solid #666;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar for message display */
+.html-message-display::-webkit-scrollbar {
+    width: 8px;
+}
+
+.html-message-display::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.html-message-display::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+.html-message-display::-webkit-scrollbar-thumb:hover {
+    background: #777;
 } 

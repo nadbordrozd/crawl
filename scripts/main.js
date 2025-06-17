@@ -40,15 +40,8 @@ var Game = {
         // Create the stats display with the same width as main display
         this.statsDisplay = new ROT.Display({width: this.currentLevel.MAP_WIDTH, height: 1, spacing: 1.1});
         
-        // Create the message display with the same width as main display  
-        this.messageDisplay = new ROT.Display({
-            width: this.currentLevel.MAP_WIDTH,
-            height: this.MESSAGE_LINES, 
-            spacing: 1.1,
-            fg: "#fff",
-            bg: "#000",
-            textAlign: "left"
-        });
+        // Create HTML-based message display instead of canvas
+        this._createHtmlMessageDisplay();
         
         // Add all displays to the existing container with proper CSS classes
         var container = document.getElementById("game-container");
@@ -64,12 +57,9 @@ var Game = {
         // Initialize tile-based display
         this._initTileDisplay();
         
-        // Add message display with CSS class LAST (so it appears below)
-        var messageContainer = this.messageDisplay.getContainer();
-        messageContainer.className = "message-display";
-        messageContainer.style.order = "3";
-        messageContainer.style.position = "relative";
-        container.appendChild(messageContainer);
+        // Add HTML message display with CSS class LAST (so it appears below)
+        this.messageDisplayHtml.style.order = "3";
+        container.appendChild(this.messageDisplayHtml);
         
         // Ensure the container uses flexbox layout
         container.style.display = "flex";
@@ -186,8 +176,13 @@ var Game = {
             // Add canvas to wrapper, then wrapper to main container
             wrapperDiv.appendChild(newContainer);
             
+            // Set the HTML message display width to match the game display
+            if (this.messageDisplayHtml) {
+                this.messageDisplayHtml.style.width = scaledWidth + "px";
+            }
+            
             // Insert after stats display but before message display
-            var messageDisplay = container.querySelector('.message-display');
+            var messageDisplay = container.querySelector('.html-message-display');
             if (messageDisplay) {
                 container.insertBefore(wrapperDiv, messageDisplay);
             } else {
@@ -382,18 +377,20 @@ var Game = {
     message: function(text) {
         // Add the new message to the history
         this.messageHistory.unshift(text);
-        // Keep only the configured number of messages
-        if (this.messageHistory.length > this.MESSAGE_LINES) {
-            this.messageHistory.pop();
-        }
         
-        // Clear and redraw the message display
-        this.messageDisplay.clear();
+        // Create a new message element
+        var messageElement = document.createElement('div');
+        messageElement.textContent = text;
+        messageElement.style.margin = '2px 0';
+        messageElement.style.lineHeight = '16px';
         
-        // Display the messages with explicit left positioning
-        for (var i = 0; i < this.messageHistory.length; i++) {
-            // Draw text starting at the leftmost position (x=0)
-            this.messageDisplay.drawText(0, i, this.messageHistory[i]);
+        // Add to the HTML display (if it exists)
+        if (this.messageDisplayHtml) {
+            // Insert at the top (most recent first)
+            this.messageDisplayHtml.insertBefore(messageElement, this.messageDisplayHtml.firstChild);
+            
+            // Auto-scroll to top to show newest message
+            this.messageDisplayHtml.scrollTop = 0;
         }
     },
     
@@ -500,6 +497,30 @@ var Game = {
         
         // Redraw everything
         this._drawAll();
+    },
+    
+    _createHtmlMessageDisplay: function() {
+        // Create the HTML message display container
+        var messageDiv = document.createElement('div');
+        messageDiv.id = 'html-message-display';
+        messageDiv.className = 'html-message-display';
+        
+        // Style the message display
+        messageDiv.style.fontFamily = 'monospace';
+        messageDiv.style.fontSize = '14px';
+        messageDiv.style.color = '#ffffff';
+        messageDiv.style.backgroundColor = '#2a2a2a';
+        messageDiv.style.border = '2px solid #666';
+        messageDiv.style.borderRadius = '4px';
+        messageDiv.style.padding = '8px';
+        messageDiv.style.overflowY = 'auto'; // Enable scrolling
+        messageDiv.style.height = (this.MESSAGE_LINES * 20) + 'px'; // ~20px per line
+        messageDiv.style.position = 'relative';
+        messageDiv.style.boxSizing = 'border-box';
+        messageDiv.style.textAlign = 'left'; // Align text to the left
+        
+        // Store reference for easy access
+        this.messageDisplayHtml = messageDiv;
     }
 };
 
