@@ -403,10 +403,24 @@ var Game = {
             leftSide.style.alignItems = 'center';
             leftSide.style.gap = '4px';
             
-            // Create stats text with coin icon
-            var statsTextPart1 = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | ";
+            // Create stats text with key and coin icons
+            var statsTextPart1 = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | ";
             var textSpan1 = document.createElement('span');
             textSpan1.textContent = statsTextPart1;
+            
+            // Create key icon
+            var keyIcon = document.createElement('img');
+            keyIcon.src = 'assets/tileset.png';
+            keyIcon.style.width = '16px';
+            keyIcon.style.height = '16px';
+            keyIcon.style.imageRendering = 'pixelated';
+            var keyCoords = SPRITES['key'];
+            keyIcon.style.objectFit = 'none';
+            keyIcon.style.objectPosition = '-' + keyCoords[0] + 'px -' + keyCoords[1] + 'px';
+            
+            // Create key count text
+            var keysSpan = document.createElement('span');
+            keysSpan.textContent = ": " + keys + "/3 | ";
             
             // Create coin icon
             var coinIcon = document.createElement('img');
@@ -423,6 +437,8 @@ var Game = {
             coinsSpan.textContent = ": " + coins;
             
             leftSide.appendChild(textSpan1);
+            leftSide.appendChild(keyIcon);
+            leftSide.appendChild(keysSpan);
             leftSide.appendChild(coinIcon);
             leftSide.appendChild(coinsSpan);
             
