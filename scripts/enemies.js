@@ -553,13 +553,42 @@ Cobra.prototype.constructor = Cobra;
 Cobra.prototype.act = function() {
     if (!Game.player) return; // No player to chase
     
-    // Possible diagonal movement directions only
-    var directions = [
-        [-1, -1], // up-left
-        [1, -1],  // up-right
-        [1, 1],   // down-right
-        [-1, 1]   // down-left
+    // Count passable tiles in all 8 surrounding directions
+    var allDirections = [
+        [-1, -1], // up-left (diagonal)
+        [0, -1],  // up
+        [1, -1],  // up-right (diagonal)
+        [-1, 0],  // left
+        [1, 0],   // right
+        [-1, 1],  // down-left (diagonal)
+        [0, 1],   // down
+        [1, 1]    // down-right (diagonal)
     ];
+    
+    var passableCount = 0;
+    for (var i = 0; i < allDirections.length; i++) {
+        var dir = allDirections[i];
+        var checkX = this._x + dir[0];
+        var checkY = this._y + dir[1];
+        if (Game.isPassableTile(checkX, checkY)) {
+            passableCount++;
+        }
+    }
+    
+    // Determine allowed movement directions based on passable tile count
+    var directions;
+    if (passableCount <= 3) {
+        // 3 or fewer passable tiles - can move in any of 8 directions
+        directions = allDirections.slice();
+    } else {
+        // 4 or more passable tiles - can only move diagonally
+        directions = [
+            [-1, -1], // up-left
+            [1, -1],  // up-right
+            [1, 1],   // down-right
+            [-1, 1]   // down-left
+        ];
+    }
     
     // Calculate current distance to player
     var playerX = Game.player.getX();
@@ -587,7 +616,7 @@ Cobra.prototype.act = function() {
         }
     }
     
-    // If no directions reduce distance, try all directions (fallback behavior)
+    // If no directions reduce distance, try all allowed directions (fallback behavior)
     if (goodDirections.length === 0) {
         goodDirections = directions.slice();
     }
