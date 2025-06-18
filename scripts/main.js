@@ -398,9 +398,33 @@ var Game = {
             
             // Create left side with stats
             var leftSide = document.createElement('div');
-            var statsText = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | Gold: " + coins;
-            leftSide.textContent = statsText;
             leftSide.style.whiteSpace = 'nowrap';
+            leftSide.style.display = 'flex';
+            leftSide.style.alignItems = 'center';
+            leftSide.style.gap = '4px';
+            
+            // Create stats text with coin icon
+            var statsTextPart1 = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | ";
+            var textSpan1 = document.createElement('span');
+            textSpan1.textContent = statsTextPart1;
+            
+            // Create coin icon
+            var coinIcon = document.createElement('img');
+            coinIcon.src = 'assets/tileset.png';
+            coinIcon.style.width = '16px';
+            coinIcon.style.height = '16px';
+            coinIcon.style.imageRendering = 'pixelated';
+            var coinCoords = SPRITES['coin'];
+            coinIcon.style.objectFit = 'none';
+            coinIcon.style.objectPosition = '-' + coinCoords[0] + 'px -' + coinCoords[1] + 'px';
+            
+            // Create coin count text
+            var coinsSpan = document.createElement('span');
+            coinsSpan.textContent = ": " + coins;
+            
+            leftSide.appendChild(textSpan1);
+            leftSide.appendChild(coinIcon);
+            leftSide.appendChild(coinsSpan);
             
             // Create inventory line with icons (right side)
             var inventoryLine = document.createElement('div');
