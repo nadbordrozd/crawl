@@ -2,6 +2,7 @@
 var Player = function(x, y) {
     Being.call(this, x, y);
     this._health = 5; // Override default health for player
+    this._maxHealth = 5; // Maximum health for player
     this._strength = 1; // Player's strength
     this._name = "player";
     this._sprite = "player";
@@ -68,6 +69,7 @@ Player.prototype.getEnemiesDefeated = function() { return this._enemiesDefeated;
 Player.prototype.getStatus = function() { return this._status; }
 Player.prototype.getKeysCollected = function() { return this._keysCollected; }
 Player.prototype.getCoinsCollected = function() { return this._coinsCollected; }
+Player.prototype.getMaxHealth = function() { return this._maxHealth; }
 
 // Inventory management methods
 Player.prototype.addToInventory = function(item) {

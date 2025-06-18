@@ -74,7 +74,10 @@ const SPRITES = {
     spider: [192, 448],
     ghost: [144, 496],
     cobra: [144, 448],
-    item_placeholder: [144, 656]
+    item_placeholder: [144, 656],
+    heart: [64, 640],
+    half_heart: [80, 640],
+    empty_heart: [96, 640]
 
 
 };

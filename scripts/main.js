@@ -403,8 +403,28 @@ var Game = {
             leftSide.style.alignItems = 'center';
             leftSide.style.gap = '4px';
             
-            // Create stats text with key and coin icons
-            var statsTextPart1 = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | ";
+            // Create health hearts
+            var currentHealth = this.player.getHealth();
+            var maxHealth = this.player.getMaxHealth();
+            
+            for (var h = 0; h < maxHealth; h++) {
+                var heartIcon = document.createElement('img');
+                heartIcon.src = 'assets/tileset.png';
+                heartIcon.style.width = '16px';
+                heartIcon.style.height = '16px';
+                heartIcon.style.imageRendering = 'pixelated';
+                
+                // Use full heart if we have health, empty heart if not
+                var heartSprite = (h < currentHealth) ? 'heart' : 'empty_heart';
+                var heartCoords = SPRITES[heartSprite];
+                heartIcon.style.objectFit = 'none';
+                heartIcon.style.objectPosition = '-' + heartCoords[0] + 'px -' + heartCoords[1] + 'px';
+                
+                leftSide.appendChild(heartIcon);
+            }
+            
+            // Create stats text after hearts
+            var statsTextPart1 = " | Status: " + status + " | Level: " + this.levelNumber + " | ";
             var textSpan1 = document.createElement('span');
             textSpan1.textContent = statsTextPart1;
             
