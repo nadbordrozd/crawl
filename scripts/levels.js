@@ -240,6 +240,7 @@ Level.prototype._createItems = function(freeCells) {
     this._generateItems(SpeedPotion, this.itemCounts.SPEED_POTIONS, freeCells);
     this._generateItems(GoldCoin, this.itemCounts.GOLD_COINS, freeCells);
     this._generateItems(Drumstick, this.itemCounts.DRUMSTICKS, freeCells);
+    this._generateItems(Heart, this.itemCounts.HEARTS, freeCells);
 }
 
 // Helper method to create a being at a random free location
@@ -295,7 +296,8 @@ var Level1 = function() {
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
-        DRUMSTICKS: 2
+        DRUMSTICKS: 2,
+        HEARTS: 1
     };
 }
 Level1.prototype = Object.create(Level.prototype);
@@ -326,7 +328,8 @@ var Level2 = function() {
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
-        DRUMSTICKS: 3
+        DRUMSTICKS: 3,
+        HEARTS: 1
     };
 }
 Level2.prototype = Object.create(Level.prototype);
@@ -357,7 +360,8 @@ var Level3 = function() {
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
-        DRUMSTICKS: 3
+        DRUMSTICKS: 3,
+        HEARTS: 1
     };
 }
 Level3.prototype = Object.create(Level.prototype);
@@ -390,7 +394,8 @@ var Level4 = function() {
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
-        DRUMSTICKS: 4
+        DRUMSTICKS: 4,
+        HEARTS: 1
     };
 }
 Level4.prototype = Object.create(Level.prototype);
@@ -422,7 +427,8 @@ var Level5 = function() {
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
-        DRUMSTICKS: 5
+        DRUMSTICKS: 5,
+        HEARTS: 1
     };
 }
 Level5.prototype = Object.create(Level.prototype);

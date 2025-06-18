@@ -12,7 +12,7 @@ const SPRITES = {
     puddle:[32,16],
     blue_halo:[0, 16],
     green_halo:[16, 16],
-    explosion: [80, 32],
+    explosion: [64, 32],
     blood_splatter: [80, 32],
     dirt1: [64, 144],
     dirt2: [80, 144],

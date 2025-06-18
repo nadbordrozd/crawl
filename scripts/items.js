@@ -258,4 +258,23 @@ Drumstick.prototype.use = function(player) {
         // Return the item to inventory since it wasn't used
         player.addToInventory(this);
     }
+};
+
+// Heart item: permanently increases max health by 1
+var Heart = function(x, y) {
+    Item.call(this, x, y, "♥", "heart", "red", "heart");
+    this.pickupable = false; // Hearts are used immediately, not stored
+};
+Heart.prototype = Object.create(Item.prototype);
+Heart.prototype.constructor = Heart;
+
+Heart.prototype.interact = function(player) {
+    // Increase max health permanently
+    player._maxHealth += 1;
+    player._health += 1; // Also restore 1 current health
+    
+    Game.message("You found a heart! Maximum health increased to " + player._maxHealth + "!");
+    
+    // Remove from map
+    this._removeFromMap();
 }; 
