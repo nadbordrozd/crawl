@@ -500,6 +500,16 @@ var Game = {
                 
                 slotDiv.appendChild(icon);
                 inventoryLine.appendChild(slotDiv);
+                
+                // Add vertical separator after each slot (except the last one)
+                if (i < 5) {
+                    var separator = document.createElement('span');
+                    separator.textContent = '|';
+                    separator.style.color = '#666';
+                    separator.style.margin = '0 3px';
+                    separator.style.fontWeight = 'bold';
+                    inventoryLine.appendChild(separator);
+                }
             }
             
             // Add both sides to the main container
