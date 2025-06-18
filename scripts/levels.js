@@ -228,6 +228,11 @@ Level.prototype._createEnemies = function(freeCells) {
     for (var i = 0; i < this.enemyCounts.COBRA; i++) {
         Game.enemies.push(this._createBeing(Cobra, freeCells));
     }
+    
+    // Create Zombies
+    for (var i = 0; i < this.enemyCounts.ZOMBIE; i++) {
+        Game.enemies.push(this._createBeing(Zombie, freeCells));
+    }
 }
 
 // Create all items based on this level's configuration
@@ -284,7 +289,8 @@ var Level1 = function() {
         MADFROG: 4,
         SCORPION: 4,
         GHOST: 1,
-        COBRA: 2
+        COBRA: 2,
+        ZOMBIE: 2
     };
     
     // Define item counts for Level 1
@@ -316,7 +322,8 @@ var Level2 = function() {
         MADFROG: 6,
         SCORPION: 6,
         GHOST: 2,
-        COBRA: 3
+        COBRA: 3,
+        ZOMBIE: 3
     };
     
     // Define item counts for Level 2
@@ -348,7 +355,8 @@ var Level3 = function() {
         MADFROG: 8,
         SCORPION: 8,
         GHOST: 3,
-        COBRA: 4
+        COBRA: 4,
+        ZOMBIE: 4
     };
     
     // Define item counts for Level 1
@@ -382,7 +390,8 @@ var Level4 = function() {
         MADFROG: 8,
         SCORPION: 8,
         GHOST: 4,
-        COBRA: 6
+        COBRA: 6,
+        ZOMBIE: 5
     };
     
     // Define item counts for Level 4
@@ -415,7 +424,8 @@ var Level5 = function() {
         MADFROG: 8,
         SCORPION: 8,
         GHOST: 5,
-        COBRA: 8
+        COBRA: 8,
+        ZOMBIE: 6
     };
     
     // Define item counts for Level 5

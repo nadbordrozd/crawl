@@ -78,8 +78,8 @@ const SPRITES = {
     heart: [64, 640],
     half_heart: [80, 640],
     empty_heart: [96, 640],
-    drumstick: [96, 624]
-
+    drumstick: [96, 624],
+    zombie: [112, 480]
 };
 
 // For CommonJS/Node.js style

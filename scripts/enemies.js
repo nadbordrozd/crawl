@@ -666,4 +666,104 @@ Cobra.prototype._tryCobraMove = function(dir) {
     // If tile is free, move there
     this._moveTo(newX, newY);
     return true;
+}
+
+// Zombie class inherits from Being
+var Zombie = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 2; // Zombies are tougher than scorpions
+    this._strength = 1;
+    this._name = "zombie";
+    this._sprite = "zombie";
+}
+Zombie.prototype = Object.create(Being.prototype);
+Zombie.prototype.constructor = Zombie;
+
+Zombie.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    // Possible movement directions: up, right, down, left (same as scorpion)
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    // Calculate current distance to player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var currentDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Find all directions that reduce distance to player
+    var goodDirections = [];
+    var bestDistance = currentDistance;
+    
+    for (var i = 0; i < directions.length; i++) {
+        var dir = directions[i];
+        var newX = this._x + dir[0];
+        var newY = this._y + dir[1];
+        
+        // Calculate distance to player if we move in this direction
+        var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+        
+        // Only consider moves that get us closer or at least don't make us farther
+        if (distance < bestDistance) {
+            goodDirections = [dir];
+            bestDistance = distance;
+        } else if (distance === bestDistance) {
+            goodDirections.push(dir);
+        }
+    }
+    
+    // If no directions reduce distance, try all directions (fallback behavior)
+    if (goodDirections.length === 0) {
+        goodDirections = directions.slice();
+    }
+    
+    // Shuffle the good directions to avoid bias
+    for (var i = goodDirections.length - 1; i > 0; i--) {
+        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+        var tmp = goodDirections[i];
+        goodDirections[i] = goodDirections[j];
+        goodDirections[j] = tmp;
+    }
+    
+    // Try each good direction until we find a valid move or attack
+    for (var i = 0; i < goodDirections.length; i++) {
+        var dir = goodDirections[i];
+        if (this._tryZombieMove(dir)) {
+            return;
+        }
+    }
+}
+
+Zombie.prototype._tryZombieMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    
+    // Check if the tile is passable
+    if (!Game.isPassableTile(newX, newY)) {
+        return false;
+    }
+    
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
+    // If the destination is the player, attack but don't move
+    if (targetBeing === Game.player) {
+        this.playAttackAnimation();
+        Game.message("A zombie lurches forward and bites you!");
+        Game.player.takeDamage(this._strength);
+        return true;
+    }
+    
+    // If the destination is occupied by anything else, the move is blocked
+    if (targetBeing) {
+        return false;
+    }
+    
+    // If tile is free, move there
+    this._moveTo(newX, newY);
+    return true;
 } 

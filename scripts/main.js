@@ -256,7 +256,8 @@ var Game = {
             {sprite: 'mad_frog', name: 'mad frog'},
             {sprite: 'scorpion', name: 'Scorpion'},
             {sprite: 'ghost', name: 'ghost'},
-            {sprite: 'cobra', name: 'cobra'}
+            {sprite: 'cobra', name: 'cobra'},
+            {sprite: 'zombie', name: 'zombie'}
         ];
         
         enemies.forEach(function(enemy) {
