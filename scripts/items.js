@@ -71,11 +71,17 @@ HealthPotion.prototype.constructor = HealthPotion;
 
 // Override use method for health potion
 HealthPotion.prototype.use = function(player) {
-    // Heal the player
-    player._health += 1;
-    
-    // Show enhanced message with current health
-    Game.message("You drink a healing potion! Health restored: " + player._health + " ♥");
+    if (player._health < player._maxHealth) {
+        // Restore health to maximum
+        player._health = player._maxHealth;
+        
+        // Show enhanced message with current health
+        Game.message("You drink a healing potion! Health fully restored: " + player._health + "/" + player._maxHealth + " ♥");
+    } else {
+        Game.message("You're already at full health! You save the potion for later.");
+        // Return the item to inventory since it wasn't used
+        player.addToInventory(this);
+    }
 }
 
 // GoldKey class - inherits from Item
