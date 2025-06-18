@@ -224,6 +224,16 @@ var Game = {
         html += '<div style="color: #ffff00; margin: 5px 0;">Spacebar:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 10px;">Wait a turn</div>';
         
+        html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Using Items ---</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Walking over items:</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 5px;">Automatically picks up to inventory</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 5px;">Keys and coins are used instantly</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Number Keys 1-6:</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 5px;">Use items from inventory slots</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 5px;">See status bar for your inventory</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Inventory Full:</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 10px;">Items stay on ground until space available</div>';
+        
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Player ---</div>';
         html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['player'][0] + 'px -' + SPRITES['player'][1] + 'px; vertical-align: middle;"> : this is you</div>';
         
