@@ -233,4 +233,23 @@ GoldCoin.prototype.interact = function(player) {
     
     // Remove from map
     this._removeFromMap();
+};
+
+// Drumstick item: restores 1 health
+var Drumstick = function(x, y) {
+    Item.call(this, x, y, "🍗", "drumstick", "brown", "drumstick");
+};
+Drumstick.prototype = Object.create(Item.prototype);
+Drumstick.prototype.constructor = Drumstick;
+
+Drumstick.prototype.use = function(player) {
+    // Restore 1 health, but don't exceed max health
+    if (player._health < player._maxHealth) {
+        player._health += 1;
+        Game.message("You eat the drumstick! Health restored: " + player._health + "/" + player._maxHealth);
+    } else {
+        Game.message("You're already at full health! You save the drumstick for later.");
+        // Return the item to inventory since it wasn't used
+        player.addToInventory(this);
+    }
 }; 

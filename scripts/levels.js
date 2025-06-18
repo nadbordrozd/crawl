@@ -239,6 +239,7 @@ Level.prototype._createItems = function(freeCells) {
     this._generateItems(StoneSkinPotion, this.itemCounts.STONESKIN_POTIONS, freeCells);
     this._generateItems(SpeedPotion, this.itemCounts.SPEED_POTIONS, freeCells);
     this._generateItems(GoldCoin, this.itemCounts.GOLD_COINS, freeCells);
+    this._generateItems(Drumstick, this.itemCounts.DRUMSTICKS, freeCells);
 }
 
 // Helper method to create a being at a random free location
@@ -293,7 +294,8 @@ var Level1 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5
+        GOLD_COINS: 5,
+        DRUMSTICKS: 2
     };
 }
 Level1.prototype = Object.create(Level.prototype);
@@ -315,7 +317,7 @@ var Level2 = function() {
         COBRA: 3
     };
     
-    // Define item counts for Level 1
+    // Define item counts for Level 2
     this.itemCounts = {
         HEALTH_POTIONS: 2,
         GOLD_KEYS: 3,
@@ -323,7 +325,8 @@ var Level2 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5
+        GOLD_COINS: 5,
+        DRUMSTICKS: 3
     };
 }
 Level2.prototype = Object.create(Level.prototype);
@@ -353,7 +356,8 @@ var Level3 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5
+        GOLD_COINS: 5,
+        DRUMSTICKS: 3
     };
 }
 Level3.prototype = Object.create(Level.prototype);
@@ -377,7 +381,7 @@ var Level4 = function() {
         COBRA: 6
     };
     
-    // Define item counts for Level 1
+    // Define item counts for Level 4
     this.itemCounts = {
         HEALTH_POTIONS: 3,
         GOLD_KEYS: 3,
@@ -385,7 +389,8 @@ var Level4 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5
+        GOLD_COINS: 5,
+        DRUMSTICKS: 4
     };
 }
 Level4.prototype = Object.create(Level.prototype);
@@ -408,7 +413,7 @@ var Level5 = function() {
         COBRA: 8
     };
     
-    // Define item counts for Level 1
+    // Define item counts for Level 5
     this.itemCounts = {
         HEALTH_POTIONS: 3,
         GOLD_KEYS: 3,
@@ -416,7 +421,8 @@ var Level5 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5
+        GOLD_COINS: 5,
+        DRUMSTICKS: 5
     };
 }
 Level5.prototype = Object.create(Level.prototype);

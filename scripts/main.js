@@ -238,7 +238,8 @@ var Game = {
             {sprite: 'bomb', name: 'bomb'},
             {sprite: 'shield', name: 'StoneSkin Potion'},
             {sprite: 'speed_potion', name: 'Speed Potion'},
-            {sprite: 'coin', name: 'gold coin'}
+            {sprite: 'coin', name: 'gold coin'},
+            {sprite: 'drumstick', name: 'drumstick'}
         ];
         
         items.forEach(function(item) {

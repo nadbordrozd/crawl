@@ -77,8 +77,8 @@ const SPRITES = {
     item_placeholder: [144, 656],
     heart: [64, 640],
     half_heart: [80, 640],
-    empty_heart: [96, 640]
-
+    empty_heart: [96, 640],
+    drumstick: [96, 624]
 
 };
 
