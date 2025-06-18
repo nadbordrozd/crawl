@@ -35,10 +35,11 @@ Item.prototype.pickup = function(player) {
     // Try to add to inventory
     if (player.addToInventory(this)) {
         Game.message("You picked up a " + this._name + "!");
-        // Remove from map
+        // Remove from map only if successfully added to inventory
         this._removeFromMap();
     } else {
         Game.message("Your inventory is full! You cannot pick up the " + this._name + ".");
+        // Item stays on the map since it wasn't picked up
     }
 }
 
