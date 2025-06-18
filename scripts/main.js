@@ -91,8 +91,12 @@ var Game = {
         // Initial draw
         this._drawAll();
         
-        // Initial welcome message
+        // Initial welcome messages with controls and objective
         this.message("Welcome to the dungeon! Survive and explore!");
+        this.message("CONTROLS: Arrow Keys = Move/Attack, Spacebar = Wait, 1-6 = Use inventory items");
+        this.message("OBJECTIVE: Collect 3 gold keys and reach the exit to advance to the next level");
+        this.message("INVENTORY: Walk over items to pick up, keys and coins are used instantly");
+        this.message("TIP: Press the Instructions button above for detailed help!");
 
         // --- NEW Music Controls ---
         var music = document.getElementById("game-music");
