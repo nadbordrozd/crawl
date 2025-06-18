@@ -223,6 +223,11 @@ Level.prototype._createEnemies = function(freeCells) {
     for (var i = 0; i < this.enemyCounts.GHOST; i++) {
         Game.enemies.push(this._createGhost());
     }
+    
+    // Create Cobras
+    for (var i = 0; i < this.enemyCounts.COBRA; i++) {
+        Game.enemies.push(this._createBeing(Cobra, freeCells));
+    }
 }
 
 // Create all items based on this level's configuration
@@ -276,7 +281,8 @@ var Level1 = function() {
         CARNIVOROUS_PLANT: 1,
         MADFROG: 4,
         SCORPION: 4,
-        GHOST: 1
+        GHOST: 1,
+        COBRA: 2
     };
     
     // Define item counts for Level 1
@@ -305,7 +311,8 @@ var Level2 = function() {
         CARNIVOROUS_PLANT: 1,
         MADFROG: 6,
         SCORPION: 6,
-        GHOST: 2
+        GHOST: 2,
+        COBRA: 3
     };
     
     // Define item counts for Level 1
@@ -334,7 +341,8 @@ var Level3 = function() {
         CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
         SCORPION: 8,
-        GHOST: 3
+        GHOST: 3,
+        COBRA: 4
     };
     
     // Define item counts for Level 1
@@ -365,7 +373,8 @@ var Level4 = function() {
         CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
         SCORPION: 8,
-        GHOST: 4
+        GHOST: 4,
+        COBRA: 6
     };
     
     // Define item counts for Level 1
@@ -395,7 +404,8 @@ var Level5 = function() {
         CARNIVOROUS_PLANT: 1,
         MADFROG: 8,
         SCORPION: 8,
-        GHOST: 5
+        GHOST: 5,
+        COBRA: 8
     };
     
     // Define item counts for Level 1

@@ -72,8 +72,8 @@ const SPRITES = {
     sword: [80, 544],
     attack_effect: [80, 544],
     spider: [192, 448],
-    ghost: [144, 496]
-
+    ghost: [144, 496],
+    cobra: [144, 448]
 
 
 
