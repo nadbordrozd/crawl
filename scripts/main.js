@@ -430,7 +430,7 @@ var Game = {
                 icon.style.imageRendering = 'pixelated';
                 
                 var item = inventory[i];
-                var spriteName = item ? item._sprite : 'placeholder';
+                var spriteName = item ? item._sprite : 'item_placeholder';
                 var spriteCoords = SPRITES[spriteName];
                 
                 icon.style.objectFit = 'none';
