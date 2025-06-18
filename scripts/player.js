@@ -19,6 +19,10 @@ var Player = function(x, y) {
     this._enemiesDefeated = {}; // Key-value store: enemy name -> count
     this._keysCollected = 0; // Track number of keys collected
     this._coinsCollected = 0; // Track number of coins collected
+    
+    // Inventory system
+    this._inventory = [null, null, null, null, null, null]; // 6 inventory slots
+    this.INVENTORY_SIZE = 6;
 }
 Player.prototype = Object.create(Being.prototype);
 Player.prototype.constructor = Player;
@@ -64,6 +68,41 @@ Player.prototype.getEnemiesDefeated = function() { return this._enemiesDefeated;
 Player.prototype.getStatus = function() { return this._status; }
 Player.prototype.getKeysCollected = function() { return this._keysCollected; }
 Player.prototype.getCoinsCollected = function() { return this._coinsCollected; }
+
+// Inventory management methods
+Player.prototype.addToInventory = function(item) {
+    // Find first empty slot
+    for (var i = 0; i < this.INVENTORY_SIZE; i++) {
+        if (this._inventory[i] === null) {
+            this._inventory[i] = item;
+            return true; // Successfully added
+        }
+    }
+    return false; // Inventory full
+}
+
+Player.prototype.useInventoryItem = function(slotIndex) {
+    if (slotIndex < 0 || slotIndex >= this.INVENTORY_SIZE) {
+        return false; // Invalid slot
+    }
+    
+    var item = this._inventory[slotIndex];
+    if (item === null) {
+        return false; // Empty slot
+    }
+    
+    // Use the item on the player
+    item.use(this);
+    
+    // Remove from inventory
+    this._inventory[slotIndex] = null;
+    
+    return true; // Successfully used
+}
+
+Player.prototype.getInventory = function() {
+    return this._inventory;
+}
 
 Player.prototype.act = function() {
     var statusChanged = false;
@@ -119,6 +158,21 @@ Player.prototype.handleEvent = function(e) {
         // Check surroundings and skip turn
         this._checkSurroundings(this._x, this._y);
         Game.message("You look around carefully...");
+        Game._drawAll();
+        window.removeEventListener("keydown", this);
+        Game.engine.unlock();
+        return;
+    }
+    
+    // Handle inventory usage (number keys 1-6)
+    if (code >= 49 && code <= 54) { // Key codes for 1-6
+        var slotIndex = code - 49; // Convert to 0-5 index
+        if (this.useInventoryItem(slotIndex)) {
+            Game.message("You used the item from slot " + (slotIndex + 1) + "!");
+        } else {
+            Game.message("No item in slot " + (slotIndex + 1) + " to use.");
+            this._turns--; // Don't waste a turn for empty slot
+        }
         Game._drawAll();
         window.removeEventListener("keydown", this);
         Game.engine.unlock();

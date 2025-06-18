@@ -253,7 +253,8 @@ var Game = {
             {sprite: 'audrey_2', name: 'Carnivorous Plant'},
             {sprite: 'mad_frog', name: 'mad frog'},
             {sprite: 'scorpion', name: 'Scorpion'},
-            {sprite: 'ghost', name: 'ghost'}
+            {sprite: 'ghost', name: 'ghost'},
+            {sprite: 'cobra', name: 'cobra'}
         ];
         
         enemies.forEach(function(enemy) {
@@ -370,7 +371,11 @@ var Game = {
     },
     
     _drawStats: function() {
-        var statsText = "";
+        if (!this.statsDisplayHtml) return;
+        
+        // Clear existing content
+        this.statsDisplayHtml.innerHTML = '';
+        
         if (this.player) {
             var keys = this.player.getKeysCollected();
             var coins = this.player.getCoinsCollected();
@@ -383,13 +388,65 @@ var Game = {
                 status = "Fast (" + this.player._speedBoostTurns + ")";
             }
             
-            statsText = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | Gold: " + coins;
+            // Create main container with flexbox for left/right alignment
+            var mainContainer = document.createElement('div');
+            mainContainer.style.display = 'flex';
+            mainContainer.style.justifyContent = 'space-between';
+            mainContainer.style.alignItems = 'center';
+            mainContainer.style.width = '100%';
+            mainContainer.style.height = '100%';
+            
+            // Create left side with stats
+            var leftSide = document.createElement('div');
+            var statsText = "Health: " + this.player.getHealth() + " | Status: " + status + " | Level: " + this.levelNumber + " | Keys: " + keys + "/3 | Gold: " + coins;
+            leftSide.textContent = statsText;
+            leftSide.style.whiteSpace = 'nowrap';
+            
+            // Create inventory line with icons (right side)
+            var inventoryLine = document.createElement('div');
+            inventoryLine.style.display = 'flex';
+            inventoryLine.style.alignItems = 'center';
+            inventoryLine.style.gap = '6px';
+            inventoryLine.style.flexShrink = '0';
+            
+            var inventory = this.player.getInventory();
+            for (var i = 0; i < 6; i++) {
+                var slotDiv = document.createElement('span');
+                slotDiv.style.display = 'inline-flex';
+                slotDiv.style.alignItems = 'center';
+                slotDiv.style.gap = '2px';
+                
+                // Slot number
+                var slotNumber = document.createElement('span');
+                slotNumber.textContent = (i + 1) + ':';
+                slotNumber.style.minWidth = '15px';
+                slotDiv.appendChild(slotNumber);
+                
+                // Item icon
+                var icon = document.createElement('img');
+                icon.src = 'assets/tileset.png';
+                icon.style.width = '16px';
+                icon.style.height = '16px';
+                icon.style.imageRendering = 'pixelated';
+                
+                var item = inventory[i];
+                var spriteName = item ? item._sprite : 'placeholder';
+                var spriteCoords = SPRITES[spriteName];
+                
+                icon.style.objectFit = 'none';
+                icon.style.objectPosition = '-' + spriteCoords[0] + 'px -' + spriteCoords[1] + 'px';
+                
+                slotDiv.appendChild(icon);
+                inventoryLine.appendChild(slotDiv);
+            }
+            
+            // Add both sides to the main container
+            mainContainer.appendChild(leftSide);
+            mainContainer.appendChild(inventoryLine);
+            
+            this.statsDisplayHtml.appendChild(mainContainer);
         } else {
-            statsText = "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber;
-        }
-        
-        // Update HTML stats display
-        if (this.statsDisplayHtml) {
+            var statsText = "Health: 0 (DEAD) | Status: dead | Level: " + this.levelNumber;
             this.statsDisplayHtml.textContent = statsText;
         }
     },
@@ -534,12 +591,12 @@ var Game = {
         statsDiv.style.border = '2px solid #666';
         statsDiv.style.borderRadius = '4px';
         statsDiv.style.padding = '8px';
-        statsDiv.style.height = '30px'; // Single line height
+        statsDiv.style.height = '40px'; // Single line height for horizontal layout
         statsDiv.style.position = 'relative';
         statsDiv.style.boxSizing = 'border-box';
-        statsDiv.style.textAlign = 'left'; // Align text to the left
         statsDiv.style.display = 'flex';
-        statsDiv.style.alignItems = 'center'; // Center text vertically
+        statsDiv.style.alignItems = 'center';
+        statsDiv.style.width = '100%';
         
         // Store reference for easy access
         this.statsDisplayHtml = statsDiv;
