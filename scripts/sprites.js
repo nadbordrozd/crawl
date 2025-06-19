@@ -80,7 +80,8 @@ const SPRITES = {
     empty_heart: [96, 640],
     drumstick: [96, 624],
     zombie: [112, 480],
-    cobra: [1440, 448]
+    cobra: [1440, 448],
+    orc: [80, 512],
 };
 
 // For CommonJS/Node.js style
