@@ -191,47 +191,47 @@ Level.prototype._placePlayer = function(freeCells) {
 Level.prototype._createEnemies = function(freeCells) {
     // Create Assassin(s)
     for (var i = 0; i < this.enemyCounts.ASSASSIN; i++) {
-        Game.enemies.push(this._createBeing(Assassin, freeCells));
+        Game.enemies.push(Being.createRandom(Assassin, freeCells));
     }
     
     // Create frogs
     for (var i = 0; i < this.enemyCounts.FROG; i++) {
-        Game.enemies.push(this._createBeing(Frog, freeCells));
+        Game.enemies.push(Being.createRandom(Frog, freeCells));
     }
     
     // Create rats
     for (var i = 0; i < this.enemyCounts.RAT; i++) {
-        Game.enemies.push(this._createBeing(Rat, freeCells));
+        Game.enemies.push(Being.createRandom(Rat, freeCells));
     }
     
     // Create Carnivorous Plants
     for (var i = 0; i < this.enemyCounts.CARNIVOROUS_PLANT; i++) {
-        Game.enemies.push(this._createBeing(CarnivorousPlant, freeCells));
+        Game.enemies.push(Being.createRandom(CarnivorousPlant, freeCells));
     }
     
     // Create mad frogs
     for (var i = 0; i < this.enemyCounts.MADFROG; i++) {
-        Game.enemies.push(this._createBeing(MadFrog, freeCells));
+        Game.enemies.push(Being.createRandom(MadFrog, freeCells));
     }
     
     // Create Scorpions
     for (var i = 0; i < this.enemyCounts.SCORPION; i++) {
-        Game.enemies.push(this._createBeing(Scorpion, freeCells));
+        Game.enemies.push(Being.createRandom(Scorpion, freeCells));
     }
     
-    // Create Ghosts (can spawn anywhere, including walls)
+    // Create Ghosts (uses Ghost.createRandom which can spawn anywhere, including walls)
     for (var i = 0; i < this.enemyCounts.GHOST; i++) {
-        Game.enemies.push(this._createGhost());
+        Game.enemies.push(Ghost.createRandom(Ghost, freeCells));
     }
     
     // Create Cobras
     for (var i = 0; i < this.enemyCounts.COBRA; i++) {
-        Game.enemies.push(this._createBeing(Cobra, freeCells));
+        Game.enemies.push(Being.createRandom(Cobra, freeCells));
     }
     
     // Create Zombies
     for (var i = 0; i < this.enemyCounts.ZOMBIE; i++) {
-        Game.enemies.push(this._createBeing(Zombie, freeCells));
+        Game.enemies.push(Being.createRandom(Zombie, freeCells));
     }
 }
 
@@ -248,21 +248,7 @@ Level.prototype._createItems = function(freeCells) {
     this._generateItems(Heart, this.itemCounts.HEARTS, freeCells);
 }
 
-// Helper method to create a being at a random free location
-Level.prototype._createBeing = function(what, freeCells) {
-    var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
-    var cell = freeCells.splice(index, 1)[0];
-    var x = cell.x;
-    var y = cell.y;
-    return new what(x, y);
-}
 
-// Helper method to create a ghost at any random location (including walls)
-Level.prototype._createGhost = function() {
-    var x = Math.floor(ROT.RNG.getUniform() * this.MAP_WIDTH);
-    var y = Math.floor(ROT.RNG.getUniform() * this.MAP_HEIGHT);
-    return new Ghost(x, y);
-}
 
 // Generic item generation function
 Level.prototype._generateItems = function(ItemClass, count, freeCells) {

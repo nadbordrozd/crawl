@@ -445,6 +445,13 @@ Ghost.prototype._moveTo = function(newX, newY) {
     Game.currentLevel.map[this._x][this._y].being = this;
 }
 
+// Override static factory method for ghosts to spawn anywhere (including walls)
+Ghost.createRandom = function(BeingClass, freeCells) {
+    var x = Math.floor(ROT.RNG.getUniform() * Game.currentLevel.MAP_WIDTH);
+    var y = Math.floor(ROT.RNG.getUniform() * Game.currentLevel.MAP_HEIGHT);
+    return new BeingClass(x, y);
+}
+
 Ghost.prototype.act = function() {
     if (!Game.player) return; // No player to chase
     

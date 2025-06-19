@@ -23,6 +23,15 @@ Being.prototype.getHealth = function() { return this._health; }
 Being.prototype.getStrength = function() { return this._strength; }
 Being.prototype.getName = function() { return this._name; }
 
+// Static factory method to create a being at a random free location
+Being.createRandom = function(BeingClass, freeCells) {
+    var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
+    var cell = freeCells.splice(index, 1)[0];
+    var x = cell.x;
+    var y = cell.y;
+    return new BeingClass(x, y);
+}
+
 
 // Method to move a being and update map tracking
 Being.prototype._moveTo = function(newX, newY) {
