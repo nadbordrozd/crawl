@@ -73,13 +73,14 @@ const SPRITES = {
     attack_effect: [80, 544],
     spider: [192, 448],
     ghost: [144, 496],
-    cobra: [144, 448],
+    snake: [144, 448],
     item_placeholder: [144, 656],
     heart: [64, 640],
     half_heart: [80, 640],
     empty_heart: [96, 640],
     drumstick: [96, 624],
-    zombie: [112, 480]
+    zombie: [112, 480],
+    cobra: [1440, 448]
 };
 
 // For CommonJS/Node.js style
