@@ -12,6 +12,19 @@ var Level = function() {
     
     // Item counts - to be defined by subclasses  
     this.itemCounts = {};
+    
+    // Mapping of enemy type names to their classes
+    this.enemyClasses = {
+        ASSASSIN: Assassin,
+        FROG: Frog,
+        RAT: Rat,
+        CARNIVOROUS_PLANT: CarnivorousPlant,
+        MADFROG: MadFrog,
+        SCORPION: Scorpion,
+        GHOST: Ghost,
+        COBRA: Cobra,
+        ZOMBIE: Zombie
+    };
 }
 
 Level.prototype.validTile = function(x, y) {
@@ -189,49 +202,22 @@ Level.prototype._placePlayer = function(freeCells) {
 
 // Create all enemies based on this level's configuration
 Level.prototype._createEnemies = function(freeCells) {
-    // Create Assassin(s)
-    for (var i = 0; i < this.enemyCounts.ASSASSIN; i++) {
-        Game.enemies.push(Being.createRandom(Assassin, freeCells));
-    }
-    
-    // Create frogs
-    for (var i = 0; i < this.enemyCounts.FROG; i++) {
-        Game.enemies.push(Being.createRandom(Frog, freeCells));
-    }
-    
-    // Create rats
-    for (var i = 0; i < this.enemyCounts.RAT; i++) {
-        Game.enemies.push(Being.createRandom(Rat, freeCells));
-    }
-    
-    // Create Carnivorous Plants
-    for (var i = 0; i < this.enemyCounts.CARNIVOROUS_PLANT; i++) {
-        Game.enemies.push(Being.createRandom(CarnivorousPlant, freeCells));
-    }
-    
-    // Create mad frogs
-    for (var i = 0; i < this.enemyCounts.MADFROG; i++) {
-        Game.enemies.push(Being.createRandom(MadFrog, freeCells));
-    }
-    
-    // Create Scorpions
-    for (var i = 0; i < this.enemyCounts.SCORPION; i++) {
-        Game.enemies.push(Being.createRandom(Scorpion, freeCells));
-    }
-    
-    // Create Ghosts (uses Ghost.createRandom which can spawn anywhere, including walls)
-    for (var i = 0; i < this.enemyCounts.GHOST; i++) {
-        Game.enemies.push(Ghost.createRandom(Ghost, freeCells));
-    }
-    
-    // Create Cobras
-    for (var i = 0; i < this.enemyCounts.COBRA; i++) {
-        Game.enemies.push(Being.createRandom(Cobra, freeCells));
-    }
-    
-    // Create Zombies
-    for (var i = 0; i < this.enemyCounts.ZOMBIE; i++) {
-        Game.enemies.push(Being.createRandom(Zombie, freeCells));
+    // Iterate through all enemy types defined in enemyCounts
+    for (var enemyType in this.enemyCounts) {
+        var count = this.enemyCounts[enemyType];
+        var EnemyClass = this.enemyClasses[enemyType];
+        
+        if (EnemyClass && count > 0) {
+            // Create the specified number of this enemy type
+            for (var i = 0; i < count; i++) {
+                // Use the class's own createRandom method if it exists, otherwise use Being.createRandom
+                if (EnemyClass.createRandom) {
+                    Game.enemies.push(EnemyClass.createRandom(EnemyClass, freeCells));
+                } else {
+                    Game.enemies.push(Being.createRandom(EnemyClass, freeCells));
+                }
+            }
+        }
     }
 }
 
