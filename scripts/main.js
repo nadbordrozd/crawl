@@ -231,10 +231,8 @@ var Game = {
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Using Items ---</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Walking over items:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 5px;">Automatically picks up to inventory</div>';
-        html += '<div style="margin-left: 20px; margin-bottom: 5px;">Keys and coins are used instantly</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Number Keys 1-6:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 5px;">Use items from inventory slots</div>';
-        html += '<div style="margin-left: 20px; margin-bottom: 5px;">See status bar for your inventory</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Inventory Full:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 10px;">Items stay on ground until space available</div>';
         
@@ -262,21 +260,13 @@ var Game = {
         });
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Enemies (Bad!) ---</div>';
-        var enemies = [
-            {sprite: 'assassin', name: 'Assassin'},
-            {sprite: 'frog', name: 'frog'},
-            {sprite: 'rat', name: 'rat'},
-            {sprite: 'audrey_2', name: 'Carnivorous Plant'},
-            {sprite: 'mad_frog', name: 'mad frog'},
-            {sprite: 'scorpion', name: 'Scorpion'},
-            {sprite: 'ghost', name: 'ghost'},
-            {sprite: 'cobra', name: 'cobra'},
-            {sprite: 'zombie', name: 'zombie'}
-        ];
+        var enemySprites = ['assassin', 'frog', 'rat', 'audrey_2', 'mad_frog', 'scorpion', 'ghost', 'cobra', 'zombie'];
         
-        enemies.forEach(function(enemy) {
-            html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[enemy.sprite][0] + 'px -' + SPRITES[enemy.sprite][1] + 'px; vertical-align: middle;"> : ' + enemy.name + '</div>';
+        html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px;">';
+        enemySprites.forEach(function(sprite) {
+            html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
         });
+        html += '</div>';
         
         // Add a close button
         html += '<div style="margin-top: 20px; text-align: center;"><button onclick="Game.toggleInstructions()" style="padding: 8px 16px; background: #333; color: #fff; border: 1px solid #666; border-radius: 4px; cursor: pointer;">Close</button></div>';
