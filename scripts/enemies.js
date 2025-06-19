@@ -413,14 +413,37 @@ Scorpion.prototype._tryMove = function(dir) {
 
 // Ghost class inherits from Being
 var Ghost = function(x, y) {
-    Being.call(this, x, y);
+    // Call Being constructor but handle tile placement manually for ghosts
+    this._x = x;
+    this._y = y;
     this._health = 1;
     this._strength = 1;
     this._name = "ghost";
     this._sprite = "ghost";
+    this._isAttacking = false;
+    this._isTakingDamage = false;
+    this._isDead = false;
+    
+    // Ghosts can be placed on any tile, even walls
+    if (x !== undefined && y !== undefined) {
+        Game.currentLevel.map[x][y].being = this;
+    }
 }
 Ghost.prototype = Object.create(Being.prototype);
 Ghost.prototype.constructor = Ghost;
+
+// Override _moveTo for ghosts to allow movement to any tile (including walls)
+Ghost.prototype._moveTo = function(newX, newY) {
+    // Remove from old position (ghosts can be on any tile)
+    Game.currentLevel.map[this._x][this._y].being = null;
+    
+    // Update position
+    this._x = newX;
+    this._y = newY;
+    
+    // Add to new position (ghosts can be placed on any tile)
+    Game.currentLevel.map[this._x][this._y].being = this;
+}
 
 Ghost.prototype.act = function() {
     if (!Game.player) return; // No player to chase
