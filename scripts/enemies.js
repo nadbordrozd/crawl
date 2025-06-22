@@ -424,6 +424,7 @@ var Ghost = function(x, y) {
     this._isTakingDamage = false;
     this._isDead = false;
     this._speed = 100;
+    this._activationRadius = Ghost.ACTIVATION_RADIUS; // Use class-level parameter
     
     // Place ghost on map regardless of tile passability
     if (x !== undefined && y !== undefined) {
@@ -432,6 +433,9 @@ var Ghost = function(x, y) {
 }
 Ghost.prototype = Object.create(Being.prototype);
 Ghost.prototype.constructor = Ghost;
+
+// Class-level activation radius parameter
+Ghost.ACTIVATION_RADIUS = 5; // Default activation radius
 
 // Override _moveTo for ghosts to allow movement to any tile (including walls)
 Ghost.prototype._moveTo = function(newX, newY) {
@@ -487,8 +491,8 @@ Ghost.prototype.act = function() {
     var playerY = Game.player.getY();
     var manhattanDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
     
-    // If player is within Manhattan distance 5, move towards player
-    if (manhattanDistance <= 5) {
+    // If player is within activation radius, move towards player
+    if (manhattanDistance <= this._activationRadius) {
         // Find direction that gets us closest to the player
         var bestDirection = null;
         var bestDistance = manhattanDistance;
@@ -898,120 +902,19 @@ Imp.prototype.act = function() {
     // If no viable positions, imp stays in place
 }
 
-// Reaper class inherits from Being - like Ghost but stronger
+// Reaper class inherits from Ghost - exactly like Ghost but with higher strength
 var Reaper = function(x, y) {
-    // Call Being constructor but handle tile placement manually for reapers (like ghosts)
-    this._x = x;
-    this._y = y;
-    this._health = 1;
-    this._strength = 2; // Reapers are stronger than ghosts
+    // Call Ghost constructor to get all ghost behavior
+    Ghost.call(this, x, y);
+    this._strength = 2; // Override strength - reapers hit harder than ghosts
     this._name = "reaper";
     this._sprite = "reaper";
-    this._isAttacking = false;
-    this._isTakingDamage = false;
-    this._isDead = false;
-    
-    // Reapers can be placed on any tile, even walls (like ghosts)
-    if (x !== undefined && y !== undefined) {
-        Game.currentLevel.map[x][y].being = this;
-    }
 }
-Reaper.prototype = Object.create(Being.prototype);
+Reaper.prototype = Object.create(Ghost.prototype);
 Reaper.prototype.constructor = Reaper;
 
-// Override _moveTo for reapers to allow movement to any tile (including walls) - like ghosts
-Reaper.prototype._moveTo = function(newX, newY) {
-    // Remove from old position (reapers can be on any tile)
-    Game.currentLevel.map[this._x][this._y].being = null;
-    
-    // Update position
-    this._x = newX;
-    this._y = newY;
-    
-    // Add to new position (reapers can be placed on any tile)
-    Game.currentLevel.map[this._x][this._y].being = this;
-}
-
-// Override static factory method for reapers to spawn anywhere (including walls) - like ghosts
-Reaper.createRandom = function(BeingClass, freeCells) {
-    var x = Math.floor(ROT.RNG.getUniform() * Game.currentLevel.MAP_WIDTH);
-    var y = Math.floor(ROT.RNG.getUniform() * Game.currentLevel.MAP_HEIGHT);
-    return new BeingClass(x, y);
-}
-
-Reaper.prototype.act = function() {
-    if (!Game.player) return; // No player to chase
-    
-    // Possible movement directions: up, right, down, left
-    var directions = [
-        [0, -1], // up
-        [1, 0],  // right
-        [0, 1],  // down
-        [-1, 0]  // left
-    ];
-    
-    // Calculate Manhattan distance to player
-    var playerX = Game.player.getX();
-    var playerY = Game.player.getY();
-    var manhattanDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
-    
-    if (manhattanDistance <= 6) {
-        // Player is close, move towards them
-        var bestDistance = manhattanDistance;
-        var bestDirections = [];
-        
-        // Find all directions that get us closer to the player
-        for (var i = 0; i < directions.length; i++) {
-            var dir = directions[i];
-            var newX = this._x + dir[0];
-            var newY = this._y + dir[1];
-            var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
-            
-            if (distance < bestDistance) {
-                bestDirections = [dir];
-                bestDistance = distance;
-            } else if (distance === bestDistance) {
-                bestDirections.push(dir);
-            }
-        }
-        
-        // If we found better directions, use them; otherwise try all directions
-        var directionsToTry = bestDirections.length > 0 ? bestDirections : directions;
-        
-        // Shuffle the directions to avoid bias
-        for (var i = directionsToTry.length - 1; i > 0; i--) {
-            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
-            var tmp = directionsToTry[i];
-            directionsToTry[i] = directionsToTry[j];
-            directionsToTry[j] = tmp;
-        }
-        
-        // Try each direction until we find a valid move or attack
-        for (var i = 0; i < directionsToTry.length; i++) {
-            if (this._tryReaperMove(directionsToTry[i])) {
-                return;
-            }
-        }
-    } else {
-        // Player is far away, move randomly
-        // Shuffle directions randomly
-        for (var i = directions.length - 1; i > 0; i--) {
-            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
-            var tmp = directions[i];
-            directions[i] = directions[j];
-            directions[j] = tmp;
-        }
-        
-        // Try each direction until we find a valid move
-        for (var i = 0; i < directions.length; i++) {
-            if (this._tryReaperMove(directions[i])) {
-                return;
-            }
-        }
-    }
-}
-
-Reaper.prototype._tryReaperMove = function(dir) {
+// Override the attack message to be more thematic for reapers
+Reaper.prototype._tryGhostMove = function(dir) {
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
     
