@@ -90,7 +90,10 @@ const SPRITES = {
     grave4: [208, 416],
     belt: [128, 560],
     skeleton: [112, 496],
-    unicorn: [80, 464]
+    unicorn: [80, 464],
+    ring_1: [144, 592],
+    ring_2: [160, 592],
+    ring_3: [176, 592]
 };
 
 // For CommonJS/Node.js style

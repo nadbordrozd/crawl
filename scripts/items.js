@@ -278,4 +278,64 @@ Heart.prototype.interact = function(player) {
     
     // Remove from map
     this._removeFromMap();
+};
+
+// SummoningRing item: summons a friendly Unicorn
+var SummoningRing = function(x, y) {
+    Item.call(this, x, y, "○", "Summoning Ring", "silver", "ring_2");
+};
+SummoningRing.prototype = Object.create(Item.prototype);
+SummoningRing.prototype.constructor = SummoningRing;
+
+SummoningRing.prototype.use = function(player) {
+    // Find the nearest unoccupied, passable tile to the player
+    var playerX = player.getX();
+    var playerY = player.getY();
+    var summonLocation = this._findNearestFreeTile(playerX, playerY);
+    
+    if (summonLocation) {
+        // Create a new Unicorn at the found location
+        var unicorn = new Unicorn(summonLocation.x, summonLocation.y);
+        
+        // Add the unicorn to the game's enemies array (even though it's friendly)
+        Game.enemies.push(unicorn);
+        
+        // Add the unicorn to the scheduler so it can take turns
+        Game.engine._scheduler.add(unicorn, true);
+        
+        Game.message("The ring glows and summons a majestic unicorn to aid you!");
+        Game._drawAll(); // Update the display to show the new unicorn
+    } else {
+        Game.message("The ring flickers but fails to summon - no clear space nearby!");
+        // Return the item to inventory since it wasn't used
+        player.addToInventory(this);
+    }
+};
+
+// Find the nearest free (unoccupied, passable) tile to the given position
+SummoningRing.prototype._findNearestFreeTile = function(centerX, centerY) {
+    // Search in expanding rings around the center position
+    for (var radius = 1; radius <= 10; radius++) {
+        // Check all tiles at this radius using a square pattern
+        for (var dx = -radius; dx <= radius; dx++) {
+            for (var dy = -radius; dy <= radius; dy++) {
+                // Only check tiles that are exactly at this radius (on the border)
+                if (Math.abs(dx) === radius || Math.abs(dy) === radius) {
+                    var checkX = centerX + dx;
+                    var checkY = centerY + dy;
+                    
+                    // Check if this position is valid, passable, and unoccupied
+                    if (Game.isPassableTile(checkX, checkY)) {
+                        var occupant = Game.getBeingAt(checkX, checkY);
+                        if (!occupant) {
+                            return {x: checkX, y: checkY};
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // No free tile found within reasonable distance
+    return null;
 }; 
