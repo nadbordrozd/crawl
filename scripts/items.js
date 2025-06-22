@@ -348,26 +348,27 @@ ScrollOfRevelation.prototype = Object.create(Item.prototype);
 ScrollOfRevelation.prototype.constructor = ScrollOfRevelation;
 
 ScrollOfRevelation.prototype.use = function(player) {
-    // Mark all tiles on the current level as explored
+    // Mark only passable tiles on the current level as explored
     var tilesRevealed = 0;
     
     for (var x = 0; x < Game.currentLevel.MAP_WIDTH; x++) {
         for (var y = 0; y < Game.currentLevel.MAP_HEIGHT; y++) {
             var tile = Game.currentLevel.map[x][y];
-            if (tile && !tile.explored) {
+            // Only reveal passable tiles that haven't been explored yet
+            if (tile && tile.passable && !tile.explored) {
                 tile.explored = true;
                 tilesRevealed++;
             }
         }
     }
     
-    // Show message and redraw the map to reveal everything
-    Game.message("The scroll glows with ancient magic! The entire map is revealed to you!");
+    // Show message and redraw the map to reveal the passable areas
+    Game.message("The scroll glows with ancient magic! All accessible areas are revealed to you!");
     Game._drawAll(); // Redraw to show the newly revealed areas
     
     // Optional: Add a visual effect message about how much was revealed
     if (tilesRevealed > 0) {
-        Game.message("You can now see " + tilesRevealed + " previously unexplored areas!");
+        Game.message("You can now see " + tilesRevealed + " previously unexplored passable areas!");
     }
 };
 

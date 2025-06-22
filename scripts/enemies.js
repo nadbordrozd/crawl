@@ -1605,4 +1605,17 @@ FlamingHorse.prototype._tryFlamingHorseMove = function(dir) {
     // If tile is free, move there
     this._moveTo(newX, newY);
     return true;
-} 
+}
+
+// Ninja class inherits from Assassin - faster version with same AI
+var Ninja = function(x, y) {
+    Assassin.call(this, x, y); // Call parent constructor
+    this._name = "ninja";
+    this._sprite = "ninja";
+    this._speed = 200; // Fast speed - double normal speed
+}
+Ninja.prototype = Object.create(Assassin.prototype);
+Ninja.prototype.constructor = Ninja;
+
+// Ninja inherits all behavior from Assassin (including act method)
+// No need to override act() - it will use Assassin's pathfinding and attack logic 

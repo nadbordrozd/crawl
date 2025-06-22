@@ -33,7 +33,8 @@ var Level = function() {
         ORC: Orc,
         UNICORN: Unicorn,
         TROLL: Troll,
-        FLAMING_HORSE: FlamingHorse
+        FLAMING_HORSE: FlamingHorse,
+        NINJA: Ninja
     };
     
     // Mapping of item type names to their classes
@@ -297,27 +298,30 @@ var Level1 = function() {
     // Define enemy counts for Level 1
     this.enemyCounts = {
         ASSASSIN: 2,
-        FROG: 5,
-        RAT: 5,
+        FROG: 4,
+        RAT: 4,
         CARNIVOROUS_PLANT: 1,
-        MADFROG: 4,
+        MADFROG: 3,
         SCORPION: 4,
         GHOST: 1,
         COBRA: 2,
-        ZOMBIE: 2
+        ZOMBIE: 1
     };
     
     // Define item counts for Level 1
     this.itemCounts = {
-        HEALTH_POTIONS: 2,
+        HEALTH_POTIONS: 1,
         GOLD_KEYS: 3,
         BOMBS: 1,
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 3,
-        DRUMSTICKS: 2,
-        HEARTS: 0
+        GOLD_COINS: 2,
+        DRUMSTICKS: 1,
+        HEARTS: 0,
+        SUMMONING_RINGS: 0,
+        SCROLLS_OF_REVELATION: 0,
+        BELTS: 0
     };
 }
 Level1.prototype = Object.create(Level.prototype);
@@ -330,14 +334,17 @@ var Level2 = function() {
     // Define enemy counts for Level 2
     this.enemyCounts = {
         ASSASSIN: 4,
+        NINJA: 1,
         FROG: 5,
         RAT: 5,
         CARNIVOROUS_PLANT: 1,
-        MADFROG: 6,
+        ORC: 1,
         SCORPION: 6,
         GHOST: 2,
         COBRA: 3,
-        ZOMBIE: 3
+        ZOMBIE: 3,
+        REAPER: 1,
+        IMP: 1
     };
     
     // Define item counts for Level 2
@@ -348,9 +355,12 @@ var Level2 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5,
-        DRUMSTICKS: 3,
-        HEARTS: 1
+        GOLD_COINS: 3,
+        DRUMSTICKS: 2,
+        HEARTS: 0,
+        SUMMONING_RINGS: 0,
+        SCROLLS_OF_REVELATION: 0,
+        BELTS: 1
     };
 }
 Level2.prototype = Object.create(Level.prototype);
@@ -362,27 +372,27 @@ var Level3 = function() {
     
     // Define enemy counts for Level 3
     this.enemyCounts = {
-        ASSASSIN: 8,
-        FROG: 5,
-        RAT: 5,
-        CARNIVOROUS_PLANT: 1,
-        MADFROG: 8,
-        SCORPION: 8,
-        GHOST: 3,
-        COBRA: 4,
-        ZOMBIE: 4
+        ORC: 2,
+        FLAMING_HORSE: 2,
+        TROLL: 1,
+        CARNIVOROUS_PLANT: 6,
+        REAPER: 3
     };
     
     // Define item counts for Level 1
     this.itemCounts = {
-        HEALTH_POTIONS: 3,
+        HEALTH_POTIONS: 2,
         GOLD_KEYS: 3,
-        BOMBS: 3,
+        BOMBS: 0,
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5,
-        DRUMSTICKS: 3,
+        GOLD_COINS: 3,
+        DRUMSTICKS: 0,
+        HEARTS: 0,
+        SUMMONING_RINGS: 0,
+        SCROLLS_OF_REVELATION: 1,
+        BELTS: 1,
         HEARTS: 1
     };
 }
@@ -397,14 +407,11 @@ var Level4 = function() {
     
     // Define enemy counts for Level 4
     this.enemyCounts = {
-        ASSASSIN: 16,
-        FROG: 5,
-        RAT: 5,
+        IMP: 3,
+        SKELETON: 5,
+        COBRA: 5,
         CARNIVOROUS_PLANT: 1,
-        MADFROG: 8,
-        SCORPION: 8,
-        GHOST: 4,
-        COBRA: 6,
+        NINJA: 8,
         ZOMBIE: 5
     };
     
@@ -431,13 +438,10 @@ var Level5 = function() {
     
     // Define enemy counts for Level 5
     this.enemyCounts = {
-        ASSASSIN: 32,
-        FROG: 5,
-        RAT: 5,
-        CARNIVOROUS_PLANT: 1,
-        MADFROG: 8,
-        SCORPION: 8,
-        GHOST: 5,
+        NINJA: 16,
+        TROLL: 2,
+        CARNIVOROUS_PLANT: 5,
+        GHOST: 10,
         COBRA: 8,
         ZOMBIE: 6
     };
@@ -452,11 +456,43 @@ var Level5 = function() {
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
         DRUMSTICKS: 5,
-        HEARTS: 1
+        HEARTS: 1,
+        BELTS: 1
     };
 }
 Level5.prototype = Object.create(Level.prototype);
 Level5.prototype.constructor = Level5;
+
+
+
+var Level6 = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Level 5
+    this.enemyCounts = {
+        NINJA: 16,
+        TROLL: 2,
+        ORC: 5,
+        REAPER: 15,
+        IMP: 14
+    };
+    
+    // Define item counts for Level 5
+    this.itemCounts = {
+        HEALTH_POTIONS: 3,
+        GOLD_KEYS: 3,
+        BOMBS: 3,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5,
+        DRUMSTICKS: 5,
+        HEARTS: 1,
+        BELTS: 1
+    };
+}
+Level6.prototype = Object.create(Level.prototype);
+Level6.prototype.constructor = Level6;
 
 // ZombieLevel class - a spooky graveyard level with lots of undead
 var ZombieLevel = function() {
@@ -644,15 +680,19 @@ var ImpLevel = function() {
     
     // Define item counts for Imp Level - mobility and survival focused
     this.itemCounts = {
-        HEALTH_POTIONS: 1,    // 1 healing potion
-        GOLD_KEYS: 3,         // Still need keys for exit
-        BOMBS: 1,             // 1 bomb for crowd control
-        EXITS: 1,             // Need an exit
-        STONESKIN_POTIONS: 1, // No defensive potions
-        SPEED_POTIONS: 2,     // 2 speed potions for mobility
+        HEALTH_POTIONS: 2,
+        GOLD_KEYS: 3,
+        BOMBS: 1,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
         GOLD_COINS: 3,
-        DRUMSTICKS: 4,        // 4 drumsticks for healing
-        HEARTS: 1,            
+        DRUMSTICKS: 2,
+        HEARTS: 0,
+        SUMMONING_RINGS: 0,
+        SCROLLS_OF_REVELATION: 0,
+        BELTS: 1,
+        HEARTS: 1
     };
 }
 ImpLevel.prototype = Object.create(Level.prototype);
@@ -672,17 +712,18 @@ var TrollLevel = function() {
     
     // Define item counts for Troll Level - survival and support focused
     this.itemCounts = {
-        HEALTH_POTIONS: 1,    // No health potions
-        GOLD_KEYS: 3,         // Still need keys for exit
-        BOMBS: 1,             // 1 bomb for crowd control
-        EXITS: 1,             // Need an exit
-        STONESKIN_POTIONS: 1, // 1 stoneskin potion for defense
-        SPEED_POTIONS: 0,     // No speed potions
-        GOLD_COINS: 0,        // No coins
-        DRUMSTICKS: 2,        // 2 drumsticks for healing
-        HEARTS: 0,            // No hearts
-        SUMMONING_RINGS: 1,   // 1 summoning ring for help
-        BELTS: 6              // 1 belt to increase inventory capacity
+        HEALTH_POTIONS: 1,
+        GOLD_KEYS: 3,
+        BOMBS: 1,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 3,
+        DRUMSTICKS: 2,
+        HEARTS: 0,
+        SUMMONING_RINGS: 1,
+        SCROLLS_OF_REVELATION: 0,
+        BELTS: 0
     };
 }
 TrollLevel.prototype = Object.create(Level.prototype);
@@ -703,18 +744,19 @@ var CobraLevel = function() {
     
     // Define item counts for Cobra Level - minimal supplies
     this.itemCounts = {
-        HEALTH_POTIONS: 1,    // 1 health potion
-        GOLD_KEYS: 3,         // Still need keys for exit
-        BOMBS: 0,             // No bombs
-        EXITS: 1,             // Need an exit
-        STONESKIN_POTIONS: 0, // No stoneskin potions
-        SPEED_POTIONS: 1,     // 1 speed potion
-        GOLD_COINS: 3,        // 3 gold coins
-        DRUMSTICKS: 1,        // 1 drumstick for healing
-        HEARTS: 0,            // No hearts
-        SUMMONING_RINGS: 0,   // No summoning rings
-        BELTS: 1,             // 1 belt to increase inventory capacity
-        SCROLLS_OF_REVELATION: 1 // 1 scroll of revelation
+        HEALTH_POTIONS: 2,
+        GOLD_KEYS: 3,
+        BOMBS: 0,
+        EXITS: 1,
+        STONESKIN_POTIONS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 3,
+        DRUMSTICKS: 2,
+        HEARTS: 0,
+        SUMMONING_RINGS: 1,
+        SCROLLS_OF_REVELATION: 1,
+        BELTS: 0,
+        HEARTS: 1
     };
 }
 CobraLevel.prototype = Object.create(Level.prototype);

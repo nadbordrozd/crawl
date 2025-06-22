@@ -35,7 +35,8 @@ var Game = {
     
     init: function() {
         // Initialize ImpLevel as first level
-        this.currentLevel = new TrollLevel();
+        // this.currentLevel = this.levelSequence[this.levelNumber];
+        this.currentLevel = new Level1()
         
         // Create HTML-based stats display instead of canvas
         this._createHtmlStatsDisplay();
@@ -550,8 +551,17 @@ var Game = {
     },
     
     nextLevel: function() {
+        // Define the custom level order
+        var levelSequence = [
+            'Level1', 'ZombieLevel', 'Level2', 'CobraLevel', 'Level3', 
+            'ImpLevel', 'TrollLevel', 'Level4', 'Level5', 'Level6'
+        ];
+        
         this.levelNumber++;
-        var levelClass = window["Level" + this.levelNumber];
+        
+        // Get the level class name from the sequence (levelNumber-1 because array is 0-indexed)
+        var levelClassName = levelSequence[this.levelNumber - 1];
+        var levelClass = window[levelClassName];
 
         if (!levelClass) {
             this._gameWon();

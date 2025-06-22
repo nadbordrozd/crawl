@@ -110,6 +110,7 @@ const SPRITES = {
     scroll: [144, 576],
     flame: [64, 672],
     flaming_horse: [208, 480],
+    ninja: [1424, 512],
 
     // Wall sprite sets for different level themes
     WALL_SETS: {
