@@ -105,10 +105,13 @@ canvas {
     position: absolute;
     top: 1em;
     left: 1em;
+    display: flex;
+    gap: 10px;
 }
 
 #music-toggle-button,
-#instructions-toggle-button {
+#instructions-toggle-button,
+#about-toggle-button {
     padding: 8px 16px;
     font-family: 'Courier New', Courier, monospace;
     background-color: #555;
@@ -119,12 +122,14 @@ canvas {
 }
 
 #music-toggle-button:hover,
-#instructions-toggle-button:hover {
+#instructions-toggle-button:hover,
+#about-toggle-button:hover {
     background-color: #777;
 }
 
 /* Instructions overlay styling */
-.instructions-overlay {
+.instructions-overlay,
+.about-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -134,11 +139,13 @@ canvas {
     z-index: 1000;
 }
 
-.instructions-overlay[style*="block"] {
+.instructions-overlay[style*="block"],
+.about-overlay[style*="block"] {
     pointer-events: auto; /* Enable clicks when visible */
 }
 
-.instructions-display {
+.instructions-display,
+.about-display {
     position: absolute !important;
     top: 20px !important;
     right: 20px !important;
