@@ -736,10 +736,13 @@ ImpLevel.prototype.constructor = ImpLevel;
 var TrollLevel = function() {
     Level.call(this);
     
+    // Use prehistoric-themed wall sprites for this primitive/troll level
+    this.wallSpriteSet = 'PREHISTORIC';
+    
     // Define enemy counts for Troll Level - heavy melee combat
     this.enemyCounts = {
-        TROLL: 2,       // 2 powerful trolls
-        ORC: 5,         // 5 strong orcs
+        TROLL: 6,       // 6 powerful trolls
+        ORC: 6,         // 5 strong orcs
         RAT: 3,         // 3 rats for variety
         FROG: 3         // 3 frogs for variety
     };
@@ -762,6 +765,29 @@ var TrollLevel = function() {
 }
 TrollLevel.prototype = Object.create(Level.prototype);
 TrollLevel.prototype.constructor = TrollLevel;
+
+// Override prettifyPassableTile to add prehistoric cave decorations
+TrollLevel.prototype.prettifyPassableTile = function(x, y, tile) {
+    tile.terrain = 'dirt18'; // Keep the same terrain as other levels
+    
+    // Keep the existing skeleton decorations from base level
+    var skeletonChance = 0.005;
+    
+    // Add prehistoric cave decorations - 1/4 as many as bones (0.00125 each)
+    var caveDecorationChance = skeletonChance * 0.75;
+    
+    if (ROT.RNG.getUniform() < caveDecorationChance) {
+        tile.decoration = 'fire_with_pot';
+    } else if (ROT.RNG.getUniform() < caveDecorationChance) {
+        tile.decoration = 'stalagmite_2';
+    } else if (ROT.RNG.getUniform() < skeletonChance) {
+        tile.decoration = 'skeleton_remains';
+    } else if (ROT.RNG.getUniform() < skeletonChance) {
+        tile.decoration = 'bull_skull';
+    } else if (ROT.RNG.getUniform() < skeletonChance) {
+        tile.decoration = 'ribcage';
+    }
+}
 
 // CobraLevel class - a level with venomous snakes and arachnids
 var CobraLevel = function() {
@@ -795,3 +821,27 @@ var CobraLevel = function() {
 }
 CobraLevel.prototype = Object.create(Level.prototype);
 CobraLevel.prototype.constructor = CobraLevel;
+
+// Override prettifyPassableTile to add Egyptian-themed decorations
+CobraLevel.prototype.prettifyPassableTile = function(x, y, tile) {
+    tile.terrain = 'dirt18'; // Keep the same terrain as other levels
+    
+    // Add Egyptian decorations with small probabilities
+    var sarcophagusChance = 0.008; // Slightly less common than normal decorations
+    var sphinxChance = 0.003;      // Even rarer
+    
+    // Keep the existing skeleton decorations from base level
+    var skeletonChance = 0.005;
+    
+    if (ROT.RNG.getUniform() < sarcophagusChance) {
+        tile.decoration = 'sarcophagus';
+    } else if (ROT.RNG.getUniform() < sphinxChance) {
+        tile.decoration = 'sphinx';
+    } else if (ROT.RNG.getUniform() < skeletonChance) {
+        tile.decoration = 'skeleton_remains';
+    } else if (ROT.RNG.getUniform() < skeletonChance) {
+        tile.decoration = 'bull_skull';
+    } else if (ROT.RNG.getUniform() < skeletonChance) {
+        tile.decoration = 'ribcage';
+    }
+}

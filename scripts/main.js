@@ -64,6 +64,9 @@ var Game = {
         
         // Create instructions display as HTML div
         this._createInstructionsDisplay();
+        
+        // Create about display as HTML div
+        this._createAboutDisplay();
 
         // Generate the level (map + enemies + items)
         this.currentLevel.generate();
@@ -286,6 +289,66 @@ var Game = {
     
     toggleInstructions: function() {
         var overlay = document.getElementById("instructions-overlay");
+        if (overlay.style.display === "none") {
+            overlay.style.display = "block";
+        } else {
+            overlay.style.display = "none";
+        }
+    },
+    
+    _createAboutDisplay: function() {
+        var aboutContainer = document.getElementById("about-overlay");
+        
+        // Create the main about div
+        var aboutDiv = document.createElement('div');
+        aboutDiv.className = 'about-display';
+        aboutDiv.style.fontFamily = 'monospace';
+        aboutDiv.style.fontSize = '14px';
+        aboutDiv.style.color = '#ffffff';
+        aboutDiv.style.backgroundColor = '#000000';
+        aboutDiv.style.padding = '20px';
+        aboutDiv.style.border = '2px solid #333';
+        aboutDiv.style.borderRadius = '8px';
+        aboutDiv.style.maxWidth = '400px';
+        aboutDiv.style.maxHeight = '80vh';
+        aboutDiv.style.overflowY = 'auto';
+        aboutDiv.style.textAlign = 'left';
+        aboutDiv.style.position = 'absolute';
+        aboutDiv.style.top = '20px';
+        aboutDiv.style.left = '20px';
+        aboutDiv.style.zIndex = '1000';
+        aboutDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.7)';
+        
+        // Build the about HTML
+        var html = '<div style="text-align: center; margin-bottom: 20px; color: #ffaa00; font-size: 18px; font-weight: bold;">About Vibe Crawler</div>';
+        
+        html += '<div style="line-height: 1.6; margin-bottom: 20px;">';
+        html += 'I vibe coded this game in June 2025 using Cursor with Claude 4 Sonnet - just to see if I can.';
+        html += '</div>';
+        
+        html += '<div style="line-height: 1.6; margin-bottom: 20px;">';
+        html += 'If you have any comments or requests regarding the game you can email me at ';
+        html += '<span style="color: #44ff44;">nadbordrozd@gmail.com</span>';
+        html += '</div>';
+        
+        html += '<div style="line-height: 1.6; margin-bottom: 20px;">';
+        html += 'The music in the game is by Ardie Son, licensed at artist.io. The spritesheet is by backterria licensed at itch.io.';
+        html += '</div>';
+        
+        html += '<div style="margin-top: 20px; text-align: center;"><button onclick="Game.toggleAbout()" style="padding: 8px 16px; background: #333; color: #fff; border: 1px solid #666; border-radius: 4px; cursor: pointer;">Close</button></div>';
+        
+        aboutDiv.innerHTML = html;
+        aboutContainer.appendChild(aboutDiv);
+        
+        // Add about toggle functionality
+        var aboutButton = document.getElementById("about-toggle-button");
+        aboutButton.addEventListener("click", function() {
+            Game.toggleAbout();
+        });
+    },
+    
+    toggleAbout: function() {
+        var overlay = document.getElementById("about-overlay");
         if (overlay.style.display === "none") {
             overlay.style.display = "block";
         } else {

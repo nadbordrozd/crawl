@@ -79,6 +79,28 @@ const SPRITES = {
     torch_wall_egypt_1: [1264, 320],
     SE_corner_egypt_1: [1280, 320],
 
+    NS_wall_green: [848, 304],
+    NW_corner_green: [864, 304],
+    WE_wall_green: [880, 304],
+    NE_corner_green: [896, 304],
+    t_wall_green: [812, 304],
+    reverse_t_wall_green: [812, 320],
+    grate_wall_green: [848, 320],
+    SW_corner_green: [864, 320],
+    torch_wall_green: [880, 320],
+    SE_corner_green: [896, 320],
+
+    NS_wall_prehistoric: [656, 304],
+    NW_corner_prehistoric: [672, 304],
+    WE_wall_prehistoric: [688, 304],
+    NE_corner_prehistoric: [704, 304],
+    t_wall_prehistoric: [704, 304],
+    reverse_t_wall_prehistoric: [704, 320],
+    grate_wall_prehistoric: [656, 320],
+    SW_corner_prehistoric: [672, 320],
+    torch_wall_prehistoric: [688, 320],
+    SE_corner_prehistoric: [704, 320],
+
     tower: [96, 288],
     diamond: [80, 592],
     sword: [80, 544],
@@ -111,6 +133,10 @@ const SPRITES = {
     flame: [64, 672],
     flaming_horse: [208, 480],
     ninja: [1456, 512],
+    sarcophagus: [1312, 352],
+    sphinx: [1312, 368],
+    fire_with_pot: [720, 352],
+    stalagmite_2: [656, 416], 
 
     // Wall sprite sets for different level themes
     WALL_SETS: {
@@ -138,9 +164,37 @@ const SPRITES = {
             reverse_t_wall: 'reverse_t_wall_egypt_1',
             grate_wall: 'grate_wall_egypt_1',
             torch_wall: 'torch_wall_egypt_1'
+        },
+
+        GREEN: {
+            NS_wall: 'NS_wall_green',
+            NW_corner: 'NW_corner_green',
+            WE_wall: 'WE_wall_green',
+            NE_corner: 'NE_corner_green',
+            t_wall: 't_wall_green',
+            reverse_t_wall: 'reverse_t_wall_green',
+            grate_wall: 'grate_wall_green',
+            SW_corner: 'SW_corner_green',
+            torch_wall: 'torch_wall_green',
+            SE_corner: 'SE_corner_green',
+        },
+
+        PREHISTORIC: {
+            NS_wall: 'NS_wall_prehistoric',
+            NW_corner: 'NW_corner_prehistoric',
+            WE_wall: 'WE_wall_prehistoric',
+            NE_corner: 'NE_corner_prehistoric',
+            t_wall: 't_wall_prehistoric',
+            reverse_t_wall: 'reverse_t_wall_prehistoric',
+            grate_wall: 'grate_wall_prehistoric',
+            SW_corner: 'SW_corner_prehistoric',
+            torch_wall: 'torch_wall_prehistoric',
+            SE_corner: 'SE_corner_prehistoric',
         }
     }
 };
+
+
 
 // For CommonJS/Node.js style
 // module.exports = SPRITES;
