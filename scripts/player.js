@@ -39,10 +39,7 @@ Player.prototype._updateAppearance = function() {
     }
 }
 
-// Override getSpeed for Player to work with the ROT.js speed scheduler
-Player.prototype.getSpeed = function() {
-    return this._isFast ? 300 : 100;
-};
+
 
 // Apply the StoneSkin effect to the player
 Player.prototype.applyStoneSkin = function() {
@@ -56,6 +53,7 @@ Player.prototype.applyStoneSkin = function() {
 // Apply the SpeedBoost effect to the player
 Player.prototype.applySpeedBoost = function() {
     this._isFast = true;
+    this._speed = 300; // Increase speed when fast
     this._speedBoostTurns = this.SPEED_BOOST_DURATION;
     this._updateAppearance();
     Game.message("You feel yourself moving faster!");
@@ -124,6 +122,7 @@ Player.prototype.act = function() {
         this._speedBoostTurns--;
         if (this._speedBoostTurns <= 0) {
             this._isFast = false;
+            this._speed = 100; // Reset speed to normal
             Game.message("You feel yourself slowing down.");
             statusChanged = true;
         }

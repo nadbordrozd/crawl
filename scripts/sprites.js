@@ -82,6 +82,12 @@ const SPRITES = {
     zombie: [112, 480],
     cobra: [1440, 448],
     orc: [80, 512],
+    reaper: [192, 480],
+    imp: [208, 496],
+    grave1: [160, 416],
+    grave2: [176, 416],
+    grave3: [192, 416],
+    grave4: [208, 416]
 };
 
 // For CommonJS/Node.js style

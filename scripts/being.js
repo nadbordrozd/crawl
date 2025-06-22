@@ -9,6 +9,7 @@ var Being = function(x, y) {
     this._isAttacking = false;
     this._isTakingDamage = false;
     this._isDead = false; // Ghost flag for mechanically dead beings
+    this._speed = 100; // Default speed value
     
     // Add this being to the map only if coordinates are valid
     if (x !== undefined && y !== undefined && Game.isPassableTile(x, y)) {
@@ -16,7 +17,7 @@ var Being = function(x, y) {
     }
 }
 
-Being.prototype.getSpeed = function() { return 100; }
+Being.prototype.getSpeed = function() { return this._speed; }
 Being.prototype.getX = function() { return this._x; }
 Being.prototype.getY = function() { return this._y; }
 Being.prototype.getHealth = function() { return this._health; }
