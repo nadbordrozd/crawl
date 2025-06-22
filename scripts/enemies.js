@@ -906,7 +906,7 @@ Imp.prototype.act = function() {
 var Reaper = function(x, y) {
     // Call Ghost constructor to get all ghost behavior
     Ghost.call(this, x, y);
-    this._strength = 2; // Override strength - reapers hit harder than ghosts
+    this._strength = 3; // Override strength - reapers hit harder than ghosts
     this._name = "reaper";
     this._sprite = "reaper";
 }
@@ -1393,6 +1393,120 @@ Unicorn.prototype._tryUnicornMove = function(dir) {
             Game.message("The unicorn defeated the " + targetBeing.getName() + "!");
         }
         return true;
+    }
+    
+    // If tile is free, move there
+    this._moveTo(newX, newY);
+    return true;
+}
+
+// Troll class inherits from Being - slow, strong creature that wanders until player is close
+var Troll = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 5; // High health - trolls are very tough
+    this._strength = 3; // High strength - trolls hit hard
+    this._name = "troll";
+    this._sprite = "troll";
+    this._speed = 50; // Slow speed - half normal speed
+}
+Troll.prototype = Object.create(Being.prototype);
+Troll.prototype.constructor = Troll;
+
+Troll.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    // Calculate distance to player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var distanceToPlayer = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Possible movement directions: up, right, down, left
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    if (distanceToPlayer <= 4) {
+        // Player is within 4 tiles, move towards player aggressively
+        var bestDistance = distanceToPlayer;
+        var bestDirections = [];
+        
+        // Find all directions that get us closer to the player
+        for (var i = 0; i < directions.length; i++) {
+            var dir = directions[i];
+            var newX = this._x + dir[0];
+            var newY = this._y + dir[1];
+            var newDistance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+            
+            if (newDistance < bestDistance) {
+                bestDirections = [dir];
+                bestDistance = newDistance;
+            } else if (newDistance === bestDistance) {
+                bestDirections.push(dir);
+            }
+        }
+        
+        // Try the best directions first
+        var directionsToTry = bestDirections.length > 0 ? bestDirections : directions;
+        
+        // Shuffle to avoid bias
+        for (var i = directionsToTry.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directionsToTry[i];
+            directionsToTry[i] = directionsToTry[j];
+            directionsToTry[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move or attack
+        for (var i = 0; i < directionsToTry.length; i++) {
+            if (this._tryTrollMove(directionsToTry[i])) {
+                return;
+            }
+        }
+    } else {
+        // Player is far away (distance > 4), wander aimlessly
+        // Shuffle directions randomly
+        for (var i = directions.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directions[i];
+            directions[i] = directions[j];
+            directions[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move
+        for (var i = 0; i < directions.length; i++) {
+            if (this._tryTrollMove(directions[i])) {
+                return;
+            }
+        }
+    }
+}
+
+Troll.prototype._tryTrollMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    
+    // Check if the tile is passable
+    if (!Game.isPassableTile(newX, newY)) {
+        return false;
+    }
+    
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
+    // If the destination is the player, attack
+    if (targetBeing === Game.player) {
+        this.playAttackAnimation();
+        Game.message("A massive troll pounds you with its giant fists!");
+        Game.player.takeDamage(this._strength);
+        return true;
+    }
+    
+    // If destination is occupied by another being, move is blocked
+    if (targetBeing !== null && targetBeing !== this) {
+        return false;
     }
     
     // If tile is free, move there
