@@ -1021,4 +1021,157 @@ Reaper.prototype._tryReaperMove = function(dir) {
     // Reapers can move anywhere (ignoring terrain), so move there
     this._moveTo(newX, newY);
     return true;
+}
+
+// Skeleton class inherits from Being
+var Skeleton = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1; // Standard health
+    this._strength = 1; // Standard strength
+    this._name = "skeleton";
+    this._sprite = "skeleton";
+    this._speed = 100; // Normal speed
+    this._isFirstTurn = true; // Track if this is the first turn
+    this._movementAxis = null; // 'horizontal' or 'vertical'
+    this._currentDirection = null; // Current movement direction [dx, dy]
+}
+Skeleton.prototype = Object.create(Being.prototype);
+Skeleton.prototype.constructor = Skeleton;
+
+Skeleton.prototype.act = function() {
+    if (!Game.player) return; // No player to attack
+    
+    // Check if player is adjacent (4 cardinal directions) and attack if so
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var adjacentDirections = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    for (var i = 0; i < adjacentDirections.length; i++) {
+        var dir = adjacentDirections[i];
+        var checkX = this._x + dir[0];
+        var checkY = this._y + dir[1];
+        
+        if (checkX === playerX && checkY === playerY) {
+            // Player is adjacent, attack!
+            this.playAttackAnimation();
+            Game.message("A skeleton rattles its bones and attacks you!");
+            Game.player.takeDamage(this._strength);
+            return;
+        }
+    }
+    
+    // If this is the first turn, pick a movement axis
+    if (this._isFirstTurn) {
+        this._chooseMovementAxis();
+        this._isFirstTurn = false;
+    }
+    
+    // Try to move in current direction
+    if (this._currentDirection) {
+        var newX = this._x + this._currentDirection[0];
+        var newY = this._y + this._currentDirection[1];
+        
+        // Check if we can move to the target position
+        if (Game.isPassableTile(newX, newY)) {
+            var targetBeing = Game.getBeingAt(newX, newY);
+            
+            if (!targetBeing) {
+                // Tile is free, move there
+                this._moveTo(newX, newY);
+                return;
+            } else {
+                // Tile is occupied by another creature, just wait
+                return;
+            }
+        } else {
+            // Hit a wall, reverse direction
+            this._reverseDirection();
+            
+            // Try moving in the new direction
+            newX = this._x + this._currentDirection[0];
+            newY = this._y + this._currentDirection[1];
+            
+            if (Game.isPassableTile(newX, newY)) {
+                var targetBeing = Game.getBeingAt(newX, newY);
+                
+                if (!targetBeing) {
+                    // Tile is free, move there
+                    this._moveTo(newX, newY);
+                    return;
+                } else {
+                    // Tile is occupied, wait
+                    return;
+                }
+            }
+            // If we can't move in either direction, just wait
+        }
+    }
+}
+
+Skeleton.prototype._chooseMovementAxis = function() {
+    // Check which directions are passable
+    var canMoveUp = Game.isPassableTile(this._x, this._y - 1);
+    var canMoveDown = Game.isPassableTile(this._x, this._y + 1);
+    var canMoveLeft = Game.isPassableTile(this._x - 1, this._y);
+    var canMoveRight = Game.isPassableTile(this._x + 1, this._y);
+    
+    var canMoveVertical = canMoveUp || canMoveDown;
+    var canMoveHorizontal = canMoveLeft || canMoveRight;
+    
+    // Prefer the axis that has more movement options
+    if (canMoveVertical && canMoveHorizontal) {
+        // Both axes are available, choose randomly
+        if (ROT.RNG.getUniform() < 0.5) {
+            this._movementAxis = 'vertical';
+        } else {
+            this._movementAxis = 'horizontal';
+        }
+    } else if (canMoveVertical) {
+        this._movementAxis = 'vertical';
+    } else if (canMoveHorizontal) {
+        this._movementAxis = 'horizontal';
+    } else {
+        // Can't move in any direction, default to horizontal
+        this._movementAxis = 'horizontal';
+    }
+    
+    // Set initial direction based on chosen axis
+    if (this._movementAxis === 'vertical') {
+        // Choose up or down based on what's available
+        if (canMoveUp && canMoveDown) {
+            // Both available, choose randomly
+            this._currentDirection = ROT.RNG.getUniform() < 0.5 ? [0, -1] : [0, 1];
+        } else if (canMoveUp) {
+            this._currentDirection = [0, -1]; // up
+        } else if (canMoveDown) {
+            this._currentDirection = [0, 1]; // down
+        } else {
+            this._currentDirection = [0, 1]; // default down
+        }
+    } else {
+        // Horizontal movement
+        if (canMoveLeft && canMoveRight) {
+            // Both available, choose randomly
+            this._currentDirection = ROT.RNG.getUniform() < 0.5 ? [-1, 0] : [1, 0];
+        } else if (canMoveLeft) {
+            this._currentDirection = [-1, 0]; // left
+        } else if (canMoveRight) {
+            this._currentDirection = [1, 0]; // right
+        } else {
+            this._currentDirection = [1, 0]; // default right
+        }
+    }
+}
+
+Skeleton.prototype._reverseDirection = function() {
+    if (this._currentDirection) {
+        // Reverse the current direction
+        this._currentDirection[0] = -this._currentDirection[0];
+        this._currentDirection[1] = -this._currentDirection[1];
+    }
 } 
