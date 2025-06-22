@@ -24,7 +24,11 @@ var Level = function() {
         GHOST: Ghost,
         COBRA: Cobra,
         ZOMBIE: Zombie,
-        IMP: Imp
+        IMP: Imp,
+        REAPER: Reaper,
+        SKELETON: Skeleton,
+        ORC: Orc,
+        UNICORN: Unicorn
     };
 }
 
@@ -219,7 +223,7 @@ Level.prototype._createEnemies = function(freeCells) {
         if (EnemyClass && count > 0) {
             // Create the specified number of this enemy type
             for (var i = 0; i < count; i++) {
-                // Use the class's own createRandom method if it exists, otherwise use Being.createRandom
+                // Use class-specific createRandom if available, otherwise use Being.createRandom
                 if (EnemyClass.createRandom) {
                     Game.enemies.push(EnemyClass.createRandom(EnemyClass, freeCells));
                 } else {
@@ -424,3 +428,175 @@ var Level5 = function() {
 }
 Level5.prototype = Object.create(Level.prototype);
 Level5.prototype.constructor = Level5;
+
+// ZombieLevel class - a spooky graveyard level with lots of undead
+var ZombieLevel = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Zombie Level - undead themed
+    this.enemyCounts = {
+        SKELETON: 10,
+        ZOMBIE: 40,
+        GHOST: 5       // A couple ghosts
+        // No other enemies - pure undead level
+    };
+    
+    // Define item counts for Zombie Level - survival focused
+    this.itemCounts = {
+        HEALTH_POTIONS: 1,  // 1 healing potion
+        GOLD_KEYS: 3,       // Still need keys for exit
+        BOMBS: 1,           // 1 bomb
+        EXITS: 1,           // Need an exit
+        STONESKIN_POTIONS: 0, // No defensive potions
+        SPEED_POTIONS: 1,   // No speed potions
+        GOLD_COINS: 5,      // No coins in this grim place
+        DRUMSTICKS: 3,      // 2 drumsticks for healing
+        HEARTS: 1           // 1 heart for permanent health boost
+    };
+}
+ZombieLevel.prototype = Object.create(Level.prototype);
+ZombieLevel.prototype.constructor = ZombieLevel;
+
+// Override _generateMap to create an open graveyard with some wall structures
+ZombieLevel.prototype._generateMap = function() {
+    var W = this.MAP_WIDTH;
+    var H = this.MAP_HEIGHT;
+    
+    // Initialize 2D array for map
+    this.map = [];
+    var freeCells = [];
+    
+    for (var x = 0; x < W; x++) {
+        this.map[x] = [];
+        for (var y = 0; y < H; y++) {
+            // Make everything passable floor (open graveyard)
+            this.map[x][y] = {
+                terrain: "floor",
+                being: null,
+                item: null,
+                explored: false,
+                passable: true,
+                decoration: null
+            };
+            freeCells.push({x: x, y: y});
+        }
+    }
+    
+    // Add random wall structures to break up the open space
+    this._addRandomWalls();
+    
+    // Rebuild freeCells list after adding walls
+    freeCells = [];
+    for (var x = 0; x < W; x++) {
+        for (var y = 0; y < H; y++) {
+            if (this.map[x][y].passable) {
+                freeCells.push({x: x, y: y});
+            }
+        }
+    }
+    
+    this.freeCells = freeCells; // Store for population
+    this.prettifyTerrain(); // Add grave decorations
+}
+
+// Add random wall structures to the zombie level
+ZombieLevel.prototype._addRandomWalls = function() {
+    var W = this.MAP_WIDTH;
+    var H = this.MAP_HEIGHT;
+    
+    // Add 5 random 4x4 wall regions
+    for (var i = 0; i < 5; i++) {
+        var attempts = 0;
+        var placed = false;
+        
+        while (!placed && attempts < 50) {
+            // Pick random top-left corner for 4x4 region
+            var startX = Math.floor(ROT.RNG.getUniform() * (W - 4));
+            var startY = Math.floor(ROT.RNG.getUniform() * (H - 4));
+            
+            // Check if this region overlaps with existing walls
+            var canPlace = true;
+            for (var x = startX; x < startX + 4 && canPlace; x++) {
+                for (var y = startY; y < startY + 4 && canPlace; y++) {
+                    if (!this.map[x][y].passable) {
+                        canPlace = false;
+                    }
+                }
+            }
+            
+            if (canPlace) {
+                // Place 4x4 wall region
+                for (var x = startX; x < startX + 4; x++) {
+                    for (var y = startY; y < startY + 4; y++) {
+                        this.map[x][y].terrain = "wall";
+                        this.map[x][y].passable = false;
+                    }
+                }
+                placed = true;
+            }
+            attempts++;
+        }
+    }
+    
+    // Add 2 random 3x3 wall regions
+    for (var i = 0; i < 2; i++) {
+        var attempts = 0;
+        var placed = false;
+        
+        while (!placed && attempts < 50) {
+            // Pick random top-left corner for 3x3 region
+            var startX = Math.floor(ROT.RNG.getUniform() * (W - 3));
+            var startY = Math.floor(ROT.RNG.getUniform() * (H - 3));
+            
+            // Check if this region overlaps with existing walls
+            var canPlace = true;
+            for (var x = startX; x < startX + 3 && canPlace; x++) {
+                for (var y = startY; y < startY + 3 && canPlace; y++) {
+                    if (!this.map[x][y].passable) {
+                        canPlace = false;
+                    }
+                }
+            }
+            
+            if (canPlace) {
+                // Place 3x3 wall region
+                for (var x = startX; x < startX + 3; x++) {
+                    for (var y = startY; y < startY + 3; y++) {
+                        this.map[x][y].terrain = "wall";
+                        this.map[x][y].passable = false;
+                    }
+                }
+                placed = true;
+            }
+            attempts++;
+        }
+    }
+}
+
+// Override prettifyPassableTile to add graves and bone decorations
+ZombieLevel.prototype.prettifyPassableTile = function(x, y, tile) {
+    tile.terrain = 'dirt18'; // Keep the same terrain
+    
+    // Add grave decorations - 3x more common than normal skull decorations
+    // Normal skull decorations are 0.005 each, so graves are 0.015 each
+    var graveChance = 0.015;
+    
+    // Add bone decorations - 20% as many as graves (0.003 each)
+    var boneChance = graveChance * 0.2;
+    
+    if (ROT.RNG.getUniform() < graveChance) {
+        tile.decoration = 'grave1';
+    } else if (ROT.RNG.getUniform() < graveChance) {
+        tile.decoration = 'grave2';
+    } else if (ROT.RNG.getUniform() < graveChance) {
+        tile.decoration = 'grave3';
+    } else if (ROT.RNG.getUniform() < graveChance) {
+        tile.decoration = 'grave4';
+    } else if (ROT.RNG.getUniform() < boneChance) {
+        tile.decoration = 'skeleton_remains';
+    } else if (ROT.RNG.getUniform() < boneChance) {
+        tile.decoration = 'bull_skull';
+    } else if (ROT.RNG.getUniform() < boneChance) {
+        tile.decoration = 'ribcage';
+    }
+}
