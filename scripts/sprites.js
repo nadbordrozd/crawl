@@ -82,6 +82,7 @@ const SPRITES = {
     zombie: [112, 480],
     cobra: [1440, 448],
     orc: [80, 512],
+    troll: [96, 512],
     reaper: [192, 480],
     imp: [208, 496],
     grave1: [160, 416],
@@ -93,7 +94,10 @@ const SPRITES = {
     unicorn: [80, 464],
     ring_1: [144, 592],
     ring_2: [160, 592],
-    ring_3: [176, 592]
+    ring_3: [176, 592],
+    scroll: [144, 576],
+    flame: [64, 672],
+    flaming_horse: [208, 480]
 };
 
 // For CommonJS/Node.js style

@@ -145,7 +145,7 @@ Bomb.prototype.use = function(player) {
                 
                 // If there's an enemy (and it's not the player), damage it
                 if (enemy && enemy !== player) {
-                    var killed = enemy.takeDamage(1);
+                    var killed = enemy.takeDamage(3);
                     enemiesHit++;
                     
                     if (killed) {
@@ -338,4 +338,63 @@ SummoningRing.prototype._findNearestFreeTile = function(centerX, centerY) {
     
     // No free tile found within reasonable distance
     return null;
+};
+
+// ScrollOfRevelation item: reveals the entire map when used
+var ScrollOfRevelation = function(x, y) {
+    Item.call(this, x, y, "📜", "Scroll of Revelation", "white", "scroll");
+};
+ScrollOfRevelation.prototype = Object.create(Item.prototype);
+ScrollOfRevelation.prototype.constructor = ScrollOfRevelation;
+
+ScrollOfRevelation.prototype.use = function(player) {
+    // Mark all tiles on the current level as explored
+    var tilesRevealed = 0;
+    
+    for (var x = 0; x < Game.currentLevel.MAP_WIDTH; x++) {
+        for (var y = 0; y < Game.currentLevel.MAP_HEIGHT; y++) {
+            var tile = Game.currentLevel.map[x][y];
+            if (tile && !tile.explored) {
+                tile.explored = true;
+                tilesRevealed++;
+            }
+        }
+    }
+    
+    // Show message and redraw the map to reveal everything
+    Game.message("The scroll glows with ancient magic! The entire map is revealed to you!");
+    Game._drawAll(); // Redraw to show the newly revealed areas
+    
+    // Optional: Add a visual effect message about how much was revealed
+    if (tilesRevealed > 0) {
+        Game.message("You can now see " + tilesRevealed + " previously unexplored areas!");
+    }
+};
+
+// Belt item: increases inventory size when picked up
+var Belt = function(x, y) {
+    Item.call(this, x, y, "🪢", "belt", "brown", "belt");
+    this.pickupable = false; // Belts are used immediately when walked over, not stored
+};
+Belt.prototype = Object.create(Item.prototype);
+Belt.prototype.constructor = Belt;
+
+Belt.prototype.interact = function(player) {
+    // Check if player already has maximum inventory slots
+    if (player.INVENTORY_SIZE >= 9) {
+        Game.message("You found a belt, but you already have maximum inventory capacity!");
+        return; // Don't remove the belt from the map
+    }
+    
+    // Increase inventory size by 1
+    player.INVENTORY_SIZE++;
+    
+    // Expand the actual inventory array with a new null slot
+    player._inventory.push(null);
+    
+    Game.message("You found a belt! Your inventory capacity increased to " + player.INVENTORY_SIZE + " slots!");
+    Game._drawAll(); // Update the display to show the new inventory slot
+    
+    // Remove from map
+    this._removeFromMap();
 }; 

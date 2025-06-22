@@ -28,7 +28,25 @@ var Level = function() {
         REAPER: Reaper,
         SKELETON: Skeleton,
         ORC: Orc,
-        UNICORN: Unicorn
+        UNICORN: Unicorn,
+        TROLL: Troll,
+        FLAMING_HORSE: FlamingHorse
+    };
+    
+    // Mapping of item type names to their classes
+    this.itemClasses = {
+        HEALTH_POTIONS: HealthPotion,
+        GOLD_KEYS: GoldKey,
+        BOMBS: Bomb,
+        EXITS: Exit,
+        STONESKIN_POTIONS: StoneSkinPotion,
+        SPEED_POTIONS: SpeedPotion,
+        GOLD_COINS: GoldCoin,
+        DRUMSTICKS: Drumstick,
+        HEARTS: Heart,
+        SUMMONING_RINGS: SummoningRing,
+        SCROLLS_OF_REVELATION: ScrollOfRevelation,
+        BELTS: Belt
     };
 }
 
@@ -236,15 +254,16 @@ Level.prototype._createEnemies = function(freeCells) {
 
 // Create all items based on this level's configuration
 Level.prototype._createItems = function(freeCells) {
-    this._generateItems(HealthPotion, this.itemCounts.HEALTH_POTIONS, freeCells);
-    this._generateItems(GoldKey, this.itemCounts.GOLD_KEYS, freeCells);
-    this._generateItems(Bomb, this.itemCounts.BOMBS, freeCells);
-    this._generateItems(Exit, this.itemCounts.EXITS, freeCells);
-    this._generateItems(StoneSkinPotion, this.itemCounts.STONESKIN_POTIONS, freeCells);
-    this._generateItems(SpeedPotion, this.itemCounts.SPEED_POTIONS, freeCells);
-    this._generateItems(GoldCoin, this.itemCounts.GOLD_COINS, freeCells);
-    this._generateItems(Drumstick, this.itemCounts.DRUMSTICKS, freeCells);
-    this._generateItems(Heart, this.itemCounts.HEARTS, freeCells);
+    // Iterate through all item types defined in itemCounts
+    for (var itemType in this.itemCounts) {
+        var count = this.itemCounts[itemType];
+        var ItemClass = this.itemClasses[itemType];
+        
+        if (ItemClass && count > 0) {
+            // Create the specified number of this item type
+            this._generateItems(ItemClass, count, freeCells);
+        }
+    }
 }
 
 
@@ -452,7 +471,8 @@ var ZombieLevel = function() {
         SPEED_POTIONS: 1,   // No speed potions
         GOLD_COINS: 5,      // No coins in this grim place
         DRUMSTICKS: 3,      // 2 drumsticks for healing
-        HEARTS: 1           // 1 heart for permanent health boost
+        HEARTS: 1,           // 1 heart for permanent health boost
+        SCROLLS_OF_REVELATION: 1
     };
 }
 ZombieLevel.prototype = Object.create(Level.prototype);
@@ -601,3 +621,59 @@ ZombieLevel.prototype.prettifyPassableTile = function(x, y, tile) {
         tile.decoration = 'ribcage';
     }
 }
+
+// ImpLevel class - a level focused on teleporting imp enemies
+var ImpLevel = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Imp Level - teleportation chaos
+    this.enemyCounts = {
+        IMP: 10, // Only imps - pure teleportation mayhem
+        FLAMING_HORSE: 4
+    };
+    
+    // Define item counts for Imp Level - mobility and survival focused
+    this.itemCounts = {
+        HEALTH_POTIONS: 1,    // 1 healing potion
+        GOLD_KEYS: 3,         // Still need keys for exit
+        BOMBS: 1,             // 1 bomb for crowd control
+        EXITS: 1,             // Need an exit
+        STONESKIN_POTIONS: 1, // No defensive potions
+        SPEED_POTIONS: 2,     // 2 speed potions for mobility
+        GOLD_COINS: 3,
+        DRUMSTICKS: 4,        // 4 drumsticks for healing
+        HEARTS: 1,            
+    };
+}
+ImpLevel.prototype = Object.create(Level.prototype);
+ImpLevel.prototype.constructor = ImpLevel;
+
+// TrollLevel class - a level with powerful melee enemies
+var TrollLevel = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Troll Level - heavy melee combat
+    this.enemyCounts = {
+        TROLL: 2,       // 2 powerful trolls
+        ORC: 5,         // 5 strong orcs
+        RAT: 3,         // 3 rats for variety
+        FROG: 3         // 3 frogs for variety
+    };
+    
+    // Define item counts for Troll Level - survival and support focused
+    this.itemCounts = {
+        HEALTH_POTIONS: 1,    // No health potions
+        GOLD_KEYS: 3,         // Still need keys for exit
+        BOMBS: 1,             // 1 bomb for crowd control
+        EXITS: 1,             // Need an exit
+        STONESKIN_POTIONS: 1, // 1 stoneskin potion for defense
+        SPEED_POTIONS: 0,     // No speed potions
+        GOLD_COINS: 0,        // No coins
+        DRUMSTICKS: 2,        // 2 drumsticks for healing
+        HEARTS: 0,            // No hearts
+        SUMMONING_RINGS: 1,   // 1 summoning ring for help
+        BELTS: 1              // 1 belt to increase inventory capacity
+    };
+}
+TrollLevel.prototype = Object.create(Level.prototype);
+TrollLevel.prototype.constructor = TrollLevel;

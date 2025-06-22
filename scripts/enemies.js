@@ -1512,4 +1512,97 @@ Troll.prototype._tryTrollMove = function(dir) {
     // If tile is free, move there
     this._moveTo(newX, newY);
     return true;
+}
+
+// FlamingHorse class inherits from Being - fast enemy that moves randomly and attacks when adjacent
+var FlamingHorse = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1; // Standard health
+    this._strength = 1; // Standard strength
+    this._name = "flaming horse";
+    this._sprite = "flaming_horse";
+    this._speed = 300; // Very fast - 3x normal speed
+}
+FlamingHorse.prototype = Object.create(Being.prototype);
+FlamingHorse.prototype.constructor = FlamingHorse;
+
+FlamingHorse.prototype.act = function() {
+    if (!Game.player) return; // No player to potentially attack
+    
+    // Check if player is adjacent (4 cardinal directions) and attack if so
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var adjacentDirections = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    for (var i = 0; i < adjacentDirections.length; i++) {
+        var dir = adjacentDirections[i];
+        var checkX = this._x + dir[0];
+        var checkY = this._y + dir[1];
+        
+        if (checkX === playerX && checkY === playerY) {
+            // Player is adjacent, attack!
+            this.playAttackAnimation();
+            Game.message("A flaming horse rears up and strikes you with blazing hooves!");
+            Game.player.takeDamage(this._strength);
+            return;
+        }
+    }
+    
+    // Player is not adjacent, move randomly
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    // Shuffle directions randomly
+    for (var i = directions.length - 1; i > 0; i--) {
+        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+        var tmp = directions[i];
+        directions[i] = directions[j];
+        directions[j] = tmp;
+    }
+    
+    // Try each direction until we find a valid move
+    for (var i = 0; i < directions.length; i++) {
+        if (this._tryFlamingHorseMove(directions[i])) {
+            return;
+        }
+    }
+}
+
+FlamingHorse.prototype._tryFlamingHorseMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    
+    // Check if the tile is passable
+    if (!Game.isPassableTile(newX, newY)) {
+        return false;
+    }
+    
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
+    // If the destination is the player, attack
+    if (targetBeing === Game.player) {
+        this.playAttackAnimation();
+        Game.message("A flaming horse rears up and strikes you with blazing hooves!");
+        Game.player.takeDamage(this._strength);
+        return true;
+    }
+    
+    // If destination is occupied by another being, move is blocked
+    if (targetBeing !== null && targetBeing !== this) {
+        return false;
+    }
+    
+    // If tile is free, move there
+    this._moveTo(newX, newY);
+    return true;
 } 

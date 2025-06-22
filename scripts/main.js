@@ -34,8 +34,8 @@ var Game = {
     animationCallbacks: [],
     
     init: function() {
-        // Initialize Level 1
-        this.currentLevel = new Level1();
+        // Initialize ImpLevel as first level
+        this.currentLevel = new TrollLevel();
         
         // Create HTML-based stats display instead of canvas
         this._createHtmlStatsDisplay();
@@ -477,7 +477,7 @@ var Game = {
             inventoryLine.style.flexShrink = '0';
             
             var inventory = this.player.getInventory();
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < this.player.INVENTORY_SIZE; i++) {
                 var slotDiv = document.createElement('span');
                 slotDiv.style.display = 'inline-flex';
                 slotDiv.style.alignItems = 'center';
@@ -507,7 +507,7 @@ var Game = {
                 inventoryLine.appendChild(slotDiv);
                 
                 // Add vertical separator after each slot (except the last one)
-                if (i < 5) {
+                if (i < this.player.INVENTORY_SIZE - 1) {
                     var separator = document.createElement('span');
                     separator.textContent = '|';
                     separator.style.color = '#666';
