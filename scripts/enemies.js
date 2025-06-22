@@ -413,7 +413,7 @@ Scorpion.prototype._tryMove = function(dir) {
 
 // Ghost class inherits from Being
 var Ghost = function(x, y) {
-    // Call Being constructor but handle tile placement manually for ghosts
+    // Initialize properties manually since ghosts can spawn on any tile (including walls)
     this._x = x;
     this._y = y;
     this._health = 1;
@@ -423,8 +423,9 @@ var Ghost = function(x, y) {
     this._isAttacking = false;
     this._isTakingDamage = false;
     this._isDead = false;
+    this._speed = 100;
     
-    // Ghosts can be placed on any tile, even walls
+    // Place ghost on map regardless of tile passability
     if (x !== undefined && y !== undefined) {
         Game.currentLevel.map[x][y].being = this;
     }
@@ -434,22 +435,40 @@ Ghost.prototype.constructor = Ghost;
 
 // Override _moveTo for ghosts to allow movement to any tile (including walls)
 Ghost.prototype._moveTo = function(newX, newY) {
-    // Remove from old position (ghosts can be on any tile)
+    // Remove from old position
     Game.currentLevel.map[this._x][this._y].being = null;
     
     // Update position
     this._x = newX;
     this._y = newY;
     
-    // Add to new position (ghosts can be placed on any tile)
+    // Add to new position - ghosts can move to any tile, even walls
     Game.currentLevel.map[this._x][this._y].being = this;
 }
 
-// Override static factory method for ghosts to spawn anywhere (including walls)
+// Override static factory method for ghosts to spawn on any unoccupied tile
 Ghost.createRandom = function(BeingClass, freeCells) {
-    var x = Math.floor(ROT.RNG.getUniform() * Game.currentLevel.MAP_WIDTH);
-    var y = Math.floor(ROT.RNG.getUniform() * Game.currentLevel.MAP_HEIGHT);
-    return new BeingClass(x, y);
+    // Create list of all unoccupied tiles (passable or impassable)
+    var unoccupiedTiles = [];
+    
+    for (var x = 0; x < Game.currentLevel.MAP_WIDTH; x++) {
+        for (var y = 0; y < Game.currentLevel.MAP_HEIGHT; y++) {
+            // Check if tile has no being on it
+            if (!Game.currentLevel.map[x][y].being) {
+                unoccupiedTiles.push({x: x, y: y});
+            }
+        }
+    }
+    
+    // Pick a random unoccupied tile
+    if (unoccupiedTiles.length > 0) {
+        var index = Math.floor(ROT.RNG.getUniform() * unoccupiedTiles.length);
+        var tile = unoccupiedTiles[index];
+        return new BeingClass(tile.x, tile.y);
+    } else {
+        // Fallback: use standard creation if no unoccupied tiles (shouldn't happen)
+        return Being.createRandom(BeingClass, freeCells);
+    }
 }
 
 Ghost.prototype.act = function() {
