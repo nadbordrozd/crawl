@@ -87,7 +87,8 @@ const SPRITES = {
     grave1: [160, 416],
     grave2: [176, 416],
     grave3: [192, 416],
-    grave4: [208, 416]
+    grave4: [208, 416],
+    belt: [128, 560]
 };
 
 // For CommonJS/Node.js style

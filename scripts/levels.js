@@ -41,78 +41,86 @@ Level.prototype.prettifyTerrain = function() {
         for (var y = 0; y < this.MAP_HEIGHT; y++) {
             var tile = this.map[x][y];
             if(tile.passable){
-                tile.terrain = 'dirt18';
-                if (ROT.RNG.getUniform() < 0.005) {
-                    tile.decoration = 'ribcage';
-                } else if (ROT.RNG.getUniform() < 0.005) {
-                    tile.decoration = 'bull_skull';
-                } else if (ROT.RNG.getUniform() < 0.005) {
-                    tile.decoration = 'skeleton_remains';
-                }
-                continue;
-            }
-            // 789
-            // 456
-            // 123
-
-            var passable7 = this.isPassable(x-1, y-1);
-            var passable8 = this.isPassable(x, y-1);
-            var passable9 = this.isPassable(x+1, y-1);
-            var passable4 = this.isPassable(x-1, y);
-            var passable5 = this.isPassable(x, y);
-            var passable6 = this.isPassable(x+1, y);
-            var passable1 = this.isPassable(x-1, y+1);
-            var passable2 = this.isPassable(x, y+1);
-            var passable3 = this.isPassable(x+1, y+1);
-
-            var wall7 = !this.isPassable(x-1, y-1);
-            var wall8 = !this.isPassable(x, y-1);
-            var wall9 = !this.isPassable(x+1, y-1);
-            var wall4 = !this.isPassable(x-1, y);
-            var wall5 = !this.isPassable(x, y);
-            var wall6 = !this.isPassable(x+1, y);
-            var wall1 = !this.isPassable(x-1, y+1);
-            var wall2 = !this.isPassable(x, y+1);
-            var wall3 = !this.isPassable(x+1, y+1);
- 
-            
-            if((wall4 || wall6) && passable8 && passable2){
-                tile.terrain = "WE_wall";
-            } else if((wall8 || wall2) && passable4 && passable6){
-                tile.terrain = "NS_wall";
-            } else if(wall4 && wall6 && wall8 && passable7 && passable9) {
-                tile.terrain = "reverse_t_wall";
-            } else if(wall4 && wall6 && wall8 && passable2 && (passable7 || passable9)) {
-                tile.terrain = "reverse_t_wall";
-            } else if(wall4 && wall6 && wall2 && (passable1 && passable3)){
-                tile.terrain = "t_wall";
-            } else if(wall4 && wall6 && wall2 && passable8 && (passable1 || passable3)){
-                tile.terrain = "t_wall";
-            } else if((wall8 && wall6) && ((passable4 && passable2) || passable9)){
-                tile.terrain = "SW_corner";
-            } else if((wall4 && wall8) && ((passable6 && passable2) || passable7)){
-                tile.terrain = "SE_corner";
-            } else if((wall4 && wall2) && ((passable8 && passable6) || passable1)){
-                tile.terrain = "NE_corner";
-            } else if((wall6 && wall2) && ((passable4 && passable8) || passable3)){
-                tile.terrain = "NW_corner";
-            } else if(wall8 && wall2){
-                tile.terrain = "NS_wall";
+                this.prettifyPassableTile(x, y, tile);
             } else {
-                tile.terrain = "WE_wall";
+                this.prettifyWallTile(x, y, tile);
             }
+        }
+    }
+}
 
-            if(passable2 && tile.terrain == 'WE_wall'){
-                // pick a random integer number from 0 to 10
-                    var randomNumber = Math.floor(ROT.RNG.getUniform() * 10);
-                if(randomNumber == 2) {
-                    tile.terrain = "torch_wall";
-                } else if (randomNumber == 1) {
-                    tile.terrain = "grate_wall";
-                }
-            }
+// Prettify passable tiles - can be overridden by child classes
+Level.prototype.prettifyPassableTile = function(x, y, tile) {
+    tile.terrain = 'dirt18';
+    if (ROT.RNG.getUniform() < 0.005) {
+        tile.decoration = 'ribcage';
+    } else if (ROT.RNG.getUniform() < 0.005) {
+        tile.decoration = 'bull_skull';
+    } else if (ROT.RNG.getUniform() < 0.005) {
+        tile.decoration = 'skeleton_remains';
+    }
+}
 
+// Prettify wall tiles - can be overridden by child classes
+Level.prototype.prettifyWallTile = function(x, y, tile) {
+    // 789
+    // 456
+    // 123
 
+    var passable7 = this.isPassable(x-1, y-1);
+    var passable8 = this.isPassable(x, y-1);
+    var passable9 = this.isPassable(x+1, y-1);
+    var passable4 = this.isPassable(x-1, y);
+    var passable5 = this.isPassable(x, y);
+    var passable6 = this.isPassable(x+1, y);
+    var passable1 = this.isPassable(x-1, y+1);
+    var passable2 = this.isPassable(x, y+1);
+    var passable3 = this.isPassable(x+1, y+1);
+
+    var wall7 = !this.isPassable(x-1, y-1);
+    var wall8 = !this.isPassable(x, y-1);
+    var wall9 = !this.isPassable(x+1, y-1);
+    var wall4 = !this.isPassable(x-1, y);
+    var wall5 = !this.isPassable(x, y);
+    var wall6 = !this.isPassable(x+1, y);
+    var wall1 = !this.isPassable(x-1, y+1);
+    var wall2 = !this.isPassable(x, y+1);
+    var wall3 = !this.isPassable(x+1, y+1);
+
+    
+    if((wall4 || wall6) && passable8 && passable2){
+        tile.terrain = "WE_wall";
+    } else if((wall8 || wall2) && passable4 && passable6){
+        tile.terrain = "NS_wall";
+    } else if(wall4 && wall6 && wall8 && passable7 && passable9) {
+        tile.terrain = "reverse_t_wall";
+    } else if(wall4 && wall6 && wall8 && passable2 && (passable7 || passable9)) {
+        tile.terrain = "reverse_t_wall";
+    } else if(wall4 && wall6 && wall2 && (passable1 && passable3)){
+        tile.terrain = "t_wall";
+    } else if(wall4 && wall6 && wall2 && passable8 && (passable1 || passable3)){
+        tile.terrain = "t_wall";
+    } else if((wall8 && wall6) && ((passable4 && passable2) || passable9)){
+        tile.terrain = "SW_corner";
+    } else if((wall4 && wall8) && ((passable6 && passable2) || passable7)){
+        tile.terrain = "SE_corner";
+    } else if((wall4 && wall2) && ((passable8 && passable6) || passable1)){
+        tile.terrain = "NE_corner";
+    } else if((wall6 && wall2) && ((passable4 && passable8) || passable3)){
+        tile.terrain = "NW_corner";
+    } else if(wall8 && wall2){
+        tile.terrain = "NS_wall";
+    } else {
+        tile.terrain = "WE_wall";
+    }
+
+    if(passable2 && tile.terrain == 'WE_wall'){
+        // pick a random integer number from 0 to 10
+        var randomNumber = Math.floor(ROT.RNG.getUniform() * 10);
+        if(randomNumber == 2) {
+            tile.terrain = "torch_wall";
+        } else if (randomNumber == 1) {
+            tile.terrain = "grate_wall";
         }
     }
 }
