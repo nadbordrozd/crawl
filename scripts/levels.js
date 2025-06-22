@@ -286,9 +286,9 @@ var Level1 = function() {
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
-        GOLD_COINS: 5,
+        GOLD_COINS: 3,
         DRUMSTICKS: 2,
-        HEARTS: 1
+        HEARTS: 0
     };
 }
 Level1.prototype = Object.create(Level.prototype);
@@ -437,7 +437,8 @@ var ZombieLevel = function() {
     this.enemyCounts = {
         SKELETON: 10,
         ZOMBIE: 40,
-        GHOST: 5       // A couple ghosts
+        GHOST: 5,
+        REAPER: 1
         // No other enemies - pure undead level
     };
     
