@@ -1174,4 +1174,118 @@ Skeleton.prototype._reverseDirection = function() {
         this._currentDirection[0] = -this._currentDirection[0];
         this._currentDirection[1] = -this._currentDirection[1];
     }
+}
+
+// Orc class inherits from Being
+var Orc = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 2; // Higher health than most enemies
+    this._strength = 2; // Higher strength than most enemies
+    this._name = "orc";
+    this._sprite = "orc";
+    this._speed = 100; // Normal speed
+}
+Orc.prototype = Object.create(Being.prototype);
+Orc.prototype.constructor = Orc;
+
+Orc.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    // Calculate distance to player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var distance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Possible movement directions: up, right, down, left
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    if (distance <= 4) {
+        // Player is close (within 4 tiles), move towards them
+        var bestDistance = distance;
+        var bestDirections = [];
+        
+        // Find all directions that get us closer to the player
+        for (var i = 0; i < directions.length; i++) {
+            var dir = directions[i];
+            var newX = this._x + dir[0];
+            var newY = this._y + dir[1];
+            var newDistance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+            
+            if (newDistance < bestDistance) {
+                bestDirections = [dir];
+                bestDistance = newDistance;
+            } else if (newDistance === bestDistance) {
+                bestDirections.push(dir);
+            }
+        }
+        
+        // If we found directions that get us closer, use them; otherwise try all directions
+        var directionsToTry = bestDirections.length > 0 ? bestDirections : directions;
+        
+        // Shuffle the directions to avoid bias
+        for (var i = directionsToTry.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directionsToTry[i];
+            directionsToTry[i] = directionsToTry[j];
+            directionsToTry[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move or attack
+        for (var i = 0; i < directionsToTry.length; i++) {
+            if (this._tryOrcMove(directionsToTry[i])) {
+                return;
+            }
+        }
+    } else {
+        // Player is far away (distance > 4), wander aimlessly
+        // Shuffle directions randomly
+        for (var i = directions.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directions[i];
+            directions[i] = directions[j];
+            directions[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move
+        for (var i = 0; i < directions.length; i++) {
+            if (this._tryOrcMove(directions[i])) {
+                return;
+            }
+        }
+    }
+}
+
+Orc.prototype._tryOrcMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    
+    // Check if the tile is passable
+    if (!Game.isPassableTile(newX, newY)) {
+        return false;
+    }
+    
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
+    // If the destination is the player, attack
+    if (targetBeing === Game.player) {
+        this.playAttackAnimation();
+        Game.message("An orc swings its weapon at you with brutal force!");
+        Game.player.takeDamage(this._strength);
+        return true;
+    }
+    
+    // If destination is occupied by another being, move is blocked
+    if (targetBeing !== null && targetBeing !== this) {
+        return false;
+    }
+    
+    // If tile is free, move there
+    this._moveTo(newX, newY);
+    return true;
 } 
