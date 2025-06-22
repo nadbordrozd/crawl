@@ -1288,4 +1288,192 @@ Orc.prototype._tryOrcMove = function(dir) {
     // If tile is free, move there
     this._moveTo(newX, newY);
     return true;
+}
+
+// Unicorn class inherits from Being - friendly to player, hostile to other creatures
+var Unicorn = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 5; // High health - unicorns are tough
+    this._strength = 2; // Strong enough to help player effectively
+    this._name = "unicorn";
+    this._sprite = "unicorn";
+    this._speed = 100; // Normal speed
+}
+Unicorn.prototype = Object.create(Being.prototype);
+Unicorn.prototype.constructor = Unicorn;
+
+Unicorn.prototype.act = function() {
+    if (!Game.player) return; // No player to help
+    
+    // Calculate distance to player
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var distanceToPlayer = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Possible movement directions: up, right, down, left
+    var directions = [
+        [0, -1], // up
+        [1, 0],  // right
+        [0, 1],  // down
+        [-1, 0]  // left
+    ];
+    
+    if (distanceToPlayer > 4) {
+        // Player is far away, move towards player (attack any creatures in the way)
+        var bestDistance = distanceToPlayer;
+        var bestDirections = [];
+        
+        // Find all directions that get us closer to the player
+        for (var i = 0; i < directions.length; i++) {
+            var dir = directions[i];
+            var newX = this._x + dir[0];
+            var newY = this._y + dir[1];
+            var newDistance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+            
+            if (newDistance < bestDistance) {
+                bestDirections = [dir];
+                bestDistance = newDistance;
+            } else if (newDistance === bestDistance) {
+                bestDirections.push(dir);
+            }
+        }
+        
+        // Try the best directions first
+        var directionsToTry = bestDirections.length > 0 ? bestDirections : directions;
+        
+        // Shuffle to avoid bias
+        for (var i = directionsToTry.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directionsToTry[i];
+            directionsToTry[i] = directionsToTry[j];
+            directionsToTry[j] = tmp;
+        }
+        
+        // Try each direction
+        for (var i = 0; i < directionsToTry.length; i++) {
+            if (this._tryUnicornMove(directionsToTry[i])) {
+                return;
+            }
+        }
+    } else {
+        // Player is close (≤4 tiles), look for nearby enemies to attack
+        var nearbyEnemy = this._findNearbyEnemy();
+        
+        if (nearbyEnemy) {
+            // Found an enemy within 4 tiles, move towards it
+            var enemyX = nearbyEnemy.getX();
+            var enemyY = nearbyEnemy.getY();
+            var bestDistance = Math.abs(this._x - enemyX) + Math.abs(this._y - enemyY);
+            var bestDirections = [];
+            
+            // Find directions that get us closer to the enemy
+            for (var i = 0; i < directions.length; i++) {
+                var dir = directions[i];
+                var newX = this._x + dir[0];
+                var newY = this._y + dir[1];
+                var newDistance = Math.abs(newX - enemyX) + Math.abs(newY - enemyY);
+                
+                if (newDistance < bestDistance) {
+                    bestDirections = [dir];
+                    bestDistance = newDistance;
+                } else if (newDistance === bestDistance) {
+                    bestDirections.push(dir);
+                }
+            }
+            
+            // Try the best directions
+            var directionsToTry = bestDirections.length > 0 ? bestDirections : directions;
+            
+            // Shuffle to avoid bias
+            for (var i = directionsToTry.length - 1; i > 0; i--) {
+                var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+                var tmp = directionsToTry[i];
+                directionsToTry[i] = directionsToTry[j];
+                directionsToTry[j] = tmp;
+            }
+            
+            // Try each direction
+            for (var i = 0; i < directionsToTry.length; i++) {
+                if (this._tryUnicornMove(directionsToTry[i])) {
+                    return;
+                }
+            }
+        } else {
+            // No enemies nearby, move randomly
+            // Shuffle directions randomly
+            for (var i = directions.length - 1; i > 0; i--) {
+                var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+                var tmp = directions[i];
+                directions[i] = directions[j];
+                directions[j] = tmp;
+            }
+            
+            // Try each direction
+            for (var i = 0; i < directions.length; i++) {
+                if (this._tryUnicornMove(directions[i])) {
+                    return;
+                }
+            }
+        }
+    }
+}
+
+// Find nearby enemies within 4 tiles (excluding player)
+Unicorn.prototype._findNearbyEnemy = function() {
+    var nearestEnemy = null;
+    var nearestDistance = Infinity;
+    
+    // Check all enemies in the game
+    for (var i = 0; i < Game.enemies.length; i++) {
+        var enemy = Game.enemies[i];
+        
+        // Skip if this is the unicorn itself
+        if (enemy === this) continue;
+        
+        // Skip if enemy is dead
+        if (enemy._isDead) continue;
+        
+        var distance = Math.abs(this._x - enemy.getX()) + Math.abs(this._y - enemy.getY());
+        
+        // Check if within 4 tiles and closer than previous candidates
+        if (distance <= 4 && distance < nearestDistance) {
+            nearestEnemy = enemy;
+            nearestDistance = distance;
+        }
+    }
+    
+    return nearestEnemy;
+}
+
+Unicorn.prototype._tryUnicornMove = function(dir) {
+    var newX = this._x + dir[0];
+    var newY = this._y + dir[1];
+    
+    // Check if the tile is passable
+    if (!Game.isPassableTile(newX, newY)) {
+        return false;
+    }
+    
+    // Check what's at the destination tile
+    var targetBeing = Game.getBeingAt(newX, newY);
+    
+    // If the destination is the player, DON'T attack - just block the move
+    if (targetBeing === Game.player) {
+        return false; // Unicorns never attack the player
+    }
+    
+    // If the destination has another creature (enemy), attack it
+    if (targetBeing && targetBeing !== this) {
+        this.playAttackAnimation();
+        Game.message("A unicorn charges at the " + targetBeing.getName() + " to defend you!");
+        var killed = targetBeing.takeDamage(this._strength);
+        if (killed) {
+            Game.message("The unicorn defeated the " + targetBeing.getName() + "!");
+        }
+        return true;
+    }
+    
+    // If tile is free, move there
+    this._moveTo(newX, newY);
+    return true;
 } 
