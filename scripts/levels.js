@@ -13,6 +13,9 @@ var Level = function() {
     // Item counts - to be defined by subclasses  
     this.itemCounts = {};
     
+    // Wall sprite set for this level - can be overridden by subclasses
+    this.wallSpriteSet = 'DEFAULT';
+    
     // Mapping of enemy type names to their classes
     this.enemyClasses = {
         ASSASSIN: Assassin,
@@ -109,42 +112,49 @@ Level.prototype.prettifyWallTile = function(x, y, tile) {
     var wall2 = !this.isPassable(x, y+1);
     var wall3 = !this.isPassable(x+1, y+1);
 
+    // Get the wall sprite set for this level
+    var wallSet = SPRITES.WALL_SETS[this.wallSpriteSet];
+    var wallType;
     
     if((wall4 || wall6) && passable8 && passable2){
-        tile.terrain = "WE_wall";
+        wallType = "WE_wall";
     } else if((wall8 || wall2) && passable4 && passable6){
-        tile.terrain = "NS_wall";
+        wallType = "NS_wall";
     } else if(wall4 && wall6 && wall8 && passable7 && passable9) {
-        tile.terrain = "reverse_t_wall";
+        wallType = "reverse_t_wall";
     } else if(wall4 && wall6 && wall8 && passable2 && (passable7 || passable9)) {
-        tile.terrain = "reverse_t_wall";
+        wallType = "reverse_t_wall";
     } else if(wall4 && wall6 && wall2 && (passable1 && passable3)){
-        tile.terrain = "t_wall";
+        wallType = "t_wall";
     } else if(wall4 && wall6 && wall2 && passable8 && (passable1 || passable3)){
-        tile.terrain = "t_wall";
+        wallType = "t_wall";
     } else if((wall8 && wall6) && ((passable4 && passable2) || passable9)){
-        tile.terrain = "SW_corner";
+        wallType = "SW_corner";
     } else if((wall4 && wall8) && ((passable6 && passable2) || passable7)){
-        tile.terrain = "SE_corner";
+        wallType = "SE_corner";
     } else if((wall4 && wall2) && ((passable8 && passable6) || passable1)){
-        tile.terrain = "NE_corner";
+        wallType = "NE_corner";
     } else if((wall6 && wall2) && ((passable4 && passable8) || passable3)){
-        tile.terrain = "NW_corner";
+        wallType = "NW_corner";
     } else if(wall8 && wall2){
-        tile.terrain = "NS_wall";
+        wallType = "NS_wall";
     } else {
-        tile.terrain = "WE_wall";
+        wallType = "WE_wall";
     }
 
-    if(passable2 && tile.terrain == 'WE_wall'){
+    // Apply special wall variants for certain conditions
+    if(passable2 && wallType == 'WE_wall'){
         // pick a random integer number from 0 to 10
         var randomNumber = Math.floor(ROT.RNG.getUniform() * 10);
         if(randomNumber == 2) {
-            tile.terrain = "torch_wall";
+            wallType = "torch_wall";
         } else if (randomNumber == 1) {
-            tile.terrain = "grate_wall";
+            wallType = "grate_wall";
         }
     }
+    
+    // Set the terrain using the wall sprite set
+    tile.terrain = wallSet[wallType];
 }
 
 // Generate the complete level (map + enemies + items)
@@ -672,8 +682,40 @@ var TrollLevel = function() {
         DRUMSTICKS: 2,        // 2 drumsticks for healing
         HEARTS: 0,            // No hearts
         SUMMONING_RINGS: 1,   // 1 summoning ring for help
-        BELTS: 1              // 1 belt to increase inventory capacity
+        BELTS: 6              // 1 belt to increase inventory capacity
     };
 }
 TrollLevel.prototype = Object.create(Level.prototype);
 TrollLevel.prototype.constructor = TrollLevel;
+
+// CobraLevel class - a level with venomous snakes and arachnids
+var CobraLevel = function() {
+    Level.call(this);
+    
+    // Use Egyptian-themed wall sprites for this desert/snake level
+    this.wallSpriteSet = 'EGYPT';
+    
+    // Define enemy counts for Cobra Level - venomous creatures
+    this.enemyCounts = {
+        COBRA: 30,      // 30 cobras - lots of venomous snakes
+        SCORPION: 10    // 10 scorpions - dangerous arachnids
+    };
+    
+    // Define item counts for Cobra Level - minimal supplies
+    this.itemCounts = {
+        HEALTH_POTIONS: 1,    // 1 health potion
+        GOLD_KEYS: 3,         // Still need keys for exit
+        BOMBS: 0,             // No bombs
+        EXITS: 1,             // Need an exit
+        STONESKIN_POTIONS: 0, // No stoneskin potions
+        SPEED_POTIONS: 1,     // 1 speed potion
+        GOLD_COINS: 3,        // 3 gold coins
+        DRUMSTICKS: 1,        // 1 drumstick for healing
+        HEARTS: 0,            // No hearts
+        SUMMONING_RINGS: 0,   // No summoning rings
+        BELTS: 1,             // 1 belt to increase inventory capacity
+        SCROLLS_OF_REVELATION: 1 // 1 scroll of revelation
+    };
+}
+CobraLevel.prototype = Object.create(Level.prototype);
+CobraLevel.prototype.constructor = CobraLevel;

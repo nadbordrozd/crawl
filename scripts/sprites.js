@@ -67,6 +67,18 @@ const SPRITES = {
     SW_corner: [80, 320],
     torch_wall: [96, 320],
     SE_corner: [112, 320],
+
+    NS_wall_egypt_1: [1232, 304],
+    NW_corner_egypt_1: [1248, 304],
+    WE_wall_egypt_1: [1264, 304],
+    NE_corner_egypt_1: [1280, 304],
+    t_wall_egypt_1: [1296, 304],
+    reverse_t_wall_egypt_1: [1296, 320],
+    grate_wall_egypt_1: [1232, 320],
+    SW_corner_egypt_1: [1248, 320],
+    torch_wall_egypt_1: [1264, 320],
+    SE_corner_egypt_1: [1280, 320],
+
     tower: [96, 288],
     diamond: [80, 592],
     sword: [80, 544],
@@ -97,7 +109,36 @@ const SPRITES = {
     ring_3: [176, 592],
     scroll: [144, 576],
     flame: [64, 672],
-    flaming_horse: [208, 480]
+    flaming_horse: [208, 480],
+
+    // Wall sprite sets for different level themes
+    WALL_SETS: {
+        DEFAULT: {
+            NS_wall: 'NS_wall',
+            WE_wall: 'WE_wall',
+            NW_corner: 'NW_corner',
+            NE_corner: 'NE_corner',
+            SW_corner: 'SW_corner',
+            SE_corner: 'SE_corner',
+            t_wall: 't_wall',
+            reverse_t_wall: 'reverse_t_wall',
+            grate_wall: 'grate_wall',
+            torch_wall: 'torch_wall'
+        },
+        
+        EGYPT: {
+            NS_wall: 'NS_wall_egypt_1',
+            WE_wall: 'WE_wall_egypt_1',
+            NW_corner: 'NW_corner_egypt_1',
+            NE_corner: 'NE_corner_egypt_1',
+            SW_corner: 'SW_corner_egypt_1',
+            SE_corner: 'SE_corner_egypt_1',
+            t_wall: 't_wall_egypt_1',
+            reverse_t_wall: 'reverse_t_wall_egypt_1',
+            grate_wall: 'grate_wall_egypt_1',
+            torch_wall: 'torch_wall_egypt_1'
+        }
+    }
 };
 
 // For CommonJS/Node.js style
