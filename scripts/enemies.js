@@ -705,6 +705,7 @@ var Zombie = function(x, y) {
     this._strength = 1;
     this._name = "zombie";
     this._sprite = "zombie";
+    this._speed = 50; // Zombies are slower than other beings
 }
 Zombie.prototype = Object.create(Being.prototype);
 Zombie.prototype.constructor = Zombie;
@@ -796,4 +797,84 @@ Zombie.prototype._tryZombieMove = function(dir) {
     // If tile is free, move there
     this._moveTo(newX, newY);
     return true;
+}
+
+// Imp class inherits from Being
+var Imp = function(x, y) {
+    Being.call(this, x, y);
+    this._health = 1; // Standard health
+    this._strength = 1; // Standard strength
+    this._name = "imp";
+    this._sprite = "imp";
+    this._speed = 100; // Normal speed
+}
+Imp.prototype = Object.create(Being.prototype);
+Imp.prototype.constructor = Imp;
+
+Imp.prototype.act = function() {
+    if (!Game.player) return; // No player to chase
+    
+    var playerX = Game.player.getX();
+    var playerY = Game.player.getY();
+    var currentDistance = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
+    
+    // Check if player is within attack range (adjacent)
+    if (currentDistance === 1) {
+        this.playAttackAnimation();
+        Game.message("An imp teleports next to you and attacks!");
+        Game.player.takeDamage(this._strength);
+        return;
+    }
+    
+    // Find all possible teleport locations within radius 3 (7x7 square)
+    var viablePositions = [];
+    var bestDistance = currentDistance;
+    var bestPositions = [];
+    
+    for (var dx = -3; dx <= 3; dx++) {
+        for (var dy = -3; dy <= 3; dy++) {
+            // Skip current position
+            if (dx === 0 && dy === 0) continue;
+            
+            var newX = this._x + dx;
+            var newY = this._y + dy;
+            
+            // Check if position is within map bounds and passable
+            if (Game.isPassableTile(newX, newY)) {
+                // Check if position is free (no other beings)
+                var targetBeing = Game.getBeingAt(newX, newY);
+                if (!targetBeing || targetBeing === this) {
+                    var distance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+                    viablePositions.push({x: newX, y: newY, distance: distance});
+                    
+                    // Track positions that get us closer to player
+                    if (distance < bestDistance) {
+                        bestPositions = [{x: newX, y: newY}];
+                        bestDistance = distance;
+                    } else if (distance === bestDistance) {
+                        bestPositions.push({x: newX, y: newY});
+                    }
+                }
+            }
+        }
+    }
+    
+    // Choose teleport destination
+    var targetPosition = null;
+    
+    if (bestPositions.length > 0) {
+        // Move to a position that gets us closer to player
+        var randomIndex = Math.floor(ROT.RNG.getUniform() * bestPositions.length);
+        targetPosition = bestPositions[randomIndex];
+    } else if (viablePositions.length > 0) {
+        // No position gets us closer, teleport to random viable position
+        var randomIndex = Math.floor(ROT.RNG.getUniform() * viablePositions.length);
+        targetPosition = viablePositions[randomIndex];
+    }
+    
+    // Teleport to chosen position
+    if (targetPosition) {
+        this._moveTo(targetPosition.x, targetPosition.y);
+    }
+    // If no viable positions, imp stays in place
 } 

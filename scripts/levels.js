@@ -23,7 +23,8 @@ var Level = function() {
         SCORPION: Scorpion,
         GHOST: Ghost,
         COBRA: Cobra,
-        ZOMBIE: Zombie
+        ZOMBIE: Zombie,
+        IMP: Imp
     };
 }
 
