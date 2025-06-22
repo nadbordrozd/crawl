@@ -1529,31 +1529,12 @@ FlamingHorse.prototype.constructor = FlamingHorse;
 FlamingHorse.prototype.act = function() {
     if (!Game.player) return; // No player to potentially attack
     
-    // Check if player is adjacent (4 cardinal directions) and attack if so
+    // Calculate distance to player
     var playerX = Game.player.getX();
     var playerY = Game.player.getY();
-    var adjacentDirections = [
-        [0, -1], // up
-        [1, 0],  // right
-        [0, 1],  // down
-        [-1, 0]  // left
-    ];
+    var distanceToPlayer = Math.abs(this._x - playerX) + Math.abs(this._y - playerY);
     
-    for (var i = 0; i < adjacentDirections.length; i++) {
-        var dir = adjacentDirections[i];
-        var checkX = this._x + dir[0];
-        var checkY = this._y + dir[1];
-        
-        if (checkX === playerX && checkY === playerY) {
-            // Player is adjacent, attack!
-            this.playAttackAnimation();
-            Game.message("A flaming horse rears up and strikes you with blazing hooves!");
-            Game.player.takeDamage(this._strength);
-            return;
-        }
-    }
-    
-    // Player is not adjacent, move randomly
+    // Possible movement directions: up, right, down, left
     var directions = [
         [0, -1], // up
         [1, 0],  // right
@@ -1561,18 +1542,58 @@ FlamingHorse.prototype.act = function() {
         [-1, 0]  // left
     ];
     
-    // Shuffle directions randomly
-    for (var i = directions.length - 1; i > 0; i--) {
-        var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
-        var tmp = directions[i];
-        directions[i] = directions[j];
-        directions[j] = tmp;
-    }
-    
-    // Try each direction until we find a valid move
-    for (var i = 0; i < directions.length; i++) {
-        if (this._tryFlamingHorseMove(directions[i])) {
-            return;
+    if (distanceToPlayer <= 4) {
+        // Player is within 4 tiles, move towards player aggressively
+        var bestDistance = distanceToPlayer;
+        var bestDirections = [];
+        
+        // Find all directions that get us closer to the player
+        for (var i = 0; i < directions.length; i++) {
+            var dir = directions[i];
+            var newX = this._x + dir[0];
+            var newY = this._y + dir[1];
+            var newDistance = Math.abs(newX - playerX) + Math.abs(newY - playerY);
+            
+            if (newDistance < bestDistance) {
+                bestDirections = [dir];
+                bestDistance = newDistance;
+            } else if (newDistance === bestDistance) {
+                bestDirections.push(dir);
+            }
+        }
+        
+        // Try the best directions first
+        var directionsToTry = bestDirections.length > 0 ? bestDirections : directions;
+        
+        // Shuffle to avoid bias
+        for (var i = directionsToTry.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directionsToTry[i];
+            directionsToTry[i] = directionsToTry[j];
+            directionsToTry[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move or attack
+        for (var i = 0; i < directionsToTry.length; i++) {
+            if (this._tryFlamingHorseMove(directionsToTry[i])) {
+                return;
+            }
+        }
+    } else {
+        // Player is far away (distance > 4), move randomly
+        // Shuffle directions randomly
+        for (var i = directions.length - 1; i > 0; i--) {
+            var j = Math.floor(ROT.RNG.getUniform() * (i + 1));
+            var tmp = directions[i];
+            directions[i] = directions[j];
+            directions[j] = tmp;
+        }
+        
+        // Try each direction until we find a valid move
+        for (var i = 0; i < directions.length; i++) {
+            if (this._tryFlamingHorseMove(directions[i])) {
+                return;
+            }
         }
     }
 }

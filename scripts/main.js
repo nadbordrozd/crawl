@@ -245,26 +245,28 @@ var Game = {
         html += '<div style="margin-left: 20px;">with 3 <img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['key'][0] + 'px -' + SPRITES['key'][1] + 'px; vertical-align: middle;"></div>';
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Items (Good!) ---</div>';
-        var items = [
-            {sprite: 'health_potion', name: 'health potion'},
-            {sprite: 'key', name: 'gold key'},
-            {sprite: 'bomb', name: 'bomb'},
-            {sprite: 'shield', name: 'StoneSkin Potion'},
-            {sprite: 'speed_potion', name: 'Speed Potion'},
-            {sprite: 'coin', name: 'gold coin'},
-            {sprite: 'drumstick', name: 'drumstick'},
-            {sprite: 'heart', name: 'heart (increases max health)'}
-        ];
+        var itemSprites = ['health_potion', 'key', 'bomb', 'gate', 'shield', 'speed_potion', 'coin', 'drumstick', 'heart', 'ring_2', 'scroll', 'belt'];
         
-        items.forEach(function(item) {
-            html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[item.sprite][0] + 'px -' + SPRITES[item.sprite][1] + 'px; vertical-align: middle;"> : ' + item.name + '</div>';
+        html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">';
+        itemSprites.forEach(function(sprite) {
+            html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
         });
+        html += '</div>';
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Enemies (Bad!) ---</div>';
-        var enemySprites = ['assassin', 'frog', 'rat', 'audrey_2', 'mad_frog', 'scorpion', 'ghost', 'cobra', 'zombie'];
+        var enemySprites = ['assassin', 'frog', 'rat', 'audrey_2', 'mad_frog', 'scorpion', 'ghost', 'cobra', 'zombie', 'imp', 'reaper', 'skeleton', 'orc', 'troll', 'flaming_horse', 'ninja'];
+        
+        html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">';
+        enemySprites.forEach(function(sprite) {
+            html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
+        });
+        html += '</div>';
+        
+        html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Allies (Good!) ---</div>';
+        var allySprites = ['unicorn'];
         
         html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px;">';
-        enemySprites.forEach(function(sprite) {
+        allySprites.forEach(function(sprite) {
             html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
         });
         html += '</div>';
@@ -609,14 +611,100 @@ var Game = {
 
     _gameWon: function() {
         this.engine.lock();
+        
+        // Clear the tile display
         if (this.display) {
             this.display.clear();
-            var msg = "CONGRATULATIONS! You have won the game!";
-            var x = Math.floor((this.currentLevel.MAP_WIDTH - msg.length) / 2);
-            var y = Math.floor(this.currentLevel.MAP_HEIGHT / 2);
-            // Note: this uses sprites, so we'll just show the message in the message display
         }
-        this.message("CONGRATULATIONS! You have won the game!");
+        
+        // Show comprehensive win statistics overlay
+        this._showWinStatistics();
+        
+        // Listen for Enter key to restart
+        window.addEventListener("keydown", this._handleWinScreenInput.bind(this));
+    },
+    
+    _showWinStatistics: function() {
+        // Build comprehensive statistics
+        var enemiesDefeated = this.player.getEnemiesDefeated();
+        var totalEnemiesDefeated = 0;
+        
+        for (var enemyType in enemiesDefeated) {
+            totalEnemiesDefeated += enemiesDefeated[enemyType];
+        }
+        
+        // Create the overlay HTML
+        var overlay = document.createElement('div');
+        overlay.id = 'win-stats-overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '1000';
+        overlay.style.fontFamily = 'monospace';
+        overlay.style.fontSize = '18px';
+        
+        // Create the stats content
+        var statsContent = document.createElement('div');
+        statsContent.style.backgroundColor = '#2a2a2a';
+        statsContent.style.border = '3px solid #44aa44';
+        statsContent.style.borderRadius = '10px';
+        statsContent.style.padding = '30px';
+        statsContent.style.textAlign = 'center';
+        statsContent.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.8)';
+        statsContent.style.maxWidth = '500px';
+        
+        // Build the stats HTML
+        var statsHTML = '<div style="color: #44ff44; font-size: 24px; font-weight: bold; margin-bottom: 10px;">CONGRATULATIONS!</div>';
+        statsHTML += '<div style="color: #44ff44; font-size: 20px; font-weight: bold; margin-bottom: 20px;">YOU HAVE WON!</div>';
+        statsHTML += '<div style="color: #ffff44; font-size: 20px; font-weight: bold; margin-bottom: 15px;">FINAL STATISTICS</div>';
+        statsHTML += '<div style="color: #ffffff; text-align: left; margin-bottom: 20px;">';
+        statsHTML += '<div style="margin: 5px 0;">Levels completed: <span style="color: #44ff44;">' + this.levelNumber + '</span></div>';
+        statsHTML += '<div style="margin: 5px 0;">Rounds survived: <span style="color: #44ff44;">' + this.player.getTurns() + '</span></div>';
+        statsHTML += '<div style="margin: 5px 0;">Steps traveled: <span style="color: #44ff44;">' + this.player.getSteps() + '</span></div>';
+        statsHTML += '<div style="margin: 5px 0;">Gold collected: <span style="color: #44ff44;">' + this.player.getCoinsCollected() + '</span></div>';
+        statsHTML += '</div>';
+        
+        // Add monster statistics
+        statsHTML += '<div style="color: #cccccc; margin: 15px 0; font-weight: bold;">Monsters defeated:</div>';
+        statsHTML += '<div style="color: #ffffff; text-align: left;">';
+        
+        if (totalEnemiesDefeated === 0) {
+            statsHTML += '<div style="margin: 5px 0; text-align: center; color: #888;">None</div>';
+        } else {
+            for (var enemyType in enemiesDefeated) {
+                var count = enemiesDefeated[enemyType];
+                statsHTML += '<div style="margin: 5px 0;">• ' + enemyType + ': <span style="color: #44ff44;">' + count + '</span></div>';
+            }
+        }
+        
+        statsHTML += '</div>';
+        statsHTML += '<div style="color: #ffaa44; margin: 15px 0; font-weight: bold;">Total monsters defeated: ' + totalEnemiesDefeated + '</div>';
+        statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Press ENTER to start over</div>';
+        
+        statsContent.innerHTML = statsHTML;
+        overlay.appendChild(statsContent);
+        
+        // Add to document
+        document.body.appendChild(overlay);
+    },
+    
+    _handleWinScreenInput: function(e) {
+        if (e.keyCode === KEY_CODES.ENTER) {
+            // Remove the overlay
+            var overlay = document.getElementById('win-stats-overlay');
+            if (overlay) {
+                document.body.removeChild(overlay);
+            }
+            
+            window.removeEventListener("keydown", this);
+            location.reload();
+        }
     },
     
     isPassableTile: function(x, y) {

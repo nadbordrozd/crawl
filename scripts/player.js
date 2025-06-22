@@ -9,7 +9,7 @@ var Player = function(x, y) {
     this._status = "bored"; // Player's current status
     this._isInvulnerable = false;
     this._invulnerabilityTurns = 0;
-    this.INVULNERABILITY_DURATION = 50; // Configurable duration
+    this.INVULNERABILITY_DURATION = 30; // Configurable duration
     this._isFast = false;
     this._speedBoostTurns = 0;
     this.SPEED_BOOST_DURATION = 60; // Configurable duration
@@ -229,8 +229,6 @@ Player.prototype.handleEvent = function(e) {
         }
         // Player stays in place
     } else {
-        // Check for nearby creatures and provide messages
-        this._checkSurroundings(newX, newY);
 
         // Move player and increment step counter
         this._moveTo(newX, newY);

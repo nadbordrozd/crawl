@@ -15,8 +15,13 @@ body {
 h1 {
     color: #ffaa00;
     text-align: center;
+    margin: 0;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 1em;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Container for all game displays */
@@ -85,6 +90,7 @@ canvas {
     justify-content: center;
     align-items: flex-start; /* Align items to the top */
     gap: 2rem; /* Add some space between the game and instructions */
+    margin-top: 80px; /* Add space for the absolutely positioned title */
 }
 
 #controls-container {

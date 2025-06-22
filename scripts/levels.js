@@ -349,7 +349,7 @@ var Level2 = function() {
     
     // Define item counts for Level 2
     this.itemCounts = {
-        HEALTH_POTIONS: 2,
+        HEALTH_POTIONS: 0,
         GOLD_KEYS: 3,
         BOMBS: 2,
         EXITS: 1,
@@ -381,7 +381,7 @@ var Level3 = function() {
     
     // Define item counts for Level 1
     this.itemCounts = {
-        HEALTH_POTIONS: 2,
+        HEALTH_POTIONS: 1,
         GOLD_KEYS: 3,
         BOMBS: 0,
         EXITS: 1,
@@ -417,7 +417,7 @@ var Level4 = function() {
     
     // Define item counts for Level 4
     this.itemCounts = {
-        HEALTH_POTIONS: 3,
+        HEALTH_POTIONS: 2,
         GOLD_KEYS: 3,
         BOMBS: 3,
         EXITS: 1,
@@ -425,7 +425,8 @@ var Level4 = function() {
         SPEED_POTIONS: 1,
         GOLD_COINS: 5,
         DRUMSTICKS: 4,
-        HEARTS: 1
+        HEARTS: 1,
+        SUMMONING_RINGS: 1
     };
 }
 Level4.prototype = Object.create(Level.prototype);
@@ -443,14 +444,15 @@ var Level5 = function() {
         CARNIVOROUS_PLANT: 5,
         GHOST: 10,
         COBRA: 8,
-        ZOMBIE: 6
+        ZOMBIE: 6,
+        FLAMING_HORSE: 2
     };
     
     // Define item counts for Level 5
     this.itemCounts = {
-        HEALTH_POTIONS: 3,
+        HEALTH_POTIONS: 2,
         GOLD_KEYS: 3,
-        BOMBS: 3,
+        BOMBS: 2,
         EXITS: 1,
         STONESKIN_POTIONS: 1,
         SPEED_POTIONS: 1,
@@ -474,12 +476,13 @@ var Level6 = function() {
         TROLL: 2,
         ORC: 5,
         REAPER: 15,
-        IMP: 14
+        IMP: 14,
+        FLAMING_HORSE: 5
     };
     
     // Define item counts for Level 5
     this.itemCounts = {
-        HEALTH_POTIONS: 3,
+        HEALTH_POTIONS: 2,
         GOLD_KEYS: 3,
         BOMBS: 3,
         EXITS: 1,
@@ -493,6 +496,37 @@ var Level6 = function() {
 }
 Level6.prototype = Object.create(Level.prototype);
 Level6.prototype.constructor = Level6;
+
+
+var Level7 = function() {
+    Level.call(this);
+    
+    // Define enemy counts for Level 5
+    this.enemyCounts = {
+        NINJA: 16,
+        TROLL: 2,
+        ORC: 5,
+        REAPER: 15,
+        IMP: 14,
+        FLAMING_HORSE: 5
+    };
+    
+    // Define item counts for Level 5
+    this.itemCounts = {
+        HEALTH_POTIONS: 0,
+        GOLD_KEYS: 3,
+        BOMBS: 0,
+        EXITS: 1,
+        SPEED_POTIONS: 1,
+        GOLD_COINS: 5,
+        DRUMSTICKS: 2,
+        SUMMONING_RINGS: 1
+    };
+}
+Level7.prototype = Object.create(Level.prototype);
+Level7.prototype.constructor = Level7;
+
+
 
 // ZombieLevel class - a spooky graveyard level with lots of undead
 var ZombieLevel = function() {
