@@ -13,6 +13,7 @@
         <div id="controls-container">
             <audio id="game-music" src="music/tavern.mp3"></audio>
             <button id="music-toggle-button">Play Music</button>
+            <button id="leaderboard-button">Leaderboard</button>
         </div>
 
         <div id="left-controls-container">
@@ -29,8 +30,20 @@
                 <div id="about-overlay" class="about-overlay" style="display: none;">
                     <!-- About display will be added here as overlay -->
                 </div>
+                <div id="leaderboard-overlay" class="leaderboard-overlay" style="display: none;">
+                    <!-- Leaderboard display will be added here as overlay -->
+                </div>
             </div>
         </div>
+
+        <!-- Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+        
+        <!-- Firebase Configuration -->
+        <script src="scripts/firebase-config.js"></script>
+        
+        <!-- Game Scripts -->
         <script src="scripts/sprites.js"></script>
         <script src="scripts/being.js"></script>
         <script src="scripts/player.js"></script>

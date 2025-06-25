@@ -345,6 +345,14 @@ var Game = {
         aboutButton.addEventListener("click", function() {
             Game.toggleAbout();
         });
+        
+        // Add leaderboard toggle functionality
+        var leaderboardButton = document.getElementById("leaderboard-button");
+        if (leaderboardButton) {
+            leaderboardButton.addEventListener("click", function() {
+                Leaderboard.showLeaderboard();
+            });
+        }
     },
     
     toggleAbout: function() {

@@ -288,44 +288,20 @@ Player.prototype.die = function() {
     // Call parent die method for basic cleanup (clear display, remove from scheduler)
     Being.prototype.die.call(this);
     
-    // Player-specific death logic
-    // Create death statistics message
-    var statsMessage = "GAME OVER - You have died!\\n\\n";
-    statsMessage += "Statistics:\\n";
-    statsMessage += "Turns elapsed: " + this.getTurns() + "\\n";
-    statsMessage += "Total distance traveled: " + this.getSteps() + " steps\\n\\n";
+    // Calculate final score
+    var finalScore = Leaderboard.calculateScore(this, Game.levelNumber);
     
-    var enemiesDefeated = this.getEnemiesDefeated();
-    var totalEnemiesDefeated = 0;
-    statsMessage += "Enemies defeated:\\n";
-    
-    for (var enemyType in enemiesDefeated) {
-        var count = enemiesDefeated[enemyType];
-        totalEnemiesDefeated += count;
-        statsMessage += "- " + enemyType + ": " + count + "\\n";
-    }
-    
-    if (totalEnemiesDefeated === 0) {
-        statsMessage += "- None\\n";
-    }
-    
-    statsMessage += "\\nTotal enemies defeated: " + totalEnemiesDefeated;
-    statsMessage += "\\n\\n%c{lime}To start again, press ENTER";
-    
-    // Display comprehensive death statistics on the main game display
-    this._showDeathStatistics();
+    // Display comprehensive death statistics with score submission
+    this._showDeathStatisticsWithLeaderboard(finalScore);
     
     // Player-specific cleanup
     Game.player = null;
     Game.engine.lock();
     window.removeEventListener("keydown", this);
-
-    // Listen for Enter key to restart
-    window.addEventListener("keydown", this._handleDeathScreenInput.bind(this));
 }
 
-// Show death statistics using a custom HTML overlay
-Player.prototype._showDeathStatistics = function() {
+// Show death statistics with leaderboard submission
+Player.prototype._showDeathStatisticsWithLeaderboard = function(finalScore) {
     // Clear the tile display
     if (Game.display) {
         Game.display.clear();
@@ -342,31 +318,15 @@ Player.prototype._showDeathStatistics = function() {
     // Create the overlay HTML
     var overlay = document.createElement('div');
     overlay.id = 'death-stats-overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.zIndex = '1000';
-    overlay.style.fontFamily = 'monospace';
-    overlay.style.fontSize = '18px';
+    overlay.className = 'death-screen-overlay';
     
     // Create the stats content
     var statsContent = document.createElement('div');
-    statsContent.style.backgroundColor = '#2a2a2a';
-    statsContent.style.border = '3px solid #555';
-    statsContent.style.borderRadius = '10px';
-    statsContent.style.padding = '30px';
-    statsContent.style.textAlign = 'center';
-    statsContent.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.8)';
-    statsContent.style.maxWidth = '500px';
+    statsContent.className = 'death-screen-content';
     
     // Build the stats HTML
-    var statsHTML = '<div style="color: #ff4444; font-size: 24px; font-weight: bold; margin-bottom: 20px;">GAME OVER - You have died!</div>';
+    var statsHTML = '<div style="color: #ff4444; font-size: 24px; font-weight: bold; margin-bottom: 20px;">💀 GAME OVER 💀</div>';
+    statsHTML += '<div style="color: #ffff44; font-size: 28px; font-weight: bold; margin-bottom: 15px;">FINAL SCORE: ' + finalScore.toLocaleString() + '</div>';
     statsHTML += '<div style="color: #ffff44; font-size: 20px; font-weight: bold; margin-bottom: 15px;">FINAL STATISTICS</div>';
     statsHTML += '<div style="color: #ffffff; text-align: left; margin-bottom: 20px;">';
     statsHTML += '<div style="margin: 5px 0;">Level reached: <span style="color: #44ff44;">' + Game.levelNumber + '</span></div>';
@@ -390,25 +350,270 @@ Player.prototype._showDeathStatistics = function() {
     
     statsHTML += '</div>';
     statsHTML += '<div style="color: #ffaa44; margin: 15px 0; font-weight: bold;">Total monsters defeated: ' + totalEnemiesDefeated + '</div>';
-    statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Press ENTER to start over</div>';
+    
+    // Add name input and leaderboard submission
+    statsHTML += '<div class="name-input-container">';
+    statsHTML += '<div style="color: #ffff44; font-weight: bold; margin-bottom: 10px;">🏆 Submit to Leaderboard 🏆</div>';
+    statsHTML += '<div style="margin-bottom: 10px;">Enter your name:</div>';
+    statsHTML += '<input type="text" id="player-name-input" class="name-input" placeholder="Your Name" maxlength="20">';
+    statsHTML += '<div style="margin-top: 15px;">';
+    statsHTML += '<button id="submit-score-btn" class="submit-score-btn">Submit Score</button>';
+    statsHTML += '<button id="skip-submit-btn" class="skip-submit-btn">Skip</button>';
+    statsHTML += '</div>';
+    statsHTML += '</div>';
+    
+    statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Or press ENTER to start over without submitting</div>';
     
     statsContent.innerHTML = statsHTML;
     overlay.appendChild(statsContent);
     
     // Add to document
     document.body.appendChild(overlay);
+    
+    // Store stats for submission
+    this._finalStats = {
+        level: Game.levelNumber,
+        turns: this.getTurns(),
+        steps: this.getSteps(),
+        coinsCollected: this.getCoinsCollected(),
+        totalEnemiesDefeated: totalEnemiesDefeated
+    };
+    this._finalScore = finalScore;
+    
+    // Set up event listeners
+    this._setupDeathScreenEventListeners();
 }
 
-// Handle input on the death screen
-Player.prototype._handleDeathScreenInput = function(e) {
-    if (e.keyCode === KEY_CODES.ENTER) {
-        // Remove the overlay
-        var overlay = document.getElementById('death-stats-overlay');
-        if (overlay) {
-            document.body.removeChild(overlay);
+// Set up event listeners for the death screen
+Player.prototype._setupDeathScreenEventListeners = function() {
+    var self = this;
+    
+    // Handle Enter key to restart without submitting
+    var keyHandler = function(e) {
+        if (e.keyCode === KEY_CODES.ENTER) {
+            self._restartGame();
+        }
+    };
+    window.addEventListener("keydown", keyHandler);
+    
+    // Handle submit button
+    var submitBtn = document.getElementById('submit-score-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', function() {
+            self._submitScore();
+        });
+    }
+    
+    // Handle skip button
+    var skipBtn = document.getElementById('skip-submit-btn');
+    if (skipBtn) {
+        skipBtn.addEventListener('click', function() {
+            self._restartGame();
+        });
+    }
+    
+    // Handle Enter key in name input to submit
+    var nameInput = document.getElementById('player-name-input');
+    if (nameInput) {
+        nameInput.addEventListener('keypress', function(e) {
+            if (e.keyCode === KEY_CODES.ENTER) {
+                self._submitScore();
+            }
+        });
+        nameInput.focus(); // Focus the input for immediate typing
+    }
+    
+    // Store reference to cleanup later
+    this._deathScreenKeyHandler = keyHandler;
+}
+
+// Submit score to leaderboard
+Player.prototype._submitScore = async function() {
+    var nameInput = document.getElementById('player-name-input');
+    var submitBtn = document.getElementById('submit-score-btn');
+    
+    if (!nameInput || !submitBtn) return;
+    
+    var playerName = nameInput.value.trim();
+    if (!playerName) {
+        nameInput.style.borderColor = '#ff4444';
+        nameInput.placeholder = 'Name required!';
+        return;
+    }
+    
+    // Disable submit button and show loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    try {
+        var success = await Leaderboard.submitScore(playerName, this._finalScore, this._finalStats);
+        
+        if (success) {
+            // Show success message
+            submitBtn.textContent = 'Success!';
+            submitBtn.style.backgroundColor = '#44ff44';
+            setTimeout(() => {
+                this._showLeaderboardThenRestart(true); // true = score was submitted
+            }, 1000);
+        } else {
+            throw new Error('Submission failed');
+        }
+    } catch (error) {
+        console.error('Error submitting score:', error);
+        submitBtn.textContent = 'Failed - Try Again';
+        submitBtn.style.backgroundColor = '#ff4444';
+        submitBtn.disabled = false;
+    }
+}
+
+// Restart the game
+Player.prototype._restartGame = function() {
+    this._showLeaderboardThenRestart(false); // false = score was not submitted
+}
+
+// Show leaderboard then restart the game
+Player.prototype._showLeaderboardThenRestart = function(scoreSubmitted) {
+    // Remove the death screen overlay
+    var overlay = document.getElementById('death-stats-overlay');
+    if (overlay) {
+        document.body.removeChild(overlay);
+    }
+    
+    // Clean up event listener
+    if (this._deathScreenKeyHandler) {
+        window.removeEventListener("keydown", this._deathScreenKeyHandler);
+    }
+    
+    // Show leaderboard with a message about the player's performance
+    this._showFinalLeaderboard(scoreSubmitted);
+}
+
+// Show the final leaderboard with player context
+Player.prototype._showFinalLeaderboard = async function(scoreSubmitted) {
+    try {
+        // Show loading message
+        var loadingOverlay = document.createElement('div');
+        loadingOverlay.className = 'death-screen-overlay';
+        loadingOverlay.innerHTML = '<div style="color: white; font-size: 20px;">Loading leaderboard...</div>';
+        document.body.appendChild(loadingOverlay);
+        
+        // Get leaderboard data
+        var scores = await Leaderboard.getTopScores();
+        
+        // Remove loading message
+        document.body.removeChild(loadingOverlay);
+        
+        // Find player's rank if they submitted
+        var playerRank = null;
+        if (scoreSubmitted) {
+            for (var i = 0; i < scores.length; i++) {
+                if (scores[i].score === this._finalScore) {
+                    playerRank = i + 1;
+                    break;
+                }
+            }
         }
         
-        window.removeEventListener("keydown", this);
-        location.reload();
+        // Show leaderboard with custom message
+        this._renderFinalLeaderboard(scores, scoreSubmitted, playerRank);
+        
+    } catch (error) {
+        console.error('Error loading leaderboard:', error);
+        // If leaderboard fails to load, just restart
+        setTimeout(() => location.reload(), 1000);
     }
+}
+
+// Render the final leaderboard with restart functionality
+Player.prototype._renderFinalLeaderboard = function(scores, scoreSubmitted, playerRank) {
+    var overlay = document.createElement('div');
+    overlay.className = 'death-screen-overlay';
+    
+    var content = document.createElement('div');
+    content.className = 'leaderboard-content';
+    
+    // Header with player's result
+    var headerMessage = '';
+    if (scoreSubmitted && playerRank) {
+        headerMessage = '<div style="color: #44ff44; font-size: 20px; margin-bottom: 15px;">🎉 You ranked #' + playerRank + ' with ' + this._finalScore.toLocaleString() + ' points! 🎉</div>';
+    } else if (scoreSubmitted) {
+        headerMessage = '<div style="color: #ffff44; font-size: 18px; margin-bottom: 15px;">Score submitted: ' + this._finalScore.toLocaleString() + ' points</div>';
+    } else {
+        headerMessage = '<div style="color: #ffaa44; font-size: 18px; margin-bottom: 15px;">Your score: ' + this._finalScore.toLocaleString() + ' points</div>';
+    }
+    
+    var html = headerMessage;
+    html += '<div style="color: #ffff44; font-size: 24px; font-weight: bold; margin-bottom: 20px;">🏆 LEADERBOARD 🏆</div>';
+    
+    if (scores.length === 0) {
+        html += '<div style="color: white; text-align: center; margin: 50px;">No scores yet!</div>';
+    } else {
+        html += '<div class="leaderboard-list">';
+        html += '<div class="leaderboard-header-row">';
+        html += '<div class="rank-col">Rank</div>';
+        html += '<div class="name-col">Name</div>';
+        html += '<div class="score-col">Score</div>';
+        html += '<div class="level-col">Level</div>';
+        html += '<div class="stats-col">Stats</div>';
+        html += '</div>';
+        
+        // Show top 10 or all scores if fewer than 10
+        var displayCount = Math.min(scores.length, 10);
+        for (var i = 0; i < displayCount; i++) {
+            var scoreEntry = scores[i];
+            var rank = i + 1;
+            var rankDisplay = rank;
+            if (rank === 1) rankDisplay = '🥇';
+            else if (rank === 2) rankDisplay = '🥈';
+            else if (rank === 3) rankDisplay = '🥉';
+            
+            // Highlight the player's score if it's in the top 10
+            var rowClass = 'leaderboard-row';
+            if (scoreSubmitted && scoreEntry.score === this._finalScore) {
+                rowClass += '" style="background-color: #4a4a00; border: 2px solid #ffff44;';
+            }
+            
+            html += '<div class="' + rowClass + '">';
+            html += '<div class="rank-col">' + rankDisplay + '</div>';
+            html += '<div class="name-col">' + (scoreEntry.name || 'Anonymous') + '</div>';
+            html += '<div class="score-col">' + scoreEntry.score.toLocaleString() + '</div>';
+            html += '<div class="level-col">' + scoreEntry.level + '</div>';
+            html += '<div class="stats-col">' + scoreEntry.totalEnemiesDefeated + ' enemies, ' + scoreEntry.coinsCollected + ' coins</div>';
+            html += '</div>';
+        }
+        
+        if (scores.length > 10) {
+            html += '<div style="text-align: center; margin: 10px; color: #999;">... and ' + (scores.length - 10) + ' more scores</div>';
+        }
+        
+        html += '</div>';
+    }
+    
+    html += '<div style="margin-top: 30px; text-align: center;">';
+    html += '<div style="color: #cccccc; margin-bottom: 15px;">Game will restart automatically in <span id="countdown">10</span> seconds</div>';
+    html += '<button id="restart-now-btn" style="background: #44ff44; color: black; border: none; padding: 15px 30px; cursor: pointer; border-radius: 5px; font-weight: bold; font-family: \'Courier New\', Courier, monospace; font-size: 16px;">🎮 Play Again Now</button>';
+    html += '</div>';
+    
+    content.innerHTML = html;
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+    
+    // Set up restart button
+    document.getElementById('restart-now-btn').addEventListener('click', function() {
+        location.reload();
+    });
+    
+    // Set up 10-second countdown
+    var countdown = 10;
+    var countdownElement = document.getElementById('countdown');
+    var countdownInterval = setInterval(function() {
+        countdown--;
+        if (countdownElement) {
+            countdownElement.textContent = countdown;
+        }
+        if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            location.reload();
+        }
+    }, 1000);
 } 

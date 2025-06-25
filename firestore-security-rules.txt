@@ -1,0 +1,69 @@
+// Firestore Security Rules for Leaderboard
+// Copy these rules to Firebase Console > Firestore Database > Rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Leaderboard collection rules
+    match /leaderboard/{scoreId} {
+      // Anyone can read leaderboard entries (for displaying scores)
+      allow read: if true;
+      
+      // Allow writes only if the data is valid
+      allow create: if isValidLeaderboardEntry(request.resource.data);
+      
+      // Don't allow updates or deletes (scores should be permanent)
+      allow update: if false;
+      allow delete: if false;
+    }
+    
+    // Helper function to validate leaderboard entries
+    function isValidLeaderboardEntry(data) {
+      return data.keys().hasAll(['name', 'score', 'level', 'turns', 'steps', 'coinsCollected', 'totalEnemiesDefeated', 'timestamp']) &&
+             data.keys().hasOnly(['name', 'score', 'level', 'turns', 'steps', 'coinsCollected', 'totalEnemiesDefeated', 'timestamp']) &&
+             
+             // Name validation
+             data.name is string &&
+             data.name.size() > 0 &&
+             data.name.size() <= 20 &&
+             
+             // Score validation - reasonable limits
+             data.score is number &&
+             data.score >= 0 &&
+             data.score <= 1000000 &&
+             
+             // Level validation - reasonable max level
+             data.level is number &&
+             data.level >= 1 &&
+             data.level <= 50 &&
+             
+             // Turns validation - must be positive
+             data.turns is number &&
+             data.turns >= 1 &&
+             data.turns <= 100000 &&
+             
+             // Steps validation - must be positive  
+             data.steps is number &&
+             data.steps >= 0 &&
+             data.steps <= 200000 &&
+             
+             // Coins validation - reasonable limit
+             data.coinsCollected is number &&
+             data.coinsCollected >= 0 &&
+             data.coinsCollected <= 10000 &&
+             
+             // Enemies validation - reasonable limit
+             data.totalEnemiesDefeated is number &&
+             data.totalEnemiesDefeated >= 0 &&
+             data.totalEnemiesDefeated <= 5000 &&
+             
+             // Timestamp must be server timestamp
+             data.timestamp == request.time;
+    }
+    
+    // Deny access to all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 
