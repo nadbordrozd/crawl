@@ -688,14 +688,18 @@ var Game = {
             this.display.clear();
         }
         
-        // Show comprehensive win statistics overlay
-        this._showWinStatistics();
+        // Calculate final win score with bonus
+        var finalScore = Leaderboard.calculateScore(this.player, this.levelNumber, true); // true = game won
         
-        // Listen for Enter key to restart
-        window.addEventListener("keydown", this._handleWinScreenInput.bind(this));
+        // Show comprehensive win statistics with leaderboard submission
+        this._showWinStatisticsWithLeaderboard(finalScore);
+        
+        // Player-specific cleanup
+        this.engine.lock();
     },
     
-    _showWinStatistics: function() {
+    // Show win statistics with leaderboard submission
+    _showWinStatisticsWithLeaderboard: function(finalScore) {
         // Build comprehensive statistics
         var enemiesDefeated = this.player.getEnemiesDefeated();
         var totalEnemiesDefeated = 0;
@@ -707,32 +711,19 @@ var Game = {
         // Create the overlay HTML
         var overlay = document.createElement('div');
         overlay.id = 'win-stats-overlay';
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = '1000';
-        overlay.style.fontFamily = 'monospace';
-        overlay.style.fontSize = '18px';
+        overlay.className = 'death-screen-overlay';
         
         // Create the stats content
         var statsContent = document.createElement('div');
-        statsContent.style.backgroundColor = '#2a2a2a';
-        statsContent.style.border = '3px solid #44aa44';
-        statsContent.style.borderRadius = '10px';
-        statsContent.style.padding = '30px';
-        statsContent.style.textAlign = 'center';
-        statsContent.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.8)';
-        statsContent.style.maxWidth = '500px';
+        statsContent.className = 'death-screen-content';
+        statsContent.style.border = '3px solid #44aa44'; // Green border for win
         
         // Build the stats HTML
-        var statsHTML = '<div style="color: #44ff44; font-size: 24px; font-weight: bold; margin-bottom: 10px;">CONGRATULATIONS!</div>';
-        statsHTML += '<div style="color: #44ff44; font-size: 20px; font-weight: bold; margin-bottom: 20px;">YOU HAVE WON!</div>';
+        var statsHTML = '<div style="color: #44ff44; font-size: 32px; font-weight: bold; margin-bottom: 10px;">🎉 CONGRATULATIONS! 🎉</div>';
+        statsHTML += '<div style="color: #44ff44; font-size: 24px; font-weight: bold; margin-bottom: 15px;">YOU HAVE WON THE GAME!</div>';
+        statsHTML += '<div style="color: #ffff44; font-size: 28px; font-weight: bold; margin-bottom: 15px;">FINAL SCORE: ' + finalScore.toLocaleString() + '</div>';
+        statsHTML += '<div style="color: #aaffaa; font-size: 16px; margin-bottom: 15px;">🏆 Winner Bonus Applied! 🏆</div>';
+        
         statsHTML += '<div style="color: #ffff44; font-size: 20px; font-weight: bold; margin-bottom: 15px;">FINAL STATISTICS</div>';
         statsHTML += '<div style="color: #ffffff; text-align: left; margin-bottom: 20px;">';
         statsHTML += '<div style="margin: 5px 0;">Levels completed: <span style="color: #44ff44;">' + this.levelNumber + '</span></div>';
@@ -756,26 +747,276 @@ var Game = {
         
         statsHTML += '</div>';
         statsHTML += '<div style="color: #ffaa44; margin: 15px 0; font-weight: bold;">Total monsters defeated: ' + totalEnemiesDefeated + '</div>';
-        statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Press ENTER to start over</div>';
+        
+        // Add name input and leaderboard submission
+        statsHTML += '<div class="name-input-container">';
+        statsHTML += '<div style="color: #44ff44; font-weight: bold; margin-bottom: 10px;">🏆 CHAMPION LEADERBOARD 🏆</div>';
+        statsHTML += '<div style="margin-bottom: 10px;">Enter your name to claim victory:</div>';
+        statsHTML += '<input type="text" id="winner-name-input" class="name-input" placeholder="Champion Name" maxlength="20">';
+        statsHTML += '<div style="margin-top: 15px;">';
+        statsHTML += '<button id="submit-win-score-btn" class="submit-score-btn">Claim Victory</button>';
+        statsHTML += '<button id="skip-win-submit-btn" class="skip-submit-btn">Skip</button>';
+        statsHTML += '</div>';
+        statsHTML += '</div>';
+        
+        statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Or press ENTER to start over without submitting</div>';
         
         statsContent.innerHTML = statsHTML;
         overlay.appendChild(statsContent);
         
         // Add to document
         document.body.appendChild(overlay);
+        
+        // Store stats for submission
+        this._finalWinStats = {
+            level: this.levelNumber,
+            turns: this.player.getTurns(),
+            steps: this.player.getSteps(),
+            coinsCollected: this.player.getCoinsCollected(),
+            totalEnemiesDefeated: totalEnemiesDefeated
+        };
+        this._finalWinScore = finalScore;
+        
+        // Set up event listeners
+        this._setupWinScreenEventListeners();
     },
     
-    _handleWinScreenInput: function(e) {
-        if (e.keyCode === KEY_CODES.ENTER) {
-            // Remove the overlay
-            var overlay = document.getElementById('win-stats-overlay');
-            if (overlay) {
-                document.body.removeChild(overlay);
+    // Set up event listeners for the win screen
+    _setupWinScreenEventListeners: function() {
+        var self = this;
+        
+        // Handle Enter key to restart without submitting
+        var keyHandler = function(e) {
+            if (e.keyCode === KEY_CODES.ENTER) {
+                self._restartGameFromWin();
+            }
+        };
+        window.addEventListener("keydown", keyHandler);
+        
+        // Handle submit button
+        var submitBtn = document.getElementById('submit-win-score-btn');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function() {
+                self._submitWinScore();
+            });
+        }
+        
+        // Handle skip button
+        var skipBtn = document.getElementById('skip-win-submit-btn');
+        if (skipBtn) {
+            skipBtn.addEventListener('click', function() {
+                self._restartGameFromWin();
+            });
+        }
+        
+        // Handle Enter key in name input to submit
+        var nameInput = document.getElementById('winner-name-input');
+        if (nameInput) {
+            nameInput.addEventListener('keypress', function(e) {
+                if (e.keyCode === KEY_CODES.ENTER) {
+                    self._submitWinScore();
+                }
+            });
+            nameInput.focus(); // Focus the input for immediate typing
+        }
+        
+        // Store reference to cleanup later
+        this._winScreenKeyHandler = keyHandler;
+    },
+    
+    // Submit win score to leaderboard
+    _submitWinScore: async function() {
+        var nameInput = document.getElementById('winner-name-input');
+        var submitBtn = document.getElementById('submit-win-score-btn');
+        
+        if (!nameInput || !submitBtn) return;
+        
+        var playerName = nameInput.value.trim();
+        if (!playerName) {
+            nameInput.style.borderColor = '#ff4444';
+            nameInput.placeholder = 'Champion name required!';
+            return;
+        }
+        
+        // Disable submit button and show loading
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        try {
+            var success = await Leaderboard.submitScore(playerName, this._finalWinScore, this._finalWinStats);
+            
+            if (success) {
+                // Show success message
+                submitBtn.textContent = 'Victory Claimed!';
+                submitBtn.style.backgroundColor = '#44ff44';
+                setTimeout(() => {
+                    this._showWinLeaderboardThenRestart(true); // true = score was submitted
+                }, 1000);
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            console.error('Error submitting win score:', error);
+            submitBtn.textContent = 'Failed - Try Again';
+            submitBtn.style.backgroundColor = '#ff4444';
+            submitBtn.disabled = false;
+        }
+    },
+    
+    // Restart the game from win screen
+    _restartGameFromWin: function() {
+        this._showWinLeaderboardThenRestart(false); // false = score was not submitted
+    },
+    
+    // Show leaderboard then restart the game (win version)
+    _showWinLeaderboardThenRestart: function(scoreSubmitted) {
+        // Remove the win screen overlay
+        var overlay = document.getElementById('win-stats-overlay');
+        if (overlay) {
+            document.body.removeChild(overlay);
+        }
+        
+        // Clean up event listener
+        if (this._winScreenKeyHandler) {
+            window.removeEventListener("keydown", this._winScreenKeyHandler);
+        }
+        
+        // Show leaderboard with a message about the player's victory
+        this._showFinalWinLeaderboard(scoreSubmitted);
+    },
+    
+    // Show the final leaderboard with winner context
+    _showFinalWinLeaderboard: async function(scoreSubmitted) {
+        try {
+            // Show loading message
+            var loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'death-screen-overlay';
+            loadingOverlay.innerHTML = '<div style="color: white; font-size: 20px;">Loading champion leaderboard...</div>';
+            document.body.appendChild(loadingOverlay);
+            
+            // Get leaderboard data
+            var scores = await Leaderboard.getTopScores();
+            
+            // Remove loading message
+            document.body.removeChild(loadingOverlay);
+            
+            // Find player's rank if they submitted
+            var playerRank = null;
+            if (scoreSubmitted) {
+                for (var i = 0; i < scores.length; i++) {
+                    if (scores[i].score === this._finalWinScore) {
+                        playerRank = i + 1;
+                        break;
+                    }
+                }
             }
             
-            window.removeEventListener("keydown", this);
-            location.reload();
+            // Show leaderboard with custom message
+            this._renderFinalWinLeaderboard(scores, scoreSubmitted, playerRank);
+            
+        } catch (error) {
+            console.error('Error loading leaderboard:', error);
+            // If leaderboard fails to load, just restart
+            setTimeout(() => location.reload(), 1000);
         }
+    },
+    
+    // Render the final win leaderboard with restart functionality
+    _renderFinalWinLeaderboard: function(scores, scoreSubmitted, playerRank) {
+        var overlay = document.createElement('div');
+        overlay.className = 'death-screen-overlay';
+        
+        var content = document.createElement('div');
+        content.className = 'leaderboard-content';
+        content.style.border = '3px solid #44aa44'; // Green border for winners
+        
+        // Header with player's result
+        var headerMessage = '';
+        if (scoreSubmitted && playerRank) {
+            headerMessage = '<div style="color: #44ff44; font-size: 24px; margin-bottom: 15px;">🏆 CHAMPION RANK #' + playerRank + ' 🏆</div>';
+            headerMessage += '<div style="color: #aaffaa; font-size: 18px; margin-bottom: 15px;">Victory Score: ' + this._finalWinScore.toLocaleString() + ' points</div>';
+        } else if (scoreSubmitted) {
+            headerMessage = '<div style="color: #44ff44; font-size: 20px; margin-bottom: 15px;">🏆 VICTORY CLAIMED! 🏆</div>';
+            headerMessage += '<div style="color: #aaffaa; font-size: 18px; margin-bottom: 15px;">Victory Score: ' + this._finalWinScore.toLocaleString() + ' points</div>';
+        } else {
+            headerMessage = '<div style="color: #44ff44; font-size: 20px; margin-bottom: 15px;">🎉 GAME COMPLETED! 🎉</div>';
+            headerMessage += '<div style="color: #aaffaa; font-size: 18px; margin-bottom: 15px;">Final Score: ' + this._finalWinScore.toLocaleString() + ' points</div>';
+        }
+        
+        var html = headerMessage;
+        html += '<div style="color: #ffff44; font-size: 24px; font-weight: bold; margin-bottom: 20px;">🏆 CHAMPION LEADERBOARD 🏆</div>';
+        
+        if (scores.length === 0) {
+            html += '<div style="color: white; text-align: center; margin: 50px;">No scores yet!</div>';
+        } else {
+            html += '<div class="leaderboard-list">';
+            html += '<div class="leaderboard-header-row">';
+            html += '<div class="rank-col">Rank</div>';
+            html += '<div class="name-col">Champion</div>';
+            html += '<div class="score-col">Score</div>';
+            html += '<div class="level-col">Level</div>';
+            html += '<div class="stats-col">Stats</div>';
+            html += '</div>';
+            
+            // Show top 10 or all scores if fewer than 10
+            var displayCount = Math.min(scores.length, 10);
+            for (var i = 0; i < displayCount; i++) {
+                var scoreEntry = scores[i];
+                var rank = i + 1;
+                var rankDisplay = rank;
+                if (rank === 1) rankDisplay = '👑';
+                else if (rank === 2) rankDisplay = '🥈';
+                else if (rank === 3) rankDisplay = '🥉';
+                
+                // Highlight the player's score if it's in the top 10
+                var rowClass = 'leaderboard-row';
+                if (scoreSubmitted && scoreEntry.score === this._finalWinScore) {
+                    rowClass += '" style="background-color: #004400; border: 2px solid #44ff44;';
+                }
+                
+                html += '<div class="' + rowClass + '">';
+                html += '<div class="rank-col">' + rankDisplay + '</div>';
+                html += '<div class="name-col">' + (scoreEntry.name || 'Anonymous') + '</div>';
+                html += '<div class="score-col">' + scoreEntry.score.toLocaleString() + '</div>';
+                html += '<div class="level-col">' + scoreEntry.level + '</div>';
+                html += '<div class="stats-col">' + scoreEntry.totalEnemiesDefeated + ' enemies, ' + scoreEntry.coinsCollected + ' coins</div>';
+                html += '</div>';
+            }
+            
+            if (scores.length > 10) {
+                html += '<div style="text-align: center; margin: 10px; color: #999;">... and ' + (scores.length - 10) + ' more champions</div>';
+            }
+            
+            html += '</div>';
+        }
+        
+        html += '<div style="margin-top: 30px; text-align: center;">';
+        html += '<div style="color: #cccccc; margin-bottom: 15px;">Game will restart automatically in <span id="win-countdown">15</span> seconds</div>';
+        html += '<button id="restart-now-from-win-btn" style="background: #44ff44; color: black; border: none; padding: 15px 30px; cursor: pointer; border-radius: 5px; font-weight: bold; font-family: \'Courier New\', Courier, monospace; font-size: 16px;">🎮 Play Again</button>';
+        html += '</div>';
+        
+        content.innerHTML = html;
+        overlay.appendChild(content);
+        document.body.appendChild(overlay);
+        
+        // Set up restart button
+        document.getElementById('restart-now-from-win-btn').addEventListener('click', function() {
+            location.reload();
+        });
+        
+        // Set up 15-second countdown (longer for winners to savor the moment)
+        var countdown = 15;
+        var countdownElement = document.getElementById('win-countdown');
+        var countdownInterval = setInterval(function() {
+            countdown--;
+            if (countdownElement) {
+                countdownElement.textContent = countdown;
+            }
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                location.reload();
+            }
+        }, 1000);
     },
     
     isPassableTile: function(x, y) {

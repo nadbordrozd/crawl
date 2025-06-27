@@ -27,10 +27,10 @@ service cloud.firestore {
              data.name.size() > 0 &&
              data.name.size() <= 20 &&
              
-             // Score validation - reasonable limits
+             // Score validation - reasonable limits (allow higher scores for game winners)
              data.score is number &&
              data.score >= 0 &&
-             data.score <= 1000000 &&
+             data.score <= 5000000 &&
              
              // Level validation - reasonable max level
              data.level is number &&

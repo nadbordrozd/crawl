@@ -19,7 +19,7 @@ const db = firebase.firestore();
 // Leaderboard functionality
 const Leaderboard = {
     // Calculate score based on game statistics
-    calculateScore: function(player, levelNumber) {
+    calculateScore: function(player, levelNumber, gameWon = false) {
         const stats = {
             level: levelNumber,
             turns: player.getTurns(),
@@ -43,9 +43,14 @@ const Leaderboard = {
         
         let score = 0;
         score += stats.level * 1000; // Base level completion bonus
-        score += totalEnemies * 10 // Enemy defeat bonus
+        score += totalEnemies * 10; // Enemy defeat bonus
         score += stats.coinsCollected * 50; // Coin collection bonus
         score -= Math.floor(stats.turns / 10); // Small penalty for taking many turns
+        
+        // WIN BONUS: Huge bonus for actually completing the game!
+        if (gameWon) {
+            score += 5000; // Base completion bonus
+        }
         
         // Ensure score is never negative
         return Math.max(score, 0);
@@ -84,8 +89,8 @@ const Leaderboard = {
             return false;
         }
         
-        // Score validation - reasonable limits
-        if (!score || typeof score !== 'number' || score < 0 || score > 1000000) {
+        // Score validation - reasonable limits (allow higher scores for game winners)
+        if (!score || typeof score !== 'number' || score < 0 || score > 5000000) {
             return false;
         }
         

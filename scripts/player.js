@@ -288,8 +288,8 @@ Player.prototype.die = function() {
     // Call parent die method for basic cleanup (clear display, remove from scheduler)
     Being.prototype.die.call(this);
     
-    // Calculate final score
-    var finalScore = Leaderboard.calculateScore(this, Game.levelNumber);
+    // Calculate final score (false = game not won, player died)
+    var finalScore = Leaderboard.calculateScore(this, Game.levelNumber, false);
     
     // Display comprehensive death statistics with score submission
     this._showDeathStatisticsWithLeaderboard(finalScore);
