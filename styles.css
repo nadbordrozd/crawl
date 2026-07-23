@@ -112,7 +112,8 @@ canvas {
 #music-toggle-button,
 #instructions-toggle-button,
 #about-toggle-button,
-#leaderboard-button {
+#leaderboard-button,
+#projects-link {
     padding: 8px 16px;
     font-family: 'Courier New', Courier, monospace;
     background-color: #555;
@@ -120,12 +121,14 @@ canvas {
     border: 2px solid #888;
     border-radius: 8px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 #music-toggle-button:hover,
 #instructions-toggle-button:hover,
 #about-toggle-button:hover,
-#leaderboard-button:hover {
+#leaderboard-button:hover,
+#projects-link:hover {
     background-color: #777;
 }
 
@@ -393,4 +396,4 @@ canvas {
 
 .leaderboard-content::-webkit-scrollbar-thumb:hover {
     background: #777;
-} 
+}
