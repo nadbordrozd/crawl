@@ -1,0 +1,402 @@
+{
+  "player.step#0": {
+    "verdict": "REJECTED",
+    "notes": "too quiet even at full gain (max momentary -41.7 LUFS) and bright scuffy centroid 4.8 kHz",
+    "at": "2026-11-01T14:12:11.669Z"
+  },
+  "player.step#1": {
+    "verdict": "REJECTED",
+    "notes": "inaudible under music (max momentary -49.6 LUFS)",
+    "at": "2026-11-01T14:12:11.709Z"
+  },
+  "player.step#2": {
+    "verdict": "REJECTED",
+    "notes": "inaudible under music (max momentary -50.9 LUFS)",
+    "at": "2026-11-01T14:12:11.748Z"
+  },
+  "player.attack#0": {
+    "verdict": "REJECTED",
+    "notes": "near silent (-67 LUFS-M), no swish",
+    "at": "2026-11-01T14:12:11.787Z"
+  },
+  "hit.enemy#1": {
+    "verdict": "REJECTED",
+    "notes": "too quiet (-43 LUFS-M) and hissy (centroid 3.8 kHz), not a thud",
+    "at": "2026-11-01T14:12:11.826Z"
+  },
+  "hit.player#0": {
+    "verdict": "REJECTED",
+    "notes": "nice falling 118-65 Hz blip but 6 dB under target at full gain; louder #2 preferred",
+    "at": "2026-11-01T14:12:11.865Z"
+  },
+  "hit.player#1": {
+    "verdict": "REJECTED",
+    "notes": "brick-walled: 2953 samples in the top 1 dB, true peak +0.4",
+    "at": "2026-11-01T14:12:11.904Z"
+  },
+  "hit.player#3": {
+    "verdict": "REJECTED",
+    "notes": "only a 30 Hz rumble, no pitched blip",
+    "at": "2026-11-01T14:12:11.942Z"
+  },
+  "enemy.death#0": {
+    "verdict": "REJECTED",
+    "notes": "fine poof but 6 dB under target at full gain (-26 LUFS-M)",
+    "at": "2026-11-01T14:12:11.983Z"
+  },
+  "enemy.death#1": {
+    "verdict": "REJECTED",
+    "notes": "too quiet (-35 LUFS-M)",
+    "at": "2026-11-01T14:12:12.022Z"
+  },
+  "enemy.death#3": {
+    "verdict": "REJECTED",
+    "notes": "hotter than #2 with 331 near-full-scale samples and a flat-top run",
+    "at": "2026-11-01T14:12:12.062Z"
+  },
+  "bomb.explode#0": {
+    "verdict": "REJECTED",
+    "notes": "clipped: 110 flat-top runs, true peak +1.1 dBTP",
+    "at": "2026-11-01T14:12:12.101Z"
+  },
+  "bomb.explode#1": {
+    "verdict": "REJECTED",
+    "notes": "clipped: 136 flat-top runs, true peak +1.5 dBTP",
+    "at": "2026-11-01T14:12:12.142Z"
+  },
+  "bomb.explode#3": {
+    "verdict": "REJECTED",
+    "notes": "far too quiet (-43 LUFS-M) and thin",
+    "at": "2026-11-01T14:12:12.181Z"
+  },
+  "pickup.coin#0": {
+    "verdict": "REJECTED",
+    "notes": "clean 2.7 kHz ding but 14 dB under target at full gain",
+    "at": "2026-11-01T14:12:12.223Z"
+  },
+  "pickup.coin#1": {
+    "verdict": "REJECTED",
+    "notes": "harsh 8 kHz hiss-like ring with near-uncorrelated stereo (0.15)",
+    "at": "2026-11-01T14:12:12.262Z"
+  },
+  "pickup.coin#2": {
+    "verdict": "REJECTED",
+    "notes": "single steady 5.7 kHz tone, 2 dB quieter than #3",
+    "at": "2026-11-01T14:12:12.301Z"
+  },
+  "pickup.key#0": {
+    "verdict": "REJECTED",
+    "notes": "slow build (peak at 0.25 s) with a low thump before the jingle",
+    "at": "2026-11-01T14:12:12.341Z"
+  },
+  "pickup.item#0": {
+    "verdict": "REJECTED",
+    "notes": "rising blip but dull (600-900 Hz) and 11 dB quieter than #1",
+    "at": "2026-11-01T14:12:12.380Z"
+  },
+  "item.potion#0": {
+    "verdict": "REJECTED",
+    "notes": "only 0.3 s of sound then silence; no shimmer, very quiet",
+    "at": "2026-11-01T14:12:12.418Z"
+  },
+  "item.potion#1": {
+    "verdict": "REJECTED",
+    "notes": "glugs but no high shimmer at the end (centroid 1 kHz throughout)",
+    "at": "2026-11-01T14:12:12.459Z"
+  },
+  "item.potion#2": {
+    "verdict": "REJECTED",
+    "notes": "glug is a thin 1 kHz tick; 150 near-full-scale samples",
+    "at": "2026-11-01T14:12:12.499Z"
+  },
+  "item.eat#0": {
+    "verdict": "REJECTED",
+    "notes": "247 near-full-scale samples and true peak +1.9 dBTP",
+    "at": "2026-11-01T14:12:12.539Z"
+  },
+  "powerup.heart#0": {
+    "verdict": "REJECTED",
+    "notes": "continuous sweep still at full level at the end (cut off), no decay",
+    "at": "2026-11-01T14:12:12.579Z"
+  },
+  "powerup.belt#0": {
+    "verdict": "REJECTED",
+    "notes": "first event only at 0.25 s; slow start",
+    "at": "2026-11-01T14:12:12.619Z"
+  },
+  "powerup.belt#1": {
+    "verdict": "REJECTED",
+    "notes": "snap and chime present but 4 dB quieter than #2",
+    "at": "2026-11-01T14:12:12.658Z"
+  },
+  "powerup.belt#3": {
+    "verdict": "REJECTED",
+    "notes": "131 ms leading silence",
+    "at": "2026-11-01T14:12:12.697Z"
+  },
+  "status.stoneskin#1": {
+    "verdict": "REJECTED",
+    "notes": "grind only, no shimmer; 107 near-full-scale samples",
+    "at": "2026-11-01T14:12:12.737Z"
+  },
+  "status.speed#1": {
+    "verdict": "REJECTED",
+    "notes": "pitch track jumps around; no clear rise",
+    "at": "2026-11-01T14:12:12.776Z"
+  },
+  "status.expire#0": {
+    "verdict": "REJECTED",
+    "notes": "too quiet (-37.6 LUFS-M)",
+    "at": "2026-11-01T14:12:12.816Z"
+  },
+  "status.expire#1": {
+    "verdict": "REJECTED",
+    "notes": "descends but is still at full level when the file ends (cut off, no fade)",
+    "at": "2026-11-01T14:12:12.856Z"
+  },
+  "status.expire#2": {
+    "verdict": "REJECTED",
+    "notes": "goes up to a 6 kHz shimmer instead of descending",
+    "at": "2026-11-01T14:12:12.896Z"
+  },
+  "summon.unicorn#0": {
+    "verdict": "REJECTED",
+    "notes": "steady 5.9 kHz sparkle only, no whinny-like trill",
+    "at": "2026-11-01T14:12:12.935Z"
+  },
+  "summon.unicorn#1": {
+    "verdict": "REJECTED",
+    "notes": "sparkle only, weakly correlated stereo (0.43)",
+    "at": "2026-11-01T14:12:12.974Z"
+  },
+  "summon.unicorn#2": {
+    "verdict": "REJECTED",
+    "notes": "sparkle only, mid-range trill absent",
+    "at": "2026-11-01T14:12:13.014Z"
+  },
+  "scroll.reveal#1": {
+    "verdict": "REJECTED",
+    "notes": "true peak +1.8 dBTP with 150 near-full-scale samples",
+    "at": "2026-11-01T14:12:13.053Z"
+  },
+  "exit.locked#1": {
+    "verdict": "REJECTED",
+    "notes": "fine but quieter and duller than #0",
+    "at": "2026-11-01T14:12:13.094Z"
+  },
+  "exit.open#0": {
+    "verdict": "REJECTED",
+    "notes": "13 flat-top runs and true peak +1.7 dBTP",
+    "at": "2026-11-01T14:12:13.134Z"
+  },
+  "level.complete#1": {
+    "verdict": "REJECTED",
+    "notes": "repeating octave pattern that does not resolve",
+    "at": "2026-11-01T14:12:13.173Z"
+  },
+  "game.over#0": {
+    "verdict": "REJECTED",
+    "notes": "one smooth glissando down, reads as a slide, not a jingle",
+    "at": "2026-11-01T14:12:13.214Z"
+  },
+  "game.win#0": {
+    "verdict": "REJECTED",
+    "notes": "short simple arpeggio, 1.2 s of trailing silence; smaller than wanted",
+    "at": "2026-11-01T14:12:13.256Z"
+  },
+  "ui.denied#1": {
+    "verdict": "REJECTED",
+    "notes": "channels phase-inverted (L/R correlation -0.93): cancels when summed to mono",
+    "at": "2026-11-01T14:12:13.297Z"
+  },
+  "unicorn.attack#0": {
+    "verdict": "REJECTED",
+    "notes": "true peak +1.4 dBTP, 3 flat-top runs",
+    "at": "2026-11-01T14:12:13.340Z"
+  },
+  "frog.croak#1": {
+    "verdict": "REJECTED",
+    "notes": "92 near-full-scale samples, hotter than #0",
+    "at": "2026-11-01T14:12:13.381Z"
+  },
+  "zombie.groan#0": {
+    "verdict": "REJECTED",
+    "notes": "higher whiny 830-580 Hz pitch, reads less like a groan",
+    "at": "2026-11-01T14:12:13.422Z"
+  },
+  "ghost.wail#0": {
+    "verdict": "REJECTED",
+    "notes": "very loud and limited (-5 LUFS-M, 49 near-full-scale samples)",
+    "at": "2026-11-01T14:12:13.462Z"
+  },
+  "troll.roar#0": {
+    "verdict": "REJECTED",
+    "notes": "brick-walled: 869 near-full-scale samples, no decay at the end",
+    "at": "2026-11-01T14:12:13.508Z"
+  },
+  "troll.roar#1": {
+    "verdict": "REJECTED",
+    "notes": "brick-walled: 1496 near-full-scale samples",
+    "at": "2026-11-01T14:12:13.548Z"
+  },
+  "troll.roar#3": {
+    "verdict": "REJECTED",
+    "notes": "still at level when the file ends (cut off); 814 near-full-scale samples",
+    "at": "2026-11-01T14:12:13.588Z"
+  },
+  "imp.teleport#1": {
+    "verdict": "REJECTED",
+    "notes": "still active at the last frame (no tail, ends abruptly)",
+    "at": "2026-11-01T14:12:13.629Z"
+  },
+  "player.step#3": {
+    "verdict": "ACCEPTED",
+    "notes": "single tap, 0 ms lead, decays in 0.25 s; at -33 LUFS-M it sits 3 dB under the quiet-step target",
+    "at": "2026-11-01T14:12:13.671Z"
+  },
+  "player.attack#1": {
+    "verdict": "ACCEPTED",
+    "notes": "one short 0.15 s swish with no lead, ~1 kHz air band, clean decay",
+    "at": "2026-11-01T14:12:13.712Z"
+  },
+  "hit.enemy#0": {
+    "verdict": "ACCEPTED",
+    "notes": "short low thud (centroid 545 Hz), 18 ms lead, decays in 0.3 s",
+    "at": "2026-11-01T14:12:13.753Z"
+  },
+  "hit.player#2": {
+    "verdict": "ACCEPTED",
+    "notes": "punchy low thump with a short 118 Hz blip, clean 0.5 s decay, no clipping",
+    "at": "2026-11-01T14:12:13.792Z"
+  },
+  "enemy.death#2": {
+    "verdict": "ACCEPTED",
+    "notes": "quick pop then airy puff (centroid 3.2 kHz), done in 0.4 s, no clipping",
+    "at": "2026-11-01T14:12:13.832Z"
+  },
+  "bomb.explode#2": {
+    "verdict": "ACCEPTED",
+    "notes": "bassy boom (centroid 250 Hz) with a 0.6 s rumble fade, peak -0.5, no flat tops",
+    "at": "2026-11-01T14:12:13.873Z"
+  },
+  "pickup.coin#3": {
+    "verdict": "ACCEPTED",
+    "notes": "clink transient then bright ring, decays in 0.25 s; loudest clean coin take",
+    "at": "2026-11-01T14:12:13.915Z"
+  },
+  "pickup.key#1": {
+    "verdict": "ACCEPTED",
+    "notes": "jingle from the first frame (10 kHz metal) with a short sparkle tail",
+    "at": "2026-11-01T14:12:13.957Z"
+  },
+  "pickup.item#1": {
+    "verdict": "ACCEPTED",
+    "notes": "bright rising two-step blip 1.4-2.2 kHz, done in 0.25 s",
+    "at": "2026-11-01T14:12:13.999Z"
+  },
+  "item.potion#3": {
+    "verdict": "ACCEPTED",
+    "notes": "low glug (100-260 Hz) then a 7-10 kHz shimmer from 0.3 s, clean fade, no overs",
+    "at": "2026-11-01T14:12:14.039Z"
+  },
+  "item.eat#1": {
+    "verdict": "ACCEPTED",
+    "notes": "several crunch transients (1 kHz body + 9 kHz crackle), no flat tops",
+    "at": "2026-11-01T14:12:14.079Z"
+  },
+  "powerup.heart#1": {
+    "verdict": "ACCEPTED",
+    "notes": "warm rising 480 Hz-2.1 kHz chime that decays to silence by 0.85 s",
+    "at": "2026-11-01T14:12:14.120Z"
+  },
+  "powerup.belt#2": {
+    "verdict": "ACCEPTED",
+    "notes": "snap at 0.05 s then bright chime at 0.4 s, 32 ms lead, clean",
+    "at": "2026-11-01T14:12:14.160Z"
+  },
+  "status.stoneskin#0": {
+    "verdict": "ACCEPTED",
+    "notes": "low 30-40 Hz grind with a 1.2 kHz shimmer at the end, no overs",
+    "at": "2026-11-01T14:12:14.200Z"
+  },
+  "status.speed#0": {
+    "verdict": "ACCEPTED",
+    "notes": "airy whoosh with pitch rising 580 Hz-1.2 kHz, clean decay",
+    "at": "2026-11-01T14:12:14.242Z"
+  },
+  "status.expire#3": {
+    "verdict": "ACCEPTED",
+    "notes": "soft chime falling 1.25 kHz to 790 Hz and fading out",
+    "at": "2026-11-01T14:12:14.283Z"
+  },
+  "summon.unicorn#3": {
+    "verdict": "ACCEPTED",
+    "notes": "wobbly 1.4-2.3 kHz synth trill for 0.3 s then 5-8 kHz sparkle burst, clean",
+    "at": "2026-11-01T14:12:14.324Z"
+  },
+  "scroll.reveal#0": {
+    "verdict": "ACCEPTED",
+    "notes": "paper rustle, short gap, then a mystical whoosh 0.6-1.2 s; no overs",
+    "at": "2026-11-01T14:12:14.365Z"
+  },
+  "exit.locked#0": {
+    "verdict": "ACCEPTED",
+    "notes": "dull rattle thunk (centroid 1 kHz) that dies by 0.4 s",
+    "at": "2026-11-01T14:12:14.406Z"
+  },
+  "exit.open#1": {
+    "verdict": "ACCEPTED",
+    "notes": "clunk, gate sweep and ~1 kHz bright sting, decays to silence; only minor overs",
+    "at": "2026-11-01T14:12:14.447Z"
+  },
+  "level.complete#0": {
+    "verdict": "ACCEPTED",
+    "notes": "rising melodic fanfare (528 Hz-2.6 kHz) that resolves and ends by 1.25 s",
+    "at": "2026-11-01T14:12:14.490Z"
+  },
+  "game.over#1": {
+    "verdict": "ACCEPTED",
+    "notes": "stepwise falling notes 786 to 248 Hz with a sustained low ending and natural decay",
+    "at": "2026-11-01T14:12:14.531Z"
+  },
+  "game.win#1": {
+    "verdict": "ACCEPTED",
+    "notes": "fuller fanfare of about 2.2 s ending on a sustained chord, no flat tops",
+    "at": "2026-11-01T14:12:14.571Z"
+  },
+  "ui.denied#0": {
+    "verdict": "ACCEPTED",
+    "notes": "short soft 528 Hz bonk blip, done in 0.25 s",
+    "at": "2026-11-01T14:12:14.614Z"
+  },
+  "unicorn.attack#1": {
+    "verdict": "ACCEPTED",
+    "notes": "rising zap sweep 370 Hz-10 kHz in 0.5 s; one tiny flat run, fine at its gain",
+    "at": "2026-11-01T14:12:14.655Z"
+  },
+  "frog.croak#0": {
+    "verdict": "ACCEPTED",
+    "notes": "single croak at ~1.5 kHz, peak -2.5, no overs",
+    "at": "2026-11-01T14:12:14.697Z"
+  },
+  "zombie.groan#1": {
+    "verdict": "ACCEPTED",
+    "notes": "low 230-280 Hz groan, 0.6 s, short fade",
+    "at": "2026-11-01T14:12:14.737Z"
+  },
+  "ghost.wail#1": {
+    "verdict": "ACCEPTED",
+    "notes": "soft airy wail falling 950 to 750 Hz, peak -13.5",
+    "at": "2026-11-01T14:12:14.777Z"
+  },
+  "troll.roar#2": {
+    "verdict": "ACCEPTED",
+    "notes": "low 140-230 Hz grunt roar that decays to silence by 0.6 s; dense but no clipping",
+    "at": "2026-11-01T14:12:14.818Z"
+  },
+  "imp.teleport#0": {
+    "verdict": "ACCEPTED",
+    "notes": "quick rising warble 530 Hz-1 kHz that pops away and fades",
+    "at": "2026-11-01T14:12:14.859Z"
+  }
+}

@@ -1,0 +1,1282 @@
+{
+  "player.step#0": {
+    "id": "player.step",
+    "n": 0,
+    "at": "2026-11-01T14:04:18.790Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A single very soft quiet footstep on a stone dungeon floor, one light tap, cute retro fantasy video game sound effect, clean, dry, no echo, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "player.step-0.mp3",
+    "sha256": "27b622e707c6023254d1222bf8debc3e151ca77745124ec27567af4f394c666a",
+    "bytes": 8820
+  },
+  "player.step#1": {
+    "id": "player.step",
+    "n": 1,
+    "at": "2026-11-01T14:04:20.477Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A single very soft quiet footstep on a stone dungeon floor, one light tap, cute retro fantasy video game sound effect, clean, dry, no echo, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "player.step-1.mp3",
+    "sha256": "3680e6df5963e1cc0dc51e610fc5b50fea8211ae92270d90d71b988e09439ea6",
+    "bytes": 8820
+  },
+  "bomb.explode#0": {
+    "id": "bomb.explode",
+    "n": 0,
+    "at": "2026-11-01T14:04:22.312Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A punchy retro video game bomb explosion with a crunchy boom and a short low rumble tail, cute fantasy pixel-art game sound effect, 16-bit flavour, clean, not realistic, no music, no voice",
+      "duration_seconds": 1.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "bomb.explode-0.mp3",
+    "sha256": "0d1a4a05d6f86d2f2f16e20b39e9fd2490d6910a87ec7e1ae495fc996b192b24",
+    "bytes": 29300
+  },
+  "bomb.explode#1": {
+    "id": "bomb.explode",
+    "n": 1,
+    "at": "2026-11-01T14:04:23.941Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A punchy retro video game bomb explosion with a crunchy boom and a short low rumble tail, cute fantasy pixel-art game sound effect, 16-bit flavour, clean, not realistic, no music, no voice",
+      "duration_seconds": 1.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "bomb.explode-1.mp3",
+    "sha256": "bf74b982f28e65db76f29c770790cc6d39dfcce5713cab46160cff3096496749",
+    "bytes": 29300
+  },
+  "level.complete#0": {
+    "id": "level.complete",
+    "n": 0,
+    "at": "2026-11-01T14:04:25.847Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short cheerful 8-bit flavoured victory fanfare jingle, level complete, bright happy rising melody that ends on a resolved note, cute retro fantasy pixel-art video game, clean, no voice",
+      "duration_seconds": 2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "level.complete-0.mp3",
+    "sha256": "40c42316cf60e9da136b51fced7028eb965d170b126757979665a51c0bce68ac",
+    "bytes": 33061
+  },
+  "level.complete#1": {
+    "id": "level.complete",
+    "n": 1,
+    "at": "2026-11-01T14:04:27.645Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short cheerful 8-bit flavoured victory fanfare jingle, level complete, bright happy rising melody that ends on a resolved note, cute retro fantasy pixel-art video game, clean, no voice",
+      "duration_seconds": 2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "level.complete-1.mp3",
+    "sha256": "ec9545216be597d18e894deb5ed250283d4fc3cf8f046aeea26cf9024375cf6c",
+    "bytes": 33061
+  },
+  "player.attack#0": {
+    "id": "player.attack",
+    "n": 0,
+    "at": "2026-11-01T14:05:14.431Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A quick short sword swish whoosh through the air, cute retro fantasy pixel-art video game sound effect, crisp and clean, light 16-bit flavour, no impact, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "player.attack-0.mp3",
+    "sha256": "bcbb0ad7091d4cccc0b7f45ced69282f96f8e8eef37108b5aacb60e30a00075d",
+    "bytes": 8820
+  },
+  "player.attack#1": {
+    "id": "player.attack",
+    "n": 1,
+    "at": "2026-11-01T14:05:16.021Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A quick short sword swish whoosh through the air, cute retro fantasy pixel-art video game sound effect, crisp and clean, light 16-bit flavour, no impact, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "player.attack-1.mp3",
+    "sha256": "d7e92696a0c6d6766e1804bd02f9e5a51caee7900a4a6fe7cde16b7998560836",
+    "bytes": 8820
+  },
+  "hit.enemy#0": {
+    "id": "hit.enemy",
+    "n": 0,
+    "at": "2026-11-01T14:05:17.680Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A meaty but cute punchy impact thud hitting a small monster, cartoony bonk, retro fantasy pixel-art video game hit sound effect, clean, crunchy, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "hit.enemy-0.mp3",
+    "sha256": "49a3106d9a59da0072c71ff3c33f30683bd654295b95f4d4ee55bbf9ecd7925e",
+    "bytes": 8820
+  },
+  "hit.enemy#1": {
+    "id": "hit.enemy",
+    "n": 1,
+    "at": "2026-11-01T14:05:19.158Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A meaty but cute punchy impact thud hitting a small monster, cartoony bonk, retro fantasy pixel-art video game hit sound effect, clean, crunchy, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "hit.enemy-1.mp3",
+    "sha256": "33a3a52f6dec2b6637d249d6a121b3372f766c61d9f648d3aa4a98301068bb88",
+    "bytes": 8820
+  },
+  "hit.player#0": {
+    "id": "hit.player",
+    "n": 0,
+    "at": "2026-11-01T14:05:20.978Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Player character takes damage: a soft punchy impact followed by a short low descending synth blip like an oof, cute retro fantasy pixel-art video game hurt sound effect, clean, light 8-bit flavour, no voice, no words, no music",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "hit.player-0.mp3",
+    "sha256": "0935903b4127ff94e4acb0d4bab3b138fbefadf4aaa6debf3c9aacffd1baef64",
+    "bytes": 10492
+  },
+  "hit.player#1": {
+    "id": "hit.player",
+    "n": 1,
+    "at": "2026-11-01T14:05:22.507Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Player character takes damage: a soft punchy impact followed by a short low descending synth blip like an oof, cute retro fantasy pixel-art video game hurt sound effect, clean, light 8-bit flavour, no voice, no words, no music",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "hit.player-1.mp3",
+    "sha256": "b9b665cb9b52420ebd37f2b1cf3f42c564a18a31e393352d4344f969ca60895e",
+    "bytes": 10492
+  },
+  "enemy.death#0": {
+    "id": "enemy.death",
+    "n": 0,
+    "at": "2026-11-01T14:05:24.222Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A small cute poof pop of a puff of smoke with a tiny bright sparkle at the end, monster vanishes, retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "enemy.death-0.mp3",
+    "sha256": "765ed91f078890a594d83c81d03efb497778e01fff274d2e3f23f178014dfa90",
+    "bytes": 13835
+  },
+  "enemy.death#1": {
+    "id": "enemy.death",
+    "n": 1,
+    "at": "2026-11-01T14:05:25.491Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A small cute poof pop of a puff of smoke with a tiny bright sparkle at the end, monster vanishes, retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "enemy.death-1.mp3",
+    "sha256": "0a9b8b13d6a263593ba7ce96851864aa60e58fa17971889ec59b228b7a6dce8d",
+    "bytes": 13835
+  },
+  "pickup.coin#0": {
+    "id": "pickup.coin",
+    "n": 0,
+    "at": "2026-11-01T14:05:27.188Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A bright cheerful coin clink pickup, a single gold coin collected, cute retro fantasy pixel-art video game sound effect, clean sparkling ding, light 8-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.coin-0.mp3",
+    "sha256": "0820ec607bbd243073fb82ad3d6241ebbd71f4ffde6bb3318f1fd2fc499db720",
+    "bytes": 8820
+  },
+  "pickup.coin#1": {
+    "id": "pickup.coin",
+    "n": 1,
+    "at": "2026-11-01T14:05:28.779Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A bright cheerful coin clink pickup, a single gold coin collected, cute retro fantasy pixel-art video game sound effect, clean sparkling ding, light 8-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.coin-1.mp3",
+    "sha256": "6206385d00d0a1441aa6cd91a9563fcb23a563f1604b2ec48fa53d2d9653479c",
+    "bytes": 8820
+  },
+  "pickup.key#0": {
+    "id": "pickup.key",
+    "n": 0,
+    "at": "2026-11-01T14:05:30.612Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A small metallic key jingle with a short magical sparkle, key picked up, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.key-0.mp3",
+    "sha256": "97745a2dfc8558fbec01ea8aceb2830f3abda2190d266514f213fc5654738d80",
+    "bytes": 13835
+  },
+  "pickup.key#1": {
+    "id": "pickup.key",
+    "n": 1,
+    "at": "2026-11-01T14:05:32.244Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A small metallic key jingle with a short magical sparkle, key picked up, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.key-1.mp3",
+    "sha256": "3a17efa192195df0e26296a7ccc3bde657e5a4cc2e8b302cfa73b41a3aa315be",
+    "bytes": 13835
+  },
+  "pickup.item#0": {
+    "id": "pickup.item",
+    "n": 0,
+    "at": "2026-11-01T14:05:33.857Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short soft rising item pickup blip, two quick pleasant notes, cute retro fantasy pixel-art video game sound effect, clean, light 8-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.item-0.mp3",
+    "sha256": "7ee2335a9d2abe0337411bf5a962aa024d2d2b4b4466f8566f7bf90032629664",
+    "bytes": 8820
+  },
+  "pickup.item#1": {
+    "id": "pickup.item",
+    "n": 1,
+    "at": "2026-11-01T14:05:35.418Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short soft rising item pickup blip, two quick pleasant notes, cute retro fantasy pixel-art video game sound effect, clean, light 8-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.item-1.mp3",
+    "sha256": "2f3b8c86fab276a3bbe8672f7922f5e2e85eed05458b20141dfea93e65a29b54",
+    "bytes": 8820
+  },
+  "item.potion#0": {
+    "id": "item.potion",
+    "n": 0,
+    "at": "2026-11-01T14:05:37.061Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A quick glug glug of drinking a potion from a small bottle, then a short magical shimmer sparkle, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "item.potion-0.mp3",
+    "sha256": "f250c6d1e8cf35d449452382246a2f9a06c41f0e02999710919b16eb3df0211f",
+    "bytes": 20105
+  },
+  "item.potion#1": {
+    "id": "item.potion",
+    "n": 1,
+    "at": "2026-11-01T14:05:38.592Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A quick glug glug of drinking a potion from a small bottle, then a short magical shimmer sparkle, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "item.potion-1.mp3",
+    "sha256": "d78712be03e876c4af763b05dac26b67e245f2612f1db44548847c7b4c4ace07",
+    "bytes": 20105
+  },
+  "item.eat#0": {
+    "id": "item.eat",
+    "n": 0,
+    "at": "2026-11-01T14:05:40.135Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A crunchy bite and quick munch of eating an apple, two crunches, cute cartoony retro fantasy video game eating sound effect, clean, dry, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "item.eat-0.mp3",
+    "sha256": "3c7ef2e0f03e7bddf26f58e27666cd0c8374ae5119826368e3b31529dfab0d82",
+    "bytes": 13835
+  },
+  "item.eat#1": {
+    "id": "item.eat",
+    "n": 1,
+    "at": "2026-11-01T14:05:41.799Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A crunchy bite and quick munch of eating an apple, two crunches, cute cartoony retro fantasy video game eating sound effect, clean, dry, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "item.eat-1.mp3",
+    "sha256": "98c13ad20d949c362a12f780b125cb880dd0418e709b5f547b410ca93f7a599e",
+    "bytes": 13835
+  },
+  "powerup.heart#0": {
+    "id": "powerup.heart",
+    "n": 0,
+    "at": "2026-11-01T14:05:43.362Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A warm ascending power-up chime, three rising bell notes with a soft glow, gaining a heart of life, cute retro fantasy pixel-art video game sound effect, clean, light 8-bit flavour, no music bed, no voice",
+      "duration_seconds": 1,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "powerup.heart-0.mp3",
+    "sha256": "495011c83467091419d492af2ac6830f13add27148e963bb9ddd6369b9308b28",
+    "bytes": 17179
+  },
+  "powerup.heart#1": {
+    "id": "powerup.heart",
+    "n": 1,
+    "at": "2026-11-01T14:05:44.838Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A warm ascending power-up chime, three rising bell notes with a soft glow, gaining a heart of life, cute retro fantasy pixel-art video game sound effect, clean, light 8-bit flavour, no music bed, no voice",
+      "duration_seconds": 1,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "powerup.heart-1.mp3",
+    "sha256": "1a46e0b2b00de438119587c591b7f822185aefaf40bfc59b7d7db203bf887e96",
+    "bytes": 17179
+  },
+  "powerup.belt#0": {
+    "id": "powerup.belt",
+    "n": 0,
+    "at": "2026-11-01T14:05:46.584Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A leather belt strap snap buckling on, followed by a small quick rising chime, power-up, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "powerup.belt-0.mp3",
+    "sha256": "d2360eed3140b6f8b3c50e0af1a9e04f1dc74b023ea9424351ed7de3fc9a2031",
+    "bytes": 17179
+  },
+  "powerup.belt#1": {
+    "id": "powerup.belt",
+    "n": 1,
+    "at": "2026-11-01T14:05:48.320Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A leather belt strap snap buckling on, followed by a small quick rising chime, power-up, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "powerup.belt-1.mp3",
+    "sha256": "9c5ed30cb882b36b49b21df2b0afb9449c5e0f41f88315af355bd86853c67870",
+    "bytes": 17179
+  },
+  "status.stoneskin#0": {
+    "id": "status.stoneskin",
+    "n": 0,
+    "at": "2026-11-01T14:05:50.028Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Magical stone skin spell: short stone grinding and cracking into place with a low magical shimmer, rocky armour hardening, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.stoneskin-0.mp3",
+    "sha256": "7a439a3bbfffcb72afdb964b08a27314cb8b12116fa34e46153a2e251ef73e0e",
+    "bytes": 20105
+  },
+  "status.stoneskin#1": {
+    "id": "status.stoneskin",
+    "n": 1,
+    "at": "2026-11-01T14:05:51.623Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Magical stone skin spell: short stone grinding and cracking into place with a low magical shimmer, rocky armour hardening, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.stoneskin-1.mp3",
+    "sha256": "16e73c978b614dff1f12bd67dea27efe745f9aa8792de89def1faf29f5363d28",
+    "bytes": 20105
+  },
+  "status.speed#0": {
+    "id": "status.speed",
+    "n": 0,
+    "at": "2026-11-01T14:05:53.312Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A fast airy whoosh with quickly rising pitch, speed boost spell, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.speed-0.mp3",
+    "sha256": "2bba2114a64f13ec81f4bf0a74c95786ce1bea4c519097f4829f0182f5b3439d",
+    "bytes": 13835
+  },
+  "status.speed#1": {
+    "id": "status.speed",
+    "n": 1,
+    "at": "2026-11-01T14:05:54.853Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A fast airy whoosh with quickly rising pitch, speed boost spell, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.speed-1.mp3",
+    "sha256": "2a9f38fa592972b5829c2ac6a9e319de1b183e481769dd27b2909edb1eb71a07",
+    "bytes": 13835
+  },
+  "status.expire#0": {
+    "id": "status.expire",
+    "n": 0,
+    "at": "2026-11-01T14:05:56.517Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A soft gentle descending fade-out chime, two falling notes, a magic effect wearing off, cute retro fantasy pixel-art video game sound effect, quiet, clean, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.expire-0.mp3",
+    "sha256": "e941fadb43162d935810b30916eaacd7c23a70d229d061b8dc8909cf1690fba3",
+    "bytes": 13835
+  },
+  "status.expire#1": {
+    "id": "status.expire",
+    "n": 1,
+    "at": "2026-11-01T14:05:58.152Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A soft gentle descending fade-out chime, two falling notes, a magic effect wearing off, cute retro fantasy pixel-art video game sound effect, quiet, clean, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.expire-1.mp3",
+    "sha256": "2f3893f29e5e3eeaef20f39c1bf4f5deb9c9c02aa1a4f6e6f62e2bfed40c7018",
+    "bytes": 13835
+  },
+  "summon.unicorn#0": {
+    "id": "summon.unicorn",
+    "n": 0,
+    "at": "2026-11-01T14:06:00.103Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A magical sparkle burst of glittering chimes with a short gentle playful synth trill like a toy horse whinny, summoning a cute unicorn, retro fantasy pixel-art video game sound effect, clean, no realistic animal, no music, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.45,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "summon.unicorn-0.mp3",
+    "sha256": "7f080c2573ba3b90d8f16281d0e069f30e627c11d53559736dde75c42da3ead9",
+    "bytes": 24702
+  },
+  "summon.unicorn#1": {
+    "id": "summon.unicorn",
+    "n": 1,
+    "at": "2026-11-01T14:06:03.067Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A magical sparkle burst of glittering chimes with a short gentle playful synth trill like a toy horse whinny, summoning a cute unicorn, retro fantasy pixel-art video game sound effect, clean, no realistic animal, no music, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.45,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "summon.unicorn-1.mp3",
+    "sha256": "36fe5cdaf2906c603e913c3f6a7696b5ecabaa9ba5b59bb0fd84e86e7d7c9d29",
+    "bytes": 24702
+  },
+  "scroll.reveal#0": {
+    "id": "scroll.reveal",
+    "n": 0,
+    "at": "2026-11-01T14:06:04.809Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A paper scroll unrolling with a quick rustle, then a soft mystical whoosh sweep of magic revealing a map, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "scroll.reveal-0.mp3",
+    "sha256": "6b0f80b8b7a0fd331cc211d58d734364d60b67d758c785cce7698d10d2f56d7b",
+    "bytes": 24702
+  },
+  "scroll.reveal#1": {
+    "id": "scroll.reveal",
+    "n": 1,
+    "at": "2026-11-01T14:06:06.969Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A paper scroll unrolling with a quick rustle, then a soft mystical whoosh sweep of magic revealing a map, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "scroll.reveal-1.mp3",
+    "sha256": "f8f799c2785a96fc082a71217a3cfecfad718e6d95fbb5c86888f624dfc23cf6",
+    "bytes": 24702
+  },
+  "exit.locked#0": {
+    "id": "exit.locked",
+    "n": 0,
+    "at": "2026-11-01T14:06:09.521Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A dull short locked wooden door rattle and thunk, the door will not open, denied, cute retro fantasy video game sound effect, clean, dry, no music, no voice",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit.locked-0.mp3",
+    "sha256": "8223db01c607039118f1900df96fab991f84cb3ff107f678aec47e9691b994c1",
+    "bytes": 10492
+  },
+  "exit.locked#1": {
+    "id": "exit.locked",
+    "n": 1,
+    "at": "2026-11-01T14:06:11.077Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A dull short locked wooden door rattle and thunk, the door will not open, denied, cute retro fantasy video game sound effect, clean, dry, no music, no voice",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit.locked-1.mp3",
+    "sha256": "785c2a6e5427e3524da623b90fdf5f4107e21e8340b83fccc458f08ee3b0ae48",
+    "bytes": 10492
+  },
+  "exit.open#0": {
+    "id": "exit.open",
+    "n": 0,
+    "at": "2026-11-01T14:06:13.175Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A heavy iron gate lock clicks open and the gate swings open, ending with a short triumphant little bright jingle sting, cute retro fantasy pixel-art video game sound effect, clean, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit.open-0.mp3",
+    "sha256": "56f6bcb3b5b8d0dba36359915f9d7ed8505c5184d21dbc652cc00f59f5f0e877",
+    "bytes": 24702
+  },
+  "exit.open#1": {
+    "id": "exit.open",
+    "n": 1,
+    "at": "2026-11-01T14:06:14.646Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A heavy iron gate lock clicks open and the gate swings open, ending with a short triumphant little bright jingle sting, cute retro fantasy pixel-art video game sound effect, clean, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit.open-1.mp3",
+    "sha256": "0dcf8360f158ee0524387bb744e41b90cca26b87a6f952b40010234e348c139b",
+    "bytes": 24702
+  },
+  "game.over#0": {
+    "id": "game.over",
+    "n": 0,
+    "at": "2026-11-01T14:06:16.593Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short sad descending jingle, game over, slow falling melody of soft retro synth notes ending low, cute retro fantasy pixel-art video game, clean, gentle, no voice",
+      "duration_seconds": 2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "game.over-0.mp3",
+    "sha256": "e92bab7ce3a1047f52b08ad6a4208c2f549ffddc574a4959c5dd6bad8bfbc286",
+    "bytes": 33061
+  },
+  "game.over#1": {
+    "id": "game.over",
+    "n": 1,
+    "at": "2026-11-01T14:06:18.155Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short sad descending jingle, game over, slow falling melody of soft retro synth notes ending low, cute retro fantasy pixel-art video game, clean, gentle, no voice",
+      "duration_seconds": 2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "game.over-1.mp3",
+    "sha256": "b617f3a07bbafed1515f9221e4e2e6963bfacd3b4e6c647388705de1f4a76268",
+    "bytes": 33061
+  },
+  "game.win#0": {
+    "id": "game.win",
+    "n": 0,
+    "at": "2026-11-01T14:06:20.496Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A bigger triumphant victory fanfare, you win the game, bright joyful 16-bit flavoured melody with a sparkling ending chord, cute retro fantasy pixel-art video game, clean, no voice",
+      "duration_seconds": 3,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "game.win-0.mp3",
+    "sha256": "66671d5bce74e0eeca3246dcf8b24976ff74ce6d9675e3cbf5f7d1291037befe",
+    "bytes": 48944
+  },
+  "game.win#1": {
+    "id": "game.win",
+    "n": 1,
+    "at": "2026-11-01T14:06:22.627Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A bigger triumphant victory fanfare, you win the game, bright joyful 16-bit flavoured melody with a sparkling ending chord, cute retro fantasy pixel-art video game, clean, no voice",
+      "duration_seconds": 3,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "game.win-1.mp3",
+    "sha256": "363ab7ab4c240941102120842f8a0901a8401ec905a06b7a91c64ba28d73216a",
+    "bytes": 48944
+  },
+  "ui.denied#0": {
+    "id": "ui.denied",
+    "n": 0,
+    "at": "2026-11-01T14:06:24.326Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A tiny soft low error blip, a single short dull bonk beep, action not allowed, cute retro video game user interface sound effect, quiet, clean, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "ui.denied-0.mp3",
+    "sha256": "1da6558be84faec1763ea125a2b6be2648fb3b584e0d2b02d0f8d12018dfe10f",
+    "bytes": 8820
+  },
+  "ui.denied#1": {
+    "id": "ui.denied",
+    "n": 1,
+    "at": "2026-11-01T14:06:25.728Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A tiny soft low error blip, a single short dull bonk beep, action not allowed, cute retro video game user interface sound effect, quiet, clean, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "ui.denied-1.mp3",
+    "sha256": "fcde1cdcb625e8e573f0d133e30e6150e14d9afc35779dfcdf4d8b94b62e6941",
+    "bytes": 8820
+  },
+  "unicorn.attack#0": {
+    "id": "unicorn.attack",
+    "n": 0,
+    "at": "2026-11-01T14:06:27.310Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A magical horn zap, a quick bright sparkly energy beam blast, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unicorn.attack-0.mp3",
+    "sha256": "0dceccc3375ea956bd279477f386aae01c248f1e3ce33e57aa167dbc2932b518",
+    "bytes": 12163
+  },
+  "unicorn.attack#1": {
+    "id": "unicorn.attack",
+    "n": 1,
+    "at": "2026-11-01T14:06:28.856Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A magical horn zap, a quick bright sparkly energy beam blast, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unicorn.attack-1.mp3",
+    "sha256": "8d2d647264ac9a044420ad99a94349044e4c793b5ac50bc13fc29aaaa4a413a7",
+    "bytes": 12163
+  },
+  "frog.croak#0": {
+    "id": "frog.croak",
+    "n": 0,
+    "at": "2026-11-01T14:06:30.514Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A single short cute cartoony frog croak ribbit, retro fantasy pixel-art video game creature sound effect, clean, dry, no music",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "frog.croak-0.mp3",
+    "sha256": "586fc65dac390646d816dfb1634cb6e8088c8e71ec82d2b2bd5ac81de71c6254",
+    "bytes": 8820
+  },
+  "frog.croak#1": {
+    "id": "frog.croak",
+    "n": 1,
+    "at": "2026-11-01T14:06:31.817Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A single short cute cartoony frog croak ribbit, retro fantasy pixel-art video game creature sound effect, clean, dry, no music",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "frog.croak-1.mp3",
+    "sha256": "712f2c985d2d8b002c0d31b24221f5bfb9d9902af96be317c83dfdf5aac07bb3",
+    "bytes": 8820
+  },
+  "zombie.groan#0": {
+    "id": "zombie.groan",
+    "n": 0,
+    "at": "2026-11-01T14:06:35.122Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short cute cartoony low zombie groan grunt, silly not scary, retro fantasy pixel-art video game creature sound effect, clean, dry, no words, no music",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "zombie.groan-0.mp3",
+    "sha256": "f8afb1cdba7aea6c9cc78e6dff0b8934e2f50e4d02b66565736aa7b653a81840",
+    "bytes": 12163
+  },
+  "zombie.groan#1": {
+    "id": "zombie.groan",
+    "n": 1,
+    "at": "2026-11-01T14:06:37.063Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short cute cartoony low zombie groan grunt, silly not scary, retro fantasy pixel-art video game creature sound effect, clean, dry, no words, no music",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "zombie.groan-1.mp3",
+    "sha256": "7ea1debe6b6c5e53e4195ad9d6ad7e5a166144443e8d69d155833e036c50ef04",
+    "bytes": 12163
+  },
+  "ghost.wail#0": {
+    "id": "ghost.wail",
+    "n": 0,
+    "at": "2026-11-01T14:06:38.706Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A soft airy short ghost wail ooo, gentle and cute, breathy spooky whistle, retro fantasy pixel-art video game creature sound effect, clean, no words, no music",
+      "duration_seconds": 0.9,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "ghost.wail-0.mp3",
+    "sha256": "35ec275dfa1dba3185df48468d2eb2f60d8f6a52991dfea0548c43bb8e9df62c",
+    "bytes": 15089
+  },
+  "ghost.wail#1": {
+    "id": "ghost.wail",
+    "n": 1,
+    "at": "2026-11-01T14:06:40.229Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A soft airy short ghost wail ooo, gentle and cute, breathy spooky whistle, retro fantasy pixel-art video game creature sound effect, clean, no words, no music",
+      "duration_seconds": 0.9,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "ghost.wail-1.mp3",
+    "sha256": "f1809527db7f4b10faf2219bc65ab45f5e6eb34d4093973524f8d599ab9426a7",
+    "bytes": 15089
+  },
+  "troll.roar#0": {
+    "id": "troll.roar",
+    "n": 0,
+    "at": "2026-11-01T14:06:41.875Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short low cartoony troll roar grunt, big and goofy not scary, retro fantasy pixel-art video game creature sound effect, clean, dry, no words, no music",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "troll.roar-0.mp3",
+    "sha256": "95080a3471ea434d597d46cf9d8884d11e6d2eca5082db21860b0749a64ef319",
+    "bytes": 13835
+  },
+  "troll.roar#1": {
+    "id": "troll.roar",
+    "n": 1,
+    "at": "2026-11-01T14:06:43.368Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short low cartoony troll roar grunt, big and goofy not scary, retro fantasy pixel-art video game creature sound effect, clean, dry, no words, no music",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "troll.roar-1.mp3",
+    "sha256": "34233cb8e1bbfeb52d400be1a163c8c38db2f509e5432ab1b7e7e448cd5a3f80",
+    "bytes": 13835
+  },
+  "imp.teleport#0": {
+    "id": "imp.teleport",
+    "n": 0,
+    "at": "2026-11-01T14:06:45.070Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A quick magical blink teleport zip, a short bright warble that pops away, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "imp.teleport-0.mp3",
+    "sha256": "d9dd161281c06279d2083c4fc006aa5f6cc1f8b4ebfb1dbe049884ae759566b7",
+    "bytes": 10492
+  },
+  "imp.teleport#1": {
+    "id": "imp.teleport",
+    "n": 1,
+    "at": "2026-11-01T14:06:46.666Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A quick magical blink teleport zip, a short bright warble that pops away, cute retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "imp.teleport-1.mp3",
+    "sha256": "55d5a2ee442a1f1b7ccff0ab8dbfe2361ea0c44bc0761840de9c0a773c956d64",
+    "bytes": 10492
+  },
+  "bomb.explode#2": {
+    "id": "bomb.explode",
+    "n": 2,
+    "at": "2026-11-01T14:09:25.927Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A punchy cartoony retro video game bomb explosion: a soft rounded boom followed by a short low rumble that fades out, cute fantasy pixel-art game sound effect, 16-bit flavour, clean mix with headroom, not distorted, not clipped, not realistic, no music, no voice",
+      "duration_seconds": 1.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "bomb.explode-2.mp3",
+    "sha256": "6a62b06207d133deeae23beb5d191fff2856bcb183e722df24fd39e595bff7c1",
+    "bytes": 29300
+  },
+  "bomb.explode#3": {
+    "id": "bomb.explode",
+    "n": 3,
+    "at": "2026-11-01T14:09:29.327Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A punchy cartoony retro video game bomb explosion: a soft rounded boom followed by a short low rumble that fades out, cute fantasy pixel-art game sound effect, 16-bit flavour, clean mix with headroom, not distorted, not clipped, not realistic, no music, no voice",
+      "duration_seconds": 1.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "bomb.explode-3.mp3",
+    "sha256": "3a05d4a3e2702bb61823eaa573f52c4af5adf31b48acd0b8fa37401d2a4e9015",
+    "bytes": 29300
+  },
+  "troll.roar#2": {
+    "id": "troll.roar",
+    "n": 2,
+    "at": "2026-11-01T14:09:30.852Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short low goofy cartoony troll grunt roar, deep but soft and rounded, big friendly monster, retro fantasy pixel-art video game creature sound effect, clean mix with headroom, not distorted, no words, no music",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "troll.roar-2.mp3",
+    "sha256": "0e2a2a85961a4049f57739553594be11f97fc96507a2ea59d4c2f4993bb9d7eb",
+    "bytes": 13835
+  },
+  "troll.roar#3": {
+    "id": "troll.roar",
+    "n": 3,
+    "at": "2026-11-01T14:09:32.496Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A short low goofy cartoony troll grunt roar, deep but soft and rounded, big friendly monster, retro fantasy pixel-art video game creature sound effect, clean mix with headroom, not distorted, no words, no music",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "troll.roar-3.mp3",
+    "sha256": "80a88ea3c785c25908112b9c0174bb3d0f0d71d4ae7098a0e1d4805478ebd3af",
+    "bytes": 13835
+  },
+  "player.step#2": {
+    "id": "player.step",
+    "n": 2,
+    "at": "2026-11-01T14:09:34.021Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A single soft footstep on a stone dungeon floor, one clear close-up boot tap, cute retro fantasy video game sound effect, clean, dry, no echo, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "player.step-2.mp3",
+    "sha256": "6e8b6d1eb565f03bad523cbb62626dcd6f66f617d962c7dd5f8cdd2a53c66263",
+    "bytes": 8820
+  },
+  "player.step#3": {
+    "id": "player.step",
+    "n": 3,
+    "at": "2026-11-01T14:09:35.592Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A single soft footstep on a stone dungeon floor, one clear close-up boot tap, cute retro fantasy video game sound effect, clean, dry, no echo, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "player.step-3.mp3",
+    "sha256": "7063fa119dd5c077dfb40dfdfafe168a20c83c49ae73277c35ec72dfc37d4cf6",
+    "bytes": 8820
+  },
+  "status.expire#2": {
+    "id": "status.expire",
+    "n": 2,
+    "at": "2026-11-01T14:09:37.148Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A soft gentle descending chime, two falling bell notes that fade out completely to silence, a magic effect wearing off, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.expire-2.mp3",
+    "sha256": "a40c7cd8879c3f34d71269f6986f402694eecd8b3946b7c9824b27c2fbf3f632",
+    "bytes": 13835
+  },
+  "status.expire#3": {
+    "id": "status.expire",
+    "n": 3,
+    "at": "2026-11-01T14:09:38.499Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A soft gentle descending chime, two falling bell notes that fade out completely to silence, a magic effect wearing off, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "status.expire-3.mp3",
+    "sha256": "8729f4b41a02bc101349c3e9d0bd49914ee6a0b3fa17115fc996a094546f852f",
+    "bytes": 13835
+  },
+  "item.potion#2": {
+    "id": "item.potion",
+    "n": 2,
+    "at": "2026-11-01T14:09:40.260Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Drinking a magic potion: a quick glug glug from a small glass bottle, then a bright sparkling magical shimmer of rising chimes, cute retro fantasy pixel-art video game sound effect, clean, close-up, no music, no voice",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "item.potion-2.mp3",
+    "sha256": "9843b9ec3b00a271798129a7fe69d90bc870136aa2706349e576acb57ffd537e",
+    "bytes": 20105
+  },
+  "item.potion#3": {
+    "id": "item.potion",
+    "n": 3,
+    "at": "2026-11-01T14:09:42.033Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Drinking a magic potion: a quick glug glug from a small glass bottle, then a bright sparkling magical shimmer of rising chimes, cute retro fantasy pixel-art video game sound effect, clean, close-up, no music, no voice",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "item.potion-3.mp3",
+    "sha256": "956ec35582d940d6121408fdd30ccb777b2cc31571e5cd44b76d3a7b120c8bf0",
+    "bytes": 20105
+  },
+  "pickup.coin#2": {
+    "id": "pickup.coin",
+    "n": 2,
+    "at": "2026-11-01T14:09:43.770Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A bright cheerful gold coin pickup ding, a clear close-up metallic clink with a short ring, classic retro fantasy pixel-art video game coin sound effect, clean, light 8-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.coin-2.mp3",
+    "sha256": "0590d91a0fdc61df1d1b60192f5580bcadef9c37b46b7bb52a7d0a56cf496f45",
+    "bytes": 8820
+  },
+  "pickup.coin#3": {
+    "id": "pickup.coin",
+    "n": 3,
+    "at": "2026-11-01T14:09:45.232Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A bright cheerful gold coin pickup ding, a clear close-up metallic clink with a short ring, classic retro fantasy pixel-art video game coin sound effect, clean, light 8-bit flavour, no music, no voice",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup.coin-3.mp3",
+    "sha256": "8908d820085c60833ec58fbd927a58ecb418c31e28943fac3d8e9c953ec640ae",
+    "bytes": 8820
+  },
+  "enemy.death#2": {
+    "id": "enemy.death",
+    "n": 2,
+    "at": "2026-11-01T14:09:46.941Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A cute punchy poof: a small monster bursts into a puff of smoke with a soft pop and a tiny bright sparkle at the end, close-up, retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "enemy.death-2.mp3",
+    "sha256": "186f1a6862d0760e5b940f0064a7e82ac322012b92a99d6d9ca48ddbbbf5c235",
+    "bytes": 13835
+  },
+  "enemy.death#3": {
+    "id": "enemy.death",
+    "n": 3,
+    "at": "2026-11-01T14:09:48.229Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A cute punchy poof: a small monster bursts into a puff of smoke with a soft pop and a tiny bright sparkle at the end, close-up, retro fantasy pixel-art video game sound effect, clean, light 16-bit flavour, no music, no voice",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "enemy.death-3.mp3",
+    "sha256": "7359bad771f650b941f3ead9c01ab92a32e91545855452abb8807c42fc253c54",
+    "bytes": 13835
+  },
+  "hit.player#2": {
+    "id": "hit.player",
+    "n": 2,
+    "at": "2026-11-01T14:09:49.837Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Player gets hurt: a clear punchy close-up hit thump followed by a short low falling synth blip, like a cartoon oof without a voice, retro fantasy pixel-art video game damage sound effect, clean, light 8-bit flavour, no words, no music",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "hit.player-2.mp3",
+    "sha256": "67a8d0fb5f32592fde274063886ac4fd636c696a849cef0624d28299b2769dd6",
+    "bytes": 10492
+  },
+  "hit.player#3": {
+    "id": "hit.player",
+    "n": 3,
+    "at": "2026-11-01T14:09:51.447Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Player gets hurt: a clear punchy close-up hit thump followed by a short low falling synth blip, like a cartoon oof without a voice, retro fantasy pixel-art video game damage sound effect, clean, light 8-bit flavour, no words, no music",
+      "duration_seconds": 0.6,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "hit.player-3.mp3",
+    "sha256": "9b12ff90ca153ab36a2593c18bcc2fa72bad63ae7012bbdfb72b6afd44c1c8a4",
+    "bytes": 10492
+  },
+  "powerup.belt#2": {
+    "id": "powerup.belt",
+    "n": 2,
+    "at": "2026-11-01T14:09:53.393Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A close-up crisp leather belt strap snap, then a small quick bright rising chime, equipping a power-up, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "powerup.belt-2.mp3",
+    "sha256": "e78bb884803ac8f5778897707530c7ba8fa8d1b6f3cd7bb09e82d82fd18a835a",
+    "bytes": 17179
+  },
+  "powerup.belt#3": {
+    "id": "powerup.belt",
+    "n": 3,
+    "at": "2026-11-01T14:09:55.121Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "A close-up crisp leather belt strap snap, then a small quick bright rising chime, equipping a power-up, cute retro fantasy pixel-art video game sound effect, clean, no music, no voice",
+      "duration_seconds": 1,
+      "prompt_influence": 0.5,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "powerup.belt-3.mp3",
+    "sha256": "a681749bd87a923015ef54036952c5f93d0debb7b7d99a433a582024b0fff5a7",
+    "bytes": 17179
+  },
+  "summon.unicorn#2": {
+    "id": "summon.unicorn",
+    "n": 2,
+    "at": "2026-11-01T14:10:51.333Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Summoning a cute magical unicorn: a burst of glittering sparkle chimes together with a gentle playful wobbly synth neigh, a short soft rising-then-falling toy horse whinny made of warm synth tones, retro fantasy pixel-art video game sound effect, clean, no realistic animal, no music, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "summon.unicorn-2.mp3",
+    "sha256": "c8fecea837cb7e14676a88b01b7c1f4ec77282f9807299893295fc1e654511bf",
+    "bytes": 24702
+  },
+  "summon.unicorn#3": {
+    "id": "summon.unicorn",
+    "n": 3,
+    "at": "2026-11-01T14:10:53.070Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "Summoning a cute magical unicorn: a burst of glittering sparkle chimes together with a gentle playful wobbly synth neigh, a short soft rising-then-falling toy horse whinny made of warm synth tones, retro fantasy pixel-art video game sound effect, clean, no realistic animal, no music, no voice",
+      "duration_seconds": 1.5,
+      "prompt_influence": 0.55,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "summon.unicorn-3.mp3",
+    "sha256": "7156415d9da795575846ae84a4539795d46badedec4fc088ef8fa98e032cc0b7",
+    "bytes": 24702
+  }
+}
