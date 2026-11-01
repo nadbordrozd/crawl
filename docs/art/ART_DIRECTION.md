@@ -13,8 +13,8 @@ never contradict, this file. How assets are made is in
 
 Cute, chunky 16x16 fantasy-dungeon pixel art in the style of the game's
 existing tileset (backterria's pack): small chibi creatures with big readable
-heads and clear silhouettes, a single dark outline (near-black purple-brown,
-not pure black) around every sprite, flat colour with one or two shade steps
+heads and clear silhouettes, lineless like the pack (no full outline; the
+darkest tone `#332745` is used selectively for eyes and the shade side), flat colour with one or two shade steps
 per material, light from the upper left, saturated but not neon colours, no
 dithering noise, no anti-aliased edges, transparent background, no ground
 shadow or plate. Creatures face the viewer or slightly right in a 3/4 front
@@ -22,8 +22,9 @@ view and fill most of the 16x16 cell with 1px breathing room.
 
 ## 2. Shared rules for every asset
 
-- Palette: saturated mid-tones with a darker and a lighter step per material;
-  outlines `#1b1424`-ish; keep a creature to about 4-6 colours plus outline.
+- Palette: the pack's own colours (see docs/art/classes/creatures.md); a darker
+  and a lighter step per material; darkest tone `#332745`, used selectively,
+  never as a full outline; about 4-6 colours per creature.
 - Shading: flat with one shade step, light upper-left; no gradients.
 - Readability first: each creature must be identifiable at native 16 px on the
   game's dark floor (`dirt18`, very dark blue-grey) and inside the fog overlay.
@@ -48,4 +49,5 @@ view and fill most of the 16x16 cell with 1px breathing room.
 | ---- | -------- | -------- |
 | 2026-11-01 | Keep the existing pack; replace only sprites that fail the review in ASSET_INVENTORY.md "Refresh notes" | user request; contact sheet of all 127 used sprites |
 | 2026-11-01 | Stay on the 16 px grid (no 32 px re-tile): mixing resolutions would clash with the kept sprites | ART_DIRECTION section 3 |
+| 2026-11-01 | Lineless with selective `#332745`, not a full outline (the pack has none) | crawl-wup.1 review: frog, skeleton, unicorn are lineless |
 | 2026-11-01 | Effects are procedural canvas animation, not sprite frames | smoother at x1.6 CSS scale; no extra atlas frames |
