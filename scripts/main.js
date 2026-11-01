@@ -143,10 +143,9 @@ var Game = {
     },
 
     _initTileDisplay: function() {
-        var tileSet = document.createElement("img");
-        tileSet.src = "assets/tileset.png"; // Assumes tileset is in an 'assets' directory
-
-        tileSet.onload = function() {
+        // Compose tileset.png + override PNGs (assets/sprites/) into one atlas;
+        // SpriteAtlas (sprites.js) rewrites SPRITES coordinates and TILESET_SRC.
+        SpriteAtlas.build().then(function(tileSet) {
             this.display = new ROT.Display({
                 width: this.currentLevel.MAP_WIDTH,
                 height: this.currentLevel.MAP_HEIGHT,
@@ -208,7 +207,13 @@ var Game = {
             // Draw the map
             this._drawMap();
 
-        }.bind(this);
+            // HTML icons were built before the atlas existed: redraw them from it
+            this._drawStats();
+            this._refreshInstructions();
+
+        }.bind(this)).catch(function(err) {
+            console.error('Tile display setup failed:', err);
+        });
     },
     
     _createInstructionsDisplay: function() {
@@ -233,7 +238,27 @@ var Game = {
         instructionsDiv.style.left = '20px';
         instructionsDiv.style.zIndex = '1000';
         instructionsDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.7)';
-        
+
+        instructionsDiv.innerHTML = this._buildInstructionsHtml();
+        instructionsContainer.appendChild(instructionsDiv);
+        this.instructionsDiv = instructionsDiv;
+
+        // Add instructions toggle functionality
+        var instructionsButton = document.getElementById("instructions-toggle-button");
+        instructionsButton.addEventListener("click", function() {
+            Game.toggleInstructions();
+        });
+    },
+
+    // Rebuild the Instructions panel contents (its icons depend on the sprite
+    // atlas, which is ready only after the panel is first built).
+    _refreshInstructions: function() {
+        if (this.instructionsDiv) {
+            this.instructionsDiv.innerHTML = this._buildInstructionsHtml();
+        }
+    },
+
+    _buildInstructionsHtml: function() {
         // Build the instructions HTML
         var html = '<div style="color: #ffffff; font-weight: bold; margin-bottom: 10px;">--- Controls ---</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Arrow Keys:</div>';
@@ -252,18 +277,18 @@ var Game = {
         html += '<div style="margin-left: 20px; margin-bottom: 10px;">Items stay on ground until space available</div>';
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Player ---</div>';
-        html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['player'][0] + 'px -' + SPRITES['player'][1] + 'px; vertical-align: middle;"> : this is you</div>';
+        html += '<div style="margin: 5px 0;"><img src="' + TILESET_SRC + '" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['player'][0] + 'px -' + SPRITES['player'][1] + 'px; vertical-align: middle;"> : this is you</div>';
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Goal ---</div>';
-        html += '<div style="margin: 5px 0;"><img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['gate'][0] + 'px -' + SPRITES['gate'][1] + 'px; vertical-align: middle;"> : Reach the exit</div>';
-        html += '<div style="margin-left: 20px;">with 3 <img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['key'][0] + 'px -' + SPRITES['key'][1] + 'px; vertical-align: middle;"></div>';
+        html += '<div style="margin: 5px 0;"><img src="' + TILESET_SRC + '" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['gate'][0] + 'px -' + SPRITES['gate'][1] + 'px; vertical-align: middle;"> : Reach the exit</div>';
+        html += '<div style="margin-left: 20px;">with 3 <img src="' + TILESET_SRC + '" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES['key'][0] + 'px -' + SPRITES['key'][1] + 'px; vertical-align: middle;"></div>';
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Items (Good!) ---</div>';
         var itemSprites = ['health_potion', 'key', 'bomb', 'gate', 'shield', 'speed_potion', 'coin', 'drumstick', 'heart', 'ring_2', 'scroll', 'belt'];
         
         html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">';
         itemSprites.forEach(function(sprite) {
-            html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
+            html += '<img src="' + TILESET_SRC + '" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
         });
         html += '</div>';
         
@@ -272,7 +297,7 @@ var Game = {
         
         html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">';
         enemySprites.forEach(function(sprite) {
-            html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
+            html += '<img src="' + TILESET_SRC + '" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
         });
         html += '</div>';
         
@@ -281,23 +306,16 @@ var Game = {
         
         html += '<div style="margin: 5px 0; display: flex; align-items: center; gap: 4px;">';
         allySprites.forEach(function(sprite) {
-            html += '<img src="assets/tileset.png" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
+            html += '<img src="' + TILESET_SRC + '" style="width: 16px; height: 16px; object-fit: none; object-position: -' + SPRITES[sprite][0] + 'px -' + SPRITES[sprite][1] + 'px;">';
         });
         html += '</div>';
         
         // Add a close button
         html += '<div style="margin-top: 20px; text-align: center;"><button onclick="Game.toggleInstructions()" style="padding: 8px 16px; background: #333; color: #fff; border: 1px solid #666; border-radius: 4px; cursor: pointer;">Close</button></div>';
-        
-        instructionsDiv.innerHTML = html;
-        instructionsContainer.appendChild(instructionsDiv);
-        
-        // Add instructions toggle functionality
-        var instructionsButton = document.getElementById("instructions-toggle-button");
-        instructionsButton.addEventListener("click", function() {
-            Game.toggleInstructions();
-        });
+
+        return html;
     },
-    
+
     toggleInstructions: function() {
         var overlay = document.getElementById("instructions-overlay");
         if (overlay.style.display === "none") {
@@ -501,7 +519,7 @@ var Game = {
             
             for (var h = 0; h < maxHealth; h++) {
                 var heartIcon = document.createElement('img');
-                heartIcon.src = 'assets/tileset.png';
+                heartIcon.src = TILESET_SRC;
                 heartIcon.style.width = '16px';
                 heartIcon.style.height = '16px';
                 heartIcon.style.imageRendering = 'pixelated';
@@ -522,7 +540,7 @@ var Game = {
             
             // Create key icon
             var keyIcon = document.createElement('img');
-            keyIcon.src = 'assets/tileset.png';
+            keyIcon.src = TILESET_SRC;
             keyIcon.style.width = '16px';
             keyIcon.style.height = '16px';
             keyIcon.style.imageRendering = 'pixelated';
@@ -536,7 +554,7 @@ var Game = {
             
             // Create coin icon
             var coinIcon = document.createElement('img');
-            coinIcon.src = 'assets/tileset.png';
+            coinIcon.src = TILESET_SRC;
             coinIcon.style.width = '16px';
             coinIcon.style.height = '16px';
             coinIcon.style.imageRendering = 'pixelated';
@@ -576,7 +594,7 @@ var Game = {
                 
                 // Item icon
                 var icon = document.createElement('img');
-                icon.src = 'assets/tileset.png';
+                icon.src = TILESET_SRC;
                 icon.style.width = '16px';
                 icon.style.height = '16px';
                 icon.style.imageRendering = 'pixelated';

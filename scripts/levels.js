@@ -15,7 +15,10 @@ var Level = function() {
     
     // Wall sprite set for this level - can be overridden by subclasses
     this.wallSpriteSet = 'DEFAULT';
-    
+
+    // Floor theme (a key of FLOOR_THEMES in sprites.js) - can be overridden by subclasses
+    this.floorTheme = 'dungeon';
+
     // Mapping of enemy type names to their classes
     this.enemyClasses = {
         ASSASSIN: Assassin,
@@ -77,7 +80,7 @@ Level.prototype.prettifyTerrain = function() {
 
 // Prettify passable tiles - can be overridden by child classes
 Level.prototype.prettifyPassableTile = function(x, y, tile) {
-    tile.terrain = 'dirt18';
+    tile.terrain = randomFloorVariant(this.floorTheme);
     if (ROT.RNG.getUniform() < 0.005) {
         tile.decoration = 'ribcage';
     } else if (ROT.RNG.getUniform() < 0.005) {
@@ -530,7 +533,9 @@ Level7.prototype.constructor = Level7;
 // ZombieLevel class - a spooky graveyard level with lots of undead
 var ZombieLevel = function() {
     Level.call(this);
-    
+
+    this.floorTheme = 'graveyard';
+
     // Define enemy counts for Zombie Level - undead themed
     this.enemyCounts = {
         SKELETON: 10,
@@ -675,7 +680,7 @@ ZombieLevel.prototype._addRandomWalls = function() {
 
 // Override prettifyPassableTile to add graves and bone decorations
 ZombieLevel.prototype.prettifyPassableTile = function(x, y, tile) {
-    tile.terrain = 'dirt18'; // Keep the same terrain
+    tile.terrain = randomFloorVariant(this.floorTheme);
     
     // Add grave decorations - 3x more common than normal skull decorations
     // Normal skull decorations are 0.005 each, so graves are 0.015 each
@@ -736,7 +741,8 @@ var TrollLevel = function() {
     
     // Use prehistoric-themed wall sprites for this primitive/troll level
     this.wallSpriteSet = 'PREHISTORIC';
-    
+    this.floorTheme = 'cave';
+
     // Define enemy counts for Troll Level - heavy melee combat
     this.enemyCounts = {
         TROLL: 6,       // 6 powerful trolls
@@ -766,7 +772,7 @@ TrollLevel.prototype.constructor = TrollLevel;
 
 // Override prettifyPassableTile to add prehistoric cave decorations
 TrollLevel.prototype.prettifyPassableTile = function(x, y, tile) {
-    tile.terrain = 'dirt18'; // Keep the same terrain as other levels
+    tile.terrain = randomFloorVariant(this.floorTheme);
     
     // Keep the existing skeleton decorations from base level
     var skeletonChance = 0.005;
@@ -793,7 +799,8 @@ var CobraLevel = function() {
     
     // Use Egyptian-themed wall sprites for this desert/snake level
     this.wallSpriteSet = 'EGYPT';
-    
+    this.floorTheme = 'egypt';
+
     // Define enemy counts for Cobra Level - venomous creatures
     this.enemyCounts = {
         COBRA: 30,      // 30 cobras - lots of venomous snakes
@@ -821,7 +828,7 @@ CobraLevel.prototype.constructor = CobraLevel;
 
 // Override prettifyPassableTile to add Egyptian-themed decorations
 CobraLevel.prototype.prettifyPassableTile = function(x, y, tile) {
-    tile.terrain = 'dirt18'; // Keep the same terrain as other levels
+    tile.terrain = randomFloorVariant(this.floorTheme);
     
     // Add Egyptian decorations with small probabilities
     var sarcophagusChance = 0.008; // Slightly less common than normal decorations
