@@ -1,0 +1,2512 @@
+{
+  "horse-a": {
+    "id": "horse-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-6d57c52e-8961-4f26-ad08-f511efecdd95",
+    "submittedAt": "2026-11-01T13:27:43.489Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small fiery horse seen from the side walking right, level four-legged body standing on four short legs, body warm orange #ff8563 with yellow #ffbd51 highlights, a big blazing flame mane and flame tail in yellow #ffe250 and orange, small dark eye, dark purple hooves #6e4e98."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 101,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "east",
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a small fiery horse seen from the side walking right, level four-legged body standing on four short legs, body warm orange #ff8563 with yellow #ffbd51 highlights, a big blazing flame mane and flame tail in yellow #ffe250 and orange, small dark eye, dark purple hooves #6e4e98. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:27:43.498Z",
+    "candidates": [
+      {
+        "file": "horse-a-0.png",
+        "sha256": "92b3590a6a663afb3b228e97e5a04def4b462c9d9b83eb160ba9c4f8d3657c87",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "ninja-a": {
+    "id": "ninja-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-52a7fdc6-3356-4393-b2ee-79fb2795a0d9",
+    "submittedAt": "2026-11-01T13:28:20.499Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small chibi ninja standing ready, black-clad in a dark charcoal outfit #493c5c with lighter grey-purple edges #6e5a5d, hood and face mask with a skin-coloured eye slit #f1ab7a showing two eyes, a long bright red scarf #e3676e fluttering to one side, red belt, a short sword hilt over the shoulder."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 102,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a small chibi ninja standing ready, black-clad in a dark charcoal outfit #493c5c with lighter grey-purple edges #6e5a5d, hood and face mask with a skin-coloured eye slit #f1ab7a showing two eyes, a long bright red scarf #e3676e fluttering to one side, red belt, a short sword hilt over the shoulder. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:28:20.500Z",
+    "candidates": [
+      {
+        "file": "ninja-a-0.png",
+        "sha256": "22c8f8c69f399ca9922db534446aaaf2562d36fd8a15e79d627bca7a3b79fc36",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "ghost-a": {
+    "id": "ghost-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-ca3af38a-bb5a-410d-86ba-593075328120",
+    "submittedAt": "2026-11-01T13:28:45.251Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a cute classic bedsheet ghost floating, round head, body white #fcfff1 with pale blue #95b9d6 shading, two big dark oval eyes #332745 and a small open mouth, little arms raised, the bottom of the sheet tapering into a wispy curling tail."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 103,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a cute classic bedsheet ghost floating, round head, body white #fcfff1 with pale blue #95b9d6 shading, two big dark oval eyes #332745 and a small open mouth, little arms raised, the bottom of the sheet tapering into a wispy curling tail. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:28:45.252Z",
+    "candidates": [
+      {
+        "file": "ghost-a-0.png",
+        "sha256": "0d748fa511e21400a71fbcc83024d19cbc9d020d9b41cce21880895c151040fe",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "troll-a": {
+    "id": "troll-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-e982a42e-8159-422f-9ef6-58cbc680a913",
+    "submittedAt": "2026-11-01T13:29:05.440Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a hulking chibi troll, hunched with huge shoulders and long arms, small head with a big nose, pointy ears and two small tusks, mossy green-grey skin #858971 with lighter #bbc19c highlights, ragged brown loincloth #6e5a5d, holding a big wooden club #b07d6a."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 104,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a hulking chibi troll, hunched with huge shoulders and long arms, small head with a big nose, pointy ears and two small tusks, mossy green-grey skin #858971 with lighter #bbc19c highlights, ragged brown loincloth #6e5a5d, holding a big wooden club #b07d6a. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:29:05.442Z",
+    "candidates": [
+      {
+        "file": "troll-a-0.png",
+        "sha256": "cc8f03492d3903d1bc261dd68da8bab4de41a31c0fb67727ae316588db82449f",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "zombie-a": {
+    "id": "zombie-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-8ab1dd67-6745-48c7-8642-c4770ad1b397",
+    "submittedAt": "2026-11-01T13:29:21.123Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a shambling chibi zombie with both arms stretched forward, pale green skin #63de53 with #54ac8b shade, sunken dark eyes and an open mouth, torn light blue shirt #68a3c9 and ragged brown trousers #b07d6a, messy dark hair."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 105,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a shambling chibi zombie with both arms stretched forward, pale green skin #63de53 with #54ac8b shade, sunken dark eyes and an open mouth, torn light blue shirt #68a3c9 and ragged brown trousers #b07d6a, messy dark hair. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:29:21.125Z",
+    "candidates": [
+      {
+        "file": "zombie-a-0.png",
+        "sha256": "09b7d581934c7d0bc980a9a0cfecc5865b75a6cc4aae1330b4a495466c342a8b",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "horse-v2a": {
+    "id": "horse-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "b0866068-759f-4f59-a3fd-e2c3f2673483",
+    "submittedAt": "2026-11-01T13:31:59.178Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small fiery horse seen from the side walking right, level four-legged body on four legs like the unicorn of the same tileset but without a horn, body orange #ff8563 with yellow #ffbd51 highlights, a blazing flame mane along the neck and a flame tail in yellow #ffe250 and orange, dark eye, purple hooves #6e4e98."
+        }
+      ],
+      "style_image": {
+        "source": "file ../../../../../../../private/tmp/claude-501/-Users-nadbor-projects-crawl/0c81ac52-d5ef-466a-b476-871d2c8f4e12/scratchpad/wup1/ref/unicorn-32.png sha256 9b55dd8dc3e55cc05377b2777f423505a5e7fd09fda01d26f9d54c2302148f46",
+        "usage": "copy only the pixel size (2x2 blocks), palette, outline and shading of this tileset sprite; draw the new creature described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 201,
+      "target_palette": {
+        "name": "classic roguelike tileset",
+        "colors": [
+          "#b5578d",
+          "#493c5c",
+          "#ffe250",
+          "#858971",
+          "#ff8563",
+          "#cd8668",
+          "#332745",
+          "#e3e8c5",
+          "#95b9d6",
+          "#6e5a5d",
+          "#7b3c58",
+          "#4d5e84",
+          "#374a7c",
+          "#68a3c9",
+          "#5b83a8",
+          "#934959",
+          "#5e2f58",
+          "#63de53",
+          "#54ac8b",
+          "#2782b3",
+          "#ffbd51",
+          "#6e4e98",
+          "#b07d6a",
+          "#f1ab7a",
+          "#fcfff1"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a small fiery horse seen from the side walking right, level four-legged body on four legs like the unicorn of the same tileset but without a horn, body orange #ff8563 with yellow #ffbd51 highlights, a blazing flame mane along the neck and a flame tail in yellow #ffe250 and orange, dark eye, purple hooves #6e4e98. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:34:53.784Z",
+    "candidates": [
+      {
+        "file": "horse-v2a-0.png",
+        "sha256": "92160e51b48a273ca06e5c465cec7d682a74a3162ff0f27879fa5cdbbe99ce17",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-1.png",
+        "sha256": "17f8712f28674463c45fe08f783681d6c2d744771e8e932cac8b7075402976b5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-2.png",
+        "sha256": "6dd8caafad4b49724440511443fa6bd9674b33186239ce06164965178c469146",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-3.png",
+        "sha256": "8855bd1cef26371613802b1667f09da2bfd3415136e27696b37766914b779240",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-4.png",
+        "sha256": "90df90f50ca57e44e351a35a0c87d6d4b3814b47f7648baaa19c7fe9fb8e59d1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-5.png",
+        "sha256": "198f70c222b09bae671515b23a4af91868343b91490b51a7c0c3e23e1c1570d0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-6.png",
+        "sha256": "3b1fcc4453759c00702f1d7089dea3b32d4116111693ddf71bbaac25eea6d3cf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-7.png",
+        "sha256": "db24636fe8d2c554ca271dc4d75e3ec2e22d40e74c279292faffae686734927d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-8.png",
+        "sha256": "5f7fc316af29668557cc37d5234c5645dd23e6170dd08665075d4f6a1269e605",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-9.png",
+        "sha256": "f8e65248d70ebd8f118c34b7ebc6d1db82ae8b99b507974caa70a1072cd2c9b1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-10.png",
+        "sha256": "1f92f78ac8b54666507dfb2adaf192b44e36a68d5c333bebef422052f8de3d20",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-11.png",
+        "sha256": "3e4c30eddb61af50eca504d653ade602a1a30e470f63a759eba1b0e174fbbc57",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-12.png",
+        "sha256": "03ba6d826617a13cbe9eb581435874a497881a1bbc1a8467a294f00a22bc9696",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-13.png",
+        "sha256": "43892d4ebcb630d4e6265b5e33c33a6d86c9e23576ce3c4ba34e56dfd39f3511",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-14.png",
+        "sha256": "6ef4bf518de6b7119fa86f26b60246f6ac83fac184aca47c2220e9f7b90c071a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-15.png",
+        "sha256": "87cd7096bc1b7bfa744a98552783c334ef96eb1c81caabc31995256feb8abb78",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-16.png",
+        "sha256": "ad50f57980327982ee8fbd37b05c3ef5a3379c2f8d1a2c1b01ff632123558da2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-17.png",
+        "sha256": "0905e8a65af7c13a3a294c1af3471f96ac831f230222f5a049f93ec0424d6cef",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-18.png",
+        "sha256": "e0ff23993d3be7c80fbb7696ad507e8e2165c120e66d72ae95fb5721ed4c95ae",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-19.png",
+        "sha256": "d0e51fba29049839292029d3650ca563fd0910a556401751a2a2a83380a0c0da",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-20.png",
+        "sha256": "3bf68633a01035f8fd50700401f9a1da6302130a9595095d697204580ec83ba1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-21.png",
+        "sha256": "5931ba008b70b1473163e7041efe2beaab772875d4523e16bf76fb3013302585",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-22.png",
+        "sha256": "dd4c09aa96c38406e3fe2c144445897c83d2389bbf306e32c3b6859d04e89c4e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-23.png",
+        "sha256": "f63563d211ec9bdc6f914acf610bdcb6cae761da7d571058ade800f346a3fdf4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-24.png",
+        "sha256": "4f6bba7ab4813d2e2335d9d6ae2313b04c18e9e74a00ac90688cc81bed5eb488",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-25.png",
+        "sha256": "463250f80213a5df865c3c96b13bdd77bdc800218edad24bb4b66d340d90e1da",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-26.png",
+        "sha256": "72ea8a4f0e8bc8e0091134f83fe072c5add69c9d492aa75d083aee1104c9c0f6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-27.png",
+        "sha256": "9b8e48545f1983701aa47b099785b6c8bd4a6a0f740990de74c959af5f39d52e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-28.png",
+        "sha256": "730de346f671e3d96fa4814efcabc8095176d9d94fce613661f94393c4aa2616",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-29.png",
+        "sha256": "ba924d66643cfbe4e4f9c555748aa4d47280d916d1870c297083c53411e10172",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-30.png",
+        "sha256": "1e86fdad78e0e34362b394073d4253990e46f562bdfc26dca131325cb66d02f2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-31.png",
+        "sha256": "27c489ce17c5c3a2cdddf3fdeafc7be203e214ac83aa89234bb3d1d37d9f1e90",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-32.png",
+        "sha256": "0cfd1d25005b0d6260d5b2e816947b4c1b8cb1058f978409029fc5a71abe65b0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-33.png",
+        "sha256": "2f243d321fef7d38b85cf4eb0f25d48db6540a87d81efa920fdde5972ecc20df",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-34.png",
+        "sha256": "8225608827adecfb0d6305b39d3735bfdf88cb6d3f7c6af0c9d9479b5dfeb09d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-35.png",
+        "sha256": "b3896ba781c0c64672d3cd471ff622037c645deaed966514acea14b2d8294a18",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-36.png",
+        "sha256": "aef119ad6f039a87d62bdeb90e1201af64f8fa91c5e7c60d98acfa513b26247d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-37.png",
+        "sha256": "7e8fa8c5f0de1409886c82148a58736b84b4225b0b68f1ea208aa7a375fdb624",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-38.png",
+        "sha256": "aa584a664db755f4f1e29ea3a2a4c1a4f861b07f3bc3ccb39a0b1309835f8da0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-39.png",
+        "sha256": "77f514dca0cb658ba4024c8e7144c24c79a6063afbf6a8b239c0d174bc2537d9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-40.png",
+        "sha256": "6dd501cb69882946e3906d12af532a5273ae8384435509b6e5ca45f5b485d185",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-41.png",
+        "sha256": "96adad5c5bb79f27b9858e94ab75c3409ce77cc3fa4eeadd0e46f38fde0534a0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-42.png",
+        "sha256": "020749fdb4005faddc74478cfc733061b1f215a1b0a795dc6ca546c50c3adf5e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-43.png",
+        "sha256": "5f53d0bcd8ae45e2596c563e432d282ec32f0535e1134c8cfd24079a090451d9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-44.png",
+        "sha256": "39c21b7ce7c851b05b0261f09827c8099103f97a1b586cebdf8953610291585e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-45.png",
+        "sha256": "2f865f5c6174fadd98c23fc27731db75d0885961e531489c058b778746f3c68b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-46.png",
+        "sha256": "6ce0753dce8799043a706f840d6e156b0affa8192d940fe634c3df7d6dd37915",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-47.png",
+        "sha256": "40581d2c0ec3a2d04bb8d600cacaac9981a1f3c33825ccad4256b54b533f91ef",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-48.png",
+        "sha256": "7830eff60d0abee1bea844db22056e2c13c91992166fca2eac8928290477fb98",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-49.png",
+        "sha256": "2892dde1e4989259b77817236da51f514e1f68c793b5bc011fcb770aaa29804e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-50.png",
+        "sha256": "fb2d44f3b940bbb46704e3693df01860ec1707a7ff02f693dbb7d15221cf8462",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-51.png",
+        "sha256": "8eb47155fa873ad76d75248b9c2c134c24cc2acc43b21024420a1317a0bc9108",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-52.png",
+        "sha256": "9bf59b30888ffcfaccf4732de38518f56af03c935a6e03a2c2100f07df69fb9f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-53.png",
+        "sha256": "2427342ae8a0236808f2a0000a167232e9d2f18fa72c753ecd8cedc9bd4c2b26",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-54.png",
+        "sha256": "da5f6220a416df2d92f345b2dd6e9d40bb6f5e2330f09da96e29deee4660450c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-55.png",
+        "sha256": "3f9f9becaca01307806b6a9cb59b01ed613f403ee5b2c47cfb82749973ad0171",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-56.png",
+        "sha256": "2dc786d77c36435b9357b923ee65b7d529f454148a36a5d01708a5787f6516b0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-57.png",
+        "sha256": "5564ab37800226f1e4264e8487b25f412ae278c8b09c998624b58b816d6cd04f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-58.png",
+        "sha256": "502de06c161f29c4ae5aa6435a7096c042c6a1037a5edc1237fd09189fb50627",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-59.png",
+        "sha256": "9e9c4478aa0f02dd08e68588769bc2a0019103c3a3713a490f2efca07e911ff7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-60.png",
+        "sha256": "29c8e90fd205ee297f32435313e1c6587f0d274fcbb5a02ca1865077e21e8e5f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-61.png",
+        "sha256": "68c265f7113ba40b74dc304509dd0f98b908134fe3964566028af05a79755f33",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-62.png",
+        "sha256": "baff36c2c0ce6a60d325f206b7b9b5c3e9ddd0a4c51db716fd7fb15f1e7c17b8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "horse-v2a-63.png",
+        "sha256": "15ebbe0daa0cdbc05be9edb7afece2e51e4752d5a05e10203f8f82bf0706b24a",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "ninja-v2a": {
+    "id": "ninja-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "c9d9aa7e-89a1-490d-af3c-cd3d788583fa",
+    "submittedAt": "2026-11-01T13:34:53.925Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small ninja standing facing the viewer, black-clad in dark purple-grey #493c5c with lighter #6e5a5d edges, hood and mask with a skin-coloured eye slit #f1ab7a showing two eyes, a bright red scarf #ff8563 trailing to the side, a short sword over the shoulder."
+        }
+      ],
+      "style_image": {
+        "source": "file ../../../../../../../private/tmp/claude-501/-Users-nadbor-projects-crawl/0c81ac52-d5ef-466a-b476-871d2c8f4e12/scratchpad/wup1/ref/assassin-32.png sha256 3d14f08fd41ebe54b0ac9099c79245d5934de1c3299ac7b64137fb0ec86e73f5",
+        "usage": "copy only the pixel size (2x2 blocks), palette, outline and shading of this tileset sprite; draw the new creature described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 202,
+      "target_palette": {
+        "name": "classic roguelike tileset",
+        "colors": [
+          "#b5578d",
+          "#493c5c",
+          "#ffe250",
+          "#858971",
+          "#ff8563",
+          "#cd8668",
+          "#332745",
+          "#e3e8c5",
+          "#95b9d6",
+          "#6e5a5d",
+          "#7b3c58",
+          "#4d5e84",
+          "#374a7c",
+          "#68a3c9",
+          "#5b83a8",
+          "#934959",
+          "#5e2f58",
+          "#63de53",
+          "#54ac8b",
+          "#2782b3",
+          "#ffbd51",
+          "#6e4e98",
+          "#b07d6a",
+          "#f1ab7a",
+          "#fcfff1"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a small ninja standing facing the viewer, black-clad in dark purple-grey #493c5c with lighter #6e5a5d edges, hood and mask with a skin-coloured eye slit #f1ab7a showing two eyes, a bright red scarf #ff8563 trailing to the side, a short sword over the shoulder. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:38:26.234Z",
+    "candidates": [
+      {
+        "file": "ninja-v2a-0.png",
+        "sha256": "814c16c07938beb63b5e4694fdefa0b69e17560163dfc35f2f8d23a94fbb1487",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-1.png",
+        "sha256": "7fa76b39fb35776799b6325e15f4fc6a83658ccee6ec21701e4092b482eed1f5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-2.png",
+        "sha256": "cf08283aaaf9a1eacb6e4d2983e3e18e70dc9a18bd760df9a585d8476bfe58dd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-3.png",
+        "sha256": "fad2b9e0906718d56fcca36c8b8ecf6e15e241e218258847759947e5ec45b51a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-4.png",
+        "sha256": "a81fd2d3f7231b830e9f2703181fc413f77282b5f7a3e51f2d40b6ecbfe5a02d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-5.png",
+        "sha256": "bc4dd412573686e4ee832c75dadf2ef636e3a48d151a4190925e24fef4c22b59",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-6.png",
+        "sha256": "eb17ca9189aa3532f14731e629d40038a001f2c9dd91d2e25f341012624060cb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-7.png",
+        "sha256": "0d4cf27a45b411f771822d334ffdac0f45c651d683f8f7f874c71627d1d37320",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-8.png",
+        "sha256": "539aea3c42f656da3e9f0884cab1f68e92c7d597d46a532712a8b4fe9cf5f979",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-9.png",
+        "sha256": "561acade60b7957b8b86b6ccf1e9823c94ad88f8f9685d18786ea0dbc6d1f40e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-10.png",
+        "sha256": "e04db8cb81434b3b438753b15fc6e15266b5378ed2a83be491ccaed0ef4fab64",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-11.png",
+        "sha256": "a61063a7a049b03fbc03fc053272b9f64637845c269889c3472f0fbd28a1449e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-12.png",
+        "sha256": "3929f161fd36c7099eb4a40b82bab36dfd9198fb1388ce07ddc9e3e4ef07f33d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-13.png",
+        "sha256": "5dfb0002d47860955c9fab8aa0b42c887de86fe017b70885502fdab735f02116",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-14.png",
+        "sha256": "347791822fdb2331eb20a44bfa69394b5bf99f1cc511d8ce6dbc45942e585e70",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-15.png",
+        "sha256": "88f737527f5724929a289585f01c439213f08959c10acbc95bc7002cf739fa78",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-16.png",
+        "sha256": "a7f7a59bc31c204a65c5a35e6341d64d41937c05da382296e825d23155aa10a1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-17.png",
+        "sha256": "aea9d1aa58ac3a2033f1de3718d7296eb3d9314319c5739a90b5d9560b1863d0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-18.png",
+        "sha256": "0d31ef8eae27fab259d0c74ca5db1e2ab5d403e6780aa6b61629ebb10179f097",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-19.png",
+        "sha256": "79f6b479c8a8ac25512122950c72757181623fb18b7d1895a37170de09d9b176",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-20.png",
+        "sha256": "065231f37d63b81ace0071476846ce7fda714cb08755f5069c77896defbe02b5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-21.png",
+        "sha256": "2a091335c7f635d3894ea0253b52dfd9d4994ddad3fa0771d165ae8025c2e39f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-22.png",
+        "sha256": "b71a1f647721320da03acfcc3422baed338727d54577b90ae25c76eeef8ecc2b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-23.png",
+        "sha256": "4a1a62f83780d395bd83f27266d1232d9ecfacc402345e9b8d5caabdab876bd8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-24.png",
+        "sha256": "f578a22c1fb855d3206a582cfa4880ce0c3309b51666192c856080567d77a3ba",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-25.png",
+        "sha256": "27344434a65d298b4655a41b56bb31634c124bdde9104f83142e8516d6a8c898",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-26.png",
+        "sha256": "082bc5d644b4759317be13f48c2ff1e345dba50d1509c68c51c41bdefb1ade01",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-27.png",
+        "sha256": "65907c0b265ee0b0dac581d0fed65e45dd3e05eefbcb645dc616757df5727d48",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-28.png",
+        "sha256": "8b07d01d663ec9b4f77ffef05b36223f1847a67c15aba9fa3cb51de8008a4b54",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-29.png",
+        "sha256": "cab2543b479225a74b828b6e631fa6658e88d8c3cb11c08fc7f510a2c12a573f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-30.png",
+        "sha256": "003a82f8a29969acc88b6dd8d57d691a2030a86727e3d68ebcff5d8e49b90fcf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-31.png",
+        "sha256": "884c9bcb143e32c0d21220efff57f014eff46f2df5167a6c989f9ec54793b0c7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-32.png",
+        "sha256": "9c7230309cc7bfcf8566f6b00e545c5f9977cc65516bd3cb3fd1a1f32bf6600a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-33.png",
+        "sha256": "513baaf2311cb07b8efd1dcb05eb74f6c8670584c2a433f416e21d34d71fc4a1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-34.png",
+        "sha256": "1f279a676d329541415d6bb7038cd5c608d9f50855465b6df9f40f080181b103",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-35.png",
+        "sha256": "57112b831d853226959ad3fce009590e22cc136f64bf87b9d7aa509ef6ce19ab",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-36.png",
+        "sha256": "5af02db03a7287c5ddcb0a3f7d37c2be2939ae6d2e54f33c68008bd7f1f15650",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-37.png",
+        "sha256": "7f635cc3f2aa63727776d6bbdc0970bc89790ed12b6135f3bd44db896712af15",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-38.png",
+        "sha256": "367004f0f2f030ba1ab38895d88467fe1266b310abbf350c99bdec5f7f195976",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-39.png",
+        "sha256": "c238fe5bbb4cefe546e258bd394de1605346697b04c06f5fd4a7edb2712a1308",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-40.png",
+        "sha256": "280da150e05cfc00ac07d2f5489045e4fbdd0fc7d28c1d7f656b61eedfe2d227",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-41.png",
+        "sha256": "9c3a407ab213225ed19defb16cdc9522e72295834a4eaabeab57bdff0a66a827",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-42.png",
+        "sha256": "348495317af291fd83233a238d34f1aaa7b41bdaaffc63a846ca5d3d676ac4af",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-43.png",
+        "sha256": "76bc6cb22ad4bcc71cc60290a849840bb792e448632cfe61ba2a5066e3bfa2bb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-44.png",
+        "sha256": "b839bfa84cfab19ccdc457530ec011077ae7d88a7138724c4799c72842c1f573",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-45.png",
+        "sha256": "b2c6b4131577c4f1309f618fc011ffa3667c918de3990f2d226a7d27b4c57010",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-46.png",
+        "sha256": "82ebea6e2a482394e8a80399883d05b8691708092ff64d6e8d567b9ee4eb2bca",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-47.png",
+        "sha256": "9cf9854e3e08bde27f8ebf4461b29d184b916904e88e5ca7c76cd13da05698d0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-48.png",
+        "sha256": "d89a370b1cfae0d5a2c1892639707c69200ee9027a6e0eb7444d321a7c0d1c89",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-49.png",
+        "sha256": "7396a71f621d005a442283bbdd0a300e41feac85f9ac2222330e2239e6b9ffa8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-50.png",
+        "sha256": "41b550ce821c2c0f602174dcafc496beac4ba9ac98d87349ac432e7564fd8b81",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-51.png",
+        "sha256": "c91356e662ffa00b4044f0e39e79a972558a91d361e9c9901d374be162016406",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-52.png",
+        "sha256": "5c8a17a0183410f63376a2e79f5d8aea42c4746d73193dc456734d41e087a48b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-53.png",
+        "sha256": "f46b9cabc24e398317c7d48179f02356829c9ef59ea86e3a64c7245522d48240",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-54.png",
+        "sha256": "82b63ac1c828323e90d13e8565ffae9d5f512ab3a98a371b9a30dfbaa7991b3a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-55.png",
+        "sha256": "703ec650a3abb26e1f41dfdac205c3b83d11f00750a9d2b158af06810a88bbcd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-56.png",
+        "sha256": "1746c0b0bac1d84f1ef03a4f5174bb75364194c47818814acb7b0ff20b2990fc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-57.png",
+        "sha256": "17ca57b755dee5095a6e9398300afe2856cf8cff6c04021d6b330277b0a2f4d7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-58.png",
+        "sha256": "3b093d4d424e98fb2e41641f265b10fdb6ce0739901aeac5f0fcf535d43c87d6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-59.png",
+        "sha256": "05040018ff3b12f33896d51a5729d154e9f0341d0cd3d35804cf7ea4debc74c6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-60.png",
+        "sha256": "5023e033efe94807d3ee25df2e9a82cf1eb06216a1254f22dc63ec168c7e9874",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-61.png",
+        "sha256": "e0f3dc34946aeffd2f2ce5a4ee3cb485511df554fe671e01237880fba829453e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-62.png",
+        "sha256": "5e72ce012b10c6a27c8ba743ade92b96997b18b6a85dfb0f211f9d67f638684a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ninja-v2a-63.png",
+        "sha256": "9d700360356a6eee94f0595b6225c1b11f13f4627fb63cef80fd4b9c387f7613",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "ghost-v2a": {
+    "id": "ghost-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "33983d23-873b-4015-88c7-285caf16a9ff",
+    "submittedAt": "2026-11-01T13:38:26.365Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a cute classic bedsheet ghost floating, round head, body white #fcfff1 with pale blue #95b9d6 shading, two big dark oval eyes #332745, a small open mouth, short raised arms, the bottom of the sheet tapering into a wispy curling tail."
+        }
+      ],
+      "style_image": {
+        "source": "file ../../../../../../../private/tmp/claude-501/-Users-nadbor-projects-crawl/0c81ac52-d5ef-466a-b476-871d2c8f4e12/scratchpad/wup1/ref/reaper-32.png sha256 a13b5c8bfceef25ad5a5cf72335211dc2c8cde252d9de50850d5f3d92a9e17d5",
+        "usage": "copy only the pixel size (2x2 blocks), palette, outline and shading of this tileset sprite; draw the new creature described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 203,
+      "target_palette": {
+        "name": "classic roguelike tileset",
+        "colors": [
+          "#b5578d",
+          "#493c5c",
+          "#ffe250",
+          "#858971",
+          "#ff8563",
+          "#cd8668",
+          "#332745",
+          "#e3e8c5",
+          "#95b9d6",
+          "#6e5a5d",
+          "#7b3c58",
+          "#4d5e84",
+          "#374a7c",
+          "#68a3c9",
+          "#5b83a8",
+          "#934959",
+          "#5e2f58",
+          "#63de53",
+          "#54ac8b",
+          "#2782b3",
+          "#ffbd51",
+          "#6e4e98",
+          "#b07d6a",
+          "#f1ab7a",
+          "#fcfff1"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a cute classic bedsheet ghost floating, round head, body white #fcfff1 with pale blue #95b9d6 shading, two big dark oval eyes #332745, a small open mouth, short raised arms, the bottom of the sheet tapering into a wispy curling tail. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:46:13.545Z",
+    "candidates": [
+      {
+        "file": "ghost-v2a-0.png",
+        "sha256": "c2fe54038ef36de02e506219275d79e011d385fa1acefa55a915bffc291c820b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-1.png",
+        "sha256": "2ea742b950f063ea202c89bcf8630feb7819d966c6b1dfdf5656ca8f9eaed260",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-2.png",
+        "sha256": "0bdd33987e40e00790a8fd3569e5617ef4826e8265328c97f14ef29fe13ec9db",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-3.png",
+        "sha256": "b7a63dc8914db2481cc43b5bad2f7f57fb44ede3d2d974bfc5c68b1a9a10de54",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-4.png",
+        "sha256": "644f4403ab9a534ad1512c6b32de8a4443dd7f9c6572c9f41d5bcbe15fb4ab93",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-5.png",
+        "sha256": "4a546f3beb88aeebc43605f700986dedfb27734d76c49cd6a48f35fcb1104856",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-6.png",
+        "sha256": "0268f0b48553056b08851e5747da6e298adc155d5e0dfd9beba9f8471487b7b3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-7.png",
+        "sha256": "01b1dd27a1554d3446bf85c575aa0e3fe716237e462102b3e36b4b2d1790e001",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-8.png",
+        "sha256": "71f8cc1a01d6ac9ab032b3aadd3194c2e633953436405f0f2a7ea0b807138a6a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-9.png",
+        "sha256": "fbd5083e8eaaca7449443d37ddb1e625b135067700974a544031eed73d150e84",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-10.png",
+        "sha256": "d5db50963ea9f85b561df7f1afc1f92b4fd55b442b8abd27fc11ed975d7616c9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-11.png",
+        "sha256": "29df78f2a21833920601ee18e80d74a2b176391c80764593b897837197f5347f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-12.png",
+        "sha256": "8b76415f0016e946682a5baa6767a5c3c254179ad8904c51d98ac69bc849b549",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-13.png",
+        "sha256": "bbf38d9b31aa537e68b7a4dbb45cf58afd56707f559804623dea8b582ec17663",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-14.png",
+        "sha256": "badbffffe3e7c35f40adb674df771b4032ef5365b1d33c5405e9cae974ae2059",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-15.png",
+        "sha256": "1da9f315f62218f0efcb936e1ae33d53c0a441564c4209e1bf6d9e7a3410b3c8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-16.png",
+        "sha256": "bc0fb7a0b6a03b3d904567353b673da37b0adad1572accaaf8818e5cbdca84d6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-17.png",
+        "sha256": "7066c2742cc7b3d59f7f2289d56a2988a2d5115dfee9d2437f5612b9acba9660",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-18.png",
+        "sha256": "2cea00abc867c06f4041b2f5bdb4705bf632d896d68bc373c31903cbe0a757f1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-19.png",
+        "sha256": "f63a268893b16621e08a686102b2d0b4c362efba5668b0a7e0413f1b0afe4861",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-20.png",
+        "sha256": "6e429f763e08de385cb27202a99a5cd23383bf8f43bcb5abf7a7a466f447424c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-21.png",
+        "sha256": "523a62c4c0a44ffdc7c89441038e04692845cf4b7e9e0ae51a3bedbd4461fc1e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-22.png",
+        "sha256": "9f061480347a05d6b859468379440c94551ca5e3ab3759750279b2389439dcb1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-23.png",
+        "sha256": "15b92fa03c03cb7ec919a7671e96d60ebab83c33e10593793678c06b2760cc61",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-24.png",
+        "sha256": "ed35651a51d132f4ff60f7b313461602c8ba525fb740a70e2ef7e8648f9991cd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-25.png",
+        "sha256": "42b63e1fb03184fe30b721ff0f6b5b26da5836f07e85a9cbbfb9da07d9db982b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-26.png",
+        "sha256": "dceefc225b37135b6d4eca3aa2bd4b84d3acab6317cbcb25d1785e4c1005ca8d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-27.png",
+        "sha256": "10b0229275e2e2308406e03b15dbef91ede09a09d83e5e69ba77e4185f0a4bdc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-28.png",
+        "sha256": "b01c70843314d104310f17a6e778dc3e8171d76e86de162378b74da37d7681b1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-29.png",
+        "sha256": "14d2397b23bd5762015e1111e1116f90fe908d078bfd602a68f75ef2fa94ad67",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-30.png",
+        "sha256": "f5d64bb9afa1e3e80f68f45ccf173758f2948eb4aa3ffadf5b31f037035fbc8f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-31.png",
+        "sha256": "af8124b7153b570239748c454a0029c955d39717012601149d6467b997080a35",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-32.png",
+        "sha256": "667625c2183384431fa06ed8dd9ccc358d1133feba34786e4993d48fdf04d12c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-33.png",
+        "sha256": "1f2c66ef6946c33533cad206301abeb37f06af96a7c2bd6c068c84ade693a626",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-34.png",
+        "sha256": "4cefa2cbf9c46ae2efa5d6e0986d8808126d49d89f7f488898e391da64a222c3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-35.png",
+        "sha256": "ac134bff5f832563607b9fc3521969007adaacc1eb24ca72b925bac2b412c0b1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-36.png",
+        "sha256": "bfc5100215e36d16f07b397330fcfdf1e14aaff5e627946223bc88938b9b40eb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-37.png",
+        "sha256": "f831ec5cead55e2294b6078ad401130a51df60d83cf9aff89793ccbd11a6ce5e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-38.png",
+        "sha256": "4e679304e140c63163978211a969ed3eb8137eefb787a9617747629cb1649436",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-39.png",
+        "sha256": "3a8f12f7cc4ca25144beafc6b565d1d93115ac98343df869323591709590932f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-40.png",
+        "sha256": "1769d3cf90317142cc47a6ac8074c9b96dfc49043ed2787476f349395ccb82ed",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-41.png",
+        "sha256": "2e7567d9885ca5be26092f55d5219a90b4a201101cc5d684707817a8d8667262",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-42.png",
+        "sha256": "6520530ef40d1fee26f28231197b69d120dacec8a4ec0905e3b11b570a310167",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-43.png",
+        "sha256": "b7ec0d9150d270b5ae50c1d047bae0fce16fc6a9350be40af5a7f55b2557d8c5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-44.png",
+        "sha256": "922c1995ae787355c7eed1ccbb67fdb9823daa78ac05467376cc0d95366c1e91",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-45.png",
+        "sha256": "3e2c4d03e271beb28866fb2e42650753b3bc83f9cb2a82a5fcd9f9a2388a4d2a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-46.png",
+        "sha256": "f1f8a5740d0f73614247c15978a58f979339265e60f38ea46812f17c43f74602",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-47.png",
+        "sha256": "25656282ec479eec6ac7f608e8c0593fc6235a2f61548f4b5969144f0bf03634",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-48.png",
+        "sha256": "ec8ab24a2d9d80a61aa8bb5b176f82531da8d59eda0f722d1b78147a3570b706",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-49.png",
+        "sha256": "969d9e2054492e5228125d35678261cd265ac51e4768c610ce1a1ec0dd5e3249",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-50.png",
+        "sha256": "9d902287f232ee41ba0b5d1d42af3170a732665c10021bf41c67652689d70d70",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-51.png",
+        "sha256": "8340efb18584c7f6a29ad23c956e1ddf545560e7b83df12d19ed3e776ae4550c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-52.png",
+        "sha256": "c5a7ff5c7118dab422e324e3ea27645e30957312b442a94650a40e696d5596ff",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-53.png",
+        "sha256": "70f1a0cc7ece8e336522836eee692079839216848a4fb767fe6ad3ddfa960595",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-54.png",
+        "sha256": "dcab86e307179066852a09396649d09db54e9f80d93b98f443c96d996e8a9697",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-55.png",
+        "sha256": "be8609fcb7d456c16926f33d6c2cab0dc680a5b136a6641b6280c751d4c3242d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-56.png",
+        "sha256": "e939382a9c4f48f66197ce91a0993f2d29a055647c986b6aebf7485cfd81a7e7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-57.png",
+        "sha256": "0fdce948229a6a9a9231b7eb4c6772617bff60ba3c63c1e20f37e8e7cff61fc8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-58.png",
+        "sha256": "c5a8418e99a7236e3bc5f82688db5cafe7f46d561bb14606fa9c9d5937fcd3e9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-59.png",
+        "sha256": "8ce6904ab7780be0e2979dbe8a58ee9867c706b378675a826b88f0f90ce730d2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-60.png",
+        "sha256": "11e5ddfa8fcc5042a2990fe2df9d064a48a782fefbba95f3c1855cedfe8a84c5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-61.png",
+        "sha256": "312bd52548fc7a7f085f1591d03e64499b06147c2ae9e7197c20b4affeee8d05",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-62.png",
+        "sha256": "682242de4b970b2d2e66093b9c6f0020d8d77e50c6d55bc5d52ba6ebb1988b1e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "ghost-v2a-63.png",
+        "sha256": "f786f5a606b7c0da2519dc3d6f7b16b5de752b29c9d23392113e92f351b80b51",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "troll-v2a": {
+    "id": "troll-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "9464dc1d-4fe7-419b-8957-555912eef71f",
+    "submittedAt": "2026-11-01T13:46:13.688Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a hulking troll standing facing the viewer, hunched with huge shoulders, long arms and a small head with a big nose, pointy ears and tusks, olive grey-green skin #858971 with pale #e3e8c5 highlights, ragged brown loincloth #6e5a5d, a big wooden club #b07d6a in one hand."
+        }
+      ],
+      "style_image": {
+        "source": "file ../../../../../../../private/tmp/claude-501/-Users-nadbor-projects-crawl/0c81ac52-d5ef-466a-b476-871d2c8f4e12/scratchpad/wup1/ref/orc-32.png sha256 f226803e8db62e65719e9534fe65661a1650bacff8ea8a1d78dc271d6d0a0c76",
+        "usage": "copy only the pixel size (2x2 blocks), palette, outline and shading of this tileset sprite; draw the new creature described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 204,
+      "target_palette": {
+        "name": "classic roguelike tileset",
+        "colors": [
+          "#b5578d",
+          "#493c5c",
+          "#ffe250",
+          "#858971",
+          "#ff8563",
+          "#cd8668",
+          "#332745",
+          "#e3e8c5",
+          "#95b9d6",
+          "#6e5a5d",
+          "#7b3c58",
+          "#4d5e84",
+          "#374a7c",
+          "#68a3c9",
+          "#5b83a8",
+          "#934959",
+          "#5e2f58",
+          "#63de53",
+          "#54ac8b",
+          "#2782b3",
+          "#ffbd51",
+          "#6e4e98",
+          "#b07d6a",
+          "#f1ab7a",
+          "#fcfff1"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a hulking troll standing facing the viewer, hunched with huge shoulders, long arms and a small head with a big nose, pointy ears and tusks, olive grey-green skin #858971 with pale #e3e8c5 highlights, ragged brown loincloth #6e5a5d, a big wooden club #b07d6a in one hand. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:49:29.513Z",
+    "candidates": [
+      {
+        "file": "troll-v2a-0.png",
+        "sha256": "17fe86d31d82ba35c59b16c2e9f3b94ec09471a63ae300f0de54de34e5c4520b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-1.png",
+        "sha256": "f62ccb80f99d732722eb031f37c3702fa0544ca1b7e4473cc7a899f145f51b65",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-2.png",
+        "sha256": "0e28809fdb84218b6702e98addf82629c606694797fc7cce4848591dbaf3ffa4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-3.png",
+        "sha256": "12b7c45eca0f4f81b163a458f9026bb16e1e70acd292f3f63518b7b65343a92f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-4.png",
+        "sha256": "2ed6ecc71503267f5b17f514cb0e767ae90169bfb116554aa7915ba5de818691",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-5.png",
+        "sha256": "2ef31c36da85a34a2c55a1fe12cf519dfbeee9051dada649c69d45d37ac473fa",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-6.png",
+        "sha256": "f51a177966ea0c14393d49031ab62297340933dced47873bf9dbd476f974c133",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-7.png",
+        "sha256": "d5761bf0d43ce80529a0ef101102309ab91cd3238eb2c9119acd31b79870839e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-8.png",
+        "sha256": "00e173b139743419945828377506a429720406e9e86e39025783fa37665f94b0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-9.png",
+        "sha256": "41705a9dc45ee46334097d1af17d7140a5b6bab4b217be28bfc61eddf33f6cad",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-10.png",
+        "sha256": "02c2d64e86a570ae7329be5324293b7dc37fc6abf61e66b4613413f72cba27fc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-11.png",
+        "sha256": "4d3457e458ecd2222f5c4761fb2021171f71603580810b70a01f077ee7aac101",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-12.png",
+        "sha256": "72b3c6109e9d761e16aa34f09cf27439ccad313cfd89b67259cef69c405a27c0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-13.png",
+        "sha256": "29f2b51cee976bd91a9480ea4a220a37d713ac68f0cb47a6b06dec7a2f34658e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-14.png",
+        "sha256": "7b0f2cf158b7ca5ec4b214b9c142b5e21da5950a0297ed70ed8cb6d84bc93701",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-15.png",
+        "sha256": "b85e86b944417391074b434b0be36a84e76c83240bbeb6d9206e0934e9721985",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-16.png",
+        "sha256": "afd1da7f842d6507bbfe3a451e5035a6089d5346a11d18540e4c35b1f62a3f5b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-17.png",
+        "sha256": "1f3d016e5edeef31548b9b3b0b708752dd1ce3cef83e290934ecfc563fb021ef",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-18.png",
+        "sha256": "8fc5e78f719c02505122b15da9717d64cf8e250fa00217abcec788c006454f1c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-19.png",
+        "sha256": "2ab80a56c6f9ed9978d1986b68ea36d830cb81d9587577ff14371110e131e95c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-20.png",
+        "sha256": "a2892858e22765584d6cd90dd6a78e99dd7835d3c00610ce1baf408a12d773c8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-21.png",
+        "sha256": "427addbfb05755391a5e72de6733eeb5e905130e1ac3e97dc0f2c1e8a98468ed",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-22.png",
+        "sha256": "c4786c81438d46faf77ab7454f57676311869c94a1020ae6fb53215105805ef6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-23.png",
+        "sha256": "c44a406a3c5fbefaf21fd3f1ea2bb167f6a55d16964f3e5197c2041508043bc6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-24.png",
+        "sha256": "e2cc97e14c9fe2511fef48740caecdb2ca3a2ec9281a710a6df8a436ed8c9cdc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-25.png",
+        "sha256": "6b918ccfcacce54937b368a73a9b60dac5c1bd103240a8bcd8d9d65a01677f2e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-26.png",
+        "sha256": "43d1b0dd8c96044c32110707284c0460b4dc7df548b8c19d7a2ab8bc9489afbe",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-27.png",
+        "sha256": "521d8c43bc4ef47f2c7066e8c185d07cefa16f9ee9ef57b7fc35dc0134a1e486",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-28.png",
+        "sha256": "2ab6dbb2fb3edacc4e12e2c818d8b117dea3ab1ead49845d1f5503fb7d0ec919",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-29.png",
+        "sha256": "8cc0f535ecfc10a171825fe6704131d365e6c6cc650269fbe6e5d489b0eb6dff",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-30.png",
+        "sha256": "a8c8a0b4a2f2b404ae4200cec92617e140744912fde0c72a672f340f948d1ea4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-31.png",
+        "sha256": "f8535402a03c26c536ed0f6aa2c529f7bdcd69152f5267aa714f5fb82916f81f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-32.png",
+        "sha256": "43fa164784a0ac8b7b331630f3e0e443fdf038357d7375f023fa5d09e6d7324b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-33.png",
+        "sha256": "cc2ec01b1068271636fc93f4b652762b5c1a71f7947f9a553ef930ae72427366",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-34.png",
+        "sha256": "d7199bd99a5105c8964962f8596812e5be5af1af563047ea3fcc46eaf6589c02",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-35.png",
+        "sha256": "f81dd479856037a62f2c4380ab5836b15e10bd692e466712f8ddfbf76afe9529",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-36.png",
+        "sha256": "95564f1849ecf16cb12c49eb539a28cdcad3bbdf4ae1e82003e01bb4341408a6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-37.png",
+        "sha256": "f2a57e6b1d9b5e91bd317e741530136c7df1be6b32d5f1e4a1f04b7ba0d5c673",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-38.png",
+        "sha256": "aa8120ff58e9403a994c3aa544b6692ab22a74544cd6a64c0b0dbeee1f016073",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-39.png",
+        "sha256": "70c467c62ea4f7158e97488f92a55b7ca8de3335b5b358d5bf2428a12d39e548",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-40.png",
+        "sha256": "186e120b6aa73a8caee86a3add5cc639aed6030a241aaf2a46f1030bf279aa15",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-41.png",
+        "sha256": "cd2bad3edbe53c8693303d56670ec542326d0ebd5d886d7ae615fbcb2d8bab1c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-42.png",
+        "sha256": "227cd73d6b583a9c436152ebc43184706ed6c241c10fba88a8ec7522046c3737",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-43.png",
+        "sha256": "bb34821dc0f32fd4c6f0d99a63a9691d581be33a1e37628826589b85b5f75396",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-44.png",
+        "sha256": "d0960053722991689fb590d033f676b862000aed2f5fb638b43b4a046d47f96c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-45.png",
+        "sha256": "e35a618fe38dc1e91916cced9b8cc0c1171f3acee118369575837d96673ad989",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-46.png",
+        "sha256": "2609dd3108a170c0a10c28f9f35f2d32fc080f478a6a4c87e14181fe5439c3a8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-47.png",
+        "sha256": "17df07d4baf05399b54d08a0c35ef500fbbe79409224dc87748617981ad8934a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-48.png",
+        "sha256": "ede04165f941b306e0f0b4dfca101cc7f42e60a4b38357a90c2afe44ad375014",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-49.png",
+        "sha256": "671ca3784a6b49bd8af7641a3acd847673575cf88eb709bc00a13f2ef4eca522",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-50.png",
+        "sha256": "4743a5f269f21a38a395478c2636e91c1ffe3a3d5fb5072e4b136b7cf9aaec19",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-51.png",
+        "sha256": "11bbe5392c5020cef1f4c5e999b1b472bee712ab6379e716379ce4d0b18b0a33",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-52.png",
+        "sha256": "12261c994730e4c301009ed401f9cbe6b6c78d7a270e89a8c6ced2c91f24303d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-53.png",
+        "sha256": "1faa41adb96949a1decdd8c91403246846a6f79de08eec402f367b71c5cd676f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-54.png",
+        "sha256": "ef59c635a2902f35107e7c196fbf3a28a12e8ac50ec3ffcb45e9305f5928c664",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-55.png",
+        "sha256": "766f745a4fcfd47ec07888ae75e8e73918c61c66a2588844803ffec0a53f15e8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-56.png",
+        "sha256": "ca4ea04be78a04de6e23116520d573ed4192dc4d4ef910b1348b05e2811cabf6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-57.png",
+        "sha256": "30c9440c21383bd368e6a287b5f8c0a13389f6ad17d7dd1fd11b12669a46af20",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-58.png",
+        "sha256": "a0136aace9518f1c7b7548a8d5d09e0cdbd91bf2ac34391d4206f9958461e795",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-59.png",
+        "sha256": "90e7b6d68683fd4eec8b64189aec04371112129a557971aaee6ff6db00c628af",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-60.png",
+        "sha256": "975a46b3429e0750c051ef814df94b390e7b75316350b89ef1ea880c40581037",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-61.png",
+        "sha256": "550c19e43edf55edc4142137b3ceaa2b67db8e492dbe4242e0195892f3d9b177",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-62.png",
+        "sha256": "7a99133cafbae364be4537b39639065f1f576e1b79734047e50d62f31eb11b75",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "troll-v2a-63.png",
+        "sha256": "483d2254323ca7f7e2a3a7c207bb8b9b97e714b8bc10c62314465e82d10474dc",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "zombie-v2a": {
+    "id": "zombie-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "b84c77cc-ad5a-44b1-8366-fdb0446ed49b",
+    "submittedAt": "2026-11-01T13:49:29.654Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background."
+        },
+        {
+          "source": "fragments/class-creatures.txt",
+          "text": "Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a shambling zombie standing facing the viewer with both arms stretched forward, pale green skin #63de53 with #54ac8b shade, dark sunken eyes, short dark hair, torn light blue shirt #68a3c9 and ragged brown trousers #b07d6a."
+        }
+      ],
+      "style_image": {
+        "source": "file ../../../../../../../private/tmp/claude-501/-Users-nadbor-projects-crawl/0c81ac52-d5ef-466a-b476-871d2c8f4e12/scratchpad/wup1/ref/skeleton-32.png sha256 b055f23361a107361ab62a47415293f1293a735f5da2f473e484debaef0aff7d",
+        "usage": "copy only the pixel size (2x2 blocks), palette, outline and shading of this tileset sprite; draw the new creature described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 205,
+      "target_palette": {
+        "name": "classic roguelike tileset",
+        "colors": [
+          "#b5578d",
+          "#493c5c",
+          "#ffe250",
+          "#858971",
+          "#ff8563",
+          "#cd8668",
+          "#332745",
+          "#e3e8c5",
+          "#95b9d6",
+          "#6e5a5d",
+          "#7b3c58",
+          "#4d5e84",
+          "#374a7c",
+          "#68a3c9",
+          "#5b83a8",
+          "#934959",
+          "#5e2f58",
+          "#63de53",
+          "#54ac8b",
+          "#2782b3",
+          "#ffbd51",
+          "#6e4e98",
+          "#b07d6a",
+          "#f1ab7a",
+          "#fcfff1"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Style: cute chunky 16x16-style fantasy dungeon pixel art matching a classic roguelike tileset: small chibi creature with a big readable head and a clear silhouette, single dark purple-brown outline (#1b1424) around the whole sprite, flat colours with one shade step per material, light from the upper left, saturated mid-tone colours, 4-6 colours plus outline, no dithering, no anti-aliasing, 3/4 front view facing the viewer, the creature fills most of the canvas, floating alone on a transparent background. Class: one dungeon monster sprite for a 16x16 roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: chunky shapes built from 2x2 pixel blocks, big head, eyes at least 2 pixels wide, no 1-pixel-thin details, the whole body inside the canvas with 2 pixels of margin. Body in the tileset palette: mid and light tones (body mostly mid and light so it stays visible on a near-black dungeon floor), one darker shade on the lower right. Subject: a shambling zombie standing facing the viewer with both arms stretched forward, pale green skin #63de53 with #54ac8b shade, dark sunken eyes, short dark hair, torn light blue shirt #68a3c9 and ragged brown trousers #b07d6a. Must not include: ground plate, floor, cast shadow, background, frame, border, text, letters, watermark, multiple characters, gore, blood."
+    },
+    "at": "2026-11-01T13:56:05.865Z",
+    "candidates": [
+      {
+        "file": "zombie-v2a-0.png",
+        "sha256": "3cbd0ce245593e9492a4bb4aefd4184045d3edc2e079caf91b6f31623145d002",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-1.png",
+        "sha256": "51ab9d9b268712bbd50f9a175b5513c1a633949a0ee349112f518e3de7662aef",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-2.png",
+        "sha256": "70dad358ebbc20b2095cdbc268389612be9f4444da796af681ae5bdf36f5d9b8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-3.png",
+        "sha256": "a2c4beb161cd2044d1a76dd96b2a640748e4feb5d8149b88f19e5c4bd884d70d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-4.png",
+        "sha256": "3793472684105da19b2c9550c4fb86c319ea299036d1236a73052d1d83a111b2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-5.png",
+        "sha256": "fdc1268bc5b9bfd71299ac95247866bc27805817f6da1d1b95195d9a47bc08d6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-6.png",
+        "sha256": "b52d5cd8d6822d9445b063f8c89ce199dc797c9626ce0140c366ba5b784ac637",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-7.png",
+        "sha256": "10f1273f2cb0db830c1a117ca80b1191be8f89d499f529590f8b1d513da7dace",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-8.png",
+        "sha256": "3a2ecfb3c813a5b4051105a2735f2c44629dcf44082de955ab3843d1ae110111",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-9.png",
+        "sha256": "3b73ef3264486a0f7dab21eb774f983cf8ce5c8d76806daa22dac30dccb61d80",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-10.png",
+        "sha256": "0abd18a963c1f013b762ad45e6d89ed3955b1f8cff11da23c0e0cd27e4b2650a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-11.png",
+        "sha256": "d22c90b6c0a5e9807bf06abc499d19f380703b423d14f76f71a5ada4ae8a0096",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-12.png",
+        "sha256": "4e7a199154d863d28f7426e72442968b921b506dbd2ce64e98d2eae1d00fb40f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-13.png",
+        "sha256": "f6df710bf8fa9d0bd8b4399220a4a1f3b68f042e15ee50c4fcd08763e13bef55",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-14.png",
+        "sha256": "f8d179d7ff5cf730c4c42cdc2aa51a5b1e420d98496ff10b3c853442519a8a1b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-15.png",
+        "sha256": "af56ca72a2fbb56d9eb6453c8cd24aa29001980d2989afd270e7ab8cf6fd5da4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-16.png",
+        "sha256": "0ef6d19ab000da1e70850943ed4f854d3d7ed73bc0c2d4fc44a5621905782fa5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-17.png",
+        "sha256": "498e8385114e81972ab56e834a28e601002ceca0d37476704554de08dda75bff",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-18.png",
+        "sha256": "f817a4a12ebbab966021bb16820132cc41acc8bfaf611d68b6cf5c600968ecee",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-19.png",
+        "sha256": "a72878106b4a430b91443c08a3ed9e18f0b8663d202a51305c7bfa3d048d95e4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-20.png",
+        "sha256": "a427abdb61a44b51d515169d5df95ef427f871cead02743575ace3fad140c53d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-21.png",
+        "sha256": "c78a4cf64858993c38a12396a805bbe2815c3483ef670ba13aac258bacfc5034",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-22.png",
+        "sha256": "75a7dac48bc932e7617fb0b13050875e22e9872bc01e86451e7eb7db4d65f2b2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-23.png",
+        "sha256": "51dc733a5270af159bc359c084d068913a14d25b4327b12e78334e5913b6fd84",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-24.png",
+        "sha256": "a8fd4fa4cd54a727f2d35e0b8c64f3c3a4e8b2c4769873cbdda2ba35993ffb90",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-25.png",
+        "sha256": "b649d4a1d1200901b27cd886d24cc48af1da3be49ba906eae382fb1caf2f59c3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-26.png",
+        "sha256": "efecbef031fcf133f96bb113d3ddeb53e736736703f75ddcf73e78d8dcd35247",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-27.png",
+        "sha256": "f5b9656c9101d3e61a27ae0b1b13b85188e80c561653230d13921e622468b87e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-28.png",
+        "sha256": "cc23e3909e162d983052eb8ad298bb1adf367eb1f651b37d06d443b5e6492903",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-29.png",
+        "sha256": "350de2e88ae650eac475289f57622ffbf7d616cca611f81eb705d42283499435",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-30.png",
+        "sha256": "442423e1d0928c4c9da4dd5ae3046dee03f5ffc438a8e276b14f78498a52f7d7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-31.png",
+        "sha256": "2576e2052b4076e7edea0e8b298d9f83a96be384992235c37e6229e50d6a558b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-32.png",
+        "sha256": "725151dda4b2fbc043b21fd630ef0454913aa2c65e0d08cd0fd92d6aabbf972f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-33.png",
+        "sha256": "201440892a42c0dbce55fdb3d953618d88fad24db1cf02ed0f1e8d5af387870f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-34.png",
+        "sha256": "78b8237d3eecb5bc0e457b53b4dcdde069fc2ff48606a1d984a623dde54945c4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-35.png",
+        "sha256": "33bcef28a539ab85f4c35cd2e9caa3cfed516dfcd1d29426d02b5b1545981863",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-36.png",
+        "sha256": "4ed84031bef438052ee04840d3c7fc6b296ee0bd20b4a5c08049aaa554debf7e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-37.png",
+        "sha256": "a14c89e696bd1644e8290a66eb36019619793448beae1eda0bdda29f99549f89",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-38.png",
+        "sha256": "3cbc360216f2a22283b56233cd5160dd1ec02c308443cf4f3699e2c0c902b616",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-39.png",
+        "sha256": "030377e85ee0c6ef33adeeabef905d81d232ef3c4979f18f891b05006f43f129",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-40.png",
+        "sha256": "a83f72d79873101f8de7539d227e3fb5f6597f8fe9d097646cc35f29d46c6d49",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-41.png",
+        "sha256": "aa06a0cd66052e757a7cee571263d295c8a38c19d5f2cfbc611371c74eefaa58",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-42.png",
+        "sha256": "ee905fabd57284607385b7467499dedb7696dabd8230975f9bb00e0d907e1290",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-43.png",
+        "sha256": "2b8261660b0db607118cba751596f2bc62aee03d845e5a380b473d15ac61245b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-44.png",
+        "sha256": "5e01d142242c5c37a69bbc3d9e3e2beddcdf3a0cc0de36b950a2a5a297d2d350",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-45.png",
+        "sha256": "8bf47c06821d634a6022f710805f7387d7635f2dd7345d605cda84bbd6c8e123",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-46.png",
+        "sha256": "c79505dea19f43b47100e2995fb0a4f54609a933de9c4fdab04557d8869c1175",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-47.png",
+        "sha256": "a0d33b9531f7c5536c7de81daff5abd45b671b724cb470cacf9f1382a50e1591",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-48.png",
+        "sha256": "594459fff1ba2035f02bca00fd137796c3921ba63254929318e950b1f1c21e02",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-49.png",
+        "sha256": "8cf8b56266a84e2633c3ae9913e8641c48ffd0c3dea448d8102d577fc9b0f2e5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-50.png",
+        "sha256": "0f6a5e0ad3eb2c5b7b4534e4a20e6cb01fe8c8692f6e088f4169d7a9545c71e7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-51.png",
+        "sha256": "f19cdda9a51a354b9194f47f5b239b95ec75c1bae20398c0aba3c5a4bba87817",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-52.png",
+        "sha256": "840aec24b9fc69de968f97f1698b7b5a75b2f72d075215f0554859a0da4663f0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-53.png",
+        "sha256": "e8696564501e73ce4127c87f4e9b286f6a8299bc2c369cabc3bf62b2e101a568",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-54.png",
+        "sha256": "df10f93bbfcc383a527f66bfa5973f721652546f66d1dce7e81e2f2aa09b1309",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-55.png",
+        "sha256": "386901c381bb5e21b1e41bee0c17273eae0df52139619db8db776e0faedce3ac",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-56.png",
+        "sha256": "ab7e9fa5f8c28054123a97fdf3045b66715f58bdd546aa382b615162a371f509",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-57.png",
+        "sha256": "b548f639e74cfb4bde60a795025bffe669df75d2ad0718d31e29a5cce3f55c7c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-58.png",
+        "sha256": "e69c01a1857aa0a47561446690724a0af9a856cce1f2bc240832199d440e377b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-59.png",
+        "sha256": "5063f64aa9d9ad23669c8936d0f09d41d08a3146eb2183d5101f679c0d9fd24c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-60.png",
+        "sha256": "44b4814a64e0a5d59fd99a66253372776d236527f0b8a87ea27a6a79b7587db9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-61.png",
+        "sha256": "22fd1d95c5eddf9a4b17ddc012cbd843fbd9e16014ce653dd56240e1c985aecf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-62.png",
+        "sha256": "377d94032c35af560e92d892d97656e068099204a8f6396c47fcc0aec0593fcb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "zombie-v2a-63.png",
+        "sha256": "9e9ee5beca7a473f70842bd4821d06d55e6f472559b0a0376461a3f1654d31c2",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  }
+}

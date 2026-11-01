@@ -1,0 +1,1627 @@
+{
+  "horse-a#0": {
+    "verdict": "REJECTED",
+    "notes": "pixen stood the horse up as a big-headed chibi pony facing the viewer, not a level four-legged side view; brown blob at 16 px",
+    "at": "2026-11-01T13:57:35.981Z"
+  },
+  "ninja-a#0": {
+    "verdict": "REJECTED",
+    "notes": "big-headed chibi with a heavy black outline; halves into a dark blob and the eyes vanish at 16 px; off the packs proportions",
+    "at": "2026-11-01T13:57:36.023Z"
+  },
+  "ghost-a#0": {
+    "verdict": "REJECTED",
+    "notes": "off-palette dark-red outline and pink tongue; the outline turns muddy at 16 px; v2 ghosts sit closer to the pack",
+    "at": "2026-11-01T13:57:36.065Z"
+  },
+  "troll-a#0": {
+    "verdict": "REJECTED",
+    "notes": "squat chibi with a tiny face that is unreadable at 16 px and a muddy orange belly; v2 trolls are clearer",
+    "at": "2026-11-01T13:57:36.107Z"
+  },
+  "zombie-a#0": {
+    "verdict": "REJECTED",
+    "notes": "a mop of brown hair dominates: reads as a girl, not a zombie, at 16 px",
+    "at": "2026-11-01T13:57:36.150Z"
+  },
+  "horse-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.192Z"
+  },
+  "horse-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.234Z"
+  },
+  "horse-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.276Z"
+  },
+  "horse-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.317Z"
+  },
+  "horse-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.360Z"
+  },
+  "horse-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.402Z"
+  },
+  "horse-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "saddle and dark tack muddy the body at 16 px",
+    "at": "2026-11-01T13:57:36.445Z"
+  },
+  "horse-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "saddle and dark tack muddy the body at 16 px",
+    "at": "2026-11-01T13:57:36.489Z"
+  },
+  "horse-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.531Z"
+  },
+  "horse-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.573Z"
+  },
+  "horse-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.615Z"
+  },
+  "horse-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.656Z"
+  },
+  "horse-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "rearing pose: body not level, legs collapse at 16 px",
+    "at": "2026-11-01T13:57:36.700Z"
+  },
+  "horse-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "rearing pose: body not level, legs collapse at 16 px",
+    "at": "2026-11-01T13:57:36.743Z"
+  },
+  "horse-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "dark brown body vanishes on the dark floor",
+    "at": "2026-11-01T13:57:36.785Z"
+  },
+  "horse-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "dark brown body vanishes on the dark floor",
+    "at": "2026-11-01T13:57:36.828Z"
+  },
+  "horse-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.870Z"
+  },
+  "horse-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.913Z"
+  },
+  "horse-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.958Z"
+  },
+  "horse-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:36.999Z"
+  },
+  "horse-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.042Z"
+  },
+  "horse-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.084Z"
+  },
+  "horse-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.126Z"
+  },
+  "horse-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.169Z"
+  },
+  "horse-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.209Z"
+  },
+  "horse-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.252Z"
+  },
+  "horse-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.294Z"
+  },
+  "horse-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.335Z"
+  },
+  "horse-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.377Z"
+  },
+  "horse-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.421Z"
+  },
+  "horse-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.465Z"
+  },
+  "horse-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.509Z"
+  },
+  "horse-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.551Z"
+  },
+  "horse-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.594Z"
+  },
+  "horse-v2a#34": {
+    "verdict": "ACCEPTED",
+    "notes": "level four-legged horse in the unicorns scale with the clearest flame tail; base for the 16 px file (edits: lineless redraw in pack palette, light legs for the dark floor, flame mane tongues)",
+    "at": "2026-11-01T13:57:37.637Z"
+  },
+  "horse-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.679Z"
+  },
+  "horse-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.722Z"
+  },
+  "horse-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.763Z"
+  },
+  "horse-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.806Z"
+  },
+  "horse-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "saddle and dark tack muddy the body at 16 px",
+    "at": "2026-11-01T13:57:37.849Z"
+  },
+  "horse-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.892Z"
+  },
+  "horse-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.934Z"
+  },
+  "horse-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:37.975Z"
+  },
+  "horse-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.017Z"
+  },
+  "horse-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.060Z"
+  },
+  "horse-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.102Z"
+  },
+  "horse-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.144Z"
+  },
+  "horse-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.186Z"
+  },
+  "horse-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.227Z"
+  },
+  "horse-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.269Z"
+  },
+  "horse-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.311Z"
+  },
+  "horse-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.353Z"
+  },
+  "horse-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.395Z"
+  },
+  "horse-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.439Z"
+  },
+  "horse-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.480Z"
+  },
+  "horse-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.523Z"
+  },
+  "horse-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.566Z"
+  },
+  "horse-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.608Z"
+  },
+  "horse-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.649Z"
+  },
+  "horse-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.690Z"
+  },
+  "horse-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of horse-v2a#34 (same recipe); its mane or tail flame reads weaker at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.733Z"
+  },
+  "horse-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "lying down: not a walking creature",
+    "at": "2026-11-01T13:57:38.775Z"
+  },
+  "horse-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "lying down: not a walking creature",
+    "at": "2026-11-01T13:57:38.817Z"
+  },
+  "horse-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "lying down: not a walking creature",
+    "at": "2026-11-01T13:57:38.859Z"
+  },
+  "ninja-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.902Z"
+  },
+  "ninja-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:38.945Z"
+  },
+  "ninja-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "blue blade dominates the silhouette at 16 px",
+    "at": "2026-11-01T13:57:38.988Z"
+  },
+  "ninja-v2a#3": {
+    "verdict": "ACCEPTED",
+    "notes": "upright front-facing ninja with skin eye slit and a red scarf trailing to the side, distinct from the blue assassin; base for the 16 px file (edits: eyes in the slit, lighter warm-grey cloth for the floor, maroon belt)",
+    "at": "2026-11-01T13:57:39.031Z"
+  },
+  "ninja-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.073Z"
+  },
+  "ninja-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.116Z"
+  },
+  "ninja-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.158Z"
+  },
+  "ninja-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "no scarf tail: loses the red accent that identifies it",
+    "at": "2026-11-01T13:57:39.200Z"
+  },
+  "ninja-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.242Z"
+  },
+  "ninja-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.284Z"
+  },
+  "ninja-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.327Z"
+  },
+  "ninja-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "twin blue blades read as a crab at 16 px",
+    "at": "2026-11-01T13:57:39.368Z"
+  },
+  "ninja-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "blue blades dominate at 16 px",
+    "at": "2026-11-01T13:57:39.411Z"
+  },
+  "ninja-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "blue blades dominate at 16 px",
+    "at": "2026-11-01T13:57:39.453Z"
+  },
+  "ninja-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "blue blades dominate at 16 px",
+    "at": "2026-11-01T13:57:39.496Z"
+  },
+  "ninja-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "blue blades dominate at 16 px",
+    "at": "2026-11-01T13:57:39.540Z"
+  },
+  "ninja-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.583Z"
+  },
+  "ninja-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "twin blades read as a crab at 16 px",
+    "at": "2026-11-01T13:57:39.625Z"
+  },
+  "ninja-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.667Z"
+  },
+  "ninja-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.708Z"
+  },
+  "ninja-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.753Z"
+  },
+  "ninja-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.795Z"
+  },
+  "ninja-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.838Z"
+  },
+  "ninja-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.883Z"
+  },
+  "ninja-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.928Z"
+  },
+  "ninja-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:39.970Z"
+  },
+  "ninja-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.013Z"
+  },
+  "ninja-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.055Z"
+  },
+  "ninja-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.097Z"
+  },
+  "ninja-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.140Z"
+  },
+  "ninja-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.181Z"
+  },
+  "ninja-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.224Z"
+  },
+  "ninja-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.265Z"
+  },
+  "ninja-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.307Z"
+  },
+  "ninja-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.349Z"
+  },
+  "ninja-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.391Z"
+  },
+  "ninja-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.433Z"
+  },
+  "ninja-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.475Z"
+  },
+  "ninja-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "blue blades dominate at 16 px",
+    "at": "2026-11-01T13:57:40.518Z"
+  },
+  "ninja-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.560Z"
+  },
+  "ninja-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.603Z"
+  },
+  "ninja-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.646Z"
+  },
+  "ninja-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.688Z"
+  },
+  "ninja-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "no scarf tail: loses the red accent that identifies it",
+    "at": "2026-11-01T13:57:40.731Z"
+  },
+  "ninja-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "no scarf tail: loses the red accent that identifies it",
+    "at": "2026-11-01T13:57:40.772Z"
+  },
+  "ninja-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.815Z"
+  },
+  "ninja-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.858Z"
+  },
+  "ninja-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "twin blades read as a crab at 16 px",
+    "at": "2026-11-01T13:57:40.902Z"
+  },
+  "ninja-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.947Z"
+  },
+  "ninja-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:40.989Z"
+  },
+  "ninja-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.031Z"
+  },
+  "ninja-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.074Z"
+  },
+  "ninja-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.117Z"
+  },
+  "ninja-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.161Z"
+  },
+  "ninja-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.203Z"
+  },
+  "ninja-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.246Z"
+  },
+  "ninja-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.288Z"
+  },
+  "ninja-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.330Z"
+  },
+  "ninja-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.371Z"
+  },
+  "ninja-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.414Z"
+  },
+  "ninja-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.456Z"
+  },
+  "ninja-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.498Z"
+  },
+  "ninja-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.540Z"
+  },
+  "ninja-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ninja-v2a#3 (same recipe); scarf or pose reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.582Z"
+  },
+  "ghost-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.625Z"
+  },
+  "ghost-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.667Z"
+  },
+  "ghost-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.710Z"
+  },
+  "ghost-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.752Z"
+  },
+  "ghost-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "witch hat: off-concept",
+    "at": "2026-11-01T13:57:41.794Z"
+  },
+  "ghost-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "witch hat: off-concept",
+    "at": "2026-11-01T13:57:41.837Z"
+  },
+  "ghost-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "holds a sword: off-concept",
+    "at": "2026-11-01T13:57:41.879Z"
+  },
+  "ghost-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "devil horns: off-concept",
+    "at": "2026-11-01T13:57:41.922Z"
+  },
+  "ghost-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:41.964Z"
+  },
+  "ghost-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "eyes closed: blank face at 16 px",
+    "at": "2026-11-01T13:57:42.006Z"
+  },
+  "ghost-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.051Z"
+  },
+  "ghost-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "eyes closed: blank face at 16 px",
+    "at": "2026-11-01T13:57:42.093Z"
+  },
+  "ghost-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.135Z"
+  },
+  "ghost-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "crown: off-concept",
+    "at": "2026-11-01T13:57:42.179Z"
+  },
+  "ghost-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "winking face reads as a smear at 16 px",
+    "at": "2026-11-01T13:57:42.220Z"
+  },
+  "ghost-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.262Z"
+  },
+  "ghost-v2a#16": {
+    "verdict": "ACCEPTED",
+    "notes": "classic sheet ghost with dark eyes, raised arm and a wispy tail; base for the 16 px file (edits: lineless redraw in white, cream and pale blue, 1x2 eyes, small mouth, curled tail)",
+    "at": "2026-11-01T13:57:42.304Z"
+  },
+  "ghost-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.345Z"
+  },
+  "ghost-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "witch hat: off-concept",
+    "at": "2026-11-01T13:57:42.387Z"
+  },
+  "ghost-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "witch hat: off-concept",
+    "at": "2026-11-01T13:57:42.429Z"
+  },
+  "ghost-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "devil horns: off-concept",
+    "at": "2026-11-01T13:57:42.472Z"
+  },
+  "ghost-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "holds a prop: off-concept",
+    "at": "2026-11-01T13:57:42.513Z"
+  },
+  "ghost-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "eye patch: off-concept",
+    "at": "2026-11-01T13:57:42.555Z"
+  },
+  "ghost-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "pumpkin prop: off-concept",
+    "at": "2026-11-01T13:57:42.597Z"
+  },
+  "ghost-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.640Z"
+  },
+  "ghost-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.683Z"
+  },
+  "ghost-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.725Z"
+  },
+  "ghost-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "crown: off-concept",
+    "at": "2026-11-01T13:57:42.767Z"
+  },
+  "ghost-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.808Z"
+  },
+  "ghost-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:42.853Z"
+  },
+  "ghost-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "crown: off-concept",
+    "at": "2026-11-01T13:57:42.896Z"
+  },
+  "ghost-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "scarf and staff: off-concept",
+    "at": "2026-11-01T13:57:42.937Z"
+  },
+  "ghost-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "lantern prop: off-concept",
+    "at": "2026-11-01T13:57:42.980Z"
+  },
+  "ghost-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.022Z"
+  },
+  "ghost-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.065Z"
+  },
+  "ghost-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.107Z"
+  },
+  "ghost-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.148Z"
+  },
+  "ghost-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.190Z"
+  },
+  "ghost-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.234Z"
+  },
+  "ghost-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.277Z"
+  },
+  "ghost-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.319Z"
+  },
+  "ghost-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.362Z"
+  },
+  "ghost-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.403Z"
+  },
+  "ghost-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.446Z"
+  },
+  "ghost-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.488Z"
+  },
+  "ghost-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.531Z"
+  },
+  "ghost-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.573Z"
+  },
+  "ghost-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.618Z"
+  },
+  "ghost-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.660Z"
+  },
+  "ghost-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.705Z"
+  },
+  "ghost-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.749Z"
+  },
+  "ghost-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.790Z"
+  },
+  "ghost-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.832Z"
+  },
+  "ghost-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.874Z"
+  },
+  "ghost-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.916Z"
+  },
+  "ghost-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:43.958Z"
+  },
+  "ghost-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.000Z"
+  },
+  "ghost-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.042Z"
+  },
+  "ghost-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.084Z"
+  },
+  "ghost-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.126Z"
+  },
+  "ghost-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.169Z"
+  },
+  "ghost-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.211Z"
+  },
+  "ghost-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.254Z"
+  },
+  "ghost-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of ghost-v2a#16 (same recipe); tail or arm reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.297Z"
+  },
+  "troll-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "no club: loses the trolls weapon",
+    "at": "2026-11-01T13:57:44.339Z"
+  },
+  "troll-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "no club: loses the trolls weapon",
+    "at": "2026-11-01T13:57:44.382Z"
+  },
+  "troll-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:44.424Z"
+  },
+  "troll-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:44.467Z"
+  },
+  "troll-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.510Z"
+  },
+  "troll-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.554Z"
+  },
+  "troll-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.597Z"
+  },
+  "troll-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.640Z"
+  },
+  "troll-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:44.683Z"
+  },
+  "troll-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:44.724Z"
+  },
+  "troll-v2a#10": {
+    "verdict": "ACCEPTED",
+    "notes": "hunched troll with a raised club, clearly a troll not a golem; base for the 16 px file (edits: lineless redraw, olive skin with green highlights, eyes, nose and tusks, club over the shoulder)",
+    "at": "2026-11-01T13:57:44.767Z"
+  },
+  "troll-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.809Z"
+  },
+  "troll-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:44.850Z"
+  },
+  "troll-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.894Z"
+  },
+  "troll-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:44.937Z"
+  },
+  "troll-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:44.978Z"
+  },
+  "troll-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:45.020Z"
+  },
+  "troll-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.062Z"
+  },
+  "troll-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.104Z"
+  },
+  "troll-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.146Z"
+  },
+  "troll-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "skull necklace clutter at 16 px",
+    "at": "2026-11-01T13:57:45.189Z"
+  },
+  "troll-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.232Z"
+  },
+  "troll-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.273Z"
+  },
+  "troll-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.315Z"
+  },
+  "troll-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.359Z"
+  },
+  "troll-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.401Z"
+  },
+  "troll-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "chest emblem clutter at 16 px",
+    "at": "2026-11-01T13:57:45.443Z"
+  },
+  "troll-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.486Z"
+  },
+  "troll-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.529Z"
+  },
+  "troll-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.570Z"
+  },
+  "troll-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.613Z"
+  },
+  "troll-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.654Z"
+  },
+  "troll-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.696Z"
+  },
+  "troll-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.739Z"
+  },
+  "troll-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.781Z"
+  },
+  "troll-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.823Z"
+  },
+  "troll-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.866Z"
+  },
+  "troll-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.910Z"
+  },
+  "troll-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.954Z"
+  },
+  "troll-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:45.997Z"
+  },
+  "troll-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.040Z"
+  },
+  "troll-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "chest emblem clutter at 16 px",
+    "at": "2026-11-01T13:57:46.084Z"
+  },
+  "troll-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.126Z"
+  },
+  "troll-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.169Z"
+  },
+  "troll-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.213Z"
+  },
+  "troll-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.254Z"
+  },
+  "troll-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.296Z"
+  },
+  "troll-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "chest emblem clutter at 16 px",
+    "at": "2026-11-01T13:57:46.340Z"
+  },
+  "troll-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.382Z"
+  },
+  "troll-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.423Z"
+  },
+  "troll-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.465Z"
+  },
+  "troll-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.508Z"
+  },
+  "troll-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.550Z"
+  },
+  "troll-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.594Z"
+  },
+  "troll-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.635Z"
+  },
+  "troll-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.679Z"
+  },
+  "troll-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.720Z"
+  },
+  "troll-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.764Z"
+  },
+  "troll-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.806Z"
+  },
+  "troll-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "yellow club off-palette for wood and reads as a banana",
+    "at": "2026-11-01T13:57:46.849Z"
+  },
+  "troll-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "no club",
+    "at": "2026-11-01T13:57:46.891Z"
+  },
+  "troll-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.936Z"
+  },
+  "troll-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of troll-v2a#10 (same recipe); club or head reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:46.980Z"
+  },
+  "troll-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "yellow club off-palette for wood and reads as a banana",
+    "at": "2026-11-01T13:57:47.022Z"
+  },
+  "zombie-v2a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "pale green shambling zombie with one arm forward, light blue shirt and brown trousers, much lighter than the old zombie; base for the 16 px file (edits: lineless redraw, eyes and mouth, torn shirt hem, arm reaching forward)",
+    "at": "2026-11-01T13:57:47.065Z"
+  },
+  "zombie-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.108Z"
+  },
+  "zombie-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.151Z"
+  },
+  "zombie-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.193Z"
+  },
+  "zombie-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.236Z"
+  },
+  "zombie-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.279Z"
+  },
+  "zombie-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.321Z"
+  },
+  "zombie-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.365Z"
+  },
+  "zombie-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.407Z"
+  },
+  "zombie-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.449Z"
+  },
+  "zombie-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.492Z"
+  },
+  "zombie-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.535Z"
+  },
+  "zombie-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.578Z"
+  },
+  "zombie-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "dark hair and side pose crowd the face at 16 px",
+    "at": "2026-11-01T13:57:47.620Z"
+  },
+  "zombie-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.663Z"
+  },
+  "zombie-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.704Z"
+  },
+  "zombie-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.745Z"
+  },
+  "zombie-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.788Z"
+  },
+  "zombie-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.830Z"
+  },
+  "zombie-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.872Z"
+  },
+  "zombie-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.915Z"
+  },
+  "zombie-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:47.959Z"
+  },
+  "zombie-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.005Z"
+  },
+  "zombie-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.049Z"
+  },
+  "zombie-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.098Z"
+  },
+  "zombie-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.142Z"
+  },
+  "zombie-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.185Z"
+  },
+  "zombie-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.228Z"
+  },
+  "zombie-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.271Z"
+  },
+  "zombie-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.315Z"
+  },
+  "zombie-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.356Z"
+  },
+  "zombie-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "wild dark hair and dark arm read as a dark blob on the floor",
+    "at": "2026-11-01T13:57:48.399Z"
+  },
+  "zombie-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.441Z"
+  },
+  "zombie-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.485Z"
+  },
+  "zombie-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.528Z"
+  },
+  "zombie-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.569Z"
+  },
+  "zombie-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.612Z"
+  },
+  "zombie-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.655Z"
+  },
+  "zombie-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.697Z"
+  },
+  "zombie-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.740Z"
+  },
+  "zombie-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.782Z"
+  },
+  "zombie-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.826Z"
+  },
+  "zombie-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.870Z"
+  },
+  "zombie-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.913Z"
+  },
+  "zombie-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:48.957Z"
+  },
+  "zombie-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.001Z"
+  },
+  "zombie-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.044Z"
+  },
+  "zombie-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.087Z"
+  },
+  "zombie-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.131Z"
+  },
+  "zombie-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.172Z"
+  },
+  "zombie-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.215Z"
+  },
+  "zombie-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.258Z"
+  },
+  "zombie-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.305Z"
+  },
+  "zombie-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.349Z"
+  },
+  "zombie-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.392Z"
+  },
+  "zombie-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.435Z"
+  },
+  "zombie-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.477Z"
+  },
+  "zombie-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.520Z"
+  },
+  "zombie-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.563Z"
+  },
+  "zombie-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.607Z"
+  },
+  "zombie-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.652Z"
+  },
+  "zombie-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.695Z"
+  },
+  "zombie-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.737Z"
+  },
+  "zombie-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "usable sibling of zombie-v2a#0 (same recipe); pose or face reads less clearly at 16 px; one base per creature",
+    "at": "2026-11-01T13:57:49.781Z"
+  }
+}
