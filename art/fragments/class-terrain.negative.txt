@@ -1,0 +1,1 @@
+border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient

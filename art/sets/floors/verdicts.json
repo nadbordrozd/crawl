@@ -1,0 +1,1322 @@
+{
+  "dungeon-a#0": {
+    "verdict": "REJECTED",
+    "notes": "pixflux drew a framed tile: dark border, checker strip on top, flat centre; not seamless",
+    "at": "2026-11-01T14:07:06.775Z"
+  },
+  "graveyard-a#0": {
+    "verdict": "REJECTED",
+    "notes": "framed round medallion with a vignette ring and a centre motif; not a seamless field",
+    "at": "2026-11-01T14:07:06.818Z"
+  },
+  "egypt-a#0": {
+    "verdict": "REJECTED",
+    "notes": "framed tile with dark glyph-like blocks on the top and right edges; noisy, not seamless",
+    "at": "2026-11-01T14:07:06.859Z"
+  },
+  "cave-a#0": {
+    "verdict": "REJECTED",
+    "notes": "framed tile: notched dark border and a centre swirl; not seamless",
+    "at": "2026-11-01T14:07:06.901Z"
+  },
+  "dungeon-v2a#9": {
+    "verdict": "ACCEPTED",
+    "notes": "irregular dark slate cobbles at pack pixel size; 16 px crop at 8,8 wraps with few cut stones; floor_dungeon_1",
+    "at": "2026-11-01T14:19:35.729Z"
+  },
+  "dungeon-v2a#59": {
+    "verdict": "ACCEPTED",
+    "notes": "same cobble style, different layout; crop at 8,8 plus a recorded edit turning the left-edge joint band into stone; floor_dungeon_2",
+    "at": "2026-11-01T14:19:35.777Z"
+  },
+  "dungeon-v2a#10": {
+    "verdict": "ACCEPTED",
+    "notes": "larger cobbles with a lighter rim detail; crop at 8,8 mixes with 9 and 59; floor_dungeon_3",
+    "at": "2026-11-01T14:19:35.819Z"
+  },
+  "graveyard-v2a#1": {
+    "verdict": "ACCEPTED",
+    "notes": "dark soil with sparse dark grass tufts inside the crop at 4,2; base lifted a step by recorded edits so fog still darkens it; floor_graveyard_1",
+    "at": "2026-11-01T14:19:35.861Z"
+  },
+  "graveyard-v2a#5": {
+    "verdict": "ACCEPTED",
+    "notes": "dark soil with a grass tuft and moss specks inside the crop at 8,4; floor_graveyard_2",
+    "at": "2026-11-01T14:19:35.903Z"
+  },
+  "graveyard-v2a#6": {
+    "verdict": "ACCEPTED",
+    "notes": "dark soil with one small tuft cluster inside the crop at 9,2; floor_graveyard_3",
+    "at": "2026-11-01T14:19:35.946Z"
+  },
+  "egypt-v2a#26": {
+    "verdict": "ACCEPTED",
+    "notes": "dim sand with soft horizontal ripples; recoloured to the shared ochre sand tones; floor_egypt_1",
+    "at": "2026-11-01T14:19:35.988Z"
+  },
+  "egypt-v2a#20": {
+    "verdict": "ACCEPTED",
+    "notes": "dim sand with darker ripples; recoloured to the same base tone as egypt 26; floor_egypt_2",
+    "at": "2026-11-01T14:19:36.031Z"
+  },
+  "egypt-v2a#7": {
+    "verdict": "ACCEPTED",
+    "notes": "plain sand with small sandstone pebbles; edits keep two pebbles off the tile edge; floor_egypt_3",
+    "at": "2026-11-01T14:19:36.073Z"
+  },
+  "cave-v2a#8": {
+    "verdict": "ACCEPTED",
+    "notes": "even dark purple-brown rock with tiny pebble specks; seamless crop at 8,8; floor_cave_1",
+    "at": "2026-11-01T14:19:36.116Z"
+  },
+  "cave-v2a#12": {
+    "verdict": "ACCEPTED",
+    "notes": "same rock with a few small pebbles; floor_cave_2",
+    "at": "2026-11-01T14:19:36.158Z"
+  },
+  "cave-v2a#1": {
+    "verdict": "ACCEPTED",
+    "notes": "same rock with thin shallow cracks (the detail variant); floor_cave_3",
+    "at": "2026-11-01T14:19:36.200Z"
+  },
+  "dungeon-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.241Z"
+  },
+  "dungeon-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.282Z"
+  },
+  "dungeon-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.325Z"
+  },
+  "dungeon-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.366Z"
+  },
+  "dungeon-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.408Z"
+  },
+  "dungeon-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.450Z"
+  },
+  "dungeon-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.491Z"
+  },
+  "dungeon-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.533Z"
+  },
+  "dungeon-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.576Z"
+  },
+  "dungeon-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.618Z"
+  },
+  "dungeon-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.659Z"
+  },
+  "dungeon-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.701Z"
+  },
+  "dungeon-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.744Z"
+  },
+  "dungeon-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.786Z"
+  },
+  "dungeon-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.828Z"
+  },
+  "dungeon-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.871Z"
+  },
+  "dungeon-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.913Z"
+  },
+  "dungeon-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.956Z"
+  },
+  "dungeon-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:36.999Z"
+  },
+  "dungeon-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.043Z"
+  },
+  "dungeon-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.087Z"
+  },
+  "dungeon-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.129Z"
+  },
+  "dungeon-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.172Z"
+  },
+  "dungeon-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.215Z"
+  },
+  "dungeon-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.257Z"
+  },
+  "dungeon-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.299Z"
+  },
+  "dungeon-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.340Z"
+  },
+  "dungeon-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.382Z"
+  },
+  "dungeon-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.423Z"
+  },
+  "dungeon-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.465Z"
+  },
+  "dungeon-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.507Z"
+  },
+  "dungeon-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.550Z"
+  },
+  "dungeon-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.593Z"
+  },
+  "dungeon-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.635Z"
+  },
+  "dungeon-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.676Z"
+  },
+  "dungeon-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.718Z"
+  },
+  "dungeon-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.759Z"
+  },
+  "dungeon-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.801Z"
+  },
+  "dungeon-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.843Z"
+  },
+  "dungeon-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.884Z"
+  },
+  "dungeon-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.926Z"
+  },
+  "dungeon-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:37.969Z"
+  },
+  "dungeon-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.011Z"
+  },
+  "dungeon-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.052Z"
+  },
+  "dungeon-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.094Z"
+  },
+  "dungeon-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.136Z"
+  },
+  "dungeon-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.178Z"
+  },
+  "dungeon-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.220Z"
+  },
+  "dungeon-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.262Z"
+  },
+  "dungeon-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.304Z"
+  },
+  "dungeon-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.346Z"
+  },
+  "dungeon-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.387Z"
+  },
+  "dungeon-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.428Z"
+  },
+  "dungeon-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.470Z"
+  },
+  "dungeon-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.512Z"
+  },
+  "dungeon-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.553Z"
+  },
+  "dungeon-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.596Z"
+  },
+  "dungeon-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.637Z"
+  },
+  "dungeon-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.679Z"
+  },
+  "dungeon-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.723Z"
+  },
+  "dungeon-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted dungeon takes: framed by a joint border or big slabs that show a tile grid when repeated; 3 cobble takes were enough",
+    "at": "2026-11-01T14:19:38.765Z"
+  },
+  "graveyard-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:38.808Z"
+  },
+  "graveyard-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:38.850Z"
+  },
+  "graveyard-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:38.894Z"
+  },
+  "graveyard-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:38.936Z"
+  },
+  "graveyard-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:38.980Z"
+  },
+  "graveyard-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.022Z"
+  },
+  "graveyard-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.064Z"
+  },
+  "graveyard-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.106Z"
+  },
+  "graveyard-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.150Z"
+  },
+  "graveyard-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.191Z"
+  },
+  "graveyard-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.234Z"
+  },
+  "graveyard-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.276Z"
+  },
+  "graveyard-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.318Z"
+  },
+  "graveyard-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.361Z"
+  },
+  "graveyard-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.403Z"
+  },
+  "graveyard-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.445Z"
+  },
+  "graveyard-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.488Z"
+  },
+  "graveyard-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.530Z"
+  },
+  "graveyard-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.572Z"
+  },
+  "graveyard-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.615Z"
+  },
+  "graveyard-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.656Z"
+  },
+  "graveyard-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.699Z"
+  },
+  "graveyard-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.740Z"
+  },
+  "graveyard-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.782Z"
+  },
+  "graveyard-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.824Z"
+  },
+  "graveyard-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.865Z"
+  },
+  "graveyard-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.906Z"
+  },
+  "graveyard-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.948Z"
+  },
+  "graveyard-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:39.990Z"
+  },
+  "graveyard-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.032Z"
+  },
+  "graveyard-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.076Z"
+  },
+  "graveyard-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.117Z"
+  },
+  "graveyard-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.159Z"
+  },
+  "graveyard-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.202Z"
+  },
+  "graveyard-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.243Z"
+  },
+  "graveyard-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.285Z"
+  },
+  "graveyard-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.326Z"
+  },
+  "graveyard-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.369Z"
+  },
+  "graveyard-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.410Z"
+  },
+  "graveyard-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.452Z"
+  },
+  "graveyard-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.493Z"
+  },
+  "graveyard-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.534Z"
+  },
+  "graveyard-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.576Z"
+  },
+  "graveyard-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.618Z"
+  },
+  "graveyard-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.660Z"
+  },
+  "graveyard-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.701Z"
+  },
+  "graveyard-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.743Z"
+  },
+  "graveyard-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.786Z"
+  },
+  "graveyard-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.829Z"
+  },
+  "graveyard-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.871Z"
+  },
+  "graveyard-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.914Z"
+  },
+  "graveyard-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.956Z"
+  },
+  "graveyard-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:40.998Z"
+  },
+  "graveyard-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.040Z"
+  },
+  "graveyard-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.081Z"
+  },
+  "graveyard-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.124Z"
+  },
+  "graveyard-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.166Z"
+  },
+  "graveyard-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.209Z"
+  },
+  "graveyard-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.250Z"
+  },
+  "graveyard-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.292Z"
+  },
+  "graveyard-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted graveyard takes: moss border frame, large moss blobs or brown soil patches that look noisy or seamed when repeated",
+    "at": "2026-11-01T14:19:41.335Z"
+  },
+  "egypt-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.377Z"
+  },
+  "egypt-v2a#1": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.419Z"
+  },
+  "egypt-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.461Z"
+  },
+  "egypt-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.503Z"
+  },
+  "egypt-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.545Z"
+  },
+  "egypt-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.587Z"
+  },
+  "egypt-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.629Z"
+  },
+  "egypt-v2a#8": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.671Z"
+  },
+  "egypt-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.712Z"
+  },
+  "egypt-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.754Z"
+  },
+  "egypt-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.796Z"
+  },
+  "egypt-v2a#12": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.838Z"
+  },
+  "egypt-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.881Z"
+  },
+  "egypt-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.922Z"
+  },
+  "egypt-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:41.965Z"
+  },
+  "egypt-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.008Z"
+  },
+  "egypt-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.050Z"
+  },
+  "egypt-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.092Z"
+  },
+  "egypt-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.136Z"
+  },
+  "egypt-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.180Z"
+  },
+  "egypt-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.222Z"
+  },
+  "egypt-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.266Z"
+  },
+  "egypt-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.307Z"
+  },
+  "egypt-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.350Z"
+  },
+  "egypt-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.392Z"
+  },
+  "egypt-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.435Z"
+  },
+  "egypt-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.477Z"
+  },
+  "egypt-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.518Z"
+  },
+  "egypt-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.560Z"
+  },
+  "egypt-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.604Z"
+  },
+  "egypt-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.647Z"
+  },
+  "egypt-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.689Z"
+  },
+  "egypt-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.732Z"
+  },
+  "egypt-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.773Z"
+  },
+  "egypt-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.814Z"
+  },
+  "egypt-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.856Z"
+  },
+  "egypt-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.897Z"
+  },
+  "egypt-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.939Z"
+  },
+  "egypt-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:42.981Z"
+  },
+  "egypt-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.023Z"
+  },
+  "egypt-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.066Z"
+  },
+  "egypt-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.108Z"
+  },
+  "egypt-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.150Z"
+  },
+  "egypt-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.194Z"
+  },
+  "egypt-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.237Z"
+  },
+  "egypt-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.280Z"
+  },
+  "egypt-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.322Z"
+  },
+  "egypt-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.363Z"
+  },
+  "egypt-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.405Z"
+  },
+  "egypt-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.448Z"
+  },
+  "egypt-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.491Z"
+  },
+  "egypt-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.534Z"
+  },
+  "egypt-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.576Z"
+  },
+  "egypt-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.619Z"
+  },
+  "egypt-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.660Z"
+  },
+  "egypt-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.702Z"
+  },
+  "egypt-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.743Z"
+  },
+  "egypt-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.785Z"
+  },
+  "egypt-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.827Z"
+  },
+  "egypt-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.870Z"
+  },
+  "egypt-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted egypt takes: dark joint frame, diagonal streaks or near-black empty sand; the chosen ripple and pebble takes cover the theme",
+    "at": "2026-11-01T14:19:43.911Z"
+  },
+  "cave-v2a#0": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:43.955Z"
+  },
+  "cave-v2a#2": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:43.997Z"
+  },
+  "cave-v2a#3": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.038Z"
+  },
+  "cave-v2a#4": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.080Z"
+  },
+  "cave-v2a#5": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.121Z"
+  },
+  "cave-v2a#6": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.163Z"
+  },
+  "cave-v2a#7": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.206Z"
+  },
+  "cave-v2a#9": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.250Z"
+  },
+  "cave-v2a#10": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.296Z"
+  },
+  "cave-v2a#11": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.337Z"
+  },
+  "cave-v2a#13": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.379Z"
+  },
+  "cave-v2a#14": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.421Z"
+  },
+  "cave-v2a#15": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.463Z"
+  },
+  "cave-v2a#16": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.505Z"
+  },
+  "cave-v2a#17": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.546Z"
+  },
+  "cave-v2a#18": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.589Z"
+  },
+  "cave-v2a#19": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.631Z"
+  },
+  "cave-v2a#20": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.672Z"
+  },
+  "cave-v2a#21": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.714Z"
+  },
+  "cave-v2a#22": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.757Z"
+  },
+  "cave-v2a#23": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.799Z"
+  },
+  "cave-v2a#24": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.845Z"
+  },
+  "cave-v2a#25": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.888Z"
+  },
+  "cave-v2a#26": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.930Z"
+  },
+  "cave-v2a#27": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:44.973Z"
+  },
+  "cave-v2a#28": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.015Z"
+  },
+  "cave-v2a#29": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.057Z"
+  },
+  "cave-v2a#30": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.100Z"
+  },
+  "cave-v2a#31": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.142Z"
+  },
+  "cave-v2a#32": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.184Z"
+  },
+  "cave-v2a#33": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.227Z"
+  },
+  "cave-v2a#34": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.269Z"
+  },
+  "cave-v2a#35": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.311Z"
+  },
+  "cave-v2a#36": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.352Z"
+  },
+  "cave-v2a#37": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.394Z"
+  },
+  "cave-v2a#38": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.435Z"
+  },
+  "cave-v2a#39": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.478Z"
+  },
+  "cave-v2a#40": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.521Z"
+  },
+  "cave-v2a#41": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.564Z"
+  },
+  "cave-v2a#42": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.606Z"
+  },
+  "cave-v2a#43": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.648Z"
+  },
+  "cave-v2a#44": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.690Z"
+  },
+  "cave-v2a#45": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.731Z"
+  },
+  "cave-v2a#46": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.773Z"
+  },
+  "cave-v2a#47": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.815Z"
+  },
+  "cave-v2a#48": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.856Z"
+  },
+  "cave-v2a#49": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.898Z"
+  },
+  "cave-v2a#50": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.940Z"
+  },
+  "cave-v2a#51": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:45.984Z"
+  },
+  "cave-v2a#52": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.027Z"
+  },
+  "cave-v2a#53": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.070Z"
+  },
+  "cave-v2a#54": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.111Z"
+  },
+  "cave-v2a#55": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.152Z"
+  },
+  "cave-v2a#56": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.194Z"
+  },
+  "cave-v2a#57": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.235Z"
+  },
+  "cave-v2a#58": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.278Z"
+  },
+  "cave-v2a#59": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.321Z"
+  },
+  "cave-v2a#60": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.364Z"
+  },
+  "cave-v2a#61": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.407Z"
+  },
+  "cave-v2a#62": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.449Z"
+  },
+  "cave-v2a#63": {
+    "verdict": "REJECTED",
+    "notes": "sibling of the accepted cave takes: dark joint frame, big boulders or heavy cracks too busy for a floor; 3 subtle takes were enough",
+    "at": "2026-11-01T14:19:46.492Z"
+  },
+  "dungeon-c#0": {
+    "verdict": "REJECTED",
+    "notes": "64 px pixflux field: still framed by a border with a vignette ellipse over a regular grid",
+    "at": "2026-11-01T14:19:46.534Z"
+  },
+  "graveyard-c#0": {
+    "verdict": "REJECTED",
+    "notes": "64 px pixflux: a framed square plot with a moss border, not an even field",
+    "at": "2026-11-01T14:19:46.575Z"
+  },
+  "egypt-c#0": {
+    "verdict": "REJECTED",
+    "notes": "64 px pixflux: an ornamental framed panel with a circle, not a floor field",
+    "at": "2026-11-01T14:19:46.619Z"
+  },
+  "cave-c#0": {
+    "verdict": "REJECTED",
+    "notes": "64 px pixflux: rock clumps in the corners around a flat centre; not even",
+    "at": "2026-11-01T14:19:46.662Z"
+  }
+}

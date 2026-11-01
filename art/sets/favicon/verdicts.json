@@ -1,0 +1,17 @@
+{
+  "skull-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "fills the canvas, big dark eyes and teeth read at 16 and 32 on light and dark tabs; dark outline holds on #f2f2f2; 16 px hand-finished by recorded edits",
+    "at": "2026-11-01T14:15:17.751Z"
+  },
+  "key-a#0": {
+    "verdict": "REJECTED",
+    "notes": "nice chunky key but wider than tall: at 16 px it shrinks to a thin diagonal and the ring hole closes; the skull reads better",
+    "at": "2026-11-01T14:15:17.793Z"
+  },
+  "key-b#0": {
+    "verdict": "REJECTED",
+    "notes": "thin diagonal key with a white halo outline around the dark one; too thin for 16 px",
+    "at": "2026-11-01T14:15:17.835Z"
+  }
+}

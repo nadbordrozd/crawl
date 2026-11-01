@@ -1,0 +1,2070 @@
+{
+  "dungeon-a": {
+    "id": "dungeon-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-f2e41a33-a1a2-4c9e-920a-1d72b4494743",
+    "submittedAt": "2026-11-01T14:05:48.670Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark slate dungeon floor: worn irregular flagstones of dark blue-grey stone separated by thin darker cracks and packed earth."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-dungeon.png sha256 0b2081058dee20ee2fce0655351ba2aa77df5ad0f9d46cb364ce61765eba767f",
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2101,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark slate dungeon floor: worn irregular flagstones of dark blue-grey stone separated by thin darker cracks and packed earth. Must not include: border, frame, outline around the tile, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:05:48.673Z",
+    "candidates": [
+      {
+        "file": "dungeon-a-0.png",
+        "sha256": "2a9da78e370dba71fff6cb59517f0665b73d089cb97a3845ceefe9b3431253e9",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "graveyard-a": {
+    "id": "graveyard-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-5411abb4-1c81-48fe-8930-9635656b20a8",
+    "submittedAt": "2026-11-01T14:06:04.806Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark graveyard soil at night: damp dark earth with patches of short dark green moss and a few sparse tufts of dark grass."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-graveyard.png sha256 29dd688aaa4ac3874153fee92c01d5aa87389d037a2e09afcb8ac48aa2a5c19d",
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2201,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark graveyard soil at night: damp dark earth with patches of short dark green moss and a few sparse tufts of dark grass. Must not include: border, frame, outline around the tile, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:06:04.808Z",
+    "candidates": [
+      {
+        "file": "graveyard-a-0.png",
+        "sha256": "8e4475c4f144cacea9cf254a812be6eca3371876155b4589bfc6781b86c3b50b",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "egypt-a": {
+    "id": "egypt-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-eeed7974-f34c-42ef-ac24-0178a20b0780",
+    "submittedAt": "2026-11-01T14:06:31.737Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark sandy floor inside an Egyptian tomb at night: fine dim brown-ochre sand with faint ripples and a few small sandstone pebbles."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-egypt.png sha256 f30faf42e40d2218650bd588af6408383bb23978511bcf90a41adbcb2e41db31",
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2301,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark sandy floor inside an Egyptian tomb at night: fine dim brown-ochre sand with faint ripples and a few small sandstone pebbles. Must not include: border, frame, outline around the tile, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:06:31.740Z",
+    "candidates": [
+      {
+        "file": "egypt-a-0.png",
+        "sha256": "57d0489c8a72664ca337dffac42dc56893ba9c405be5b9db8fd40e7b0fbed086",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "cave-a": {
+    "id": "cave-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-27a4a977-81b7-4829-be5c-6f16713aeb11",
+    "submittedAt": "2026-11-01T14:06:47.545Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark prehistoric cave floor: uneven dark purple-brown rock with small pebbles and shallow cracks."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-cave.png sha256 8290bb11c1c3564cc86e6cf705c8b14b75dcef016a00049e626b9bd17f3fd200",
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2401,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: one seamless square floor texture for a 16x16 top-down fantasy roguelike tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: seen straight from above, filling the whole canvas edge to edge, even brightness everywhere so it repeats without visible seams, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark prehistoric cave floor: uneven dark purple-brown rock with small pebbles and shallow cracks. Must not include: border, frame, outline around the tile, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:06:47.547Z",
+    "candidates": [
+      {
+        "file": "cave-a-0.png",
+        "sha256": "fcc8d81f0a9fda17104fa40dadb860096f9750ca7339ef9a07f1718d893783ad",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "dungeon-c": {
+    "id": "dungeon-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-bc6689bc-7ead-42a0-971e-511fcb7fa1d5",
+    "submittedAt": "2026-11-01T14:07:31.282Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark slate dungeon floor: many small worn irregular flagstones of dark blue-grey stone separated by thin darker cracks, packed earth in the gaps."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-dungeon.png sha256 0b2081058dee20ee2fce0655351ba2aa77df5ad0f9d46cb364ce61765eba767f",
+      "image_size": {
+        "width": 64,
+        "height": 64
+      },
+      "no_background": false,
+      "seed": 2103,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark slate dungeon floor: many small worn irregular flagstones of dark blue-grey stone separated by thin darker cracks, packed earth in the gaps. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:07:31.285Z",
+    "candidates": [
+      {
+        "file": "dungeon-c-0.png",
+        "sha256": "e879fd8325fcc1d987af02d7097fe01cb51527583703efc7000d2611c1649125",
+        "width": 64,
+        "height": 64
+      }
+    ]
+  },
+  "graveyard-c": {
+    "id": "graveyard-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-f573b258-b4b1-42e3-a873-22c068748f5d",
+    "submittedAt": "2026-11-01T14:07:48.950Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark graveyard ground at night: damp dark soil with scattered patches of short dark green moss and many small sparse tufts of dark grass."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-graveyard.png sha256 29dd688aaa4ac3874153fee92c01d5aa87389d037a2e09afcb8ac48aa2a5c19d",
+      "image_size": {
+        "width": 64,
+        "height": 64
+      },
+      "no_background": false,
+      "seed": 2203,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark graveyard ground at night: damp dark soil with scattered patches of short dark green moss and many small sparse tufts of dark grass. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:07:48.952Z",
+    "candidates": [
+      {
+        "file": "graveyard-c-0.png",
+        "sha256": "f1f6922cf42f6c0921df69e89e64498774d16032fc71c845c3fcfab20006f7c2",
+        "width": 64,
+        "height": 64
+      }
+    ]
+  },
+  "egypt-c": {
+    "id": "egypt-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-5f793e46-7dbb-4d2c-9ad9-6ac36d943724",
+    "submittedAt": "2026-11-01T14:08:12.094Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark desert sand floor of an Egyptian tomb at night: dim brown-ochre sand with faint wavy ripples and scattered tiny sandstone pebbles."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-egypt.png sha256 f30faf42e40d2218650bd588af6408383bb23978511bcf90a41adbcb2e41db31",
+      "image_size": {
+        "width": 64,
+        "height": 64
+      },
+      "no_background": false,
+      "seed": 2303,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark desert sand floor of an Egyptian tomb at night: dim brown-ochre sand with faint wavy ripples and scattered tiny sandstone pebbles. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:08:12.096Z",
+    "candidates": [
+      {
+        "file": "egypt-c-0.png",
+        "sha256": "ec942ae48958b29a50bdeb6d56893b2ce76f6706e01f2721c923c47e5e96a379",
+        "width": 64,
+        "height": 64
+      }
+    ]
+  },
+  "cave-c": {
+    "id": "cave-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-f935b078-5e8d-4183-96e3-97d42e5996c6",
+    "submittedAt": "2026-11-01T14:08:30.348Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark prehistoric cave floor: uneven dark purple-brown rock surface with scattered small pebbles and shallow cracks."
+        }
+      ],
+      "color_image": "file art/refs/floor-palette-cave.png sha256 8290bb11c1c3564cc86e6cf705c8b14b75dcef016a00049e626b9bd17f3fd200",
+      "image_size": {
+        "width": 64,
+        "height": 64
+      },
+      "no_background": false,
+      "seed": 2403,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark prehistoric cave floor: uneven dark purple-brown rock surface with scattered small pebbles and shallow cracks. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:08:30.350Z",
+    "candidates": [
+      {
+        "file": "cave-c-0.png",
+        "sha256": "d243194182f0a57287817782ebf324cb69752990d573c21a7ea1208f452fbf87",
+        "width": 64,
+        "height": 64
+      }
+    ]
+  },
+  "dungeon-v2a": {
+    "id": "dungeon-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "86208861-33e6-4d6f-9423-08f85b073233",
+    "submittedAt": "2026-11-01T14:09:19.190Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark slate dungeon floor seen from above: worn irregular flagstones of dark blue-grey stone with thin darker cracks and packed earth between them, the same even texture over the whole image."
+        }
+      ],
+      "style_image": {
+        "source": "file art/refs/wall-default-x2.png sha256 4c72f394c0560daa3d769e313210ef2021b76493a51d89ecfb26afec7014f85d",
+        "usage": "copy only the pixel size (2x2 blocks), lineless look and flat shading of this tileset; do not copy the bricks or the colours; draw the floor described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2111,
+      "target_palette": {
+        "name": "dark dungeon floor",
+        "colors": [
+          "#13121b",
+          "#1b1a26",
+          "#222232",
+          "#2a2b3d",
+          "#33354a",
+          "#3b3846"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark slate dungeon floor seen from above: worn irregular flagstones of dark blue-grey stone with thin darker cracks and packed earth between them, the same even texture over the whole image. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:11:17.213Z",
+    "candidates": [
+      {
+        "file": "dungeon-v2a-0.png",
+        "sha256": "fcf76ed525ac31cf3f6734d14389d8012a18a9e02bb02fc5ae2a88eb54b05f2e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-1.png",
+        "sha256": "14fda52bcbd2ea4bf7068e47b3865a588b14d0c8aa48002e1b5061c592ee4a00",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-2.png",
+        "sha256": "9c5a140f0738bf5c4085ac8a6cf00e1eff258aee5b19e8ae7b4423d0ae1951d0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-3.png",
+        "sha256": "5439d557ec603a56fa2ba0815731ddf8b8aa300d1634f371066955739eb57a9a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-4.png",
+        "sha256": "913998d2be8fdc342ce95f64480bd44d81d6f063d739eab9192637761ad475fa",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-5.png",
+        "sha256": "2bd4277cd9a1219ada46433c5b620c62944fc08c8fe2697beb3a3e327230ed66",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-6.png",
+        "sha256": "bd2fb39c3c7edff89b5276b0d5f36673ea91995600881b79cd437bf6b59758bf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-7.png",
+        "sha256": "53e1ea4e76984ea78aa011e835fcdbef4f3bab23c721cd8414d756a2cab576fb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-8.png",
+        "sha256": "07973347beef48ded26f46ac33cbc648fd01fcca66b67a56d03c91b1da352c1b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-9.png",
+        "sha256": "d223f17ea0eb47c99b6770ab4448b13c138678f8df8b7d55555f86268670438e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-10.png",
+        "sha256": "b054ad8fb8d0b761df31dd55b4cf83dfc459c966aff834cd9055b8ea93365140",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-11.png",
+        "sha256": "f11c9cae1265fb5ba3c08886db3bc9cdd58fa27dbc20e33d81a5e7d55bc0cdbd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-12.png",
+        "sha256": "a04095c22536de64acb95ad94932c100d3cbc1c25f2a57eb7984e6ef21d0fef2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-13.png",
+        "sha256": "0c4895a0643994425a4cd4579c9a0177f2bd980a10f7723b2bc32cd7e24cf216",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-14.png",
+        "sha256": "a37be39d4bf1931fb44c69ddf0ce63861a93653a58fe5008a791c96672f36bce",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-15.png",
+        "sha256": "6ab8204902fc6790cba83880b576b7f67f74c11a0db7a1ec82c7df0aa4fe3d09",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-16.png",
+        "sha256": "4bbdbdf5caaeb78fb39c44ae645f34afa407d42fc6278b15320dadedbd138c54",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-17.png",
+        "sha256": "19b7a77444111537199574fbb1bb9f54549a0cd15f2c39ceb4d4504ff340e734",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-18.png",
+        "sha256": "f3c646f166d068bc30ae1501f06ffc52c9bd04c9021b9804bdb0d48c11e41170",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-19.png",
+        "sha256": "76c035f37cdb692cd899b29bb03b770fadc3492a76de9c8ebe36d49bf07a9c9e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-20.png",
+        "sha256": "6ce4580af95e0f23dd38eeedb919ec675f81921203776a3b2c6c07a61b0b2b28",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-21.png",
+        "sha256": "2c2e713099720fda47333e31274aef91d650b2dca49c14f84ba8bc31584d40cf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-22.png",
+        "sha256": "3b895f38c980bf66093dc21e296349f9f3286e95bd9df6f8dea36600ab45c9f4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-23.png",
+        "sha256": "4eb2a5329b8d58cbd38ffd6e5139d548bc479db725225ea70e5c8f17ce21d526",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-24.png",
+        "sha256": "d651322a91e9ef8e34bfc2721a0549b1069e1524972556fe238e47a08c58d77c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-25.png",
+        "sha256": "ef9827c5cef9a9a9120b40e2fee1ae8bd35c230bb2324d25cd97cacee1648ef4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-26.png",
+        "sha256": "d696d56e5719aa12d9d0eeea19f43cb2388af6fe5c60eba0282628eebafefa68",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-27.png",
+        "sha256": "66b39c177c6817a3fad98a1aa96de6e3cd431f32bcab9e8805e6cf4c27645590",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-28.png",
+        "sha256": "fd1831a87f3d82f75714c8aab0f1e986c934b9ef2057c0772b079b5478714355",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-29.png",
+        "sha256": "3c0ca5d0203d84e1e6a59331d114a7344cf941e6ff33e3107efcdad82a0b3bf7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-30.png",
+        "sha256": "d403ba3191f416ebb215af0f5cde7566fbc312b03cd2c6d35c26b3c6f9b0acda",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-31.png",
+        "sha256": "87f235f2b95e8d68783985467341d95375277073435bd5b54cbbeaebd408e6a9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-32.png",
+        "sha256": "5f6012f67175ea10bb83be076361fd40b84835b080dba5c5160857aceaccfa2a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-33.png",
+        "sha256": "4ba3b50e8bba2a5ddcd93bbcd75db413968f4fc96f37dbc85fb5f789a8c64a55",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-34.png",
+        "sha256": "9475ed8a11ebe5cf5c36c054ae6fddc1f7f5d44cd4ccb0b7ba7551d233816694",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-35.png",
+        "sha256": "1b929da85cba3e3548140f94fcad0c0b8201dd5edd6fafe69bd5d8ceca6d49e3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-36.png",
+        "sha256": "29acdbe0f5482ea50d15d3073dcfea5a2c1dc4098e454d736cfd0e4a036dde30",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-37.png",
+        "sha256": "05b0e9e069ebd8a57b333050c656d87b30edbd6c35cb1c21774b796d1c79aeea",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-38.png",
+        "sha256": "ac358b9fc5a3941a5eca4aa0ca72969191bb229f552a179108682c6870b9f4da",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-39.png",
+        "sha256": "4722c0aafb61d0b27e93c94c7536e27d60906a140df8c9c843034a616f3807aa",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-40.png",
+        "sha256": "6dd0a4b457514b071b1ab892a0b408823fa9e5023e3e08cdf85f0a90928778e6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-41.png",
+        "sha256": "c55150418db0d3450a357db659e43f9f11e6e9c9b511b1ddba2ae8864a6fc523",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-42.png",
+        "sha256": "e4df719b85864b0d1b673e0077206168df7c28f371d7b015dc8e12124866293f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-43.png",
+        "sha256": "6c71320cbe642c7c1acee12e1eca30fb6fa68d843d9d60b568c0df168e419dbd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-44.png",
+        "sha256": "95a72f0a3274ef5701ebfa73d1cf052c835c15e6ca6833314ff79eaec857dd31",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-45.png",
+        "sha256": "9864bd0cb644e153d5961c790845957680906cffd70c4fe68deaf54aedc2d1ea",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-46.png",
+        "sha256": "81889ff3e0c84338217e71556b0a79e0002d8a29dcd57f77bc86fb593cd1d384",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-47.png",
+        "sha256": "e60fd046a03c7866d4b63d1d69349e506877c00009a8724463de32084fa1f5c1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-48.png",
+        "sha256": "fba14682d784c10a32b23022ec47dfa853525bed1152425c4c47367377f46820",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-49.png",
+        "sha256": "d2ea2b571c095abd670e746c7cb2585c4f8b573c835ac8b11672f739ad26d3d2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-50.png",
+        "sha256": "800210a56c911a748abf90e44183b4d1939a81ad75d9764bb0e7118cf78b7839",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-51.png",
+        "sha256": "72a0386d1af86b2f115161e233b461e0b319104cc966c1c3bd55f0ffd5edac60",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-52.png",
+        "sha256": "d76f2d6b2565adefca5fb6e4ea4cf36d4605ad19968a6575ebd0460251baadf5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-53.png",
+        "sha256": "1e5a3811225b5d67b7a251338575ffc80fcd267df1fcfb241f3dca7d2a3d9193",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-54.png",
+        "sha256": "6041770e1f826412d82fcf99f9fda7465d69ad706e77aa7bb76e55db5f0c451e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-55.png",
+        "sha256": "a6de00ee43308442da740cdab233af3a8bacf686a3e592d4c4d7568cbc65f341",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-56.png",
+        "sha256": "584d52cd0ec7891c0f840b8ba26bb1b9aae56c2b7d80677d281f746f063e274e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-57.png",
+        "sha256": "59c77059beb4a8d86d278cbcc837084004724e631a1d14cb34b4da27f143abc3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-58.png",
+        "sha256": "07c7918a297fb6f81cc992c80d86caf34bcd9b0736867f3046f9fc8591b42612",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-59.png",
+        "sha256": "7380d8a58c59bc70b16c904fbb17c8da959124d44e9bba589ea701eaf3483631",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-60.png",
+        "sha256": "d000b030af94021787263f3866f2e2253dc5e738c3b79adb8d649e7b6b1c24be",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-61.png",
+        "sha256": "220acd32dff32d9ea123322bdc98c1eaf3b87d4ede90f42cb8d3feade69f70e7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-62.png",
+        "sha256": "0b91e7b74eda83fc52964065f05b04d41e75c69dff6c6fff9141e8f636193ee2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "dungeon-v2a-63.png",
+        "sha256": "1d009950a3c4e0524871ca3e490ca1c9ea2add66eed733d9b796e3ccb49117a0",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "graveyard-v2a": {
+    "id": "graveyard-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "d6b4ca48-9059-4286-af71-a13f2bd61def",
+    "submittedAt": "2026-11-01T14:13:40.553Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark graveyard ground seen from above at night: damp dark soil with small scattered patches of short dark green moss and a few small tufts of dark grass, the same even texture over the whole image, no stones in a grid."
+        }
+      ],
+      "style_image": {
+        "source": "file art/refs/wall-default-x2.png sha256 4c72f394c0560daa3d769e313210ef2021b76493a51d89ecfb26afec7014f85d",
+        "usage": "copy only the pixel size, lineless look and flat shading of this tileset; do not copy the bricks or the colours; draw the floor described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2211,
+      "target_palette": {
+        "name": "dark graveyard floor",
+        "colors": [
+          "#111611",
+          "#182018",
+          "#1f291e",
+          "#263224",
+          "#2f3d2a",
+          "#2a251f"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark graveyard ground seen from above at night: damp dark soil with small scattered patches of short dark green moss and a few small tufts of dark grass, the same even texture over the whole image, no stones in a grid. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:15:43.880Z",
+    "candidates": [
+      {
+        "file": "graveyard-v2a-0.png",
+        "sha256": "abce4954338aa73f2437f33428557b0222e32e698cdebc47f65ae999403c4c4f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-1.png",
+        "sha256": "84e269260833c4f763c841ea39898aeb053c2aa66a0a212eb415e7bf1eff1abb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-2.png",
+        "sha256": "32cd6051695021f4555c6da232780e60949ced984e8fd5c66678d14d2ecf7e9b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-3.png",
+        "sha256": "caab29168e06de58c83cc8771f77a158dc6ffa12cd0f1c9f756deae6b698a7d1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-4.png",
+        "sha256": "2a6d0f7065ded3145bad572765243f0360efc1f7fab98b3ca337e2c5de29fdd5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-5.png",
+        "sha256": "3bc975de9bb5df1f12c7d11920337407c623bd592ae2828112592d0f785a1242",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-6.png",
+        "sha256": "da43e6980459da18a5a48d2ace520dfc54bad8987291b4793b5d9eeea7265bfe",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-7.png",
+        "sha256": "0faa12a841220770070c58dbbf149cb95ffc81c89ea4d33391b06da2a86c5f0e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-8.png",
+        "sha256": "c1f222148ae586d461a713b7f7b8906855298bbdee0c51fb198902336987c626",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-9.png",
+        "sha256": "bae98f44c2bd80fca385592f3a15a1ea65b84ac70d7a3479427b9b3b34f1311a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-10.png",
+        "sha256": "32421a7d6b75c983a518289ba33465e77aef503639c3b21a1435cd7a4854592b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-11.png",
+        "sha256": "b759c7d2603d8313801d9e47c966fa43899f0b08f44667fc99b2f601405cf78a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-12.png",
+        "sha256": "48efabbf206e09fbe35375cbe96624129d298f62c1335beb2185c6c2881af292",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-13.png",
+        "sha256": "4200e5698f21a1b99b0ab144c504b28b85929c939acbc1da0fade5cbf2cd96db",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-14.png",
+        "sha256": "ad2aa41b6af7d39579ec245b31320ec0c07a9619ef0968b84ff35574e266ae08",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-15.png",
+        "sha256": "c188b455fc144b5f162f67187f441de9586f90251b89a179bc8e8e5145aa4ee9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-16.png",
+        "sha256": "ed33c7e7167bc525137d8e2a059d67e4f5eaf5cddc440c6491befd94e1f766c1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-17.png",
+        "sha256": "37b5a928f8a1f4d447c6f9403e5d8e92c68cb6e47010fb9c468c191336b45601",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-18.png",
+        "sha256": "cfa1ee1f353b0e38b67d880f066a1f7ea4b0dc983680772bc5cc6024fd7c1218",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-19.png",
+        "sha256": "99a60903d0c6483d28790762eed22d5cc1ac9bb11b9b17c44f6fc183a119c591",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-20.png",
+        "sha256": "7392f4c446516ad957665726719a6efd7f41afd4b0a22dd983dcd62721b54925",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-21.png",
+        "sha256": "73c44ea1f6ff56ee155f462203f0aca7026c74fd0115d40e58b2508eb256b6b6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-22.png",
+        "sha256": "2a7d69e37c67f451ed0ee2fb9a8b8ebebfb4f67ad52cdae9b2e1b61cab061def",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-23.png",
+        "sha256": "9dec72ae9536e9970f759bf464aa4929da4523f2060bf9bfed797efd1a66158c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-24.png",
+        "sha256": "f38afc932bcb6abad686d406644d0c2c07eb9ea50a74fdef725cda2ee95f4d7e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-25.png",
+        "sha256": "d9d36bd66165b5dc5b9cba3ea8dd2631a5f15d3043d45c3b5ccec542ddff7bb5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-26.png",
+        "sha256": "42c64bddbe95416d112c26aefcf04eeacbd7893ca087339a524a799a4b517e32",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-27.png",
+        "sha256": "be5ca93b1096554d53f414c2cf2aa08643a8f88d12733935d156f39b169a3912",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-28.png",
+        "sha256": "bacb9e8244c96373eb9fe66f79e1643118e3e226d022d7cce0743f434ff96d49",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-29.png",
+        "sha256": "6e66a992b1040b5b832dad1f530184dba0cc369b984272e081271bac2dbeb0dc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-30.png",
+        "sha256": "39ca6fff2aa4ca506c97657d48574129fa6735d7fc28d3a0a58fd1232ff982bf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-31.png",
+        "sha256": "a8327089cb8916e4c28b0189e877768907f2e860f1c90220f64a58f9720278ae",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-32.png",
+        "sha256": "9d246afab9e60a1bd336bfa73d4699e45184c3ffce01a733ede36af530f6199c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-33.png",
+        "sha256": "552b07112c316ba008c0d721665dedd7aa65e8969bfb01d7d68d264f215e0b86",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-34.png",
+        "sha256": "43216f5c0e2e7a6e31ba1062f49c53339ce5c5562ea2ac5c17d15b0526c61ae5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-35.png",
+        "sha256": "9f783097d054976b05cd93c1b484ec7c3db84bc0953033b372b2324c1363577c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-36.png",
+        "sha256": "bd05edcbbd272837c41f92d426451af3f78374a148e0901d51e0ad49e5c64442",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-37.png",
+        "sha256": "b9569b506c47e081dc768d9fe8c0080ddd8c56918ddcaa5fe103a29a08929209",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-38.png",
+        "sha256": "c987605093468b5993cfd636b3e19b60a2f5a9675abc8c4837504e83c6c486b0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-39.png",
+        "sha256": "835e964678a62cb3964a5d869afec64bbdedc836df934d5b5cc43900f09b5c17",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-40.png",
+        "sha256": "0fc4ba5974532e916a8bd27ce6cc9e3a5f3243211400bdf13abf606080df6768",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-41.png",
+        "sha256": "dc489b5147262199fffbd3141d9f9ea7dcc8468790f66001ccd9671f9a1b88fe",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-42.png",
+        "sha256": "2ed05b2594310181e07ec71c55bac0d39e5d125b67e8a3cf3b2591add8e0e9a5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-43.png",
+        "sha256": "78642f051371c4ef09d0d58dee40982b1e146c2375406ff58ae208af3a52f63b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-44.png",
+        "sha256": "845140a2963598ec6239da16c8eb1f7f9b693aed58c9008ea75370e3d0bf818f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-45.png",
+        "sha256": "3866b8dc4efb74cf1a5a1905ab39e3ebbaa15ce36a420b979b9143aa444b1ddd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-46.png",
+        "sha256": "3c2e8f6705a57d9d99e5e580b87af64644e12f9b104fb81bcf09f45e7e958270",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-47.png",
+        "sha256": "679c75df70ffef9ea385faef805a95be52da191ee609ef7a3e956dd2138c6681",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-48.png",
+        "sha256": "f4822881c26cb96329816d1640f4e7f171f97a163f9baf38c4072d4164ffcfe1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-49.png",
+        "sha256": "1a79575e840f3c18c5091d516aabf1ca9d3d306e1ca63b795b36a76b12c97c4b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-50.png",
+        "sha256": "281c93686628a360267b0357683428080f12d1b23e9e2c9c159bfcb73ad7a3a0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-51.png",
+        "sha256": "4389b5ab63937e50f1cb00c40f079bf14d7234d3799a0d24e35562e09ae5745e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-52.png",
+        "sha256": "a9f8fe955bc4bcf3ee07ca4e27bfc323c2f2a9cf49391becf357d0be5420d44d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-53.png",
+        "sha256": "cfd75e36b68c86dabf99863dd20c6cbc0f12aea1530b03b2c0495b28231d11a1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-54.png",
+        "sha256": "9fda833abd96512e15b27114c103563eac748af537e5a76ed1245193c895c746",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-55.png",
+        "sha256": "db57f93a857779b002c6444fad9c08bf43f56d1651bab4311ee863e3da91f001",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-56.png",
+        "sha256": "1fe3794aedb3ca45e950c9327021c83180bf34f4b307ccedf5365dba585f3af3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-57.png",
+        "sha256": "205bc54edfc8be4e8fdfb74928a8171dc75627e4fd5f816c6f6e99d6cee4d0a1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-58.png",
+        "sha256": "95fddd68e4ec358adff229f323bd26cdf93763943c749ff2008ab0730263fb4b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-59.png",
+        "sha256": "a452691daef41080de9e51cf5770b95a4c6623d53ea880f6b5d707f2ffe2263a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-60.png",
+        "sha256": "c9acb74959e92c22943fae27b93d72644672b02c9938f455a88262727c172bb5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-61.png",
+        "sha256": "7578df1c675d9d9fdb863071d4d11a55cb642fb9db40d1430454b9a23d433c11",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-62.png",
+        "sha256": "8a703e208d8d606085aaed290f6f9a43102d996815bbeedb3c0ac4bcb1615e91",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "graveyard-v2a-63.png",
+        "sha256": "48aeb49ab075ba94ce7b461f168fc01000e354f69d4d1b554b1435d6be88dae2",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "egypt-v2a": {
+    "id": "egypt-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "4cfcce80-86e9-442e-8875-82c145f0fbf1",
+    "submittedAt": "2026-11-01T14:13:43.538Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark sandy floor of an Egyptian tomb seen from above at night: dim brown-ochre sand with faint wavy ripples and a few scattered small sandstone pebbles, the same even texture over the whole image, no bricks."
+        }
+      ],
+      "style_image": {
+        "source": "file art/refs/wall-egypt-x2.png sha256 7bbe6a078b62e3fcfdc293c16fbbe1b890a6b79740107a5959cbc05befb19cdf",
+        "usage": "copy only the pixel size, lineless look and flat shading of this tileset; do not copy the bricks or the colours; draw the floor described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2311,
+      "target_palette": {
+        "name": "dark tomb sand floor",
+        "colors": [
+          "#1f1814",
+          "#2a201a",
+          "#352920",
+          "#403126",
+          "#4c3b2c",
+          "#57452f"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark sandy floor of an Egyptian tomb seen from above at night: dim brown-ochre sand with faint wavy ripples and a few scattered small sandstone pebbles, the same even texture over the whole image, no bricks. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:15:36.427Z",
+    "candidates": [
+      {
+        "file": "egypt-v2a-0.png",
+        "sha256": "f3dc0bcf6dd0e8c522eb832622ad7e029e74343959d2ff152027502f62d6bfc5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-1.png",
+        "sha256": "71eb919439cc3379166df3e3fc867b42cb8ed28fc57c5863ae9d0310627f69b6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-2.png",
+        "sha256": "7d6ec8cdcd42399aa2670ac676e17afe76ac02e49450f0f9f6b4aadc90b10044",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-3.png",
+        "sha256": "930b3880a3fb518f007fb0689b7e3dc6dd17a65d04955adf7c07cb74bb8cbafa",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-4.png",
+        "sha256": "2bf428f9eaeade2ee48748d2949e5bcd51f9a2ad1f9804eed1a177cde1f87fff",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-5.png",
+        "sha256": "7293636b7e50746f85604541a0705e043abf13394182ded1687995d2f1af02f3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-6.png",
+        "sha256": "584889047125462a0a1090c589ef2718f59734c43c3e29ab953060a944d0afe3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-7.png",
+        "sha256": "627bbbdc7e37b8d884096bf10030efcebb41b25e6eba60a2e5fd78cd3e6f42c5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-8.png",
+        "sha256": "089f3b10efcc905ac5db81f97d91e2bee0ea32320b8a593b5fe622663c350cf7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-9.png",
+        "sha256": "62014655024c2bd1a2d478866b5b7fab53ddcde74620593fd412f212726f98ef",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-10.png",
+        "sha256": "01fc10db0089a75a2ab7ad4fa5b26470508a33e40634c8cb11fc042ef23c1d3e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-11.png",
+        "sha256": "b258d42cf84bee7e4d0b099d4a21007a83ed750af3184679747f6cc4f36e0260",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-12.png",
+        "sha256": "5a1ad6ce2de3687a9d0ab2876ab976f52b7a6cbe8384cc79192ccc8789a1dc9d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-13.png",
+        "sha256": "7cb8703461fb83ef6b70ba0a99e4a63dbeaa44546b7b4fbe7957009c53522274",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-14.png",
+        "sha256": "3114cb3f374a2be783955c6ea47c30294f85f4eb2bd2e527a103ab7379826451",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-15.png",
+        "sha256": "1c15c91af2728bc5ee802077321e1ca53819bab2f675b5e603ea319ce0495bb9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-16.png",
+        "sha256": "2f4581f968a26b1380772c721f2f9a04b69067124803f44ebbbc264f771c67cf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-17.png",
+        "sha256": "8d7423c49e063b729f4923ace99f07a7e0362d6eafcc55d94b6ab92fc4cc6868",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-18.png",
+        "sha256": "9ce39a949b7681899d70823f1d859cfd56194b8b3d371a768207931bd42ece0f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-19.png",
+        "sha256": "6b6a11c16f1a1c8aa8ac5a01bc7bdbeb01709adf4c592235c4b8607524fca386",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-20.png",
+        "sha256": "ffc41ba5cdaf15a3d62c4be139caa2c5ccf895e007856479d1ac7f398da36319",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-21.png",
+        "sha256": "a5de00b0cfd5cb1e73906f977bfd44f4ce06c9e87e157f555d579c357db143dd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-22.png",
+        "sha256": "372f043afd7feb0751ce53b1d66c8f495eed2f184f49036e48f80b4797a9cdbe",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-23.png",
+        "sha256": "8d44bed3a74a4fb10864f74c8c9424663f13526a1f204715ffffba1880a9f572",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-24.png",
+        "sha256": "905d2aeeeacf6142e331c425b463339342125cc91d50f1ccca897780196bd7d6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-25.png",
+        "sha256": "fc1bf7583e7cc51d2e47f0535f5907e6a0189aec0ff3b68f066d44334b441cd2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-26.png",
+        "sha256": "b752710d2813872b0233de33ce143caedf9effbd55633f6488a00020c01a7c7a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-27.png",
+        "sha256": "9cf309b00c348bd62efc2faedeed85e157e2e74d8baedda726fb151e34c806a1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-28.png",
+        "sha256": "df1abb26af714353dd61049636d164d5bf42029f4ebef7abd9bfe70ae01ca79c",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-29.png",
+        "sha256": "43720699230ae230d8079265956427dab8b42156f19468fca240150ca6e230ba",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-30.png",
+        "sha256": "af5ffa92ea3f42b719e3872b8c8044400ebede0df8aff5d05f1037b9ceca79e4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-31.png",
+        "sha256": "3402ade3ec283c85b0d098cadf46d757a579727910e6591ff8f9ec2c77e8030d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-32.png",
+        "sha256": "3bfd78c246a3466644e0b416cfad948846c87acaaabf2e5914ee73d5a350e136",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-33.png",
+        "sha256": "0882e6483121d3a1c7f911de38b1ef7450c7e132f283a17268df5c6d7b99f4dc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-34.png",
+        "sha256": "cf198125176ca540ada8a2c33b0dcd7b94be36e79adfdd28c7044fb7c35fd616",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-35.png",
+        "sha256": "b2531964db27cbcb428ea445d3ae8c1b7f84f3286f1f495d7afe99e259bb8ab9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-36.png",
+        "sha256": "f15e51cdbe1981343879bccb4d414acf6dd2af39dec45204bbf0a969c542d006",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-37.png",
+        "sha256": "1c6f49dfd3ce4964a1399740e280d41b79defe6cb183043450716adfcdf1f785",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-38.png",
+        "sha256": "ba3223b324cd2df9cc58c83218ae2b3b73d8f83fad3507964a6204cc0a6a8e8d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-39.png",
+        "sha256": "3a1c38ee2f234b1ae8d34f7c07fbe3b9d5523ddea12cb685e2d0de81b5cd35ef",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-40.png",
+        "sha256": "38298a2c5917914a62eb5512ce509bb51ef49d68c202190c1987b941cbd4827e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-41.png",
+        "sha256": "f0a31c2aa337842dc55c2837d0b17a15bdfa9c08f773ddf73d7e0f24253114b4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-42.png",
+        "sha256": "2ccc4f46e765da7e59f021d7c2cd7cce0f9c032c1ebfd9507c0dc39986840786",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-43.png",
+        "sha256": "d8b6313ce775e15974ed2ae46220e56d8244d32cbffae8a59580a1c275a68675",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-44.png",
+        "sha256": "8cfac7c5f2d8f78fe3794962743a3d04eb415e18380e61fdb226cedf14308431",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-45.png",
+        "sha256": "a4c003705726b27b3fcb74099840e159a03a279948ac3520e8999e6cdced6d1d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-46.png",
+        "sha256": "4c8eaca53c2bf5d20721525138ef2b376167e3d0bc62275aef241872e47484e0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-47.png",
+        "sha256": "e8efa92a923e1d29ad1b51cc2a5da0dc8aeda90ddcdf49d6e819fe0c9c88f057",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-48.png",
+        "sha256": "42bb917c18a2bb5256afcb19299ba072194bb4ee8ad27b5466b57e093d5d972e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-49.png",
+        "sha256": "00c48d0bcdf1d85471028052164a72ddfea53e13144adfa04c56cb1361fffce6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-50.png",
+        "sha256": "5df43b0d24a9a823e6c73e3f267657730e7860a4ab2b6bdf1f16c388f575208f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-51.png",
+        "sha256": "6fc0ca20c85aad62462b4896299356d5a38aed10c3168ded7f26682ed14d6af3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-52.png",
+        "sha256": "6efaf9317e65fb1250cc868e26b62a336b37c9dfd9b975fec1d9cb41f86bf3a1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-53.png",
+        "sha256": "a131b3b8f1c8c552716759dbda58e2f0b007f9be58cd8ecb43d29b26dabadc6d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-54.png",
+        "sha256": "14683fb4d3d6f6cd132062e2686c8c4d9830f750981d898458ffc334ed8b8bb6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-55.png",
+        "sha256": "e4c6e0424d5a21d4c58a890cdf9104ab7e31ba6a7cb41c83d1e84a908365554a",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-56.png",
+        "sha256": "af03a2dd561241f54be26e2ebc793fc2c00735245bdbfaa6a3d2a719229459cc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-57.png",
+        "sha256": "329e42a5bee80cd4df6ab3cd5c07ece9077ff76223ac3ebe8cf6f5980a584e57",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-58.png",
+        "sha256": "8b395c3419c45951a9261665ad65dcaf4d6cfa7c2577b260f66dcdef6facbf8e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-59.png",
+        "sha256": "e133f05f337cbde352b9cb1ad7d77c8f342d08c9462cc41b321fb46b60c9a4d6",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-60.png",
+        "sha256": "e667361db24626a37f4f2b63abe7481debe608216e3735f856da097b2b0fa138",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-61.png",
+        "sha256": "aea3bf88c3c77741db67256f66fac418da185c43d655d2cb2e2284f76d2fe002",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-62.png",
+        "sha256": "77526a44e1ef905b117754daffbd50aa7443b8f37321347e6da120dd670b9def",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "egypt-v2a-63.png",
+        "sha256": "99c430822eaa42aa5d26597b2a468ebfd69544f72079181b30557b2420e10daf",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "cave-v2a": {
+    "id": "cave-v2a",
+    "status": "DONE",
+    "endpoint": "generate-image-v2",
+    "jobId": "f055d694-7882-4ac5-a17c-bdfd8cb0ebbe",
+    "submittedAt": "2026-11-01T14:13:46.584Z",
+    "request": {
+      "endpoint": "generate-image-v2",
+      "layers": [
+        {
+          "source": "fragments/class-terrain.txt",
+          "text": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: dark prehistoric cave floor seen from above: uneven dark purple-brown rock and packed earth with a few small pebbles and shallow cracks, the same even texture over the whole image, no bricks."
+        }
+      ],
+      "style_image": {
+        "source": "file art/refs/wall-prehistoric-x2.png sha256 37398e37f6adf183bbb4746df0af43be7af08063523a5359307c722ead264de1",
+        "usage": "copy only the pixel size, lineless look and flat shading of this tileset; do not copy the bricks or the colours; draw the floor described"
+      },
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": false,
+      "seed": 2411,
+      "target_palette": {
+        "name": "dark cave floor",
+        "colors": [
+          "#160f1b",
+          "#1e1524",
+          "#271b2d",
+          "#302236",
+          "#3a2940",
+          "#45314a"
+        ]
+      },
+      "style_options": {
+        "color_palette": false,
+        "outline": true,
+        "detail": true,
+        "shading": true
+      },
+      "description": "Class: a wide patch of ground seen straight from above, for the floor of a 16x16 top-down fantasy roguelike: an even, repeating ground texture that fills the whole image edge to edge with the same pattern everywhere, no single centre motif, very dark and low contrast (a night-time dungeon floor that small bright sprites must read on), chunky 2x2 pixel clusters, flat colours with one shade step, light from the upper left, no dithering noise, no anti-aliasing. Subject: dark prehistoric cave floor seen from above: uneven dark purple-brown rock and packed earth with a few small pebbles and shallow cracks, the same even texture over the whole image, no bricks. Must not include: border, frame, tile edge, square outline, medallion, circle, vignette, wall, character, creature, object, text, letters, watermark, bright highlight, light spot, gradient."
+    },
+    "at": "2026-11-01T14:15:49.690Z",
+    "candidates": [
+      {
+        "file": "cave-v2a-0.png",
+        "sha256": "b21f3e60a58b6e2b439c1d34ff848ca9a647dd116a796cff78885b643f03b30d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-1.png",
+        "sha256": "7f4176de44a6ec23342929d47e2a75ffc8239e0cee069af875a6cf7634bb6041",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-2.png",
+        "sha256": "92d6a5b558dda306b6aad0e232920a37d386fc99614bcb8c4afcdcce53c7c8ab",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-3.png",
+        "sha256": "37287891bb821eca7cabc8a9cd9506b68075372884c0ce3126c59b95c6ba2b34",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-4.png",
+        "sha256": "b21677fb92c3019e14ec4b6973012f562ce4ebc17388b89886b7d7be7301c3d5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-5.png",
+        "sha256": "f985dd436a7fb2accef29c054ca8e55fbc804242c76fc89c0e6fb01cf98322aa",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-6.png",
+        "sha256": "1b1220731df4fc8b5af48b7f98e81ca35a0f24c65d713ddeed12b41f3c59dcba",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-7.png",
+        "sha256": "7b442c0d561eb64ca86a40edfc0a7bddc1a6b23ccb18120c08706da3f7cf7903",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-8.png",
+        "sha256": "c4a4e7b1c847273e75e44069b0244097f07125ba8e5750f58a74af33f7a79589",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-9.png",
+        "sha256": "6a7cc443e8d9642cb9331d9593838e4cfa24dc52165da0be7ea4b71a2a1f1ef5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-10.png",
+        "sha256": "ebae173baa3f03f8b03e869571f360817294a26b76067a469d17488bce89c621",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-11.png",
+        "sha256": "79043114bf673ac90f790a776725e0513e747fea76e18af0a694f9479998745d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-12.png",
+        "sha256": "4263112e79a30a4447ba6d11c66d088567b4fe63d25304f67aa57e7d7b0897a5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-13.png",
+        "sha256": "c340563f4b599a8b0a0fefdf26b2ad9161191f919a5cd22e3ce053854175c5d3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-14.png",
+        "sha256": "bd31b524b5b5336a465a489698a7cd246d67276376698bdd35a1c655126846e8",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-15.png",
+        "sha256": "aafec607be669d3da6832125f3336da0ec2468b332f80e707fb2f7742f6191b2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-16.png",
+        "sha256": "80f63f1f300f01dc973b468d79db0a564e5e4ecfe7fc35d4b738f4ea31a0293f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-17.png",
+        "sha256": "6ed3a523b89b6fdd71134023c7a5d6e07ba75427cee54314a73c13bdedcb51cf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-18.png",
+        "sha256": "27a404e49756b71a24a8bc3f323943c4e98c0e9d51b5dd6e86f38252d1128f81",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-19.png",
+        "sha256": "72bd2e898f123bcfebce9749780134b5c795bf8c0c368b3a6b16082766a81f35",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-20.png",
+        "sha256": "a50901a47e35d20ba34ebd3769b6ff8982868a8b49eccf47fddf6e591aa33293",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-21.png",
+        "sha256": "d39c73b95ea27d030ca4c822c1ae34cadc28b0794e9b90f421f22b037f801a83",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-22.png",
+        "sha256": "e7fd62b73a102382224ca8ace27994dfd1a9653c5b93d5889a4ff83ddf03ec20",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-23.png",
+        "sha256": "b75d2642774f52b8ffa7075caeefeb85262bc11319810cc31aa90753c1538db9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-24.png",
+        "sha256": "be9944952b80268d71c01f1616b29fe373fceefef71e5288d0858d4a30f6a0dd",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-25.png",
+        "sha256": "ecdb50e94f56f5add65548bce9947334892fe9e29ec7472bb5a26056cac90303",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-26.png",
+        "sha256": "1ddeaf55eef397ab053401398faf002f4aafcca20607fb7e55d8f5e1d309046e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-27.png",
+        "sha256": "a1cb7d51872dcc1f41979e6127e5f9607a943cdccbfd12efce41af1b44f87a36",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-28.png",
+        "sha256": "a826183d8547824988d045e5cd0ce6d7c410a9ef5ac475dbac3e7b15cd7970ab",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-29.png",
+        "sha256": "dde9b5091b5a1362b564e6964b685e1137c34809a1fc73e1dfaecb053dfbb9cf",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-30.png",
+        "sha256": "4428e344f83d6bb7d1294451f2ff7a2bedb54833bf6df66fe20fe2bc5f39ec74",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-31.png",
+        "sha256": "c78252ae9f3a607807c32567cd147104d20c10af2a95e18b907da03069b407c7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-32.png",
+        "sha256": "866c955eb76f480474b29fffe99e74f1ad6047ff6e8f684986267de61b8e7ea7",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-33.png",
+        "sha256": "160d2b0e7375f813239363196702d1dfa0980934ce2da0c4aa138881f2c75822",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-34.png",
+        "sha256": "7826022313c958fa523b4766bf54def3845fa9cabf568d5e3ab62e77da3d701d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-35.png",
+        "sha256": "ba662ce55c34b7ec183f2eeba60118fa04813277fd408bf9bfe24909c9c44ebb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-36.png",
+        "sha256": "b13fb29c6d5a399e383e570991257e89568d68b6220f7b04d1bc260d6c975e62",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-37.png",
+        "sha256": "8119f08978f5486452251afac930b5dad0dd94ce88d75367486e9e5d9f1884ab",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-38.png",
+        "sha256": "9205150fbef6cfe4fe87ed41ecf9ce4ab73f5e57c39346e448b7f312d12c8e48",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-39.png",
+        "sha256": "94ef1fb4151a710120b486b305b647aed49497a8c0a42554a0e8458ae89330b3",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-40.png",
+        "sha256": "f59b2f718cf6a7c706d474d39aa480c69ba3c9f3cc90943e05983a5a77530ab0",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-41.png",
+        "sha256": "709a38e4f6810ad393ee0e1d719e6dd7a68c670f3c5ae61bddd8941fbab89045",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-42.png",
+        "sha256": "41a639a84727baec400976caadc8ba815bba55e63a50cc5c8f21349f2ca4ae79",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-43.png",
+        "sha256": "a4c1ba5543a9cd432149a9443980012f12734f13a4566af5eb34080dbed72934",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-44.png",
+        "sha256": "2456e04798726c6f35b28c5b6266c71ecf95626a73b9f5d42c69dc20989d52f1",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-45.png",
+        "sha256": "9b20b31bc75b771b7cb2e93a35ba1f0a010b204d07b4d36f2d01ad0d74dabd6e",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-46.png",
+        "sha256": "f6f70f850d3c030e18b9b46a0908cdf0a52a053dfde90dabe98a375f6fd7d9c4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-47.png",
+        "sha256": "cb4e16bc9072571dcf24392d1f5b3ce228f020eeb56d11d32c387dd10cbe73f5",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-48.png",
+        "sha256": "029baf5e8eefa2be8b8d406c7106c3901e791d4f511b99124cae955a4d313888",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-49.png",
+        "sha256": "38498fa8a43718b9aa80037b510a10390eb164acab2244c49733ca663cd0cb52",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-50.png",
+        "sha256": "aed2f854f9d6167376d7b2ba0094686b32d0b52c7c977f09cfde8db38893b2c9",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-51.png",
+        "sha256": "ee0b033ac3de84858eba8f21b094a6b851176d4db03f19cfc6c6cf098226bbeb",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-52.png",
+        "sha256": "cab819011c95bb23e49a8b83f2e10465c01be8419a7a2f1464fedf17fe8c9a83",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-53.png",
+        "sha256": "26673ff14e7be5df376acd6ed51e4bd30aa73acf5ca35a6d4acef043228802cc",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-54.png",
+        "sha256": "a936ac7ead45afc5f8646b155803f1df4046d598f9e9ee7c83955e796199565f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-55.png",
+        "sha256": "9a664f6bdea664dce74d59faafa20c518aceec5c4371366b7b05180779d8a98f",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-56.png",
+        "sha256": "2ac6eee1a7fcee4e78bf33b2995e8fdfa4936b6d87bebbb2360085610fdd0b85",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-57.png",
+        "sha256": "5dd340c27411530937d7c3dbf964943071e7308741abff5f69176dfd7bbfa27d",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-58.png",
+        "sha256": "80d86489650964261941db38869cec79cafea83b85006b40ceae08aaab9ce9d2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-59.png",
+        "sha256": "d109d82087237643e386be6b43403c0ad845631c2e89321aa228525bb8f7e3b4",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-60.png",
+        "sha256": "c8151dc06930e40066f51f0a8d015944b6d78d927d81835ef4aab3c4ca372d6b",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-61.png",
+        "sha256": "b0b5799f55a899842f25de450e3c3fae05c1b9ff86ca991e5a3923f7e9928f14",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-62.png",
+        "sha256": "9694d40e2f4bf473e68c6f0b60fd6737669e6792e57292240675ad1ab85caab2",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "file": "cave-v2a-63.png",
+        "sha256": "d3348a17ded3232ae41596170dea5973cbbb00c4642db1eac613fee873b22798",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  }
+}

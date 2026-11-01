@@ -1,0 +1,122 @@
+{
+  "key-a": {
+    "id": "key-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-ff6c1124-676f-4ce2-bea2-f86aa8a54931",
+    "submittedAt": "2026-11-01T14:10:54.003Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-icon.txt",
+          "text": "Class: one bold item sprite for a browser favicon in the style of a cute chunky 16x16 fantasy dungeon tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: a single simple object with a big clear silhouette built from 2x2 pixel blocks, no 1-pixel-thin details, a single dark purple outline #332745 all around so it reads on both a white and a near-black browser tab, flat colours with one shade step, light from the upper left, saturated mid-tone colours, 3-5 colours, no dithering, no anti-aliasing, the object fills most of the canvas with 1 pixel of margin and floats alone on a transparent background."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a chunky golden dungeon key lying diagonally from the bottom left to the top right: a big round ring bow with a round hole at the top right, a thick short shaft, and a bit with two square teeth at the bottom left; gold #ffe250 with orange-gold #ffbd51 shade on the lower right and a cream #fcfff1 glint on the upper left of the ring."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 3101,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Class: one bold item sprite for a browser favicon in the style of a cute chunky 16x16 fantasy dungeon tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: a single simple object with a big clear silhouette built from 2x2 pixel blocks, no 1-pixel-thin details, a single dark purple outline #332745 all around so it reads on both a white and a near-black browser tab, flat colours with one shade step, light from the upper left, saturated mid-tone colours, 3-5 colours, no dithering, no anti-aliasing, the object fills most of the canvas with 1 pixel of margin and floats alone on a transparent background. Subject: a chunky golden dungeon key lying diagonally from the bottom left to the top right: a big round ring bow with a round hole at the top right, a thick short shaft, and a bit with two square teeth at the bottom left; gold #ffe250 with orange-gold #ffbd51 shade on the lower right and a cream #fcfff1 glint on the upper left of the ring. Must not include: background, round frame, badge, circle behind the object, ground plate, cast shadow, text, letters, watermark, multiple objects, gore, blood."
+    },
+    "at": "2026-11-01T14:10:54.006Z",
+    "candidates": [
+      {
+        "file": "key-a-0.png",
+        "sha256": "d49e35a2edbbd1d136cfb012073c99d0fe6dba8ac06f9fce688457066d66df88",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "key-b": {
+    "id": "key-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-5c39ee5b-acb0-4a42-9e5b-a12d1a698d59",
+    "submittedAt": "2026-11-01T14:11:25.255Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-icon.txt",
+          "text": "Class: one bold item sprite for a browser favicon in the style of a cute chunky 16x16 fantasy dungeon tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: a single simple object with a big clear silhouette built from 2x2 pixel blocks, no 1-pixel-thin details, a single dark purple outline #332745 all around so it reads on both a white and a near-black browser tab, flat colours with one shade step, light from the upper left, saturated mid-tone colours, 3-5 colours, no dithering, no anti-aliasing, the object fills most of the canvas with 1 pixel of margin and floats alone on a transparent background."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an old golden key standing diagonally, ring at the top right and teeth at the bottom left, very thick and chunky like a toy, gold #ffe250 with #ffbd51 shade and one cream #fcfff1 highlight."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 3102,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Class: one bold item sprite for a browser favicon in the style of a cute chunky 16x16 fantasy dungeon tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: a single simple object with a big clear silhouette built from 2x2 pixel blocks, no 1-pixel-thin details, a single dark purple outline #332745 all around so it reads on both a white and a near-black browser tab, flat colours with one shade step, light from the upper left, saturated mid-tone colours, 3-5 colours, no dithering, no anti-aliasing, the object fills most of the canvas with 1 pixel of margin and floats alone on a transparent background. Subject: an old golden key standing diagonally, ring at the top right and teeth at the bottom left, very thick and chunky like a toy, gold #ffe250 with #ffbd51 shade and one cream #fcfff1 highlight. Must not include: background, round frame, badge, circle behind the object, ground plate, cast shadow, text, letters, watermark, multiple objects, gore, blood."
+    },
+    "at": "2026-11-01T14:11:25.257Z",
+    "candidates": [
+      {
+        "file": "key-b-0.png",
+        "sha256": "d35fd0ec650e487ac5defc17653498880843bb72386f0cf621d81c16d29ca15d",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "skull-a": {
+    "id": "skull-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-4eb04561-5db2-4265-9e9e-92f6297f9140",
+    "submittedAt": "2026-11-01T14:11:49.776Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-icon.txt",
+          "text": "Class: one bold item sprite for a browser favicon in the style of a cute chunky 16x16 fantasy dungeon tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: a single simple object with a big clear silhouette built from 2x2 pixel blocks, no 1-pixel-thin details, a single dark purple outline #332745 all around so it reads on both a white and a near-black browser tab, flat colours with one shade step, light from the upper left, saturated mid-tone colours, 3-5 colours, no dithering, no anti-aliasing, the object fills most of the canvas with 1 pixel of margin and floats alone on a transparent background."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a cute chunky cartoon skull seen from the front, round cranium and a small jaw with three square teeth, bone cream #e3e8c5 with white #fcfff1 highlight on the upper left and pale blue #95b9d6 shade on the lower right, two big dark eye sockets #332745 and a small dark nose hole."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 3201,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Class: one bold item sprite for a browser favicon in the style of a cute chunky 16x16 fantasy dungeon tileset, drawn on a 32x32 canvas so it halves cleanly to 16x16: a single simple object with a big clear silhouette built from 2x2 pixel blocks, no 1-pixel-thin details, a single dark purple outline #332745 all around so it reads on both a white and a near-black browser tab, flat colours with one shade step, light from the upper left, saturated mid-tone colours, 3-5 colours, no dithering, no anti-aliasing, the object fills most of the canvas with 1 pixel of margin and floats alone on a transparent background. Subject: a cute chunky cartoon skull seen from the front, round cranium and a small jaw with three square teeth, bone cream #e3e8c5 with white #fcfff1 highlight on the upper left and pale blue #95b9d6 shade on the lower right, two big dark eye sockets #332745 and a small dark nose hole. Must not include: background, round frame, badge, circle behind the object, ground plate, cast shadow, text, letters, watermark, multiple objects, gore, blood."
+    },
+    "at": "2026-11-01T14:11:49.778Z",
+    "candidates": [
+      {
+        "file": "skull-a-0.png",
+        "sha256": "2e98a757479cc8cdf98a0a5827cf41ff37a3cade0bd2c34953dd73b723d0502b",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  }
+}
