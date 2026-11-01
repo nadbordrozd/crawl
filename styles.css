@@ -110,6 +110,7 @@ canvas {
 }
 
 #music-toggle-button,
+#sfx-toggle-button,
 #instructions-toggle-button,
 #about-toggle-button,
 #leaderboard-button,
@@ -125,6 +126,7 @@ canvas {
 }
 
 #music-toggle-button:hover,
+#sfx-toggle-button:hover,
 #instructions-toggle-button:hover,
 #about-toggle-button:hover,
 #leaderboard-button:hover,

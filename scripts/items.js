@@ -34,11 +34,13 @@ Item.prototype.pickup = function(player) {
     
     // Try to add to inventory
     if (player.addToInventory(this)) {
+        Sfx.play("pickup.item");
         Game.message("You picked up a " + this._name + "!");
         // Remove from map only if successfully added to inventory
         this._removeFromMap();
     } else {
         Game.message("Your inventory is full! You cannot pick up the " + this._name + ".");
+        Sfx.play("ui.denied");
         // Item stays on the map since it wasn't picked up
     }
 }
@@ -78,6 +80,7 @@ HealthPotion.prototype.use = function(player) {
         var healed = player._maxHealth - player._health;
         player._health = player._maxHealth;
         Effects.heal(player, healed);
+        Sfx.play("item.potion");
         
         // Show enhanced message with current health
         Game.message("You drink a healing potion! Health fully restored: " + player._health + "/" + player._maxHealth + " ♥");
@@ -101,6 +104,7 @@ GoldKey.prototype.interact = function(player) {
     player._keysCollected++;
     
     Effects.goldBurst(this._x, this._y, true);
+    Sfx.play("pickup.key");
     if (player._keysCollected === 3) {
         Effects.exitUnlocked();
     }
@@ -131,6 +135,7 @@ Bomb.prototype.use = function(player) {
 
     // Fireball, shockwave, embers and smoke over the blast square (effects.js)
     Effects.explosion(playerX, playerY, radius);
+    Sfx.play("bomb.explode");
 
     // Damage every enemy inside the blast square by position, so ghosts and reapers
     // inside walls are hit too. Iterate a copy: killed enemies leave Game.enemies.
@@ -177,8 +182,10 @@ Exit.prototype.constructor = Exit;
 // Override interact method for exit
 Exit.prototype.interact = function(player) {
     if (player.getKeysCollected() >= 3) {
+        Sfx.play("exit.open"); // nextLevel follows it with level.complete (or game.win)
         Game.nextLevel();
     } else {
+        Sfx.play("exit.locked");
         Game.message("You need to collect all 3 keys to unlock the exit!");
     }
     
@@ -222,6 +229,7 @@ GoldCoin.prototype.interact = function(player) {
     // Increment player's coin counter
     player._coinsCollected++;
     Effects.goldBurst(this._x, this._y, false);
+    Sfx.play("pickup.coin");
     
     Game.message("You collected a gold coin! Gold: " + player._coinsCollected);
     Game._drawStats(); // Update status bar
@@ -242,6 +250,7 @@ Drumstick.prototype.use = function(player) {
     if (player._health < player._maxHealth) {
         player._health += 1;
         Effects.heal(player, 1);
+        Sfx.play("item.eat");
         Game.message("You eat the drumstick! Health restored: " + player._health + "/" + player._maxHealth);
     } else {
         Game.message("You're already at full health! You save the drumstick for later.");
@@ -262,6 +271,7 @@ Heart.prototype.interact = function(player) {
     player._maxHealth += 1;
     player._health += 1; // Also restore 1 current health
     Effects.heartPulse(player);
+    Sfx.play("powerup.heart");
     
     Game.message("You found a heart! Maximum health increased to " + player._maxHealth + "!");
     
@@ -292,6 +302,7 @@ SummoningRing.prototype.use = function(player) {
         // Add the unicorn to the scheduler so it can take turns
         Game.engine._scheduler.add(unicorn, true);
         Effects.summon(unicorn);
+        Sfx.play("summon.unicorn");
         
         Game.message("The ring glows and summons a majestic unicorn to aid you!");
         Game._drawAll(); // Update the display to show the new unicorn
@@ -355,6 +366,7 @@ ScrollOfRevelation.prototype.use = function(player) {
     Game.message("The scroll glows with ancient magic! All accessible areas are revealed to you!");
     Game._drawAll(); // Redraw to show the newly revealed areas
     Effects.reveal(player.getX(), player.getY());
+    Sfx.play("scroll.reveal");
     
     // Optional: Add a visual effect message about how much was revealed
     if (tilesRevealed > 0) {
@@ -374,6 +386,7 @@ Belt.prototype.interact = function(player) {
     // Check if player already has maximum inventory slots
     if (player.INVENTORY_SIZE >= 9) {
         Game.message("You found a belt, but you already have maximum inventory capacity!");
+        Sfx.play("ui.denied");
         return; // Don't remove the belt from the map
     }
     
@@ -383,6 +396,7 @@ Belt.prototype.interact = function(player) {
     // Expand the actual inventory array with a new null slot
     player._inventory.push(null);
     Effects.glow(player);
+    Sfx.play("powerup.belt");
     
     Game.message("You found a belt! Your inventory capacity increased to " + player.INVENTORY_SIZE + " slots!");
     Game._drawAll(); // Update the display to show the new inventory slot

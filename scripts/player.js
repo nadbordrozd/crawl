@@ -46,6 +46,7 @@ Player.prototype.applyStoneSkin = function() {
     this._isInvulnerable = true;
     this._invulnerabilityTurns = this.INVULNERABILITY_DURATION;
     this._updateAppearance();
+    Sfx.play("status.stoneskin");
     Game.message("You drink the potion and your skin turns to stone!");
     Game._drawAll(); // Update status bar
 };
@@ -56,6 +57,7 @@ Player.prototype.applySpeedBoost = function() {
     this._speed = 300; // Increase speed when fast
     this._speedBoostTurns = this.SPEED_BOOST_DURATION;
     this._updateAppearance();
+    Sfx.play("status.speed");
     Game.message("You feel yourself moving faster!");
     Game._drawAll(); // Update status bar
 };
@@ -134,6 +136,7 @@ Player.prototype.act = function() {
     // Update appearance when any status changes
     if (statusChanged) {
         this._updateAppearance();
+        Sfx.play("status.expire"); // once, even if both wear off together
     }
 
     Game._drawAll();
@@ -176,12 +179,16 @@ Player.prototype.handleEvent = function(e) {
         // Only allow using slots that exist for this player
         if (slotIndex >= this.INVENTORY_SIZE) {
             Game.message("You don't have inventory slot " + (slotIndex + 1) + " yet!");
+            Sfx.play("ui.denied");
         } else if (this._inventory[slotIndex] === null) {
             Game.message("No item in slot " + (slotIndex + 1) + " to use.");
+            Sfx.play("ui.denied");
         } else if (this.useInventoryItem(slotIndex)) {
             Game.message("You used the item from slot " + (slotIndex + 1) + "!");
             this._endTurn();
             return;
+        } else {
+            Sfx.play("ui.denied"); // the item refused to be used (e.g. full health)
         }
         // Nothing was used (the item explains why itself): keep waiting for input
         Game._drawAll();
@@ -207,7 +214,10 @@ Player.prototype.handleEvent = function(e) {
     var dir = ROT.DIRS[8][keyMap[code]];
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
-    if (!Game.isPassableTile(newX, newY)) { return; } // Bumping a wall takes no turn
+    if (!Game.isPassableTile(newX, newY)) { // Bumping a wall takes no turn
+        Sfx.play("ui.denied");
+        return;
+    }
 
     // Check for enemies at the target position
     var targetEnemy = Game.getBeingAt(newX, newY);
@@ -228,6 +238,7 @@ Player.prototype.handleEvent = function(e) {
         Game.currentLevel.map[newX][newY].being = this;
         Game.currentLevel.map[oldX][oldY].being = ally;
         this._steps++;
+        Sfx.play("player.step");
 
         // Check for items to pick up at the new position
         this._checkForItems();
@@ -300,6 +311,7 @@ Player.prototype._checkForItems = function() {
 // Override die method for Player-specific behavior
 Player.prototype.die = function() {
     Effects.clear();
+    Sfx.play("game.over");
 
     // Call parent die method for basic cleanup (clear display, remove from scheduler)
     Being.prototype.die.call(this);

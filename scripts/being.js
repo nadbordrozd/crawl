@@ -38,6 +38,7 @@ Being.createRandom = function(BeingClass, freeCells) {
 Being.prototype._moveTo = function(newX, newY) {
     if (this === Game.player) {
         Effects.playerMoved(this._x, this._y, newX, newY); // speed trail
+        Sfx.play("player.step");
     }
 
     // Remove from old position
@@ -70,6 +71,8 @@ Being.prototype.takeDamage = function(damage) {
     // If invulnerable, take no damage
     if (this._isInvulnerable) {
         Effects.blocked(this);
+        // StoneSkin: the blow lands on stone, a quieter thud than a real hit
+        Sfx.play("hit.enemy", {volume: 0.5});
         return false; // Not killed
     }
     
@@ -83,6 +86,11 @@ Being.prototype.takeDamage = function(damage) {
     if (this !== Game.player || this._health > 0) {
         Effects.hit(this, damage, this._health <= 0);
     }
+    if (this === Game.player) {
+        if (this._health > 0) { Sfx.play("hit.player"); } // a lethal hit gets game.over instead
+    } else if (this._health > 0) {
+        Sfx.playAt("hit.enemy", this._x, this._y);
+    }
     
     if (this._health <= 0) {
         // Special handling for player death - use immediate cleanup
@@ -95,6 +103,7 @@ Being.prototype.takeDamage = function(damage) {
         // For enemies: Mark as dead immediately (becomes a "ghost")
         this._isDead = true;
         Effects.death(this);
+        Sfx.playAt("enemy.death", this._x, this._y); // rate limit: one poof per bomb
         
         // Remove from scheduler immediately (dies mechanically)
         Game.engine._scheduler.remove(this);
@@ -151,6 +160,7 @@ Being.prototype.die = function() {
 Being.prototype.playAttackAnimation = function(target) {
     this._isAttacking = true;
     Effects.slash(this, target || Game.player);
+    this._playAttackSound(target || Game.player);
     Game._drawAll();
 
     // Use the global animation system
@@ -158,6 +168,30 @@ Being.prototype.playAttackAnimation = function(target) {
     Game.queueAnimation(function() {
         self._isAttacking = false;
     });
+}
+
+// Creature cues when an enemy attacks the player, at most once per 2 s per cue
+Being.ATTACK_CUES = {
+    "frog": "frog.croak",
+    "mad frog": "frog.croak",
+    "zombie": "zombie.groan",
+    "ghost": "ghost.wail",
+    "reaper": "ghost.wail",
+    "troll": "troll.roar"
+};
+Being.ATTACK_CUE_INTERVAL = 2000;
+
+Being.prototype._playAttackSound = function(target) {
+    if (this === Game.player) {
+        Sfx.play("player.attack");
+    } else if (this._isAlly) {
+        Sfx.playAt("unicorn.attack", this._x, this._y);
+    } else if (target === Game.player) {
+        var cue = Being.ATTACK_CUES[this._name];
+        if (cue) {
+            Sfx.play(cue, {minInterval: Being.ATTACK_CUE_INTERVAL});
+        }
+    }
 }
 
 Being.prototype.playDamageAnimation = function() {

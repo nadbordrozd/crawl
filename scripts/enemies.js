@@ -912,6 +912,10 @@ Imp.prototype.act = function() {
     
     // Teleport to chosen position
     if (targetPosition) {
+        // Heard only when the player can see the imp leave or arrive
+        if (Sfx.canSee(this._x, this._y) || Sfx.canSee(targetPosition.x, targetPosition.y)) {
+            Sfx.play("imp.teleport");
+        }
         this._moveTo(targetPosition.x, targetPosition.y);
     }
     // If no viable positions, imp stays in place

@@ -140,6 +140,9 @@ var Game = {
             music.play();
         });
         // --- END NEW ---
+
+        // Sound effects toggle (scripts/sfx.js), remembered in localStorage
+        Sfx.bindToggle(document.getElementById("sfx-toggle-button"));
     },
 
     _initTileDisplay: function() {
@@ -696,6 +699,7 @@ var Game = {
         this.message("You have advanced to level " + this.levelNumber + "!");
         Effects.clear();
         Effects.fade();
+        Sfx.play("level.complete", {delay: 0.8}); // after the exit.open from the gate
         this._drawAll();
         this.engine.unlock();
     },
@@ -703,6 +707,7 @@ var Game = {
     _gameWon: function() {
         this.engine.lock();
         Effects.stop();
+        Sfx.play("game.win", {delay: 0.8}); // after the exit.open from the gate
         
         // Clear the tile display
         if (this.display) {
