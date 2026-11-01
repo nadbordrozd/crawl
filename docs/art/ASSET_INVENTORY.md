@@ -24,4 +24,28 @@ Where images are referenced (file: references):
 
 ## Refresh notes
 
-- (awaiting the user's direction)
+The atlas `assets/tileset.png` (1744x736) is a third-party pack; the game uses
+127 named 16x16 cells (`scripts/sprites.js`). Reviewed 2026-11-01 on one
+contact sheet (native and x4, light and dark). Classes: **creatures**,
+**items**, **terrain** (walls in 4 themes, floors, decorations), **effects**,
+**UI** (hearts, slot placeholder).
+
+- **Keep (fit the pack, cute and readable):** player, frog, mad frog, rat,
+  scorpion, cobra, carnivorous plant (audrey_2), imp, reaper, skeleton, orc,
+  unicorn, assassin; all items (potions, key, coin, bomb, drumstick, heart,
+  rings, scroll, belt, shield, gate); all four wall sets; graves, bones and
+  themed decorations; hearts UI.
+- **Replace (crawl-wup.1):** flaming_horse (unreadable orange blob), ninja
+  (featureless red silhouette), ghost (flat blue smear), troll (reads as a
+  yellow robot), zombie (too dark on the dark floor).
+- **New (crawl-wup.2):** themed floors. Every level uses `dirt18`; add
+  default, graveyard, Egyptian sand and prehistoric cave floors.
+- **Effects (crawl-wup.5):** `attack_effect` (a sword pasted over the
+  attacker), `blood_splatter`, `blue_halo`/`green_halo` (flat rings) and
+  `explosion` (one small fireball per tile) become canvas animation.
+- **Broken cells (crawl-ba8.13):** `t_wall_green`/`reverse_t_wall_green`
+  point at empty cells; `t_wall_prehistoric` reuses the NE corner;
+  `transparent` aliases the explosion.
+- **Unused:** spider, snake, diamond, sword, tower, flame, puddle, ring_1,
+  ring_3, many dirt variants.
+- Order: creatures, floors, favicon, then effects (code).
