@@ -30,7 +30,7 @@ Assassin.prototype.act = function() {
     // player is unreachable, so wait.
     var isAdjacent = Math.abs(this._x - x) + Math.abs(this._y - y) === 1;
     if (isAdjacent) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("The Assassin strikes you!");
         Game.player.takeDamage(this._strength);
     } else if (path.length === 0) {
@@ -97,7 +97,7 @@ Frog.prototype.act = function() {
         
         // Check if the destination tile is occupied by the player
         if (targetBeing === Game.player) {
-            this.playAttackAnimation();
+            this.playAttackAnimation(Game.player);
             Game.message("A frog leaps at you and attacks!");
             Game.player.takeDamage(this._strength);
             return; // End turn after attacking
@@ -159,7 +159,7 @@ Rat.prototype.act = function() {
         
         // Check if the tile is occupied by the player
         if (targetBeing === Game.player) {
-            this.playAttackAnimation();
+            this.playAttackAnimation(Game.player);
             Game.message("A rat bites you!");
             Game.player.takeDamage(this._strength);
             return; // End turn after attacking
@@ -205,7 +205,7 @@ CarnivorousPlant.prototype.act = function() {
         // Check if the player is at this adjacent position
         var targetBeing = Game.getBeingAt(checkX, checkY);
         if (targetBeing === Game.player) {
-            this.playAttackAnimation();
+            this.playAttackAnimation(Game.player);
             Game.message("The Carnivorous Plant snaps at you!");
             Game.player.takeDamage(this._strength);
             return; // End turn after attacking
@@ -301,7 +301,7 @@ MadFrog.prototype._tryJump = function(dir) {
     
     // Check if the destination tile is occupied by the player
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A mad frog leaps at you furiously!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -401,7 +401,7 @@ Scorpion.prototype._tryMove = function(dir) {
     
     // If the destination is the player, attack but don't move
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A Scorpion stings you viciously!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -591,7 +591,7 @@ Ghost.prototype._tryGhostMove = function(dir) {
     
     // If the destination is the player, attack
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A ghost phases through the wall and attacks you!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -720,7 +720,7 @@ Cobra.prototype._tryCobraMove = function(dir) {
     
     // If the destination is the player, attack
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A cobra strikes at you diagonally!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -821,7 +821,7 @@ Zombie.prototype._tryZombieMove = function(dir) {
     
     // If the destination is the player, attack but don't move
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A zombie lurches forward and bites you!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -858,7 +858,7 @@ Imp.prototype.act = function() {
     
     // Check if player is within attack range (adjacent)
     if (currentDistance === 1) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("An imp teleports next to you and attacks!");
         Game.player.takeDamage(this._strength);
         return;
@@ -944,7 +944,7 @@ Reaper.prototype._tryGhostMove = function(dir) {
     
     // If the destination is the player, attack
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A reaper phases through the wall and attacks you with deadly force!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -995,7 +995,7 @@ Skeleton.prototype.act = function() {
         
         if (checkX === playerX && checkY === playerY) {
             // Player is adjacent, attack!
-            this.playAttackAnimation();
+            this.playAttackAnimation(Game.player);
             Game.message("A skeleton rattles its bones and attacks you!");
             Game.player.takeDamage(this._strength);
             return;
@@ -1211,7 +1211,7 @@ Orc.prototype._tryOrcMove = function(dir) {
     
     // If the destination is the player, attack
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("An orc swings its weapon at you with brutal force!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -1402,7 +1402,7 @@ Unicorn.prototype._tryUnicornMove = function(dir) {
     
     // If the destination has another creature (enemy), attack it
     if (targetBeing && targetBeing !== this) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(targetBeing);
         Game.message("A unicorn charges at the " + targetBeing.getName() + " to defend you!");
         var killed = targetBeing.takeDamage(this._strength);
         if (killed) {
@@ -1516,7 +1516,7 @@ Troll.prototype._tryTrollMove = function(dir) {
     
     // If the destination is the player, attack
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A massive troll pounds you with its giant fists!");
         Game.player.takeDamage(this._strength);
         return true;
@@ -1630,7 +1630,7 @@ FlamingHorse.prototype._tryFlamingHorseMove = function(dir) {
     
     // If the destination is the player, attack
     if (targetBeing === Game.player) {
-        this.playAttackAnimation();
+        this.playAttackAnimation(Game.player);
         Game.message("A flaming horse rears up and strikes you with blazing hooves!");
         Game.player.takeDamage(this._strength);
         return true;

@@ -36,6 +36,10 @@ Being.createRandom = function(BeingClass, freeCells) {
 
 // Method to move a being and update map tracking
 Being.prototype._moveTo = function(newX, newY) {
+    if (this === Game.player) {
+        Effects.playerMoved(this._x, this._y, newX, newY); // speed trail
+    }
+
     // Remove from old position
     if (Game.isPassableTile(this._x, this._y)) {
         Game.currentLevel.map[this._x][this._y].being = null;
@@ -65,6 +69,7 @@ Being.prototype.setPosition = function(x, y) {
 Being.prototype.takeDamage = function(damage) {
     // If invulnerable, take no damage
     if (this._isInvulnerable) {
+        Effects.blocked(this);
         return false; // Not killed
     }
     
@@ -72,6 +77,12 @@ Being.prototype.takeDamage = function(damage) {
     this._isTakingDamage = true;
     
     this._health -= damage;
+
+    // Hit flash and floating number (the player's own death skips them:
+    // the death screen replaces the map)
+    if (this !== Game.player || this._health > 0) {
+        Effects.hit(this, damage, this._health <= 0);
+    }
     
     if (this._health <= 0) {
         // Special handling for player death - use immediate cleanup
@@ -83,6 +94,7 @@ Being.prototype.takeDamage = function(damage) {
         
         // For enemies: Mark as dead immediately (becomes a "ghost")
         this._isDead = true;
+        Effects.death(this);
         
         // Remove from scheduler immediately (dies mechanically)
         Game.engine._scheduler.remove(this);
@@ -134,8 +146,11 @@ Being.prototype.die = function() {
     }
 }
 
-Being.prototype.playAttackAnimation = function() {
+// target: the being attacked (defaults to the player, whom most enemies attack);
+// the effects layer draws a slash arc from this being toward it.
+Being.prototype.playAttackAnimation = function(target) {
     this._isAttacking = true;
+    Effects.slash(this, target || Game.player);
     Game._drawAll();
 
     // Use the global animation system

@@ -75,7 +75,9 @@ HealthPotion.prototype.constructor = HealthPotion;
 HealthPotion.prototype.use = function(player) {
     if (player._health < player._maxHealth) {
         // Restore health to maximum
+        var healed = player._maxHealth - player._health;
         player._health = player._maxHealth;
+        Effects.heal(player, healed);
         
         // Show enhanced message with current health
         Game.message("You drink a healing potion! Health fully restored: " + player._health + "/" + player._maxHealth + " ♥");
@@ -98,6 +100,11 @@ GoldKey.prototype.interact = function(player) {
     // Increment player's key counter
     player._keysCollected++;
     
+    Effects.goldBurst(this._x, this._y, true);
+    if (player._keysCollected === 3) {
+        Effects.exitUnlocked();
+    }
+
     // Show message with current key count
     Game.message("You picked up a gold key! Keys collected: " + player._keysCollected + "/3");
     
@@ -121,28 +128,10 @@ Bomb.prototype.use = function(player) {
     var enemiesHit = 0;
     var radius = this._blastRadius;
     var area = (radius * 2 + 1) + "x" + (radius * 2 + 1);
-    var explosionTiles = []; // Track tiles that will have explosion effects
-    
-    // Iterate over all positions in blast area (radius tiles in each direction)
-    for (var dx = -radius; dx <= radius; dx++) {
-        for (var dy = -radius; dy <= radius; dy++) {
-            var checkX = playerX + dx;
-            var checkY = playerY + dy;
-            
-            // Check if this position is valid and within map bounds
-            if (checkX >= 0 && checkX < Game.currentLevel.MAP_WIDTH && 
-                checkY >= 0 && checkY < Game.currentLevel.MAP_HEIGHT) {
-                
-                // Add explosion effect to this tile
-                var tile = Game.currentLevel.map[checkX][checkY];
-                if (tile) {
-                    tile._isExploding = true;
-                    explosionTiles.push({x: checkX, y: checkY});
-                }
-            }
-        }
-    }
-                
+
+    // Fireball, shockwave, embers and smoke over the blast square (effects.js)
+    Effects.explosion(playerX, playerY, radius);
+
     // Damage every enemy inside the blast square by position, so ghosts and reapers
     // inside walls are hit too. Iterate a copy: killed enemies leave Game.enemies.
     // Allies (the summoned unicorn) are spared.
@@ -173,20 +162,8 @@ Bomb.prototype.use = function(player) {
         Game.message("BOOM! The bomb exploded in a " + area + " area but hit no enemies.");
     }
     
-    // Redraw immediately to show explosion effects
+    // Redraw immediately (killed enemies vanish into the blast)
     Game._drawAll();
-    
-    // Queue animation to clear explosion effects after a delay
-    Game.queueAnimation(function() {
-        // Clear explosion effects from all affected tiles
-        for (var i = 0; i < explosionTiles.length; i++) {
-            var tileCoords = explosionTiles[i];
-            var tile = Game.currentLevel.map[tileCoords.x][tileCoords.y];
-            if (tile) {
-                tile._isExploding = false;
-            }
-        }
-    }, 400); // Show explosion for 400ms
 }
 
 // Exit class - inherits from Item
@@ -244,6 +221,7 @@ GoldCoin.prototype.constructor = GoldCoin;
 GoldCoin.prototype.interact = function(player) {
     // Increment player's coin counter
     player._coinsCollected++;
+    Effects.goldBurst(this._x, this._y, false);
     
     Game.message("You collected a gold coin! Gold: " + player._coinsCollected);
     Game._drawStats(); // Update status bar
@@ -263,6 +241,7 @@ Drumstick.prototype.use = function(player) {
     // Restore 1 health, but don't exceed max health
     if (player._health < player._maxHealth) {
         player._health += 1;
+        Effects.heal(player, 1);
         Game.message("You eat the drumstick! Health restored: " + player._health + "/" + player._maxHealth);
     } else {
         Game.message("You're already at full health! You save the drumstick for later.");
@@ -282,6 +261,7 @@ Heart.prototype.interact = function(player) {
     // Increase max health permanently
     player._maxHealth += 1;
     player._health += 1; // Also restore 1 current health
+    Effects.heartPulse(player);
     
     Game.message("You found a heart! Maximum health increased to " + player._maxHealth + "!");
     
@@ -311,6 +291,7 @@ SummoningRing.prototype.use = function(player) {
         
         // Add the unicorn to the scheduler so it can take turns
         Game.engine._scheduler.add(unicorn, true);
+        Effects.summon(unicorn);
         
         Game.message("The ring glows and summons a majestic unicorn to aid you!");
         Game._drawAll(); // Update the display to show the new unicorn
@@ -373,6 +354,7 @@ ScrollOfRevelation.prototype.use = function(player) {
     // Show message and redraw the map to reveal the passable areas
     Game.message("The scroll glows with ancient magic! All accessible areas are revealed to you!");
     Game._drawAll(); // Redraw to show the newly revealed areas
+    Effects.reveal(player.getX(), player.getY());
     
     // Optional: Add a visual effect message about how much was revealed
     if (tilesRevealed > 0) {
@@ -400,6 +382,7 @@ Belt.prototype.interact = function(player) {
     
     // Expand the actual inventory array with a new null slot
     player._inventory.push(null);
+    Effects.glow(player);
     
     Game.message("You found a belt! Your inventory capacity increased to " + player.INVENTORY_SIZE + " slots!");
     Game._drawAll(); // Update the display to show the new inventory slot

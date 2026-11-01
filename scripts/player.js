@@ -233,8 +233,7 @@ Player.prototype.handleEvent = function(e) {
         this._checkForItems();
     } else if (targetEnemy) {
         // If there's an enemy, attack it instead of moving
-        this._flash(); // NEW: Player flashes red when attacking
-        this.playAttackAnimation();
+        this.playAttackAnimation(targetEnemy);
         // Player attacks enemy with their strength
         var killed = targetEnemy.takeDamage(this._strength);
         if (killed) {
@@ -300,6 +299,8 @@ Player.prototype._checkForItems = function() {
 
 // Override die method for Player-specific behavior
 Player.prototype.die = function() {
+    Effects.clear();
+
     // Call parent die method for basic cleanup (clear display, remove from scheduler)
     Being.prototype.die.call(this);
     

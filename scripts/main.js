@@ -204,6 +204,9 @@ var Game = {
                 container.appendChild(wrapperDiv);
             }
             
+            // Effects canvas (scripts/effects.js) sits over the map in the same wrapper
+            Effects.init(newContainer, tileSet);
+
             // Draw the map
             this._drawMap();
 
@@ -421,6 +424,9 @@ var Game = {
                 this._drawTile(x, y);
             }
         }
+
+        // Status auras are drawn continuously by the effects loop
+        Effects.kick();
     },
 
     _drawTile: function(x, y) {
@@ -442,25 +448,11 @@ var Game = {
             if (tile.item) {
                 spritesToDraw.push(tile.item._sprite);
             }
-            if (tile.being) {
-                // Special case for player status effects - draw halos first
-                if (tile.being === Game.player) {
-                    if (Game.player._isInvulnerable) {
-                        spritesToDraw.push('blue_halo');
-                    }
-                    if (Game.player._isFast) {
-                        spritesToDraw.push('green_halo');
-                    }
-                }
-                
+            // A killed enemy stays on the map until the animation queue clears it,
+            // but is not drawn: the effects layer shows its death puff instead.
+            // Attacks, hits and status auras are drawn by scripts/effects.js.
+            if (tile.being && !tile.being._isDead) {
                 spritesToDraw.push(tile.being._sprite);
-                
-                if (tile.being._isAttacking) {
-                    spritesToDraw.push('attack_effect');
-                }
-                if (tile.being._isTakingDamage) {
-                    spritesToDraw.push('blood_splatter');
-                }
             }
         } else {
             // If not visible but explored, only draw items...
@@ -469,11 +461,6 @@ var Game = {
             }
             // ...and then the fog of war sprite over everything.
             spritesToDraw.push('darker_black');
-        }
-        
-        // Add explosion effect on top of everything if this tile is exploding
-        if (tile._isExploding) {
-            spritesToDraw.push('explosion');
         }
         
         // Draw all collected sprites for this tile at once
@@ -707,12 +694,15 @@ var Game = {
         // --- End of state reset ---
 
         this.message("You have advanced to level " + this.levelNumber + "!");
+        Effects.clear();
+        Effects.fade();
         this._drawAll();
         this.engine.unlock();
     },
 
     _gameWon: function() {
         this.engine.lock();
+        Effects.stop();
         
         // Clear the tile display
         if (this.display) {
