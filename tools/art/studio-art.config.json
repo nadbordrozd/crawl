@@ -1,0 +1,7 @@
+{
+  "dataDir": "art",
+  "rawDir": "~/.studio-raw/{repo}",
+  "sfxDir": "audio/sfx",
+  "maxCallsPerRun": 4,
+  "defaultEndpoint": "create-image-pixen"
+}

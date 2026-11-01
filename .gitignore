@@ -5,3 +5,10 @@
 .beads-credential-key
 .beads/proxieddb/
 *.gate.lock*
+
+# studio:begin (managed by /studio)
+.orchestration/
+.claude/worktrees/
+.lock/
+*.[0-9]*.tmp
+# studio:end

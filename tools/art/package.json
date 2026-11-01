@@ -1,0 +1,11 @@
+{
+  "name": "studio-art-tool",
+  "private": true,
+  "description": "studio-managed: zero-dependency art and sound pipeline installed by the /studio skill. Never add dependencies to the host project for it.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "plan": "node studio-art.mjs plan",
+    "validate": "node studio-art.mjs validate && node sfx.mjs validate"
+  }
+}
