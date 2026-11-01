@@ -91,8 +91,11 @@ Player.prototype.useInventoryItem = function(slotIndex) {
         return false; // Empty slot
     }
     
-    // Use the item on the player
-    item.use(this);
+    // Use the item on the player; use() returns false when the item was not consumed
+    // (e.g. a potion at full health), in which case it stays in its slot
+    if (item.use(this) === false) {
+        return false;
+    }
     
     // Remove from inventory
     this._inventory[slotIndex] = null;
@@ -138,56 +141,56 @@ Player.prototype.act = function() {
     window.addEventListener("keydown", this);
 }
     
+// Finish the player's turn: count it, redraw and let the other beings act
+Player.prototype._endTurn = function() {
+    this._turns++;
+    Game._drawAll();
+    window.removeEventListener("keydown", this);
+    Game.engine.unlock();
+}
+
 Player.prototype.handleEvent = function(e) {
     var code = e.keyCode;
     
-    // Increment turn counter for any action
-    this._turns++;
-    
-    // --- NEW CHEAT CODE ---
-    if (code == KEY_CODES.PAGE_UP) {
+    // Debug cheat (only with ?debug in the URL): set health to 500. Takes no turn,
+    // and the run can no longer be submitted to the leaderboard.
+    if (Game.debugMode && (e.key === "=" || code == KEY_CODES.EQUALS || code == KEY_CODES.EQUALS_FIREFOX)) {
         this._health = 500;
-        Game.message("%c{lime}Cheat activated: Health set to 500!");
+        Game.cheatUsed = true;
+        Game.message("Cheat activated: Health set to 500! (debug run: score will not be submitted)");
         Game._drawAll();
-        window.removeEventListener("keydown", this);
-        Game.engine.unlock();
         return;
     }
-    // --- END CHEAT CODE ---
     
     if (code == KEY_CODES.SPACE) {
         // Check surroundings and skip turn
         this._checkSurroundings(this._x, this._y);
         Game.message("You look around carefully...");
-        Game._drawAll();
-        window.removeEventListener("keydown", this);
-        Game.engine.unlock();
+        this._endTurn();
         return;
     }
     
-    // Handle inventory usage (number keys 1-9)
+    // Handle inventory usage (number keys 1-9). Only a consumed item spends a turn.
     if (code >= 49 && code <= 57) { // Key codes for 1-9
         var slotIndex = code - 49; // Convert to 0-8 index
         // Only allow using slots that exist for this player
-        if (slotIndex < this.INVENTORY_SIZE) {
-            if (this.useInventoryItem(slotIndex)) {
-                Game.message("You used the item from slot " + (slotIndex + 1) + "!");
-            } else {
-                Game.message("No item in slot " + (slotIndex + 1) + " to use.");
-                this._turns--; // Don't waste a turn for empty slot
-            }
-        } else {
+        if (slotIndex >= this.INVENTORY_SIZE) {
             Game.message("You don't have inventory slot " + (slotIndex + 1) + " yet!");
-            this._turns--; // Don't waste a turn for invalid slot
+        } else if (this._inventory[slotIndex] === null) {
+            Game.message("No item in slot " + (slotIndex + 1) + " to use.");
+        } else if (this.useInventoryItem(slotIndex)) {
+            Game.message("You used the item from slot " + (slotIndex + 1) + "!");
+            this._endTurn();
+            return;
         }
+        // Nothing was used (the item explains why itself): keep waiting for input
         Game._drawAll();
-        window.removeEventListener("keydown", this);
-        Game.engine.unlock();
         return;
     }
 
     var keyMap = {};
     keyMap[KEY_CODES.UP] = 0;
+    keyMap[KEY_CODES.PAGE_UP] = 1;
     keyMap[KEY_CODES.RIGHT] = 2;
     keyMap[KEY_CODES.PAGE_DOWN] = 3;
     keyMap[KEY_CODES.DOWN] = 4;
@@ -197,15 +200,14 @@ Player.prototype.handleEvent = function(e) {
 
     /* one of numpad directions? */
     if (!(code in keyMap)) { 
-        this._turns--; // Not a valid key, so don't waste a turn
-        return; 
+        return; // Not a valid key, so no turn passes
     }
 
     /* is there a free space? */
     var dir = ROT.DIRS[8][keyMap[code]];
     var newX = this._x + dir[0];
     var newY = this._y + dir[1];
-    if (!Game.isPassableTile(newX, newY)) { return; }
+    if (!Game.isPassableTile(newX, newY)) { return; } // Bumping a wall takes no turn
 
     // Check for enemies at the target position
     var targetEnemy = Game.getBeingAt(newX, newY);
@@ -214,8 +216,23 @@ Player.prototype.handleEvent = function(e) {
         targetEnemy = null;
     }
 
-    // If there's an enemy, attack it instead of moving
-    if (targetEnemy) {
+    if (targetEnemy && targetEnemy._isAlly) {
+        // Moving into an ally (the summoned unicorn) swaps places with it
+        var ally = targetEnemy;
+        var oldX = this._x;
+        var oldY = this._y;
+        this._x = newX;
+        this._y = newY;
+        ally._x = oldX;
+        ally._y = oldY;
+        Game.currentLevel.map[newX][newY].being = this;
+        Game.currentLevel.map[oldX][oldY].being = ally;
+        this._steps++;
+
+        // Check for items to pick up at the new position
+        this._checkForItems();
+    } else if (targetEnemy) {
+        // If there's an enemy, attack it instead of moving
         this._flash(); // NEW: Player flashes red when attacking
         this.playAttackAnimation();
         // Player attacks enemy with their strength
@@ -238,9 +255,7 @@ Player.prototype.handleEvent = function(e) {
         this._checkForItems();
     }
     
-    Game._drawAll();
-    window.removeEventListener("keydown", this);
-    Game.engine.unlock();
+    this._endTurn();
 }
 
 // Method to track defeated enemies
@@ -351,15 +366,19 @@ Player.prototype._showDeathStatisticsWithLeaderboard = function(finalScore) {
     statsHTML += '</div>';
     statsHTML += '<div style="color: #ffaa44; margin: 15px 0; font-weight: bold;">Total monsters defeated: ' + totalEnemiesDefeated + '</div>';
     
-    // Add name input and leaderboard submission
+    // Add name input and leaderboard submission (not for runs that used the debug cheat)
     statsHTML += '<div class="name-input-container">';
-    statsHTML += '<div style="color: #ffff44; font-weight: bold; margin-bottom: 10px;">🏆 Submit to Leaderboard 🏆</div>';
-    statsHTML += '<div style="margin-bottom: 10px;">Enter your name:</div>';
-    statsHTML += '<input type="text" id="player-name-input" class="name-input" placeholder="Your Name" maxlength="20">';
-    statsHTML += '<div style="margin-top: 15px;">';
-    statsHTML += '<button id="submit-score-btn" class="submit-score-btn">Submit Score</button>';
-    statsHTML += '<button id="skip-submit-btn" class="skip-submit-btn">Skip</button>';
-    statsHTML += '</div>';
+    if (Game.cheatUsed) {
+        statsHTML += '<div style="color: #ff8844; font-weight: bold;">Debug run: not submitted</div>';
+    } else {
+        statsHTML += '<div style="color: #ffff44; font-weight: bold; margin-bottom: 10px;">🏆 Submit to Leaderboard 🏆</div>';
+        statsHTML += '<div style="margin-bottom: 10px;">Enter your name:</div>';
+        statsHTML += '<input type="text" id="player-name-input" class="name-input" placeholder="Your Name" maxlength="20">';
+        statsHTML += '<div style="margin-top: 15px;">';
+        statsHTML += '<button id="submit-score-btn" class="submit-score-btn">Submit Score</button>';
+        statsHTML += '<button id="skip-submit-btn" class="skip-submit-btn">Skip</button>';
+        statsHTML += '</div>';
+    }
     statsHTML += '</div>';
     
     statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Or press ENTER to start over without submitting</div>';
@@ -446,9 +465,12 @@ Player.prototype._submitScore = async function() {
     submitBtn.textContent = 'Submitting...';
     
     try {
-        var success = await Leaderboard.submitScore(playerName, this._finalScore, this._finalStats);
+        var docId = await Leaderboard.submitScore(playerName, this._finalScore, this._finalStats);
         
-        if (success) {
+        if (docId) {
+            // Remember our entry so the leaderboard can find and highlight it
+            this._submittedScoreId = docId;
+
             // Show success message
             submitBtn.textContent = 'Success!';
             submitBtn.style.backgroundColor = '#44ff44';
@@ -503,11 +525,11 @@ Player.prototype._showFinalLeaderboard = async function(scoreSubmitted) {
         // Remove loading message
         document.body.removeChild(loadingOverlay);
         
-        // Find player's rank if they submitted
+        // Find player's rank if they submitted (by document id, so ties are not confused)
         var playerRank = null;
         if (scoreSubmitted) {
             for (var i = 0; i < scores.length; i++) {
-                if (scores[i].score === this._finalScore) {
+                if (scores[i].id === this._submittedScoreId) {
                     playerRank = i + 1;
                     break;
                 }
@@ -569,16 +591,16 @@ Player.prototype._renderFinalLeaderboard = function(scores, scoreSubmitted, play
             
             // Highlight the player's score if it's in the top 10
             var rowClass = 'leaderboard-row';
-            if (scoreSubmitted && scoreEntry.score === this._finalScore) {
+            if (scoreSubmitted && scoreEntry.id === this._submittedScoreId) {
                 rowClass += '" style="background-color: #4a4a00; border: 2px solid #ffff44;';
             }
             
             html += '<div class="' + rowClass + '">';
             html += '<div class="rank-col">' + rankDisplay + '</div>';
-            html += '<div class="name-col">' + (scoreEntry.name || 'Anonymous') + '</div>';
-            html += '<div class="score-col">' + scoreEntry.score.toLocaleString() + '</div>';
-            html += '<div class="level-col">' + scoreEntry.level + '</div>';
-            html += '<div class="stats-col">' + scoreEntry.totalEnemiesDefeated + ' enemies, ' + scoreEntry.coinsCollected + ' coins</div>';
+            html += '<div class="name-col">' + escapeHtml(scoreEntry.name || 'Anonymous') + '</div>';
+            html += '<div class="score-col">' + formatNumber(scoreEntry.score) + '</div>';
+            html += '<div class="level-col">' + escapeHtml(scoreEntry.level) + '</div>';
+            html += '<div class="stats-col">' + escapeHtml(scoreEntry.totalEnemiesDefeated) + ' enemies, ' + escapeHtml(scoreEntry.coinsCollected) + ' coins</div>';
             html += '</div>';
         }
         

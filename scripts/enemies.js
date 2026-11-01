@@ -26,10 +26,16 @@ Assassin.prototype.act = function() {
 
     path.shift(); // Remove Assassin's current position
     
-    if (path.length <= 1) { // If path is 1, we are adjacent. If 0, we are blocked.
+    // Strike only when actually adjacent (4-neighbour). An empty path means the
+    // player is unreachable, so wait.
+    var isAdjacent = Math.abs(this._x - x) + Math.abs(this._y - y) === 1;
+    if (isAdjacent) {
         this.playAttackAnimation();
         Game.message("The Assassin strikes you!");
         Game.player.takeDamage(this._strength);
+    } else if (path.length === 0) {
+        // No path to the player: wait
+        return;
     } else {
         // Move towards the player
         var newX = path[0][0];
@@ -468,6 +474,15 @@ Ghost.createRandom = function(BeingClass, freeCells) {
     if (unoccupiedTiles.length > 0) {
         var index = Math.floor(ROT.RNG.getUniform() * unoccupiedTiles.length);
         var tile = unoccupiedTiles[index];
+
+        // Reserve the cell so later enemies and items are not placed on it
+        for (var i = 0; i < freeCells.length; i++) {
+            if (freeCells[i].x === tile.x && freeCells[i].y === tile.y) {
+                freeCells.splice(i, 1);
+                break;
+            }
+        }
+
         return new BeingClass(tile.x, tile.y);
     } else {
         // Fallback: use standard creation if no unoccupied tiles (shouldn't happen)
@@ -1220,6 +1235,7 @@ var Unicorn = function(x, y) {
     this._name = "unicorn";
     this._sprite = "unicorn";
     this._speed = 100; // Normal speed
+    this._isAlly = true; // Fights for the player: the player swaps places with it, bombs spare it
 }
 Unicorn.prototype = Object.create(Being.prototype);
 Unicorn.prototype.constructor = Unicorn;
@@ -1390,6 +1406,8 @@ Unicorn.prototype._tryUnicornMove = function(dir) {
         Game.message("A unicorn charges at the " + targetBeing.getName() + " to defend you!");
         var killed = targetBeing.takeDamage(this._strength);
         if (killed) {
+            // The unicorn is the player's ally, so its kills count as the player's
+            Game.player._trackEnemyDefeat(targetBeing);
             Game.message("The unicorn defeated the " + targetBeing.getName() + "!");
         }
         return true;

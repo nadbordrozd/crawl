@@ -8,7 +8,9 @@ const KEY_CODES = {
     DOWN: 40,
     END: 35,
     LEFT: 37,
-    HOME: 36
+    HOME: 36,
+    EQUALS: 187, // "=" (debug cheat)
+    EQUALS_FIREFOX: 61 // "=" keyCode in Firefox
 };
 
 var Game = {
@@ -27,6 +29,8 @@ var Game = {
     fov: null, // NEW: Field of Vision object
     FOV_RADIUS: 7,
     MESSAGE_LINES: 5, // Configurable number of message lines
+    debugMode: false, // True when the page URL has ?debug (enables the health cheat on "=")
+    cheatUsed: false, // Set once the cheat is used; such a run is not submitted to the leaderboard
     
     // Global animation system
     animationTimeout: null,
@@ -34,6 +38,8 @@ var Game = {
     animationCallbacks: [],
     
     init: function() {
+        this.debugMode = new URLSearchParams(window.location.search).has("debug");
+
         // Initialize ImpLevel as first level
         // this.currentLevel = this.levelSequence[this.levelNumber];
         this.currentLevel = new Level1()
@@ -97,7 +103,10 @@ var Game = {
         
         // Initial welcome messages with controls and objective
         this.message("Welcome to the dungeon! Survive and explore!");
-        this.message("CONTROLS: Arrow Keys = Move/Attack, Spacebar = Wait, 1-6 = Use inventory items");
+        this.message("CONTROLS: Arrow Keys = Move/Attack, Home/PgUp/End/PgDn = Diagonals, Spacebar = Wait, Number keys 1-9 = Use inventory slots");
+        if (this.debugMode) {
+            this.message("DEBUG MODE: press = to set health to 500 (the run will not be submitted to the leaderboard)");
+        }
         this.message("OBJECTIVE: Collect 3 gold keys and reach the exit to advance to the next level");
         this.message("INVENTORY: Walk over items to pick up, keys and coins are used instantly");
         this.message("TIP: Press the Instructions button above for detailed help!");
@@ -105,7 +114,7 @@ var Game = {
         // --- NEW Music Controls ---
         var music = document.getElementById("game-music");
         var musicButton = document.getElementById("music-toggle-button");
-        var musicPlaylist = ["music/tavern.mp3", "music/prism.mp3", "departures.mp3", "lifeline.mp3", "footprints.mp3", "sunken_days.mp3", "roadway.mp3"]; // Your playlist
+        var musicPlaylist = ["music/tavern.mp3", "music/prism.mp3", "music/departures.mp3", "music/lifeline.mp3", "music/footprints.mp3", "music/sunken_days.mp3", "music/roadway.mp3"]; // Your playlist
         var currentTrackIndex = 0;
         
         music.volume = 0.3; // Set a reasonable volume
@@ -229,13 +238,15 @@ var Game = {
         var html = '<div style="color: #ffffff; font-weight: bold; margin-bottom: 10px;">--- Controls ---</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Arrow Keys:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 5px;">Move / Attack</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Home / PgUp / End / PgDn:</div>';
+        html += '<div style="margin-left: 20px; margin-bottom: 5px;">Move / Attack diagonally</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Spacebar:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 10px;">Wait a turn</div>';
         
         html += '<div style="color: #ffffff; font-weight: bold; margin: 15px 0 10px 0;">--- Using Items ---</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Walking over items:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 5px;">Automatically picks up to inventory</div>';
-        html += '<div style="color: #ffff00; margin: 5px 0;">Number Keys 1-6:</div>';
+        html += '<div style="color: #ffff00; margin: 5px 0;">Number Keys 1-9:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 5px;">Use items from inventory slots</div>';
         html += '<div style="color: #ffff00; margin: 5px 0;">Inventory Full:</div>';
         html += '<div style="margin-left: 20px; margin-bottom: 10px;">Items stay on ground until space available</div>';
@@ -630,16 +641,18 @@ var Game = {
             'ImpLevel', 'TrollLevel', 'Level4', 'Level5', 'Level6'
         ];
         
-        this.levelNumber++;
-        
-        // Get the level class name from the sequence (levelNumber-1 because array is 0-indexed)
-        var levelClassName = levelSequence[this.levelNumber - 1];
+        // Get the next level's class name from the sequence (levelNumber is 1-based,
+        // so levelSequence[levelNumber] is the level after the current one)
+        var levelClassName = levelSequence[this.levelNumber];
         var levelClass = window[levelClassName];
 
         if (!levelClass) {
+            // No more levels: levelNumber stays at the number of levels completed
             this._gameWon();
             return;
         }
+
+        this.levelNumber++;
 
         this.engine.lock(); // Stop the current game loop
 
@@ -748,15 +761,19 @@ var Game = {
         statsHTML += '</div>';
         statsHTML += '<div style="color: #ffaa44; margin: 15px 0; font-weight: bold;">Total monsters defeated: ' + totalEnemiesDefeated + '</div>';
         
-        // Add name input and leaderboard submission
+        // Add name input and leaderboard submission (not for runs that used the debug cheat)
         statsHTML += '<div class="name-input-container">';
-        statsHTML += '<div style="color: #44ff44; font-weight: bold; margin-bottom: 10px;">🏆 CHAMPION LEADERBOARD 🏆</div>';
-        statsHTML += '<div style="margin-bottom: 10px;">Enter your name to claim victory:</div>';
-        statsHTML += '<input type="text" id="winner-name-input" class="name-input" placeholder="Champion Name" maxlength="20">';
-        statsHTML += '<div style="margin-top: 15px;">';
-        statsHTML += '<button id="submit-win-score-btn" class="submit-score-btn">Claim Victory</button>';
-        statsHTML += '<button id="skip-win-submit-btn" class="skip-submit-btn">Skip</button>';
-        statsHTML += '</div>';
+        if (this.cheatUsed) {
+            statsHTML += '<div style="color: #ff8844; font-weight: bold;">Debug run: not submitted</div>';
+        } else {
+            statsHTML += '<div style="color: #44ff44; font-weight: bold; margin-bottom: 10px;">🏆 CHAMPION LEADERBOARD 🏆</div>';
+            statsHTML += '<div style="margin-bottom: 10px;">Enter your name to claim victory:</div>';
+            statsHTML += '<input type="text" id="winner-name-input" class="name-input" placeholder="Champion Name" maxlength="20">';
+            statsHTML += '<div style="margin-top: 15px;">';
+            statsHTML += '<button id="submit-win-score-btn" class="submit-score-btn">Claim Victory</button>';
+            statsHTML += '<button id="skip-win-submit-btn" class="skip-submit-btn">Skip</button>';
+            statsHTML += '</div>';
+        }
         statsHTML += '</div>';
         
         statsHTML += '<div style="color: #44ff44; font-size: 16px; margin-top: 25px; font-weight: bold;">Or press ENTER to start over without submitting</div>';
@@ -843,9 +860,11 @@ var Game = {
         submitBtn.textContent = 'Submitting...';
         
         try {
-            var success = await Leaderboard.submitScore(playerName, this._finalWinScore, this._finalWinStats);
+            var docId = await Leaderboard.submitScore(playerName, this._finalWinScore, this._finalWinStats);
             
-            if (success) {
+            if (docId) {
+                // Remember our entry so the leaderboard can find and highlight it
+                this._submittedWinScoreId = docId;
                 // Show success message
                 submitBtn.textContent = 'Victory Claimed!';
                 submitBtn.style.backgroundColor = '#44ff44';
@@ -900,11 +919,11 @@ var Game = {
             // Remove loading message
             document.body.removeChild(loadingOverlay);
             
-            // Find player's rank if they submitted
+            // Find player's rank if they submitted (by document id, so ties are not confused)
             var playerRank = null;
             if (scoreSubmitted) {
                 for (var i = 0; i < scores.length; i++) {
-                    if (scores[i].score === this._finalWinScore) {
+                    if (scores[i].id === this._submittedWinScoreId) {
                         playerRank = i + 1;
                         break;
                     }
@@ -970,16 +989,16 @@ var Game = {
                 
                 // Highlight the player's score if it's in the top 10
                 var rowClass = 'leaderboard-row';
-                if (scoreSubmitted && scoreEntry.score === this._finalWinScore) {
+                if (scoreSubmitted && scoreEntry.id === this._submittedWinScoreId) {
                     rowClass += '" style="background-color: #004400; border: 2px solid #44ff44;';
                 }
                 
                 html += '<div class="' + rowClass + '">';
                 html += '<div class="rank-col">' + rankDisplay + '</div>';
-                html += '<div class="name-col">' + (scoreEntry.name || 'Anonymous') + '</div>';
-                html += '<div class="score-col">' + scoreEntry.score.toLocaleString() + '</div>';
-                html += '<div class="level-col">' + scoreEntry.level + '</div>';
-                html += '<div class="stats-col">' + scoreEntry.totalEnemiesDefeated + ' enemies, ' + scoreEntry.coinsCollected + ' coins</div>';
+                html += '<div class="name-col">' + escapeHtml(scoreEntry.name || 'Anonymous') + '</div>';
+                html += '<div class="score-col">' + formatNumber(scoreEntry.score) + '</div>';
+                html += '<div class="level-col">' + escapeHtml(scoreEntry.level) + '</div>';
+                html += '<div class="stats-col">' + escapeHtml(scoreEntry.totalEnemiesDefeated) + ' enemies, ' + escapeHtml(scoreEntry.coinsCollected) + ' coins</div>';
                 html += '</div>';
             }
             

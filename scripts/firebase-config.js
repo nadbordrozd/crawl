@@ -16,6 +16,19 @@ firebase.initializeApp(firebaseConfig);
 // Initialize Firestore
 const db = firebase.firestore();
 
+// Escape a value for insertion into innerHTML. Leaderboard entries come from
+// Firestore and are written by players, so every field must go through this.
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function(c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+}
+
+// Format a Firestore number field for display (coerced, so a non-number shows as NaN)
+function formatNumber(value) {
+    return escapeHtml(Number(value).toLocaleString());
+}
+
 // Leaderboard functionality
 const Leaderboard = {
     // Calculate score based on game statistics
@@ -56,9 +69,14 @@ const Leaderboard = {
         return Math.max(score, 0);
     },
     
-    // Submit score to Firebase
+    // Submit score to Firebase; returns the new document id, or null on failure
     submitScore: async function(playerName, score, stats) {
         try {
+            // A run that used the debug cheat never reaches the leaderboard
+            if (typeof Game !== 'undefined' && Game.cheatUsed) {
+                throw new Error('Debug run: not submitted');
+            }
+
             // Basic client-side validation (can be bypassed, but adds a hurdle)
             if (!this.isValidSubmission(playerName, score, stats)) {
                 throw new Error('Invalid score data');
@@ -75,10 +93,10 @@ const Leaderboard = {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
             console.log("Score submitted with ID: ", docRef.id);
-            return true;
+            return docRef.id;
         } catch (error) {
             console.error("Error adding score: ", error);
-            return false;
+            return null;
         }
     },
     
@@ -191,10 +209,10 @@ const Leaderboard = {
                 
                 html += '<div class="leaderboard-row">';
                 html += '<div class="rank-col">' + rankDisplay + '</div>';
-                html += '<div class="name-col">' + (scoreEntry.name || 'Anonymous') + '</div>';
-                html += '<div class="score-col">' + scoreEntry.score.toLocaleString() + '</div>';
-                html += '<div class="level-col">' + scoreEntry.level + '</div>';
-                html += '<div class="stats-col">' + scoreEntry.totalEnemiesDefeated + ' enemies, ' + scoreEntry.coinsCollected + ' coins</div>';
+                html += '<div class="name-col">' + escapeHtml(scoreEntry.name || 'Anonymous') + '</div>';
+                html += '<div class="score-col">' + formatNumber(scoreEntry.score) + '</div>';
+                html += '<div class="level-col">' + escapeHtml(scoreEntry.level) + '</div>';
+                html += '<div class="stats-col">' + escapeHtml(scoreEntry.totalEnemiesDefeated) + ' enemies, ' + escapeHtml(scoreEntry.coinsCollected) + ' coins</div>';
                 html += '</div>';
             });
             

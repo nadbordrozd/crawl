@@ -43,7 +43,8 @@ Item.prototype.pickup = function(player) {
     }
 }
 
-// Base use method - should be overridden by subclasses
+// Base use method - should be overridden by subclasses.
+// Returning false means the item was not consumed and stays in the inventory.
 Item.prototype.use = function(player) {
     Game.message("You use the " + this._name + ".");
 }
@@ -80,8 +81,7 @@ HealthPotion.prototype.use = function(player) {
         Game.message("You drink a healing potion! Health fully restored: " + player._health + "/" + player._maxHealth + " ♥");
     } else {
         Game.message("You're already at full health! You save the potion for later.");
-        // Return the item to inventory since it wasn't used
-        player.addToInventory(this);
+        return false; // Not consumed: it stays in its inventory slot
     }
 }
 
@@ -139,20 +139,30 @@ Bomb.prototype.use = function(player) {
                     tile._isExploding = true;
                     explosionTiles.push({x: checkX, y: checkY});
                 }
-                
-                // Check if this position has an enemy
-                var enemy = Game.getBeingAt(checkX, checkY);
-                
-                // If there's an enemy (and it's not the player), damage it
-                if (enemy && enemy !== player) {
-                    var killed = enemy.takeDamage(3);
-                    enemiesHit++;
-                    
-                    if (killed) {
-                        Game.message("The explosion killed the " + enemy.getName() + "!");
-                    }
-                }
             }
+        }
+    }
+                
+    // Damage every enemy inside the blast square by position, so ghosts and reapers
+    // inside walls are hit too. Iterate a copy: killed enemies leave Game.enemies.
+    // Allies (the summoned unicorn) are spared.
+    var enemies = Game.enemies.slice();
+    for (var i = 0; i < enemies.length; i++) {
+        var enemy = enemies[i];
+        if (enemy === player || enemy._isDead || enemy._isAlly) {
+            continue;
+        }
+        if (Math.abs(enemy.getX() - playerX) > radius || Math.abs(enemy.getY() - playerY) > radius) {
+            continue;
+        }
+                
+        var killed = enemy.takeDamage(3);
+        enemiesHit++;
+                    
+        if (killed) {
+            // Bomb kills count as the player's kills
+            player._trackEnemyDefeat(enemy);
+            Game.message("The explosion killed the " + enemy.getName() + "!");
         }
     }
     
@@ -256,8 +266,7 @@ Drumstick.prototype.use = function(player) {
         Game.message("You eat the drumstick! Health restored: " + player._health + "/" + player._maxHealth);
     } else {
         Game.message("You're already at full health! You save the drumstick for later.");
-        // Return the item to inventory since it wasn't used
-        player.addToInventory(this);
+        return false; // Not consumed: it stays in its inventory slot
     }
 };
 
@@ -307,8 +316,7 @@ SummoningRing.prototype.use = function(player) {
         Game._drawAll(); // Update the display to show the new unicorn
     } else {
         Game.message("The ring flickers but fails to summon - no clear space nearby!");
-        // Return the item to inventory since it wasn't used
-        player.addToInventory(this);
+        return false; // Not consumed: it stays in its inventory slot
     }
 };
 

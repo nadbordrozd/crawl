@@ -389,11 +389,10 @@ var Level3 = function() {
         SPEED_POTIONS: 1,
         GOLD_COINS: 3,
         DRUMSTICKS: 0,
-        HEARTS: 0,
+        HEARTS: 1,
         SUMMONING_RINGS: 0,
         SCROLLS_OF_REVELATION: 1,
-        BELTS: 1,
-        HEARTS: 1
+        BELTS: 1
     };
 }
 Level3.prototype = Object.create(Level.prototype);
@@ -722,11 +721,10 @@ var ImpLevel = function() {
         SPEED_POTIONS: 1,
         GOLD_COINS: 3,
         DRUMSTICKS: 2,
-        HEARTS: 0,
+        HEARTS: 1,
         SUMMONING_RINGS: 0,
         SCROLLS_OF_REVELATION: 0,
-        BELTS: 1,
-        HEARTS: 1
+        BELTS: 1
     };
 }
 ImpLevel.prototype = Object.create(Level.prototype);
@@ -812,11 +810,10 @@ var CobraLevel = function() {
         SPEED_POTIONS: 1,
         GOLD_COINS: 3,
         DRUMSTICKS: 2,
-        HEARTS: 0,
+        HEARTS: 1,
         SUMMONING_RINGS: 1,
         SCROLLS_OF_REVELATION: 1,
-        BELTS: 0,
-        HEARTS: 1
+        BELTS: 0
     };
 }
 CobraLevel.prototype = Object.create(Level.prototype);
