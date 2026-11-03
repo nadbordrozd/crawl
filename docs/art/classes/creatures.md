@@ -13,8 +13,12 @@ replaced cells are baked to `assets/sprites/<sprite_name>.png` and listed in
 
 | Sprite | Source | Notes |
 | --- | --- | --- |
-| player, assassin, frog, mad_frog, rat, scorpion, cobra, audrey_2, imp, reaper, skeleton, orc, unicorn | atlas (kept) | the consistency bar for this class |
-| flaming_horse, ninja, ghost, troll, zombie | `assets/sprites/<name>.png` from `art/sets/creatures` | replaced in crawl-wup.1 (misfits in ASSET_INVENTORY.md "Refresh notes") |
+| player, assassin, frog, mad_frog, rat, scorpion, cobra, audrey_2, imp, reaper, skeleton, orc, unicorn, zombie | atlas (kept) | the consistency bar for this class |
+| flaming_horse, ninja, ghost, troll | `assets/sprites/<name>.png` from `art/sets/creatures` | replaced in crawl-wup.1 (misfits in ASSET_INVENTORY.md "Refresh notes") |
+
+The generated zombie was withdrawn on 2026-11-03 (crawl-9b1): the user
+preferred the original atlas zombie. Its master, record and verdict stay as
+history; its derivation is in the set's `withdrawnOutputs`.
 
 ## Geometry
 
@@ -49,7 +53,7 @@ replaced cells are baked to `assets/sprites/<sprite_name>.png` and listed in
   per creature.
 - Distinct from neighbours: the ninja is warm grey with a red scarf (the
   assassin is blue); the troll is olive grey-green with a club (the orc is
-  bright green); the zombie is pale green with light clothes.
+  bright green).
 
 ## Recipe
 

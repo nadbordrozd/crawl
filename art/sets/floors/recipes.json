@@ -269,78 +269,6 @@
   ],
   "outputs": [
     {
-      "path": "assets/sprites/floor_dungeon_1.png",
-      "from": "dungeon-v2a#9",
-      "width": 16,
-      "height": 16,
-      "steps": [
-        {
-          "op": "crop",
-          "x": 8,
-          "y": 8,
-          "width": 16,
-          "height": 16
-        }
-      ]
-    },
-    {
-      "path": "assets/sprites/floor_dungeon_2.png",
-      "from": "dungeon-v2a#59",
-      "width": 16,
-      "height": 16,
-      "steps": [
-        {
-          "op": "crop",
-          "x": 8,
-          "y": 8,
-          "width": 16,
-          "height": 16
-        },
-        {
-          "op": "edits",
-          "pixels": [
-            [0, 5, "#2a2b3d"],
-            [0, 6, "#2a2b3d"],
-            [1, 6, "#2a2b3d"],
-            [0, 7, "#2a2b3d"],
-            [1, 7, "#2a2b3d"],
-            [0, 8, "#2a2b3d"],
-            [1, 8, "#2a2b3d"],
-            [0, 9, "#2a2b3d"],
-            [1, 9, "#2a2b3d"],
-            [0, 10, "#2a2b3d"],
-            [1, 10, "#2a2b3d"],
-            [0, 11, "#2a2b3d"],
-            [1, 11, "#2a2b3d"],
-            [0, 12, "#2a2b3d"],
-            [1, 12, "#2a2b3d"],
-            [0, 13, "#2a2b3d"],
-            [1, 13, "#2a2b3d"],
-            [0, 14, "#2a2b3d"],
-            [1, 14, "#2a2b3d"],
-            [0, 15, "#2a2b3d"],
-            [1, 15, "#2a2b3d"],
-            [3, 15, "#13121b"]
-          ]
-        }
-      ]
-    },
-    {
-      "path": "assets/sprites/floor_dungeon_3.png",
-      "from": "dungeon-v2a#10",
-      "width": 16,
-      "height": 16,
-      "steps": [
-        {
-          "op": "crop",
-          "x": 8,
-          "y": 8,
-          "width": 16,
-          "height": 16
-        }
-      ]
-    },
-    {
       "path": "assets/sprites/floor_graveyard_1.png",
       "from": "graveyard-v2a#1",
       "width": 16,
@@ -1087,6 +1015,81 @@
             [14, 15, "#151c15"],
             [15, 15, "#151c15"]
           ]
+        }
+      ]
+    }
+  ],
+  "_withdrawn": "2026-11-03 (crawl-9b1): the user preferred the original dirt18 floor tiles, except the level-2 graveyard grass, so the dungeon, egypt and cave floors were withdrawn from the game (their names left assets/sprites/manifest.json and the baked PNGs were deleted; the game falls back to dirt18). Their output derivations are kept below in withdrawnOutputs, and their masters, records and verdicts stay as history. The graveyard outputs remain live.",
+  "withdrawnOutputs": [
+    {
+      "path": "assets/sprites/floor_dungeon_1.png",
+      "from": "dungeon-v2a#9",
+      "width": 16,
+      "height": 16,
+      "steps": [
+        {
+          "op": "crop",
+          "x": 8,
+          "y": 8,
+          "width": 16,
+          "height": 16
+        }
+      ]
+    },
+    {
+      "path": "assets/sprites/floor_dungeon_2.png",
+      "from": "dungeon-v2a#59",
+      "width": 16,
+      "height": 16,
+      "steps": [
+        {
+          "op": "crop",
+          "x": 8,
+          "y": 8,
+          "width": 16,
+          "height": 16
+        },
+        {
+          "op": "edits",
+          "pixels": [
+            [0, 5, "#2a2b3d"],
+            [0, 6, "#2a2b3d"],
+            [1, 6, "#2a2b3d"],
+            [0, 7, "#2a2b3d"],
+            [1, 7, "#2a2b3d"],
+            [0, 8, "#2a2b3d"],
+            [1, 8, "#2a2b3d"],
+            [0, 9, "#2a2b3d"],
+            [1, 9, "#2a2b3d"],
+            [0, 10, "#2a2b3d"],
+            [1, 10, "#2a2b3d"],
+            [0, 11, "#2a2b3d"],
+            [1, 11, "#2a2b3d"],
+            [0, 12, "#2a2b3d"],
+            [1, 12, "#2a2b3d"],
+            [0, 13, "#2a2b3d"],
+            [1, 13, "#2a2b3d"],
+            [0, 14, "#2a2b3d"],
+            [1, 14, "#2a2b3d"],
+            [0, 15, "#2a2b3d"],
+            [1, 15, "#2a2b3d"],
+            [3, 15, "#13121b"]
+          ]
+        }
+      ]
+    },
+    {
+      "path": "assets/sprites/floor_dungeon_3.png",
+      "from": "dungeon-v2a#10",
+      "width": 16,
+      "height": 16,
+      "steps": [
+        {
+          "op": "crop",
+          "x": 8,
+          "y": 8,
+          "width": 16,
+          "height": 16
         }
       ]
     },

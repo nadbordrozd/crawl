@@ -51,3 +51,4 @@ view and fill most of the 16x16 cell with 1px breathing room.
 | 2026-11-01 | Stay on the 16 px grid (no 32 px re-tile): mixing resolutions would clash with the kept sprites | ART_DIRECTION section 3 |
 | 2026-11-01 | Lineless with selective `#332745`, not a full outline (the pack has none) | crawl-wup.1 review: frog, skeleton, unicorn are lineless |
 | 2026-11-01 | Effects are procedural canvas animation, not sprite frames | smoother at x1.6 CSS scale; no extra atlas frames |
+| 2026-11-03 | User preferred the original dirt18 floors (except graveyard) and the original zombie; generated ones withdrawn (dungeon, egypt and cave floors and the zombie fall back to the tileset; graveyard grass and the horse, ghost, ninja and troll stay) | user request in crawl-9b1; masters, records and verdicts kept as history, derivations in each set's `withdrawnOutputs` |

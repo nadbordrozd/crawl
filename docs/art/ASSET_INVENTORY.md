@@ -40,6 +40,10 @@ contact sheet (native and x4, light and dark). Classes: **creatures**,
   yellow robot), zombie (too dark on the dark floor).
 - **New (crawl-wup.2):** themed floors. Every level uses `dirt18`; add
   default, graveyard, Egyptian sand and prehistoric cave floors.
+- **Reverted (crawl-9b1, 2026-11-03):** the user preferred the originals, so
+  the generated zombie and the dungeon, Egyptian and cave floors were
+  withdrawn; those use the atlas zombie and `dirt18` again. The graveyard
+  floor and the new horse, ninja, ghost and troll stay.
 - **Effects (crawl-wup.5):** `attack_effect` (a sword pasted over the
   attacker), `blood_splatter`, `blue_halo`/`green_halo` (flat rings) and
   `explosion` (one small fireball per tile) become canvas animation.

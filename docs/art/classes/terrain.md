@@ -3,6 +3,11 @@
 Status: draft (2026-11-01, crawl-wup.2), under the approved
 [ART_DIRECTION.md](../ART_DIRECTION.md). Set: `art/sets/floors`.
 
+**2026-11-03 (crawl-9b1):** the user preferred the original `dirt18` floor, so
+only the graveyard floors are live. The dungeon, egypt and cave variants were
+withdrawn: their names are not in the manifest, so they keep the `dirt18`
+fallback (their masters stay; derivations are in the set's `withdrawnOutputs`).
+
 ## Inventory
 
 `scripts/sprites.js` `FLOOR_THEMES` names three variants per theme; each level
@@ -11,10 +16,10 @@ picks one at random per floor cell. Files: `assets/sprites/floor_<theme>_<n>.png
 
 | Theme | Level | Walls | Look |
 | --- | --- | --- | --- |
-| dungeon | most levels | DEFAULT (slate blue) | dark slate cobbles |
-| graveyard | ZombieLevel | DEFAULT | near-black soil, sparse dark grass tufts |
-| egypt | CobraLevel | EGYPT (sandstone) | dim ochre sand, ripples, a pebble variant |
-| cave | TrollLevel | PREHISTORIC (purple-brown) | dark purple rock, specks, a crack variant |
+| dungeon | most levels | DEFAULT (slate blue) | `dirt18` (generated dark slate cobbles withdrawn 2026-11-03) |
+| graveyard | ZombieLevel | DEFAULT | near-black soil, sparse dark grass tufts (live) |
+| egypt | CobraLevel | EGYPT (sandstone) | `dirt18` (generated dim ochre sand withdrawn 2026-11-03) |
+| cave | TrollLevel | PREHISTORIC (purple-brown) | `dirt18` (generated dark purple rock withdrawn 2026-11-03) |
 
 ## Rules
 

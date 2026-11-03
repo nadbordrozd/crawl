@@ -827,7 +827,10 @@
           ]
         }
       ]
-    },
+    }
+  ],
+  "_withdrawn": "2026-11-03 (crawl-9b1): the user preferred the original zombie, so the generated zombie was withdrawn from the game (its name left assets/sprites/manifest.json and the baked PNG was deleted; the game falls back to the tileset cell). Its output derivation is kept below in withdrawnOutputs, and its master, record and verdict stay as history. flaming_horse, ghost, ninja and troll remain live.",
+  "withdrawnOutputs": [
     {
       "path": "assets/sprites/zombie.png",
       "from": "zombie-v2a#0",
